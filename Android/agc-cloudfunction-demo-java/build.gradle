@@ -1,0 +1,32 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+ext {
+    functionVersion = "1.2.1.300"
+}
+
+buildscript {
+    ext.agcpVersion='1.2.1.300'
+    repositories {
+        maven { url file('repo').toURI() }
+        maven { url 'http://developer.huawei.com/repo/' }
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath "com.huawei.agconnect:agcp:$agcpVersion"
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url file('../repo').toURI() }
+        maven { url 'http://developer.huawei.com/repo/' }
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

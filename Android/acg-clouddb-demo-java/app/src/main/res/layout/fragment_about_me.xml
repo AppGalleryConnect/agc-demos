@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.huawei.agc.clouddb.quickstart.MainActivity">
+
+    <LinearLayout
+            android:id="@+id/hint_login_card"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/round_rectangle"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+        <ImageView
+                android:id="@+id/user_header"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/user_header_img"
+                android:src="@drawable/ic_login" />
+
+        <TextView
+                android:id="@+id/login_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/ripple"
+                android:gravity="center_horizontal"
+                android:text="@string/login_by_huawei_account"
+                android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/login_user_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+        <include
+                android:id="@+id/nick_name"
+                layout="@layout/account_item_view" />
+
+        <include
+                android:id="@+id/account"
+                layout="@layout/account_item_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+        <include
+                android:id="@+id/password"
+                layout="@layout/account_item_view" />
+
+        <TextView
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:minHeight="60dp"
+                android:text="@string/logout" />
+    </LinearLayout>
+
+</LinearLayout>

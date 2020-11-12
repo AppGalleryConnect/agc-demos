@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>configuration_version</key>
+	<string>1.0</string>
+	<key>region</key>
+	<string>CN</string>
+	<key>service</key>
+	<dict>
+		<key>ml</key>
+		<dict>
+			<key>mlservice_url</key>
+			<string>ml-api-drcn.ai.dbankcloud.com,ml-api-drcn.ai.dbankcloud.cn</string>
+		</dict>
+		<key>analytics</key>
+		<dict>
+			<key>channel_id</key>
+			<string></string>
+			<key>resource_id</key>
+			<string>p1</string>
+			<key>collector_url</key>
+			<string>https://cloudbackup.hwcloudtest.cn:6447</string>
+		</dict>
+	</dict>
+	<key>client</key>
+	<dict>
+		<key>api_key</key>
+		<string>CV62loUQUDRgGM1Ht+eyzSayezOV8NEK1CvhKNXFb6nJY8IICLWI3/ANFJvUheZe819HRLtJPhdoFG8aEQqr/jX0wmMa</string>
+		<key>package_name</key>
+		<string>com.huawei.agconnect.apmIOSDemo</string>
+		<key>app_id</key>
+		<string>98751101985169475</string>
+		<key>client_secret</key>
+		<string>86BAA066841D51C2EF936EEF76FBD02D73B46D4695C569ED41D7EEFFB47077EA</string>
+		<key>client_id</key>
+		<string>336888891741056256</string>
+		<key>product_id</key>
+		<string>258779603740919102</string>
+		<key>cp_id</key>
+		<string>890086000000004425</string>
+	</dict>
+	<key>agcgw</key>
+	<dict>
+		<key>url</key>
+		<string>lfagcgwtest01cn.hwcloudtest.cn:18062</string>
+		<key>backurl</key>
+		<string>connect-drcn.dbankcloud.cn</string>
+	</dict>
+	<key>code</key>
+	<dict>
+		<key>code1</key>
+		<string>DEF3BEAABF94CDD6384ED5C8D69F03FC</string>
+		<key>code2</key>
+		<string>EC35AC9A6B81FE2AF5E00920A5E58D7E</string>
+		<key>code3</key>
+		<string>F21CF6421DAC402EFC4A8F2A8CA5740D</string>
+		<key>code4</key>
+		<string>55198491DF730DB7696E801811916C86</string>
+	</dict>
+</dict>
+</plist>

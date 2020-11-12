@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">CloudDB QuickStart</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="user_header_img">User header image</string>
+    <string name="user_info_str">User info</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_login">About me</string>
+    <string name="hint_for_having_more_information" translatable="false">hint for having more information</string>
+    <string name="nick_name">Nick name</string>
+    <string name="details">details</string>
+    <string name="logout">Logout</string>
+    <string name="book_manager_title">Book Management</string>
+    <string name="select">Select</string>
+    <string name="add">Add</string>
+    <string name="modify">Modify</string>
+    <string name="book_name">Name</string>
+    <string name="author">Author</string>
+    <string name="price">Price</string>
+    <string name="publisher">Publisher</string>
+    <string name="publish_time">Time</string>
+    <string name="up_arrow" translatable="false">up arrow</string>
+    <string name="down_arrow" translatable="false">down arrow</string>
+    <string name="query">Query</string>
+    <string name="cancel">Cancel</string>
+    <string name="login_by_huawei_account">Login by Huawei account</string>
+    <string name="account">Account</string>
+    <string name="password">Password</string>
+    <string name="show_count">Show count</string>
+    <string name="delete">Delete</string>
+    <string name="select_all">Select All</string>
+    <string name="select_none">Select None</string>
+    <string name="add_book">Add Book</string>
+    <string name="edit_book">Edit Book</string>
+    <string name="search_book">Search Book</string>
+    <string name="show_all">Show All</string>
+</resources>

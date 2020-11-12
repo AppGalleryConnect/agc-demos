@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CloudDB快速入门</string>
+    <string name="title_login">我的</string>
+    <string name="title_home">首页</string>
+    <string name="title_activity_main">主页面</string>
+    <string name="title_activity_login">登录页面</string>
+    <string name="user_header_img">用户头像</string>
+    <string name="nick_name">昵称</string>
+    <string name="details">详情</string>
+    <string name="logout">退出登录</string>
+    <string name="user_info_str">用户信息</string>
+    <string name="book_manager_title">图书管理</string>
+    <string name="select">选择</string>
+    <string name="add">新增</string>
+    <string name="author">作者</string>
+    <string name="book_name">书名</string>
+    <string name="price">单价</string>
+    <string name="publisher">出版社</string>
+    <string name="publish_time">出版时间</string>
+    <string name="login_by_huawei_account">登录华为账号</string>
+    <string name="query">查找</string>
+    <string name="account">账户</string>
+    <string name="password">密码</string>
+    <string name="cancel">取消</string>
+    <string name="show_count">显示条数</string>
+    <string name="modify">修改</string>
+    <string name="delete">删除</string>
+    <string name="select_all">全选</string>
+    <string name="select_none">取消全选</string>
+    <string name="add_book">新增图书</string>
+    <string name="edit_book">编辑图书</string>
+    <string name="search_book">查找图书</string>
+    <string name="show_all">显示所有</string>
+</resources>

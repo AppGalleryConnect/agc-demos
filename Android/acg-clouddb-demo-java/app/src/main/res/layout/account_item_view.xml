@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:minHeight="?attr/listPreferredItemHeight">
+
+    <ImageView
+            android:id="@+id/arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/account_item_margin"
+            android:contentDescription="@string/hint_for_having_more_information"
+            android:gravity="end|center_vertical"
+            android:src="@drawable/arrow_right" />
+
+    <TextView
+            android:id="@+id/details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/arrow_right"
+            android:gravity="start|center_vertical"
+            android:text="@string/details" />
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/account_item_margin"
+            android:layout_toStartOf="@id/details"
+            android:gravity="start|center_vertical"
+            android:text="@string/nick_name" />
+
+</RelativeLayout>

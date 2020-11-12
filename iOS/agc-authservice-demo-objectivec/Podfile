@@ -1,0 +1,26 @@
+# Uncomment the next line to define a global platform for your project
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'AGConnectAuthDemo' do
+  # Comment the next line if you don't want to use dynamic frameworks
+#  use_frameworks!
+  pod "AGConnectAuth"
+  
+  pod 'WechatOpenSDK'
+  pod 'TencentOpenApiSDK'
+  pod 'WeiboSDK'
+  pod 'FBSDKLoginKit', "~> 6.0.0"
+  pod 'GoogleSignIn',"~>5.0.2"
+  pod 'TwitterKit',"~>3.4.2"
+  
+  pod 'MBProgressHUD'
+  pod 'SDWebImage'
+  
+  # Pods for AGConnectAuthDemo
+
+  target 'AGConnectAuthDemoTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

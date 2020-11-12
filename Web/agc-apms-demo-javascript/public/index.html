@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <script src="./apm.min.js"></script>
+  <script>
+    (function () {
+      const config = {
+        agcgw: {
+          backurl: 'https://lfagcgwtest01.hwcloudtest.cn:15602',
+          url: 'https://lfagcgwtest01cn.hwcloudtest.cn:18062'
+        },
+        client: {
+          "cp_id": "890086000000007022",
+          "product_id": "258913027873050970",
+          "client_id": "413445456664734976",
+          "client_secret": "79D572A3D7B988A4B1072910E558B872C636AFF4E50434DA25A8F11EFF37B4B1",
+          "app_id": "98751101985172210",
+          "api_key": "CgB6e3x9dhsbULKmdw+49a1GG3ix1LjN1JQnz0d8/ijevY7khiQTHj4C8X5Jz1FSqlrr24V9oKbQBASEDyaIsw2R"
+        },
+        service: {
+          analytics: {
+            collector_url: 'cloudbackup.hwcloudtest.cn:6447,datacollector-drcn.dt.dbankcloud.cn',
+            resource_id: 'p1',
+            channel_id: ''
+          },
+          cloudstorage: {
+            storage_url: 'https://agc-storage-drcn.platform.dbankcloud.cn'
+          },
+          ml: {
+            mlservice_url: 'ml-api-drcn.ai.dbankcloud.com,ml-api-drcn.ai.dbankcloud.cn'
+          }
+        },
+        region: 'CN',
+        configuration_version: '1.0'
+      }
+      agconnect.instance().configInstance(config)
+
+      APM.enable(true)
+    })()
+  </script>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>

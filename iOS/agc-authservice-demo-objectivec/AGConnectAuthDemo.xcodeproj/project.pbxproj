@@ -1,0 +1,710 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		13BFFBD02411163300D62CA9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BFFBCF2411163300D62CA9 /* AppDelegate.m */; };
+		13BFFBD62411163300D62CA9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BFFBD52411163300D62CA9 /* ViewController.m */; };
+		13BFFBD92411163300D62CA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13BFFBD72411163300D62CA9 /* Main.storyboard */; };
+		13BFFBDB2411163400D62CA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13BFFBDA2411163400D62CA9 /* Assets.xcassets */; };
+		13BFFBDE2411163400D62CA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13BFFBDC2411163400D62CA9 /* LaunchScreen.storyboard */; };
+		13BFFBE12411163400D62CA9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BFFBE02411163400D62CA9 /* main.m */; };
+		2F28D5AC2424C2E000075F50 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5AA2424C2E000075F50 /* RegisterViewController.m */; };
+		2F28D5B12424C4AD00075F50 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5AF2424C4AD00075F50 /* UserInfoViewController.m */; };
+		2F28D5D32425A5BD00075F50 /* WeixinProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5D22425A5BD00075F50 /* WeixinProvider.m */; };
+		2F28D5D92425B6CB00075F50 /* QQProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5D82425B6CB00075F50 /* QQProvider.m */; };
+		2F28D5DC2425BC6300075F50 /* BaseProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5DB2425BC6300075F50 /* BaseProvider.m */; };
+		2F28D5DF2425E39F00075F50 /* WeiboProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5DE2425E39F00075F50 /* WeiboProvider.m */; };
+		2F28D5E22425E6FB00075F50 /* FacebookProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5E12425E6FB00075F50 /* FacebookProvider.m */; };
+		2F28D5E52425ED6900075F50 /* GoogleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5E42425ED6900075F50 /* GoogleProvider.m */; };
+		2F28D5E82425F01100075F50 /* TwitterProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5E72425F01100075F50 /* TwitterProvider.m */; };
+		2F28D5EB2425F52A00075F50 /* EmailProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5EA2425F52A00075F50 /* EmailProvider.m */; };
+		2F28D5EE2425FABB00075F50 /* PhoneProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5ED2425FABB00075F50 /* PhoneProvider.m */; };
+		2F28D5F12425FF8800075F50 /* AnonymousProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5F02425FF8800075F50 /* AnonymousProvider.m */; };
+		2F28D5F42426035000075F50 /* SelfBuildProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5F32426035000075F50 /* SelfBuildProvider.m */; };
+		2F28D5FC242851B500075F50 /* UserLinkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D5FB242851B500075F50 /* UserLinkTableViewCell.m */; };
+		2F28D6092428744F00075F50 /* UserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D6072428744F00075F50 /* UserInfoTableViewCell.m */; };
+		2F28D60D24288C9800075F50 /* UserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D60C24288C9800075F50 /* UserSettingsViewController.m */; };
+		2F28D6102428ADBF00075F50 /* AppleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D60F2428ADBF00075F50 /* AppleProvider.m */; };
+		2F28D6172428F33100075F50 /* ToastUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28D6162428F33100075F50 /* ToastUtil.m */; };
+		2FDDB68B242D8EAF0074E9FE /* UserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FDDB68A242D8EAF0074E9FE /* UserInfoTableViewCell.xib */; };
+		C12289B24073F0BA63512B6A /* libPods-AGConnectAuthDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 986F6605B4C3833E19890B9E /* libPods-AGConnectAuthDemoTests.a */; };
+		FC7C234145A3B7507540C322 /* libPods-AGConnectAuthDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D121E4E0247DFB4A8B3DC686 /* libPods-AGConnectAuthDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		13BFFBE72411163400D62CA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13BFFBC32411163300D62CA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13BFFBCA2411163300D62CA9;
+			remoteInfo = AGConnectAuthDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		13BFFBCB2411163300D62CA9 /* AGConnectAuthDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AGConnectAuthDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13BFFBCE2411163300D62CA9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		13BFFBCF2411163300D62CA9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		13BFFBD42411163300D62CA9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		13BFFBD52411163300D62CA9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		13BFFBD82411163300D62CA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		13BFFBDA2411163400D62CA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		13BFFBDD2411163400D62CA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		13BFFBDF2411163400D62CA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13BFFBE02411163400D62CA9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		13BFFBE62411163400D62CA9 /* AGConnectAuthDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AGConnectAuthDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		13BFFBEC2411163400D62CA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F28D5A92424C2E000075F50 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		2F28D5AA2424C2E000075F50 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		2F28D5AE2424C4AD00075F50 /* UserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		2F28D5AF2424C4AD00075F50 /* UserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		2F28D5D12425A5BD00075F50 /* WeixinProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeixinProvider.h; sourceTree = "<group>"; };
+		2F28D5D22425A5BD00075F50 /* WeixinProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeixinProvider.m; sourceTree = "<group>"; };
+		2F28D5D72425B6CB00075F50 /* QQProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQProvider.h; sourceTree = "<group>"; };
+		2F28D5D82425B6CB00075F50 /* QQProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQProvider.m; sourceTree = "<group>"; };
+		2F28D5DA2425BC6300075F50 /* BaseProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseProvider.h; sourceTree = "<group>"; };
+		2F28D5DB2425BC6300075F50 /* BaseProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseProvider.m; sourceTree = "<group>"; };
+		2F28D5DD2425E39F00075F50 /* WeiboProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeiboProvider.h; sourceTree = "<group>"; };
+		2F28D5DE2425E39F00075F50 /* WeiboProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeiboProvider.m; sourceTree = "<group>"; };
+		2F28D5E02425E6FB00075F50 /* FacebookProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookProvider.h; sourceTree = "<group>"; };
+		2F28D5E12425E6FB00075F50 /* FacebookProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookProvider.m; sourceTree = "<group>"; };
+		2F28D5E32425ED6900075F50 /* GoogleProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleProvider.h; sourceTree = "<group>"; };
+		2F28D5E42425ED6900075F50 /* GoogleProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleProvider.m; sourceTree = "<group>"; };
+		2F28D5E62425F01100075F50 /* TwitterProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwitterProvider.h; sourceTree = "<group>"; };
+		2F28D5E72425F01100075F50 /* TwitterProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterProvider.m; sourceTree = "<group>"; };
+		2F28D5E92425F52A00075F50 /* EmailProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmailProvider.h; sourceTree = "<group>"; };
+		2F28D5EA2425F52A00075F50 /* EmailProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmailProvider.m; sourceTree = "<group>"; };
+		2F28D5EC2425FABB00075F50 /* PhoneProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneProvider.h; sourceTree = "<group>"; };
+		2F28D5ED2425FABB00075F50 /* PhoneProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneProvider.m; sourceTree = "<group>"; };
+		2F28D5EF2425FF8800075F50 /* AnonymousProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnonymousProvider.h; sourceTree = "<group>"; };
+		2F28D5F02425FF8800075F50 /* AnonymousProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnonymousProvider.m; sourceTree = "<group>"; };
+		2F28D5F22426035000075F50 /* SelfBuildProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfBuildProvider.h; sourceTree = "<group>"; };
+		2F28D5F32426035000075F50 /* SelfBuildProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfBuildProvider.m; sourceTree = "<group>"; };
+		2F28D5FA242851B500075F50 /* UserLinkTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserLinkTableViewCell.h; sourceTree = "<group>"; };
+		2F28D5FB242851B500075F50 /* UserLinkTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserLinkTableViewCell.m; sourceTree = "<group>"; };
+		2F28D6062428744F00075F50 /* UserInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoTableViewCell.h; sourceTree = "<group>"; };
+		2F28D6072428744F00075F50 /* UserInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoTableViewCell.m; sourceTree = "<group>"; };
+		2F28D60B24288C9800075F50 /* UserSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSettingsViewController.h; sourceTree = "<group>"; };
+		2F28D60C24288C9800075F50 /* UserSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSettingsViewController.m; sourceTree = "<group>"; };
+		2F28D60E2428ADBF00075F50 /* AppleProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppleProvider.h; sourceTree = "<group>"; };
+		2F28D60F2428ADBF00075F50 /* AppleProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppleProvider.m; sourceTree = "<group>"; };
+		2F28D6152428F33100075F50 /* ToastUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToastUtil.h; sourceTree = "<group>"; };
+		2F28D6162428F33100075F50 /* ToastUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToastUtil.m; sourceTree = "<group>"; };
+		2FDDB68A242D8EAF0074E9FE /* UserInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoTableViewCell.xib; sourceTree = "<group>"; };
+		33ABE5F6352566CB66EA0D1E /* Pods-AGConnectAuthDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGConnectAuthDemoTests.release.xcconfig"; path = "Target Support Files/Pods-AGConnectAuthDemoTests/Pods-AGConnectAuthDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		3A44F55B431F228DDE069F6F /* Pods-AGConnectAuthDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGConnectAuthDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-AGConnectAuthDemoTests/Pods-AGConnectAuthDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4D21FB2485076AA52735C6C3 /* Pods-AGConnectAuthDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGConnectAuthDemo.debug.xcconfig"; path = "Target Support Files/Pods-AGConnectAuthDemo/Pods-AGConnectAuthDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		986F6605B4C3833E19890B9E /* libPods-AGConnectAuthDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AGConnectAuthDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB04C15940DD231D2C3D52C6 /* Pods-AGConnectAuthDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGConnectAuthDemo.release.xcconfig"; path = "Target Support Files/Pods-AGConnectAuthDemo/Pods-AGConnectAuthDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D121E4E0247DFB4A8B3DC686 /* libPods-AGConnectAuthDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AGConnectAuthDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		13BFFBC82411163300D62CA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC7C234145A3B7507540C322 /* libPods-AGConnectAuthDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13BFFBE32411163400D62CA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C12289B24073F0BA63512B6A /* libPods-AGConnectAuthDemoTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		13BFFBC22411163300D62CA9 = {
+			isa = PBXGroup;
+			children = (
+				13BFFBCD2411163300D62CA9 /* AGConnectAuthDemo */,
+				13BFFBE92411163400D62CA9 /* AGConnectAuthDemoTests */,
+				13BFFBCC2411163300D62CA9 /* Products */,
+				E5A6B8B882185872FAE8F85F /* Pods */,
+				C49C8310C54A04DA0E809F42 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		13BFFBCC2411163300D62CA9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13BFFBCB2411163300D62CA9 /* AGConnectAuthDemo.app */,
+				13BFFBE62411163400D62CA9 /* AGConnectAuthDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		13BFFBCD2411163300D62CA9 /* AGConnectAuthDemo */ = {
+			isa = PBXGroup;
+			children = (
+				13BFFBCE2411163300D62CA9 /* AppDelegate.h */,
+				13BFFBCF2411163300D62CA9 /* AppDelegate.m */,
+				2F28D618242A036A00075F50 /* provider */,
+				13BFFBD42411163300D62CA9 /* ViewController.h */,
+				13BFFBD52411163300D62CA9 /* ViewController.m */,
+				2F28D5AE2424C4AD00075F50 /* UserInfoViewController.h */,
+				2F28D5AF2424C4AD00075F50 /* UserInfoViewController.m */,
+				2F28D6062428744F00075F50 /* UserInfoTableViewCell.h */,
+				2F28D6072428744F00075F50 /* UserInfoTableViewCell.m */,
+				2FDDB68A242D8EAF0074E9FE /* UserInfoTableViewCell.xib */,
+				2F28D5FA242851B500075F50 /* UserLinkTableViewCell.h */,
+				2F28D5FB242851B500075F50 /* UserLinkTableViewCell.m */,
+				2F28D60B24288C9800075F50 /* UserSettingsViewController.h */,
+				2F28D60C24288C9800075F50 /* UserSettingsViewController.m */,
+				2F28D5A92424C2E000075F50 /* RegisterViewController.h */,
+				2F28D5AA2424C2E000075F50 /* RegisterViewController.m */,
+				2F28D6152428F33100075F50 /* ToastUtil.h */,
+				2F28D6162428F33100075F50 /* ToastUtil.m */,
+				13BFFBD72411163300D62CA9 /* Main.storyboard */,
+				13BFFBDA2411163400D62CA9 /* Assets.xcassets */,
+				13BFFBDC2411163400D62CA9 /* LaunchScreen.storyboard */,
+				13BFFBDF2411163400D62CA9 /* Info.plist */,
+				13BFFBE02411163400D62CA9 /* main.m */,
+			);
+			path = AGConnectAuthDemo;
+			sourceTree = "<group>";
+		};
+		13BFFBE92411163400D62CA9 /* AGConnectAuthDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				13BFFBEC2411163400D62CA9 /* Info.plist */,
+			);
+			path = AGConnectAuthDemoTests;
+			sourceTree = "<group>";
+		};
+		2F28D618242A036A00075F50 /* provider */ = {
+			isa = PBXGroup;
+			children = (
+				2F28D5DA2425BC6300075F50 /* BaseProvider.h */,
+				2F28D5DB2425BC6300075F50 /* BaseProvider.m */,
+				2F28D5EF2425FF8800075F50 /* AnonymousProvider.h */,
+				2F28D5F02425FF8800075F50 /* AnonymousProvider.m */,
+				2F28D5D12425A5BD00075F50 /* WeixinProvider.h */,
+				2F28D5D22425A5BD00075F50 /* WeixinProvider.m */,
+				2F28D5D72425B6CB00075F50 /* QQProvider.h */,
+				2F28D5D82425B6CB00075F50 /* QQProvider.m */,
+				2F28D5DD2425E39F00075F50 /* WeiboProvider.h */,
+				2F28D5DE2425E39F00075F50 /* WeiboProvider.m */,
+				2F28D5E02425E6FB00075F50 /* FacebookProvider.h */,
+				2F28D5E12425E6FB00075F50 /* FacebookProvider.m */,
+				2F28D5E32425ED6900075F50 /* GoogleProvider.h */,
+				2F28D5E42425ED6900075F50 /* GoogleProvider.m */,
+				2F28D5E62425F01100075F50 /* TwitterProvider.h */,
+				2F28D5E72425F01100075F50 /* TwitterProvider.m */,
+				2F28D5F22426035000075F50 /* SelfBuildProvider.h */,
+				2F28D5F32426035000075F50 /* SelfBuildProvider.m */,
+				2F28D5E92425F52A00075F50 /* EmailProvider.h */,
+				2F28D5EA2425F52A00075F50 /* EmailProvider.m */,
+				2F28D5EC2425FABB00075F50 /* PhoneProvider.h */,
+				2F28D5ED2425FABB00075F50 /* PhoneProvider.m */,
+				2F28D60E2428ADBF00075F50 /* AppleProvider.h */,
+				2F28D60F2428ADBF00075F50 /* AppleProvider.m */,
+			);
+			path = provider;
+			sourceTree = "<group>";
+		};
+		C49C8310C54A04DA0E809F42 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D121E4E0247DFB4A8B3DC686 /* libPods-AGConnectAuthDemo.a */,
+				986F6605B4C3833E19890B9E /* libPods-AGConnectAuthDemoTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5A6B8B882185872FAE8F85F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D21FB2485076AA52735C6C3 /* Pods-AGConnectAuthDemo.debug.xcconfig */,
+				BB04C15940DD231D2C3D52C6 /* Pods-AGConnectAuthDemo.release.xcconfig */,
+				3A44F55B431F228DDE069F6F /* Pods-AGConnectAuthDemoTests.debug.xcconfig */,
+				33ABE5F6352566CB66EA0D1E /* Pods-AGConnectAuthDemoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		13BFFBCA2411163300D62CA9 /* AGConnectAuthDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13BFFBEF2411163400D62CA9 /* Build configuration list for PBXNativeTarget "AGConnectAuthDemo" */;
+			buildPhases = (
+				044FE043EBE97DE589A37861 /* [CP] Check Pods Manifest.lock */,
+				13BFFBC72411163300D62CA9 /* Sources */,
+				13BFFBC82411163300D62CA9 /* Frameworks */,
+				13BFFBC92411163300D62CA9 /* Resources */,
+				FF74CB0C688A0BD1A625967C /* [CP] Embed Pods Frameworks */,
+				84BB9D110353985C9B719F41 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AGConnectAuthDemo;
+			productName = AGConnectAuthDemo;
+			productReference = 13BFFBCB2411163300D62CA9 /* AGConnectAuthDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		13BFFBE52411163400D62CA9 /* AGConnectAuthDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13BFFBF22411163400D62CA9 /* Build configuration list for PBXNativeTarget "AGConnectAuthDemoTests" */;
+			buildPhases = (
+				FEC15EE32BE05F195DA9D818 /* [CP] Check Pods Manifest.lock */,
+				13BFFBE22411163400D62CA9 /* Sources */,
+				13BFFBE32411163400D62CA9 /* Frameworks */,
+				13BFFBE42411163400D62CA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13BFFBE82411163400D62CA9 /* PBXTargetDependency */,
+			);
+			name = AGConnectAuthDemoTests;
+			productName = AGConnectAuthDemoTests;
+			productReference = 13BFFBE62411163400D62CA9 /* AGConnectAuthDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		13BFFBC32411163300D62CA9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = huawei;
+				TargetAttributes = {
+					13BFFBCA2411163300D62CA9 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					13BFFBE52411163400D62CA9 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 13BFFBCA2411163300D62CA9;
+					};
+				};
+			};
+			buildConfigurationList = 13BFFBC62411163300D62CA9 /* Build configuration list for PBXProject "AGConnectAuthDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 13BFFBC22411163300D62CA9;
+			productRefGroup = 13BFFBCC2411163300D62CA9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13BFFBCA2411163300D62CA9 /* AGConnectAuthDemo */,
+				13BFFBE52411163400D62CA9 /* AGConnectAuthDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		13BFFBC92411163300D62CA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FDDB68B242D8EAF0074E9FE /* UserInfoTableViewCell.xib in Resources */,
+				13BFFBDE2411163400D62CA9 /* LaunchScreen.storyboard in Resources */,
+				13BFFBDB2411163400D62CA9 /* Assets.xcassets in Resources */,
+				13BFFBD92411163300D62CA9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13BFFBE42411163400D62CA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		044FE043EBE97DE589A37861 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AGConnectAuthDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84BB9D110353985C9B719F41 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AGConnectAuthDemo/Pods-AGConnectAuthDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AGConnectAuthDemo/Pods-AGConnectAuthDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AGConnectAuthDemo/Pods-AGConnectAuthDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEC15EE32BE05F195DA9D818 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AGConnectAuthDemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF74CB0C688A0BD1A625967C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AGConnectAuthDemo/Pods-AGConnectAuthDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AGConnectAuthDemo/Pods-AGConnectAuthDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AGConnectAuthDemo/Pods-AGConnectAuthDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		13BFFBC72411163300D62CA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F28D5AC2424C2E000075F50 /* RegisterViewController.m in Sources */,
+				13BFFBD62411163300D62CA9 /* ViewController.m in Sources */,
+				2F28D5F12425FF8800075F50 /* AnonymousProvider.m in Sources */,
+				13BFFBD02411163300D62CA9 /* AppDelegate.m in Sources */,
+				13BFFBE12411163400D62CA9 /* main.m in Sources */,
+				2F28D5E52425ED6900075F50 /* GoogleProvider.m in Sources */,
+				2F28D5D32425A5BD00075F50 /* WeixinProvider.m in Sources */,
+				2F28D5D92425B6CB00075F50 /* QQProvider.m in Sources */,
+				2F28D5DF2425E39F00075F50 /* WeiboProvider.m in Sources */,
+				2F28D5F42426035000075F50 /* SelfBuildProvider.m in Sources */,
+				2F28D6172428F33100075F50 /* ToastUtil.m in Sources */,
+				2F28D5FC242851B500075F50 /* UserLinkTableViewCell.m in Sources */,
+				2F28D5E82425F01100075F50 /* TwitterProvider.m in Sources */,
+				2F28D5E22425E6FB00075F50 /* FacebookProvider.m in Sources */,
+				2F28D60D24288C9800075F50 /* UserSettingsViewController.m in Sources */,
+				2F28D6102428ADBF00075F50 /* AppleProvider.m in Sources */,
+				2F28D5EE2425FABB00075F50 /* PhoneProvider.m in Sources */,
+				2F28D5EB2425F52A00075F50 /* EmailProvider.m in Sources */,
+				2F28D5DC2425BC6300075F50 /* BaseProvider.m in Sources */,
+				2F28D6092428744F00075F50 /* UserInfoTableViewCell.m in Sources */,
+				2F28D5B12424C4AD00075F50 /* UserInfoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13BFFBE22411163400D62CA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		13BFFBE82411163400D62CA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13BFFBCA2411163300D62CA9 /* AGConnectAuthDemo */;
+			targetProxy = 13BFFBE72411163400D62CA9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		13BFFBD72411163300D62CA9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13BFFBD82411163300D62CA9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		13BFFBDC2411163400D62CA9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13BFFBDD2411163400D62CA9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		13BFFBED2411163400D62CA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		13BFFBEE2411163400D62CA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		13BFFBF02411163400D62CA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D21FB2485076AA52735C6C3 /* Pods-AGConnectAuthDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AGConnectAuthDemo/AGConnectAuthDemo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 248VU829V8;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = AGConnectAuthDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucky.agc.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		13BFFBF12411163400D62CA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB04C15940DD231D2C3D52C6 /* Pods-AGConnectAuthDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AGConnectAuthDemo/AGConnectAuthDemo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 248VU829V8;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = AGConnectAuthDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucky.agc.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		13BFFBF32411163400D62CA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A44F55B431F228DDE069F6F /* Pods-AGConnectAuthDemoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AGConnectAuthDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.AGConnectAuthDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AGConnectAuthDemo.app/AGConnectAuthDemo";
+			};
+			name = Debug;
+		};
+		13BFFBF42411163400D62CA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33ABE5F6352566CB66EA0D1E /* Pods-AGConnectAuthDemoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AGConnectAuthDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.AGConnectAuthDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AGConnectAuthDemo.app/AGConnectAuthDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		13BFFBC62411163300D62CA9 /* Build configuration list for PBXProject "AGConnectAuthDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13BFFBED2411163400D62CA9 /* Debug */,
+				13BFFBEE2411163400D62CA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13BFFBEF2411163400D62CA9 /* Build configuration list for PBXNativeTarget "AGConnectAuthDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13BFFBF02411163400D62CA9 /* Debug */,
+				13BFFBF12411163400D62CA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13BFFBF22411163400D62CA9 /* Build configuration list for PBXNativeTarget "AGConnectAuthDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13BFFBF32411163400D62CA9 /* Debug */,
+				13BFFBF42411163400D62CA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 13BFFBC32411163300D62CA9 /* Project object */;
+}

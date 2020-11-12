@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/layout_margin"
+        android:layout_marginRight="@dimen/layout_margin">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:id="@+id/field_bookname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                android:weightSum="7"
+                app:layout_constraintTop_toBottomOf="parent">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/book_name" />
+
+            <EditText
+                    android:id="@+id/edit_bookname"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:labelFor="@id/edit_bookname"
+                    android:maxLength="20" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/field_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="7"
+                app:layout_constraintTop_toBottomOf="parent">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/author" />
+
+            <EditText
+                    android:id="@+id/edit_author"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:labelFor="@id/edit_author"
+                    android:maxLength="20" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/field_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="7"
+                app:layout_constraintTop_toBottomOf="parent">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/price" />
+
+            <EditText
+                    android:id="@+id/edit_price"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@id/edit_price"
+                    android:maxLength="20" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/field_search_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="7"
+                app:layout_constraintTop_toBottomOf="parent">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/price" />
+
+            <EditText
+                    android:id="@+id/lowest_price"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@id/lowest_price"
+                    android:maxLength="20" />
+
+            <View
+                    android:layout_width="15dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/black"
+                    android:gravity="center" />
+
+            <EditText
+                    android:id="@+id/highest_price"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:labelFor="@id/highest_price"
+                    android:maxLength="20" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/field_publisher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="7"
+                app:layout_constraintTop_toBottomOf="parent">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/publisher" />
+
+            <EditText
+                    android:id="@+id/edit_publisher"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:labelFor="@id/edit_publisher"
+                    android:maxLength="20" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/field_publish_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="7"
+                app:layout_constraintTop_toBottomOf="parent">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/publish_time" />
+
+            <EditText
+                    android:id="@+id/edit_publish_time"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:importantForAutofill="no"
+                    android:labelFor="@id/edit_publish_time"
+                    android:maxLength="20" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/field_show_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="7"
+                app:layout_constraintTop_toBottomOf="parent">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/show_count" />
+
+            <EditText
+                    android:id="@+id/edit_show_count"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:labelFor="@id/edit_show_count"
+                    android:maxLength="20" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+        <Button
+                android:id="@+id/add"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/add" />
+
+        <Button
+                android:id="@+id/search"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/query" />
+
+        <Button
+                android:id="@+id/cancel"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/cancel" />
+    </LinearLayout>
+</RelativeLayout>

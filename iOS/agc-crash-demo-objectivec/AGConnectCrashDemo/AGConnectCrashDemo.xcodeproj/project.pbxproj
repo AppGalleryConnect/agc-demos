@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F3EC32624AEBD3700077E63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EC32524AEBD3700077E63 /* AppDelegate.m */; };
+		2F3EC32924AEBD3700077E63 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EC32824AEBD3700077E63 /* SceneDelegate.m */; };
+		2F3EC32C24AEBD3700077E63 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EC32B24AEBD3700077E63 /* ViewController.m */; };
+		2F3EC32F24AEBD3700077E63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EC32D24AEBD3700077E63 /* Main.storyboard */; };
+		2F3EC33124AEBD3800077E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EC33024AEBD3800077E63 /* Assets.xcassets */; };
+		2F3EC33424AEBD3800077E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EC33224AEBD3800077E63 /* LaunchScreen.storyboard */; };
+		2F3EC33724AEBD3800077E63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EC33624AEBD3800077E63 /* main.m */; };
+		2F3EC35324B3535000077E63 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3EC35224B3535000077E63 /* libc++abi.tbd */; };
+		D1AFF0C5F6B623298B933639 /* Pods_AGConnectCrashDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEDC9C496534603155D832BD /* Pods_AGConnectCrashDemo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2F3EC32124AEBD3700077E63 /* AGConnectCrashDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AGConnectCrashDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F3EC32424AEBD3700077E63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2F3EC32524AEBD3700077E63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2F3EC32724AEBD3700077E63 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		2F3EC32824AEBD3700077E63 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		2F3EC32A24AEBD3700077E63 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2F3EC32B24AEBD3700077E63 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2F3EC32E24AEBD3700077E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2F3EC33024AEBD3800077E63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2F3EC33324AEBD3800077E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2F3EC33524AEBD3800077E63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F3EC33624AEBD3800077E63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2F3EC35224B3535000077E63 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		4370C0C5D9E121B976ABE072 /* Pods-AGConnectCrashDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGConnectCrashDemo.release.xcconfig"; path = "Target Support Files/Pods-AGConnectCrashDemo/Pods-AGConnectCrashDemo.release.xcconfig"; sourceTree = "<group>"; };
+		79CD6331BCB50FE1B903F0DE /* Pods-AGConnectCrashDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGConnectCrashDemo.debug.xcconfig"; path = "Target Support Files/Pods-AGConnectCrashDemo/Pods-AGConnectCrashDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		FEDC9C496534603155D832BD /* Pods_AGConnectCrashDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AGConnectCrashDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2F3EC31E24AEBD3700077E63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F3EC35324B3535000077E63 /* libc++abi.tbd in Frameworks */,
+				D1AFF0C5F6B623298B933639 /* Pods_AGConnectCrashDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F3EC31824AEBD3700077E63 = {
+			isa = PBXGroup;
+			children = (
+				2F3EC32324AEBD3700077E63 /* AGConnectCrashDemo */,
+				2F3EC32224AEBD3700077E63 /* Products */,
+				2F3EC35124B3535000077E63 /* Frameworks */,
+				E55158AE030F271A824FF369 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		2F3EC32224AEBD3700077E63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2F3EC32124AEBD3700077E63 /* AGConnectCrashDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2F3EC32324AEBD3700077E63 /* AGConnectCrashDemo */ = {
+			isa = PBXGroup;
+			children = (
+				2F3EC32424AEBD3700077E63 /* AppDelegate.h */,
+				2F3EC32524AEBD3700077E63 /* AppDelegate.m */,
+				2F3EC32724AEBD3700077E63 /* SceneDelegate.h */,
+				2F3EC32824AEBD3700077E63 /* SceneDelegate.m */,
+				2F3EC32A24AEBD3700077E63 /* ViewController.h */,
+				2F3EC32B24AEBD3700077E63 /* ViewController.m */,
+				2F3EC32D24AEBD3700077E63 /* Main.storyboard */,
+				2F3EC33024AEBD3800077E63 /* Assets.xcassets */,
+				2F3EC33224AEBD3800077E63 /* LaunchScreen.storyboard */,
+				2F3EC33524AEBD3800077E63 /* Info.plist */,
+				2F3EC33624AEBD3800077E63 /* main.m */,
+			);
+			path = AGConnectCrashDemo;
+			sourceTree = "<group>";
+		};
+		2F3EC35124B3535000077E63 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F3EC35224B3535000077E63 /* libc++abi.tbd */,
+				FEDC9C496534603155D832BD /* Pods_AGConnectCrashDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E55158AE030F271A824FF369 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				79CD6331BCB50FE1B903F0DE /* Pods-AGConnectCrashDemo.debug.xcconfig */,
+				4370C0C5D9E121B976ABE072 /* Pods-AGConnectCrashDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2F3EC32024AEBD3700077E63 /* AGConnectCrashDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F3EC33A24AEBD3800077E63 /* Build configuration list for PBXNativeTarget "AGConnectCrashDemo" */;
+			buildPhases = (
+				98D203CA8F935375FBE99B5D /* [CP] Check Pods Manifest.lock */,
+				2F3EC31D24AEBD3700077E63 /* Sources */,
+				2F3EC31E24AEBD3700077E63 /* Frameworks */,
+				2F3EC31F24AEBD3700077E63 /* Resources */,
+				6F7137E7CC9ABB5229A37FEE /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AGConnectCrashDemo;
+			productName = AGConnectCrashDemo;
+			productReference = 2F3EC32124AEBD3700077E63 /* AGConnectCrashDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2F3EC31924AEBD3700077E63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1150;
+				TargetAttributes = {
+					2F3EC32024AEBD3700077E63 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 2F3EC31C24AEBD3700077E63 /* Build configuration list for PBXProject "AGConnectCrashDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2F3EC31824AEBD3700077E63;
+			productRefGroup = 2F3EC32224AEBD3700077E63 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2F3EC32024AEBD3700077E63 /* AGConnectCrashDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2F3EC31F24AEBD3700077E63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F3EC33424AEBD3800077E63 /* LaunchScreen.storyboard in Resources */,
+				2F3EC33124AEBD3800077E63 /* Assets.xcassets in Resources */,
+				2F3EC32F24AEBD3700077E63 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6F7137E7CC9ABB5229A37FEE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AGConnectCrashDemo/Pods-AGConnectCrashDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AGConnectCrashDemo/Pods-AGConnectCrashDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AGConnectCrashDemo/Pods-AGConnectCrashDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98D203CA8F935375FBE99B5D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AGConnectCrashDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2F3EC31D24AEBD3700077E63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F3EC32C24AEBD3700077E63 /* ViewController.m in Sources */,
+				2F3EC32624AEBD3700077E63 /* AppDelegate.m in Sources */,
+				2F3EC33724AEBD3800077E63 /* main.m in Sources */,
+				2F3EC32924AEBD3700077E63 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2F3EC32D24AEBD3700077E63 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F3EC32E24AEBD3700077E63 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2F3EC33224AEBD3800077E63 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F3EC33324AEBD3800077E63 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2F3EC33824AEBD3800077E63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2F3EC33924AEBD3800077E63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2F3EC33B24AEBD3800077E63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79CD6331BCB50FE1B903F0DE /* Pods-AGConnectCrashDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 248VU829V8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AGConnectCrashDemo",
+				);
+				INFOPLIST_FILE = AGConnectCrashDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.agconnect.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "AGC Enterprise";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2F3EC33C24AEBD3800077E63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4370C0C5D9E121B976ABE072 /* Pods-AGConnectCrashDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 248VU829V8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AGConnectCrashDemo",
+				);
+				INFOPLIST_FILE = AGConnectCrashDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.agconnect.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "AGC Enterprise";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2F3EC31C24AEBD3700077E63 /* Build configuration list for PBXProject "AGConnectCrashDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F3EC33824AEBD3800077E63 /* Debug */,
+				2F3EC33924AEBD3800077E63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F3EC33A24AEBD3800077E63 /* Build configuration list for PBXNativeTarget "AGConnectCrashDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F3EC33B24AEBD3800077E63 /* Debug */,
+				2F3EC33C24AEBD3800077E63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2F3EC31924AEBD3700077E63 /* Project object */;
+}

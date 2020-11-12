@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    TODO-->
+    <string name="weixin_app_id">Replace Me</string>
+    <string name="weixin_secret_id">Replace Me</string>
+    <string name="qq_app_id">Replace Me</string>
+    <string name="weibo_app_id">Replace Me</string>
+    <string name="weibo_redirect_url">https://api.weibo.com/oauth2/default.html</string>
+
+    <string name="google_app_id">Replace Me</string>
+    <string name="google_client_id">Replace Me</string>
+    <string name="facebook_app_id">Replace Me</string>
+    <string name="fb_login_protocol_scheme">Replace Me</string>
+    <string name="twitter_app_id">Replace Me</string>
+    <string name="twitter_app_secret">Replace Me</string>
+</resources>
