@@ -1,8 +1,8 @@
 # AppGallery Connect Sample Code for Demos
-Demos provide a technical expert guidance, tutorial and hands-on coding experience. Here you can learn about HUAWEI's latest cutting-edge  
+Demos provide a technical expert guidance, tutorial and hands-on coding experience. Here you can learn about HUAWEI's latest cutting-edge.
 technologies, and share knowledge and insights with HUAWEI technical experts & developer across the country to explore the unique charm of the code.
 
-This repositories is a collection of sample code used in AppGallery Connect. For more steps, please ref to [AppGallery Connect Guides](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-introduction)  
+This repositories is a collection of sample code used in AppGallery Connect. For more steps, please ref to [AppGallery Connect Guides].(https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-introduction)  
 * [Auth Service(Android)](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-auth-service-getstarted)  
 * [Auth Service(iOS)](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-auth-service-getstarted-ios)  
 * [Auth Service(WEB)](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-auth-service-getstarted-web)  
