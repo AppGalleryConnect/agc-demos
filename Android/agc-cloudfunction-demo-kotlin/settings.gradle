@@ -1,2 +1,0 @@
-include ':kotlin-app'
-rootProject.name='function'
