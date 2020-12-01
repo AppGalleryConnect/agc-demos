@@ -1,0 +1,47 @@
+{
+	"name": "example",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"android": "react-native run-android",
+		"ios": "react-native run-ios",
+		"start": "react-native start",
+		"test": "jest",
+		"lint": "eslint .",
+		"clean": "rimraf node_modules/@react-native-agconnect && rimraf yarn.lock",
+		"cleanAll": "rimraf node_modules && rimraf yarn.lock",
+		"build:clean": "rimraf android/app/build && rimraf ios/build",
+		"module:clean": "rimraf node_modules"
+	},
+	"dependencies": {
+		"@react-native-agconnect/remoteconfig": "^1.0.0-beta",
+		"@react-native-community/masked-view": "^0.1.10",
+		"@react-navigation/native": "^5.7.3",
+		"@react-navigation/stack": "^5.9.0",
+		"react": "16.13.1",
+		"react-native": "0.63.2",
+		"react-native-gesture-handler": "^1.7.0",
+		"react-native-reanimated": "^1.13.0",
+		"react-native-safe-area-context": "^3.1.7",
+		"react-native-screens": "^2.10.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.11.1",
+		"@babel/runtime": "^7.11.2",
+		"@react-native-community/eslint-config": "^2.0.0",
+		"@types/jest": "^26.0.10",
+		"@types/react": "^16.9.46",
+		"@types/react-native": "^0.63.8",
+		"@types/react-test-renderer": "^16.9.3",
+		"babel-jest": "^26.3.0",
+		"eslint": "^7.7.0",
+		"jest": "^26.4.0",
+		"jest-cli": "^26.4.2",
+		"metro-react-native-babel-preset": "^0.62.0",
+		"react-test-renderer": "16.13.1",
+		"typescript": "^3.9.7"
+	},
+	"jest": {
+		"preset": "react-native"
+	}
+}

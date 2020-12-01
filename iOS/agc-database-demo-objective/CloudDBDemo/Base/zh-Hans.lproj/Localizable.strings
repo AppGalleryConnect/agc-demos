@@ -1,0 +1,46 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+/**tabbar*/
+"TabBarMainTitle" = "首页";
+"TabBarMeTitle" = "我的";
+
+/**login*/
+"LoginAdminText" = "匿名登录";
+
+/**main*/
+"MainViewTitle" = "图书管理";
+
+"MainViewHeaderName" = "书名";
+"MainViewHeaderAuthor" = "作者";
+"MainViewHeaderPrice" = "单价";
+"MainViewHeaderPublisher" = "出版社";
+"MainViewHeaderTime" = "出版时间";
+
+/**add*/
+"AddBookAddTitle" = "新增图书";
+"AddBookEditTitle" = "编辑图书";
+"AddBookAddButtonTitle" = "新增";
+"AddBookCancelButtonTitle" = "取消";
+"AddBookEditButtonTitle" = "修改";
+
+/**query*/
+"QueryBookTitle" = "查询图书";
+"QueryBookQueryButtonTitle" = "查找";
+"QueryBookShowCount" = "显示条数";
+
+/**me*/
+"MeViewTitle" = "用户信息";
