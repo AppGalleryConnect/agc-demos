@@ -7,6 +7,7 @@ target 'AGConnectRemoteConfigDemo' do
 
   # Pods for AGConnectRemoteConfigDemo
   pod 'AGConnectRemoteConfig'
+  pod 'HiAnalytics'
 
   target 'AGConnectRemoteConfigDemoTests' do
     inherit! :search_paths

@@ -15,10 +15,10 @@
     [super viewDidLoad];
     
     NSDictionary *defaultConfig = @{@"test1":@"value1", @"test2":@(2)};
-    [[AGCRemoteConfig sharedIntance] applyDefaults:defaultConfig];
+    [[AGCRemoteConfig sharedInstance] applyDefaults:defaultConfig];
     
-    [[[[AGCRemoteConfig sharedIntance] fetch] addOnSuccessCallback:^(AGCConfigValues * _Nullable result) {
-        [[AGCRemoteConfig sharedIntance] apply:result];
+    [[[[AGCRemoteConfig sharedInstance] fetch] addOnSuccessCallback:^(AGCConfigValues * _Nullable result) {
+        [[AGCRemoteConfig sharedInstance] apply:result];
         [self showAllValue];
         NSLog(@"fetch successful");
     }] addOnFailureCallback:^(NSError * _Nonnull error) {
@@ -27,7 +27,7 @@
 }
 
 - (void)showAllValue {
-    NSDictionary *val = [[AGCRemoteConfig sharedIntance] getMergedAll];
+    NSDictionary *val = [[AGCRemoteConfig sharedInstance] getMergedAll];
     _label.text = [val description];
 }
 

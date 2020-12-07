@@ -3,6 +3,8 @@
 //
 
 #import "AppDelegate.h"
+#import <AGConnectCore/AGConnectCore.h>
+#import <HiAnalytics/HiAnalytics.h>
 
 @interface AppDelegate ()
 
@@ -13,6 +15,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [HiAnalytics config];
+    [AGCInstance startUp];
     return YES;
 }
 

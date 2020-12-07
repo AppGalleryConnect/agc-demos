@@ -6,6 +6,7 @@
 #import "FirstModeViewController.h"
 #import "SecondModeViewController.h"
 #import <AGConnectRemoteConfig/AGConnectRemoteConfig.h>
+#import <HiAnalytics/HiAnalytics.h>
 
 @interface ViewController ()
 
@@ -16,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [HiAnalytics setUserProfile:@"red" setValue:@"favorite_color"];
+    [HiAnalytics setUserProfile:@"five" setValue:@"favorite_number"];
+    [HiAnalytics setUserProfile:@"banana" setValue:@"favorite_food"];
+
 }
 
 - (IBAction)FirstModeButtonTapped:(id)sender {
@@ -27,7 +32,7 @@
 }
 
 - (IBAction)ClearDataButtonTapped:(id)sender {
-    [[AGCRemoteConfig sharedIntance] clearAll];
+    [[AGCRemoteConfig sharedInstance] clearAll];
     NSLog(@"clear all config.");
 }
 

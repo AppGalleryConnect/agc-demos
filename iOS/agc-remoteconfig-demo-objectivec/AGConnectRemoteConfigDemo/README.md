@@ -1,7 +1,9 @@
-## Remote Config QuickStart
+## auth quickstart
 
 ## Introduction
-Remote Configuration allows you to manage parameters online. With the service, you can change the behavior and appearance of your app online without requiring users to update the app. Remote Configuration provides cloud-based services, the console, and the client SDK. By integrating the client SDK, your app can periodically obtain parameter values delivered on the console to modify the app's behavior and appearance.
+HUAWEI AppGallery Connect provides the Remote Configuration service for you to manage parameters online. With the service, you can change the behavior and appearance of your app online without requiring users to update the app.
+
+Remote Configuration provides cloud-based services, the console, and the client SDK. By integrating the client SDK, your app can periodically obtain parameter values delivered on the console to modify the app's behavior and appearance.
 
 ## Preparing the Environment
 Before using the quickstart app, prepare your iOS development environment.
@@ -11,11 +13,17 @@ Before using the quickstart app, prepare your iOS development environment.
 XCode 8.0 or later.
 	
 ## Configuration
-Before running the quickstart app, you need to:
-1. If you do not have a HUAWEI Developer account, you need to register an account and pass identity verification.
-2. Use your account to sign in to AppGallery Connect, create an app, and set Package type to iOS.
-3. Enable Remote Configuration. (For details, please refer to the development guide.)
-4. Download the agconnect-services.plist file from AppGallery Connect, and add to your project。
+Sign in to AppGalery Connect, enable Remote Configuration for your app, and set parameters and conditions.
+
+Integrate the AppGallery Connect Remote Configuration SDK into your app.
+
+Set default parameter values in your app so that it can run properly before being connected to Remote Configuration.
+
+Call the fetch method provided by the SDK to periodically obtain parameter value updates from Remote Configuration. When receiving a request from the app, Remote Configuration checks whether a reported parameter has an on-cloud value and returns the value if so.
+
+After obtaining parameter value updates, the app calls the apply() method immediately or at a specified time based on service requirements to override the values in the app by obtained values.
+
+To dynamically obtain parameter values from Remote Configuration, call various get methods provided by the SDK.
 
 
 ## License
