@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.huawei.agc.quickstart.applinking">
+    package="com.huawei.agconnect.kotlindemo">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.huawei.agc.quickstart.applinking.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,11 +27,11 @@
             </intent-filter>
         </activity>
         <activity
-        android:name="com.huawei.agc.quickstart.applinking.DetailActivity"
-        android:exported="false"
-        android:label="Detail" />
+            android:name=".DetailActivity"
+            android:exported="false"
+            android:label="Detail" />
         <activity
-            android:name="com.huawei.agc.quickstart.applinking.SettingActivity"
+            android:name=".SettingActivity"
             android:exported="false"
             android:label="Setting" />
     </application>
