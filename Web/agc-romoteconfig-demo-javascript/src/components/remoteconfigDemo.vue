@@ -71,6 +71,7 @@
   import * as agc from './remoteConfig';
   import {configInstance} from "./config";
   import {getSaveMode, setSaveMode} from './storage';
+  import {RCSCrypt} from "./remoteConfig";
 
   export default {
     name: 'remoteconfigDemo',
@@ -84,7 +85,7 @@
           defaultConfig: ''
         },
         radio: 'all',
-        saveMode: '2',
+        saveMode: '0',
         valueTextDisable: true,
         rules: {},
       };
@@ -92,9 +93,12 @@
     async created() {
       // Gets the storage location last set by the user in the demo and inherits it
       let saveMode = await getSaveMode('saveMode');
-      this.saveMode = saveMode ? saveMode : '2';
-      agc.setUserInfoPersistence(parseInt(this.saveMode));
+      this.saveMode = saveMode ? saveMode : '0';
       configInstance();
+      // setUserInfoPersistence and setCryptImp must be executed when init
+      agc.setUserInfoPersistence(parseInt(this.saveMode));
+      agc.setCryptImp(new agc.Crypt());
+      agc.setRCSCryptImp(new agc.RCSCrypt());
     },
     methods: {
       onSubmit() {
@@ -173,6 +177,7 @@
         }
       },
       applyDefault() {
+        agc.applyDefault(defaultConfigMap);
         if (this.dataForm_sdk.defaultConfig != '') {
           if (typeof this.dataForm_sdk.defaultConfig == 'string') {
             try {
@@ -200,10 +205,10 @@
       },
 
       async setStorageMode() {
-        // Set the SDK storage location
-        agc.setUserInfoPersistence(parseInt(this.saveMode));
         // Save the storage location locally
         await setSaveMode('saveMode', this.saveMode);
+        // refresh the page to let new saveMode works
+        this.$router.go(0);
       },
       clearAll() {
         agc.clearAll();

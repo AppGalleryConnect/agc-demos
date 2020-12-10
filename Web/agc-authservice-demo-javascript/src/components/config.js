@@ -4,7 +4,8 @@ import '@agconnect/instance';
 /**
  * Initializes app configuration
  */
-export function configInstance() {
+
+export function configInstance(){
   agconnect.instance().configInstance(agConnectConfig);
 }
 

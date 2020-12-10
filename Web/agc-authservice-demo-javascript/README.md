@@ -1,6 +1,4 @@
-# QuickStart_JavaScript
-
-> A Vue.js project
+# QuickStart
 
 ## Build Setup
 
@@ -8,19 +6,15 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# install AGC auth sdk
+npm install --save @agconnect/auth
 
-# build for production with minification
-npm run build
+# run demo
+npm start
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# Your application is running here: http://127.0.0.1:8080/#/
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-########################
-1. The login.vue component uses the local mode to import the agconnect SDK. 
-2. Initialize the agconnect object when the login.vue component is created. 
 
+If you want more details about AGC auth, check out the [guide](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-auth-web-releasenotes-0000001053254029) and [references](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/agc-auth-service-webapi-overview-0000001054343230).

@@ -11,7 +11,6 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "@agconnect/remoteconfig": "^1.1.0",
     "@babel/runtime": "^7.3.1",
     "axios": "^0.19.2",
     "element-ui": "^2.13.2",

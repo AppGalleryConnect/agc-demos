@@ -1,5 +1,16 @@
 import agconnect from '@agconnect/api';
-import '@agconnect/remoteConfig';
+import '@agconnect/remoteconfig';
+
+export class RCSCrypt {
+}
+
+RCSCrypt.prototype.encrypt = function (value) {
+  return value + '---RCSEncrypt';
+};
+
+RCSCrypt.prototype.decrypt = function (value) {
+  return value.split('---')[0];
+};
 
 export class Crypt {
 }
@@ -12,11 +23,18 @@ Crypt.prototype.decrypt = function (value) {
   return value.split('---')[0];
 };
 
+// Set where remoteConfig-related data is stored locally。0：indexDB；1：sessionStorage；2：memory
 export function setUserInfoPersistence(saveMode) {
   agconnect.remoteConfig().setUserInfoPersistence(saveMode);
 }
 
+//set a default cryptImpl, this cryptImpl can encrypt your client token as well
 export function setCryptImp(cryptImpl) {
+  agconnect.instance().setCryptImp(cryptImpl);
+}
+
+//set a cryptImpl only for remoteConfig,this cryptImpl can encrypt your remoteConfig info when they are stored in browser
+export function setRCSCryptImp(cryptImpl) {
   agconnect.remoteConfig().setCryptImp(cryptImpl);
 }
 
@@ -49,14 +67,14 @@ export function apply() {
 export function applyLastLoad() {
   return agconnect
     .remoteConfig().loadLastFetched().then(async (res) => {
-      if (res) {
-        await agconnect.remoteConfig().apply(res);
+        if (res) {
+          await agconnect.remoteConfig().apply(res);
+        }
+        return Promise.resolve(res);
       }
-      return Promise.resolve(res);
-    }
-  ).catch(error => {
-    return Promise.reject(error);
-  });
+    ).catch(error => {
+      return Promise.reject(error);
+    });
 }
 
 export function getMergedAll() {
@@ -80,8 +98,9 @@ export function getSource(key) {
 }
 
 export function applyDefault(map) {
-  return agconnect.remoteConfig().applyDefault(map);
+  return agconnect.remoteConfig().applyDefault(undefined);
 }
+
 export function clearAll() {
   agconnect.remoteConfig().clearAll();
 }
