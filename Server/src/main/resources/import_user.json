@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "uid": "12345",
+      "displayName": "zhang123456",
+      "photoUrl": "http://1233456.jpg",
+      "email": "users@example.com",
+      "emailVerified": "false",
+      "phoneNumber": "+86-13451901222",
+      "createdAt": "123456",
+      "lastSignedInAt": "123456",
+      "passwordHash": "ABC123456",
+      "salt": "ABC123456",
+      "providers": [
+        {
+          "providerId": "1",
+          "rawId": "ABC123",
+          "photoUrl": "http://123456.jpg",
+          "displayName": "ABC123456",
+          "openId": "123456"
+        }
+      ]
+    },
+    {
+      "uid": "56789",
+      "displayName": "zhang56789",
+      "photoUrl": "http://56789.jpg",
+      "email": "users1@example.com",
+      "emailVerified": "false",
+      "phoneNumber": "+86-13451901223",
+      "createdAt": "56789",
+      "lastSignedInAt": "56789",
+      "passwordHash": "ABC56789",
+      "salt": "ABC56789",
+      "providers": [
+        {
+          "providerId": "1",
+          "rawId": "ABC56789",
+          "photoUrl": "http://56789.jpg",
+          "displayName": "ABC56789",
+          "openId": "56789"
+        }
+      ]
+    }
+  ]
+}
