@@ -5,27 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical"
-    tools:context="opstest.huawei.activity.MainActivity">
-
+    tools:context="com.huawei.agconnect.cloud.storage.demo.MainActivity">
 
     <Button
         android:onClick="uploadFile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
         android:text="Upload File" />
 
     <Button
         android:onClick="downloadFile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
         android:text="Download File" />
+
+    <Button
+        android:onClick="getFileMetadata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Get FileMetadata" />
+
+    <Button
+        android:onClick="updateFileMetadata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Update FileMetadata" />
+
+    <Button
+        android:onClick="getFileList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Get FileList" />
 
     <Button
         android:onClick="deleteFile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
         android:text="Delete File" />
 
+    <TextView
+        android:id="@+id/showResult"
+        android:enabled="false"
+        android:hint="This will display the result of the operation"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>
