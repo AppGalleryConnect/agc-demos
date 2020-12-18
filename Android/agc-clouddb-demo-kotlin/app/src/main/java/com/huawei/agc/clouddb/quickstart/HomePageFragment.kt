@@ -393,12 +393,11 @@ class HomePageFragment : Fragment(), UiCallBack, OnLoginEventCallBack {
     }
 
     override fun onLogin(showLoginUserInfo: Boolean, signInResult: SignInResult?) {
-        mHandler.post {
+        mHandler.postDelayed({
             mCloudDBZoneWrapper.addCallBacks(this@HomePageFragment)
             mCloudDBZoneWrapper.createObjectType()
-            mCloudDBZoneWrapper.openCloudDBZone()
-            mCloudDBZoneWrapper.addSubscription()
-        }
+            mCloudDBZoneWrapper.openCloudDBZoneV2()
+        }, 500)
     }
 
     override fun onLogOut(showLoginUserInfo: Boolean) {

@@ -21,7 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -66,11 +66,13 @@ public class HomePageFragment extends Fragment
     private static final int REQUEST_ADD = 2;
 
     // Store current state of sort order
-    private SortState mSortState = new SortState();
+    private final SortState mSortState = new SortState();
 
-    private QueryInfo mQueryInfo = new QueryInfo();
+    private final QueryInfo mQueryInfo = new QueryInfo();
 
-    private CloudDBZoneWrapper mCloudDBZoneWrapper;
+    private final CloudDBZoneWrapper mCloudDBZoneWrapper;
+
+    private Handler mHandler = null;
 
     private BookInfoAdapter mBookInfoAdapter;
 
@@ -83,8 +85,6 @@ public class HomePageFragment extends Fragment
     private boolean mInSearchMode = false;
 
     private MainActivity mActivity;
-
-    private MyHandler mHandler = new MyHandler();
 
     public HomePageFragment() {
         mCloudDBZoneWrapper = new CloudDBZoneWrapper();
@@ -99,6 +99,7 @@ public class HomePageFragment extends Fragment
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         mActivity = (MainActivity) getActivity();
+        mHandler = new Handler(Looper.getMainLooper());
         mBookInfoAdapter = new BookInfoAdapter(getContext());
         mHandler.post(() -> {
             LoginHelper loginHelper = mActivity.getLoginHelper();
@@ -149,7 +150,7 @@ public class HomePageFragment extends Fragment
             updateSelectAllMenuHint(item);
         } else if (id == R.id.show_all) {
             restoreQueryState();
-            mHandler.post(() -> mCloudDBZoneWrapper.queryAllBooks());
+            mHandler.post(mCloudDBZoneWrapper::queryAllBooks);
             toggleShowAllState(false);
         }
         return super.onOptionsItemSelected(item);
@@ -227,7 +228,7 @@ public class HomePageFragment extends Fragment
 
     @Override
     public void onDestroy() {
-        mHandler.post(() -> mCloudDBZoneWrapper.closeCloudDBZone());
+        mHandler.post(mCloudDBZoneWrapper::closeCloudDBZone);
         super.onDestroy();
     }
 
@@ -479,12 +480,11 @@ public class HomePageFragment extends Fragment
 
     @Override
     public void onLogin(boolean showLoginUserInfo, SignInResult signInResult) {
-        mHandler.post(() -> {
+        mHandler.postDelayed(() -> {
             mCloudDBZoneWrapper.addCallBacks(HomePageFragment.this);
             mCloudDBZoneWrapper.createObjectType();
-            mCloudDBZoneWrapper.openCloudDBZone();
-            mCloudDBZoneWrapper.addSubscription();
-        });
+            mCloudDBZoneWrapper.openCloudDBZoneV2();
+        }, 500);
     }
 
     @Override
@@ -507,21 +507,14 @@ public class HomePageFragment extends Fragment
         }
     }
 
-    private static final class MyHandler extends Handler {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            // dummy
-        }
-    }
-
     private static class BookInfoAdapter extends BaseAdapter {
-        private List<BookInfo> mBookList = new ArrayList<>();
+        private final List<BookInfo> mBookList = new ArrayList<>();
 
-        private SparseBooleanArray mCheckState = new SparseBooleanArray();
+        private final SparseBooleanArray mCheckState = new SparseBooleanArray();
+
+        private final LayoutInflater mInflater;
 
         private boolean mIsMultipleMode = false;
-
-        private LayoutInflater mInflater;
 
         BookInfoAdapter(Context context) {
             mInflater = LayoutInflater.from(context);

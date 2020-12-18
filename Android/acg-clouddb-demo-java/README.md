@@ -1,34 +1,39 @@
-# CloudDB QuickStart
-
+# Cloud DB Quick Start
 
 ## Introduction
-It's a quickstart sample demonstrating the CloudDB APIs on Android. 
 
-## Getting Started
-- Open this project by Android Studio.
+This project is a quick start sample developed using Cloud DB APIs.
 
-- Go to [AppGallery Connect page](https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/myApp) to create your new application. Make sure your application's package name is com.huawei.agc.clouddb.xxxx.
+## Quick Start
 
-- Go to **Auth** tab and enable **Huawei account** authentication.
+- On the [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html#/myApp) page, create a project and add an application with a package named **com.huawei.agc.clouddb.xxxx**.
 
-- Go to **Cloud Database** tab and enable database service, and import the object type in CloudDBQuickStart_1.json under the root directory of project. Or you can create it with name **BookInfo**, and add all fields in BookInfo.java in the sample project.
+- Click **Auth Service** on the navigation bar and enable authentication using an anonymous account.
 
-- Download agconnect-services.json from **Generate view** tab, and add it under app directory.
+- Click **Cloud DB** on the navigation bar and enable database service. Then, perform the following operations:
 
-- Add your key store to build script, see app/build.gradle. To generate an key store, you can use tool provided by Android Studio: **Build** -> **Generate signed bundle and apk** -> Choose **apk** selection, and then do as hints step by step. Then fill the password and alias name into app/build.gradle. Export the SHA256 fingerprints by keytool:
+    (1) Create a schema by importing a template file stored in **CloudDBQuickStart_1.json** in the root directory of the project. Alternatively, create a schema named **BookInfo** and ensure that all fields must be the same as those in **BookInfo.java** in the project.
+
+    (2) Create a Cloud DB zone. On the **Cloud DB Zone** tab page, click **Add** to create a Cloud DB zone named **QuickStartDemo**.
+
+- Click **Project Settings** on the navigation bar, download the **agconnect-services.json** file, and add it to the app directory.
+
+- Before the build, configure the key in the project. For details, see the configuration in **app/build.gradle**. To generate your own key, use the tool provided by Android Studio. Choose **Build** > **Generate signed bundle and apk**, select **apk**, and perform operations as prompted. Enter a certificate password and alias in **app/build.gradle** and use the keytool to export the SHA256 fingerprint.
 
   ```
-  keytool -list -v -keystore xxxx.jks
+   keytool -list -v -keystore xxxx.jks
   ```
 
-  and fill it into "SHA256 fingerprints" in **Generate view** tab.
+  Click **Project Settings** on the navigation bar and enter the SHA256 fingerprint.
 
-- Run the sample on Android device. Attention: Huawei mobile service(HMS) should have been installed on your devices already.
+- Use Android Studio to open the project.
 
-## Result
+- Run the sample on your Android device. Note that Huawei Mobile Services (HMS) must be installed on your device.
+
+## Running Result
 
 <img src="./screenshot.jpg" height="550" width="320" />
 
 ## License
 
-CloudDB QuickStart is licensed under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+Cloud DB Quick Start is licensed under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).

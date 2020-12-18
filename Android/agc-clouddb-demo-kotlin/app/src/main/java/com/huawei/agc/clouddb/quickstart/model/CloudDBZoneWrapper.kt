@@ -94,6 +94,27 @@ class CloudDBZoneWrapper {
     }
 
     /**
+     * Call AGConnectCloudDB.openCloudDBZone2 to open a cloudDBZone.
+     * We set it with cloud cache mode, and data can be store in local storage.
+     * AGConnectCloudDB.openCloudDBZone2 is an asynchronous method, we can add
+     * OnSuccessListener/OnFailureListener to receive the result for opening cloudDBZone
+     */
+    fun openCloudDBZoneV2() {
+        mConfig = CloudDBZoneConfig("QuickStartDemo",
+                CloudDBZoneConfig.CloudDBZoneSyncProperty.CLOUDDBZONE_CLOUD_CACHE,
+                CloudDBZoneConfig.CloudDBZoneAccessProperty.CLOUDDBZONE_PUBLIC)
+        mConfig!!.persistenceEnabled = true
+        val task = mCloudDB.openCloudDBZone2(mConfig!!, true)
+        task.addOnSuccessListener {
+            Log.w(TAG, "open clouddbzone success")
+            mCloudDBZone = it
+            addSubscription()
+        }.addOnFailureListener {
+            Log.w(TAG, "open clouddbzone failed for " + it.message)
+        }
+    }
+
+    /**
      * Call AGConnectCloudDB.closeCloudDBZone
      */
     fun closeCloudDBZone() {
@@ -128,7 +149,7 @@ class CloudDBZoneWrapper {
     /**
      * Add mSnapshotListener to monitor data changes from storage
      */
-    fun addSubscription() {
+    private fun addSubscription() {
         if (mCloudDBZone == null) {
             Log.w(TAG, "CloudDBZone is null, try re-open it")
             return
@@ -154,7 +175,10 @@ class CloudDBZoneWrapper {
         val queryTask = mCloudDBZone!!.executeQuery(
                 CloudDBZoneQuery.where(BookInfo::class.java),
                 CloudDBZoneQuery.CloudDBZoneQueryPolicy.POLICY_QUERY_FROM_CLOUD_ONLY)
-        queryTask.addOnSuccessListener { snapshot -> processQueryResult(snapshot) }.addOnFailureListener { mUiCallBack.updateUiOnError("Query book list from cloud failed") }
+        queryTask.addOnSuccessListener { snapshot -> processQueryResult(snapshot) }
+                .addOnFailureListener {
+                    mUiCallBack.updateUiOnError("Query book list from cloud failed")
+                }
     }
 
     /**
@@ -200,7 +224,11 @@ class CloudDBZoneWrapper {
             return
         }
         val upsertTask = mCloudDBZone!!.executeUpsert(bookInfo!!)
-        upsertTask.addOnSuccessListener { cloudDBZoneResult -> Log.w(TAG, "upsert $cloudDBZoneResult records") }.addOnFailureListener { mUiCallBack.updateUiOnError("Insert book info failed") }
+        upsertTask.addOnSuccessListener { cloudDBZoneResult ->
+            Log.w(TAG, "upsert $cloudDBZoneResult records")
+        }.addOnFailureListener {
+            mUiCallBack.updateUiOnError("Insert book info failed")
+        }
     }
 
     /**

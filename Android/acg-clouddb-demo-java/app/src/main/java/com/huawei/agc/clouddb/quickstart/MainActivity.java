@@ -108,12 +108,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        mLoginHelper.onActivityResult(requestCode, resultCode, data);
-    }
-
     protected LoginHelper getLoginHelper() {
         return mLoginHelper;
     }

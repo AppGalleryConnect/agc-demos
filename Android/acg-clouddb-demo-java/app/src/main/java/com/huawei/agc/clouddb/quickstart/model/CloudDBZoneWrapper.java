@@ -25,12 +25,12 @@ import com.huawei.agconnect.cloud.database.CloudDBZoneConfig;
 import com.huawei.agconnect.cloud.database.CloudDBZoneObjectList;
 import com.huawei.agconnect.cloud.database.CloudDBZoneQuery;
 import com.huawei.agconnect.cloud.database.CloudDBZoneSnapshot;
-import com.huawei.agconnect.cloud.database.CloudDBZoneTask;
 import com.huawei.agconnect.cloud.database.ListenerHandler;
-import com.huawei.agconnect.cloud.database.OnFailureListener;
 import com.huawei.agconnect.cloud.database.OnSnapshotListener;
-import com.huawei.agconnect.cloud.database.OnSuccessListener;
 import com.huawei.agconnect.cloud.database.exceptions.AGConnectCloudDBException;
+import com.huawei.hmf.tasks.OnFailureListener;
+import com.huawei.hmf.tasks.OnSuccessListener;
+import com.huawei.hmf.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,6 +130,28 @@ public class CloudDBZoneWrapper {
         }
     }
 
+    public void openCloudDBZoneV2() {
+        mConfig = new CloudDBZoneConfig("QuickStartDemo",
+            CloudDBZoneConfig.CloudDBZoneSyncProperty.CLOUDDBZONE_CLOUD_CACHE,
+            CloudDBZoneConfig.CloudDBZoneAccessProperty.CLOUDDBZONE_PUBLIC);
+        mConfig.setPersistenceEnabled(true);
+        Task<CloudDBZone> openDBZoneTask = mCloudDB.openCloudDBZone2(mConfig, true);
+        openDBZoneTask.addOnSuccessListener(new OnSuccessListener<CloudDBZone>() {
+            @Override
+            public void onSuccess(CloudDBZone cloudDBZone) {
+                Log.w(TAG, "open clouddbzone success");
+                mCloudDBZone = cloudDBZone;
+                // Add subscription after opening cloudDBZone success
+                addSubscription();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e) {
+                Log.w(TAG, "open clouddbzone failed for " + e.getMessage());
+            }
+        });
+    }
+
     /**
      * Call AGConnectCloudDB.closeCloudDBZone
      */
@@ -172,7 +194,8 @@ public class CloudDBZoneWrapper {
         }
 
         try {
-            CloudDBZoneQuery<BookInfo> snapshotQuery = CloudDBZoneQuery.where(BookInfo.class);
+            CloudDBZoneQuery<BookInfo> snapshotQuery = CloudDBZoneQuery.where(BookInfo.class)
+                    .equalTo(BookEditFields.SHADOW_FLAG, true);
             mRegister = mCloudDBZone.subscribeSnapshot(snapshotQuery,
                     CloudDBZoneQuery.CloudDBZoneQueryPolicy.POLICY_QUERY_FROM_CLOUD_ONLY, mSnapshotListener);
         } catch (AGConnectCloudDBException e) {
@@ -188,7 +211,7 @@ public class CloudDBZoneWrapper {
             Log.w(TAG, "CloudDBZone is null, try re-open it");
             return;
         }
-        CloudDBZoneTask<CloudDBZoneSnapshot<BookInfo>> queryTask = mCloudDBZone.executeQuery(
+        Task<CloudDBZoneSnapshot<BookInfo>> queryTask = mCloudDBZone.executeQuery(
                 CloudDBZoneQuery.where(BookInfo.class),
                 CloudDBZoneQuery.CloudDBZoneQueryPolicy.POLICY_QUERY_FROM_CLOUD_ONLY);
         queryTask.addOnSuccessListener(new OnSuccessListener<CloudDBZoneSnapshot<BookInfo>>() {
@@ -215,14 +238,19 @@ public class CloudDBZoneWrapper {
             return;
         }
 
-        CloudDBZoneTask<CloudDBZoneSnapshot<BookInfo>> queryTask = mCloudDBZone.executeQuery(query,
+        Task<CloudDBZoneSnapshot<BookInfo>> queryTask = mCloudDBZone.executeQuery(query,
                 CloudDBZoneQuery.CloudDBZoneQueryPolicy.POLICY_QUERY_FROM_CLOUD_ONLY);
-        queryTask.await();
-        if (!queryTask.isSuccessful()) {
-            mUiCallBack.updateUiOnError("Query failed");
-            return;
-        }
-        processQueryResult(queryTask.getResult());
+        queryTask.addOnSuccessListener(new OnSuccessListener<CloudDBZoneSnapshot<BookInfo>>() {
+            @Override
+            public void onSuccess(CloudDBZoneSnapshot<BookInfo> snapshot) {
+                processQueryResult(snapshot);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e) {
+                mUiCallBack.updateUiOnError("Query failed");
+            }
+        });
     }
 
     private void processQueryResult(CloudDBZoneSnapshot<BookInfo> snapshot) {
@@ -252,7 +280,7 @@ public class CloudDBZoneWrapper {
             return;
         }
 
-        CloudDBZoneTask<Integer> upsertTask = mCloudDBZone.executeUpsert(bookInfo);
+        Task<Integer> upsertTask = mCloudDBZone.executeUpsert(bookInfo);
         upsertTask.addOnSuccessListener(new OnSuccessListener<Integer>() {
             @Override
             public void onSuccess(Integer cloudDBZoneResult) {
@@ -277,7 +305,7 @@ public class CloudDBZoneWrapper {
             return;
         }
 
-        CloudDBZoneTask<Integer> deleteTask = mCloudDBZone.executeDelete(bookInfoList);
+        Task<Integer> deleteTask = mCloudDBZone.executeDelete(bookInfoList);
         if (deleteTask.getException() != null) {
             mUiCallBack.updateUiOnError("Delete book info failed");
             return;

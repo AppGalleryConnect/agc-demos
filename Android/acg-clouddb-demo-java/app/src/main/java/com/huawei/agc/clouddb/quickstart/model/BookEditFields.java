@@ -24,6 +24,7 @@ public interface BookEditFields {
     String BOOK_NAME = "bookName";
     String AUTHOR = "author";
     String PRICE = "price";
+    String SHADOW_FLAG = "shadowFlag";
     String LOWEST_PRICE = "lowest_price";
     String HIGHEST_PRICE = "highest_price";
     String PUBLISHER = "publisher";
