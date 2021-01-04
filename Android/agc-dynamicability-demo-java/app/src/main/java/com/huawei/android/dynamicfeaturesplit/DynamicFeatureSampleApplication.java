@@ -11,7 +11,7 @@ import android.util.Log;
 import com.huawei.hms.feature.dynamicinstall.FeatureCompat;
 
 /**
- * Dynamic feature sample application.
+ * Dynamic Feature Sample Application.
  *
  */
 public class DynamicFeatureSampleApplication extends Application {
@@ -26,7 +26,7 @@ public class DynamicFeatureSampleApplication extends Application {
         try {
             FeatureCompat.install(base);
         } catch (Exception e) {
-            Log.w(TAG, "", e);
+            Log.w(TAG, "install failed", e);
         }
     }
 }

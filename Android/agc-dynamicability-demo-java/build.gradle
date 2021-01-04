@@ -7,8 +7,8 @@ ext {
     min_sdk_version = 16
     target_sdk_version = 28
 
-    sdk_version_code = 10011300
-    sdk_version_name = "1.0.11.300"
+    sdk_version_code = 10014302
+    sdk_version_name = "1.0.14.302"
     cloudartifact_username=""
     cloudartifact_password=""
 }
