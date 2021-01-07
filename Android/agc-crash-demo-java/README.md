@@ -25,7 +25,7 @@ Before running the crash quickstart app, you need to:
 4. Select Project Settings,download the agconnect-services.json file from AppGallery Connect and copy the agconnect-services.json file to the app root directory.
 
 ## Sample Code
-The Crash SDK supports crash simulation and crash collection switch setting.
+The Crash SDK supports crash simulation，crash simulation and some other function.
 Sample code: src\main\java\com\huawei\agc\quickstart\crash\MainActivity.java
 
 ## Result
