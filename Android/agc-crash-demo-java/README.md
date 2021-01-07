@@ -5,9 +5,9 @@
  * [Introduction](#introduction)
  * [Supported Environments](#supported-environments)
  * [Getting Started](#getting-started )
- * [Sample Code](# Sample-Code)
- * [Result](# Result)
- * [Question or issues](# question-or-issues)
+ * [Sample Code](#Sample-Code)
+ * [Result](#Result)
+ * [Question or issues](#question-or-issues)
  * [License](#license)
 
 ## Introduction
@@ -29,7 +29,7 @@ The Crash SDK supports crash simulation and crash collection switch setting.
 Sample code: src\main\java\com\huawei\agc\quickstart\crash\MainActivity.java
 
 ## Result
-**Click makeCrash and Report**
+**Click makeCrash and Report**</br>
 <img src="images/crash.gif" alt="resultpage" height="600"/>
 
 ## Question or issues
