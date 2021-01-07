@@ -3,19 +3,19 @@
 ## Table of Contents
 
  * [Introduction](#introduction)
- * [Supported Environments](#supported-environments)
- * [Getting Started](#getting-started )
- * [Sample Code](#Sample-Code)
- * [Result](#Result)
+ * [Preparing the Environments](#preparing-the-environments)
+ * [Getting Started](#getting-started)
+ * [Sample Code](#sample-Code)
+ * [Result](#result)
  * [Question or issues](#question-or-issues)
  * [License](#license)
 
 ## Introduction
 The AppGallery Connect Crash service provides a powerful yet lightweight solution to app crash problems. With the service, you can quickly detect, locate, and resolve app crashes (unexpected exits of apps), and have access to highly readable crash reports in real time, without the need to write any code.
 
-## Supported Environments
+## Preparing the Environments
 * A computer with Android Studio installed for app development
-* A device running Android 4.2 or a later version
+* A device or emulator in Android Studio running Android 4.2 or a later version 
 
 ## Getting Started
 Before running the crash quickstart app, you need to:
@@ -26,16 +26,18 @@ Before running the crash quickstart app, you need to:
 
 ## Sample Code
 The Crash SDK supports crash simulation,exception simulation and some other functionand crash collection switch setting.
+
 Sample code: src\main\java\com\huawei\agc\quickstart\crash\MainActivity.java
 
 ## Result
-**Click makeCrash and Report**</br>
+**Click makeCrash and Report Crash**</br>
 <img src="images/crash.gif" alt="resultpage" height="600"/>
 
 ## Question or issues
 If you have questions about how to use AppGallery Connect Demos, try the following options:  
 * [Stack Overflow](https://stackoverflow.com/users/14194729/appgallery-connect) is the best place for any programming questions. Be sure to tag your question with huawei-mobile-services.  
 * [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101188387844930001) AppGallery Module is great for general questions, or seeking recommendations and opinions.
+
 If you run into a bug in our samples, please submit an [issue](https://github.com/AppGalleryConnect/agc-demos/issues) to the Repository. Even better you can submit a [Pull Request](https://github.com/AppGalleryConnect/agc-demos/pulls) with a fix.
 
 ## License
