@@ -1,6 +1,6 @@
 ## crash quickstart
 
-English | [中文](https://github.com/AppGalleryConnect/agc-demos/tree/main/Android/agc-crash-demo-java/blob/master/README_ZH.md)
+English | [中文](https://github.com/AppGalleryConnect/agc-demos/blob/main/Android/agc-crash-demo-java/README_ZH.md)
 
 ## Table of Contents
 
