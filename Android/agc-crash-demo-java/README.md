@@ -1,7 +1,5 @@
 ## crash quickstart
 
-English | [中文](https://github.com/AppGalleryConnect/agc-demos/blob/main/Android/agc-crash-demo-java/README_ZH.md)
-
 ## Table of Contents
 
  * [Introduction](#introduction)
@@ -44,3 +42,4 @@ If you run into a bug in our samples, please submit an [issue](https://github.co
 
 ## License
 crash quickstart is licensed under the [Apache License, version 2.0] (http://www.apache.org/licenses/LICENSE-2.0).
+
