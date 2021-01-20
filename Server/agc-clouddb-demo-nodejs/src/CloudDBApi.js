@@ -231,52 +231,6 @@ function isOverLimit(...params) {
     return false
 }
 
-function retryTransaction(path, method, param, callback) {
-    let promise =  new Promise(function(resolve, reject) {
-        mHttpsClient.send(path, method, param, function(flag, result) {
-            if (flag) {
-                resolve(result);
-            } else {
-                reject(result);
-            }
-        });
-    });
-    promise.then(function(data) {
-        callback(true, data);
-    }).catch(function(data) {
-        getTransactionResult(data, path, method, param, callback);
-    });
-}
-
-function getTransactionResult(result, path, method, param, callback) {
-    let localRetries = RETRY_COUNT;
-    let finalCallback = callback;
-
-    function getTransactionResultCallback(flag, result) {
-        if(flag) {
-            finalCallback(true, result);
-            return;
-        } else {
-            if (localRetries > 0 && result.code == RETRY_CODE) {
-                localRetries -= 1;
-                getResult(path, method, param);
-            } else {
-                finalCallback(false, result);
-            }
-        }
-    }
-
-    function getResult(path, method, param) {
-        mHttpsClient.send(path, method, param, getTransactionResultCallback);
-    }
-    if (localRetries > 0 && result.code == RETRY_CODE) {
-        localRetries -= 1;
-        getResult(path, method, param);
-    } else {
-        finalCallback(false, result);
-    }
-}
-
 /**
  * Initialize a CloudDBZone
  *
@@ -285,6 +239,17 @@ function getTransactionResult(result, path, method, param, callback) {
  */
 function CloudDBZone(cloudDBZoneName, context) {
     this.cloudDBZoneName = cloudDBZoneName;
+    if (!mHttpsClient) {
+        mHttpsClient = new HttpsClient(context);
+    }
+}
+
+/**
+ * Initialize a AGConnectCloudDB with context
+ *
+ * @param context the sign context info
+ */
+function AGConnectCloudDB(context) {
     if (!mHttpsClient) {
         mHttpsClient = new HttpsClient(context);
     }
@@ -357,6 +322,32 @@ CloudDBZone.prototype.executeDelete = function(objectTypeName, objects) {
                 resolve(info);
             } else {
                 reject(info);
+            }
+        });
+    });
+}
+
+/**
+ * Execute delete to delete user encryption data
+ *
+ * @param userId the user Id
+ */
+AGConnectCloudDB.prototype.executeDeleteUserKey = function(userId) {
+    const path = '/clouddbservice/v1/userKey';
+    const method = 'DELETE';
+    const param = {
+        userId: userId
+    };
+    return new Promise(function(resolve, reject) {
+        if (isEmpty(userId)) {
+            reject(ParaInvalidFailure);
+            return;
+        }
+        mHttpsClient.send(path, method, param, function(flag, result) {
+            if (flag) {
+                resolve(result);
+            } else {
+                reject(result);
             }
         });
     });
@@ -587,12 +578,36 @@ CloudDBZone.prototype.executeLoad = function(objectTypeName, conditions, fieldNa
  * @param fx the function
  * @param transaction the transaction
  */
-CloudDBZone.prototype.runTransaction = function(fx, transaction) {
+CloudDBZone.prototype.runTransaction = async function(fx, transaction) {
+    let isRetry = true;
+    let retryCount = RETRY_COUNT;
+    let result;
+    while (retryCount > 0 && isRetry) {
+        result = await retryTransaction(fx, transaction, this.cloudDBZoneName).then(result => {
+            isRetry = false;
+            return Promise.resolve(result);
+        }).catch(err => {
+            if (err.code == RETRY_CODE) {
+                retryCount -= 1;
+                isRetry = true;
+                transaction.releaseData();
+            } else {
+                isRetry = false;
+            }
+            if (retryCount == 0 || err.code != RETRY_CODE) {
+                return Promise.reject(err);
+            }
+        })
+    }
+    return result;
+}
+
+function retryTransaction(fx, transaction, cloudDBZoneName) {
     const path = '/clouddbservice/v1/transaction';
     const method = 'POST';
     return fx(transaction).then(()=>{
         const param = {
-            cloudDBZoneName: this.cloudDBZoneName,
+            cloudDBZoneName: cloudDBZoneName,
             transactionList: transaction.getTransactionList(),
             needVerifyObjectsList: transaction.getNeedVerifyObjectsList()
         };
@@ -608,7 +623,7 @@ CloudDBZone.prototype.runTransaction = function(fx, transaction) {
                 reject(DataLargeFailure);
                 return;
             }
-            retryTransaction(path, method, param, function(flag, result) {
+            mHttpsClient.send(path, method, param, function(flag, result) {
                 if (flag) {
                     resolve(result);
                 } else {
@@ -617,6 +632,12 @@ CloudDBZone.prototype.runTransaction = function(fx, transaction) {
             });
         });
     })
+}
+
+
+Transaction.prototype.releaseData = function() {
+    this.transactionList = [];
+    this.needVerifyObjectsList = [];
 }
 
 /**
@@ -652,6 +673,9 @@ Transaction.prototype.executeQuery = function(objectTypeName, conditions) {
         return Promise.reject(TransactionFailure);
     }
     return this.cloudDBZone.executeTransactionQuery(objectTypeName, conditions).then(function (result) {
+        if (result.data.length == 0) {
+            return Promise.resolve(transaction);
+        }
         transaction.addNeedVerifyObject(objectTypeName, result.data);
         if (isOverLimit(transaction.getNeedVerifyObjectsList())) {
             return Promise.reject(DataLargeFailure);
@@ -1025,5 +1049,6 @@ module.exports = {
     FieldType,
     ConditionType,
     OperationType,
+    AGConnectCloudDB,
     Transaction
 };
