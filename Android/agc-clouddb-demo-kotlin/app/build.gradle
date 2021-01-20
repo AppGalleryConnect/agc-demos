@@ -15,9 +15,9 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("XXXXXX.jks")
+            storeFile file("XXXXXXXX.jks")
             storePassword "XXXXXX"
-            keyAlias "XXXXXX"
+            keyAlias "XXXX"
             keyPassword "XXXXXX"
             v2SigningEnabled true
         }
@@ -57,7 +57,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.2.1'
 
-    implementation 'com.huawei.agconnect:agconnect-database:1.2.3.301'
+    implementation 'com.huawei.agconnect:agconnect-cloud-database:1.4.5.300'
     implementation 'com.huawei.agconnect:agconnect-auth:1.3.1.300'
     implementation 'com.huawei.hms:hwid:4.0.4.300'
 
