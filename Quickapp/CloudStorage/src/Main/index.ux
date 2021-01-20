@@ -1,0 +1,507 @@
+<template>
+  <div class="container">
+    <div style="height: 100px;margin-right: 6px;" class="label-item">
+      <input class="greenButton" type="button" value="back" @click="back" />
+      <input class="greenButton" type="button" value="list" @click="getList" />
+      <input class="greenButton" type="button" value="listAll" @click="getListAll" />
+      <input class="buleButton" type="button" value="putString" @click="putString" />
+      <input class="buleButton" type="button" value="putFile" @click="putFile" />
+    </div>
+    <div style="height: 100px;margin-right: 6px;" class="label-item">
+      <input class="greenButton" type="button" value="getMeta" @click="getMetaData" />
+      <input class="greenButton" type="button" value="setMeta" @click="uploadMetaData" />
+      <input class="greenButton" type="button" value="getURL" @click="getDownloadURL" />
+      <input class="redButton" type="button" value="delete" @click="delete" />
+    </div>
+    <div style="margin: 5px;" class="label-item">
+      <label style="width:500px;">result(display {{total}} records):</label>
+    </div>
+    <text style="text-align: center;margin-bottom: -20px;">{{progress}}%</text>
+    <progress class="progress" style="color:#09ba07;stroke-width:10px;" percent="{{progress}}"></progress>
+    <list style="margin-left: 5px;margin-right: 5px;height: 60px;" for="{{list}}">
+      <list-item id="{{$item.path}}" class="{{selected==$item.path?'currentListItem':'listItem'}}" type="listItem"
+        onclick="textClick" onlongpress="longpress">
+        <image id="{{$item.path}}" src="{{$item.path.endsWith('/')?'../Common/folder.jpg':'../Common/file.jpg'}}" style="height:40px;margin:10px;"></image>
+        <text id="{{$item.path}}" class="title">{{$item.path.length > 42 ? '...' +
+          $item.path.substring($item.path.length - 42, $item.path.length) : $item.path}}</text>
+      </list-item>
+    </list>
+    <image src="../Common/copy.jpg" style="height:30px;margin-left:20px;margin-top:10px;" onclick="copyClick"></image>
+    <div class="label-item" style="padding-left: 5px;margin-left: 3px;margin-right: 5px;margin-top:5px;border: 1px solid #000000;">
+      <textarea style="font-size: 30px;" disabled="true" placeholder={{result}}></textarea>
+    </div>
+    <div style="height: 80px;" class="label-item">
+      <label style="margin-right: 5px;width:200px;height: 60px;text-align: right;" target="currentPath">currentPath:</label>
+      <input style="margin-bottom: 40px;" class="flex" id="currentPath" placeholder={{currentPath}} disabled="true" />
+    </div>
+    <div style="height: 80px;" class="label-item">
+      <label style="margin-right: 5px;width:200px;height: 60px;text-align: right;" target="selected">selected:</label>
+      <input style="margin-bottom: 40px;" class="flex" id="selected" placeholder={{selected}} disabled="true" />
+    </div>
+  </div>
+</template>
+
+<style>
+  .container {
+    flex: 1;
+    flex-direction: column;
+  }
+  .progress {
+    flex: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  input {
+    width: 300px;
+    height: 70px;
+    background-color: #fffafa;
+    border: 1px solid;
+    margin-top: 40px;
+    align-content: center;
+    text-align: center;
+  }
+
+  .greenButton {
+    background-color: #67C23A;
+    margin-left: 5px;
+    width: 150px;
+    height: 60px;
+    font-size: 30px;
+  }
+  .buleButton {
+    background-color: #409EFF;
+    margin-left: 5px;
+    width: 150px;
+    height: 60px;
+    font-size: 30px;
+  }
+  .redButton {
+    background-color: #F56C6C;
+    margin-left: 5px;
+    width: 150px;
+    height: 60px;
+    font-size: 30px;
+  }
+
+  .label-item {
+    align-items: center;
+    border-bottom-width: 1px;
+    border-color: #dddddd;
+    margin-top: 1px;
+  }
+
+  label {
+    font-size: 30px;
+    width: 400px;
+    height: 70px;
+  }
+  .title {
+    font-size: 30px;
+  }
+
+  .flex {
+    width: 500px;
+    height: 50px;
+    border: 2px solid;
+    font-size: 30px;
+    padding-left: 10px;
+  }
+
+  .listItem {
+    border: 2px solid;
+    border-color: #dddddd;
+    height: 60px;
+  }
+  .currentListItem {
+    border: 5px solid;
+    border-color: #67C23A;
+    height: 60px;
+  }
+</style>
+
+<script>
+  import prompt from '@system.prompt';
+  import media from '@system.media';
+  import clipboard from '@system.clipboard';
+  module.exports = {
+    data: {
+      defaultConfig: '',
+      minFetchIntervalMillis: 0,
+      result: '',
+      list: [],
+      selected: '',
+      currentPath: '',
+      progress: 0,
+      total: 0,
+    },
+    textClick(e) {
+      this.selected = e.target.attr.id;
+      this.getList();
+    },
+    longpress(e) {
+      if (this.selected === e.target.attr.id) {
+        this.selected = '';
+      } else {
+        this.selected = e.target.attr.id;
+        this.result = e.target.attr.id;
+      }
+    },
+    copyClick(){
+      clipboard.set({
+        text: this.result
+      })
+      prompt.showToast({
+        message: `copy to clipboard success`,
+        duration: 3500,
+        gravity: 'center'
+      });
+    },
+    getPath(fullPath) {
+      if (fullPath.endsWith('/')) {
+        return fullPath;
+      } else {
+        return fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
+      }
+    },
+    getName(fullPath) {
+      if (!fullPath.endsWith('/')) {
+        let start = fullPath.lastIndexOf('/');
+        return fullPath.substring(start + 1, fullPath.length);
+      }
+      return null;
+    },
+    getParentPath() {
+      if (this.currentPath === '') {
+        return null;
+      }
+      let pathWithoutTrailingSlash = this.currentPath.substring(0, this.currentPath.length - 1);
+      let parentpPath = pathWithoutTrailingSlash.substring(0, pathWithoutTrailingSlash.lastIndexOf('/') + 1);
+      return parentpPath === '/' ? '' : parentpPath;
+    },
+    back() {
+      if (this.currentPath === '') {
+        prompt.showToast({
+          message: `root dir can not back`,
+          duration: 3500,
+          gravity: 'center'
+        });
+        return;
+      }
+      let agconnect = this.$app.$def.agc;
+      let ref = agconnect.cloudStorage().storageReference();
+      let parentPath = this.getParentPath();
+      const child = ref.child(parentPath);
+      child.list({ maxResults: 10 }).then((res) => {
+        this.currentPath = parentPath;
+        this.selected = '';
+        this.setList(res);
+      })
+    },
+    getList() {
+      let agconnect = this.$app.$def.agc;
+      let ref = agconnect.cloudStorage().storageReference();
+      let path = this.selected === '' ? this.currentPath : this.selected;
+      const child = ref.child(path);
+      child.list({ maxResults: 10 }).then((res) => {
+        this.currentPath = path;
+        this.selected = '';
+        this.setList(res);
+      })
+    },
+    getListAll() {
+      let agconnect = this.$app.$def.agc;
+      let ref = agconnect.cloudStorage().storageReference();
+      let path = this.selected === '' ? this.currentPath : this.selected;
+      const child = ref.child(path);
+      child.listAll().then((res) => {
+        this.currentPath = path;
+        this.selected = '';
+        this.setList(res);
+      })
+    },
+    setList(res) {
+      let result = [];
+      if (res.dirList) {
+        for (var i in res.dirList) {
+          result.push({
+            name: res.dirList[i].name,
+            path: res.dirList[i].path,
+            isFile: false,
+            select: false
+          });
+        }
+      }
+      if (res.fileList) {
+        for (var j in res.fileList) {
+          var item = {
+            name: res.fileList[j].name,
+            path: res.fileList[j].path,
+            isFile: true,
+            select: false
+          }
+          result.push(item);
+        }
+      }
+      this.list = result;
+      this.total = result.length;
+      this.result = JSON.stringify(this.list, null, "\t");
+      prompt.showToast({
+        message: `query success`,
+        duration: 3500,
+        gravity: 'center'
+      });
+    },
+    getMetaData() {
+      if (this.selected === '') {
+        prompt.showToast({
+          message: `root file can not getMetaData`,
+          duration: 3500,
+          gravity: 'center'
+        });
+        return;
+      }
+      let agconnect = this.$app.$def.agc;
+      let ref = agconnect.cloudStorage().storageReference();
+      const child = ref.child(this.selected);
+      child.getFileMetadata().then((res) => {
+        this.result = JSON.stringify(res, null, "\t");
+        prompt.showToast({
+          message: `getMetaData success`,
+          duration: 3500,
+          gravity: 'center'
+        });
+      })
+    },
+    uploadMetaData() {
+      if (this.selected === '' || this.selected.endsWith('/')) {
+        prompt.showToast({
+          message: `only file can uploadMetaData`,
+          duration: 3500,
+          gravity: 'center'
+        });
+        return;
+      }
+      let agconnect = this.$app.$def.agc;
+      let ref = agconnect.cloudStorage().storageReference();
+      const child = ref.child(this.selected);
+      child.updateFileMetadata({
+        cacheControl: 'helloworld',
+        contentDisposition: 'helloworld',
+        contentEncoding: 'helloworld',
+        contentLanguage: 'helloworld',
+        contentType: 'helloworld',
+        customMetadata: {
+          
+          hello: 'kitty'
+        }
+      }).then((res) => {
+        this.result = JSON.stringify(res, null, '\t');
+        prompt.showToast({
+          message: `uploadMetaData success`,
+          duration: 3500,
+          gravity: 'center'
+        });
+      })
+    },
+    getDownloadURL() {
+      if (this.selected === '' || this.selected.endsWith('/')) {
+        prompt.showToast({
+          message: `only file can getDownloadURL`,
+          duration: 3500,
+          gravity: 'center'
+        });
+        return;
+      }
+      let agconnect = this.$app.$def.agc;
+      let ref = agconnect.cloudStorage().storageReference();
+      const child = ref.child(this.selected);
+      child.getDownloadURL().then((res) => {
+        this.result = res;
+        prompt.showToast({
+          message: `getDownloadURL success`,
+          duration: 3500,
+          gravity: 'center'
+        });
+      })
+    },
+    delete() {
+      if (this.selected === '' || this.selected.endsWith('/')) {
+        prompt.showToast({
+          message: `only file can be delete`,
+          duration: 3500,
+          gravity: 'center'
+        });
+        return;
+      }
+      let agconnect = this.$app.$def.agc;
+      let ref = agconnect.cloudStorage().storageReference();
+      const child = ref.child(this.selected);
+      child.delete().then((res) => {
+        prompt.showToast({
+          message: `delete success`,
+          duration: 3500,
+          gravity: 'center'
+        });
+        let result = [];
+        for (var i in this.list) {
+          if (this.list[i].path !== this.selected) {
+            result.push(this.list[i]);
+          }
+        }
+        this.list = result;
+        this.selected = '';
+      })
+    },
+    putString() {
+      let agconnect = this.$app.$def.agc;
+      let ref = agconnect.cloudStorage().storageReference();
+      var raw = '我叫江红平，请叫我大疆！'
+      var base64 = '5oiR5Y+r5rGf57qi5bmz77yM6K+35Y+r5oiR5aSn55aG77yB' // 编码前：我叫江红平，请叫我大疆！
+      var base64url = '5oiR5Y-r5rGf57qi5bmz77yM6K-35Y-r5oiR5aSn55aG77yB' // 编码前：我叫江红平，请叫我大疆！
+      var data_url = 'data:txt;base64,5oiR5Y+r546L5qWa5p2w77yM6K+35Y+r5oiR5YWD6Iqz77yB'
+      let path = this.currentPath + 'putStringFile.txt';
+      const child = ref.child(path);
+      var uploadTask = child.putString(data_url, 'data_url', {
+        cacheControl: 'helloworld',
+        contentDisposition: 'helloworld',
+        contentEncoding: 'helloworld',
+        contentLanguage: 'helloworld',
+        contentType: 'helloworld',
+        customMetadata: {
+          hello: 'kitty'
+        }
+      })
+      this.printUploadPercent(uploadTask)
+      uploadTask.then((UploadResult) => {
+        this.result = JSON.stringify(UploadResult.metadata, null, "\t");
+      }).catch(error => {
+        console.log(error.message)
+      })
+    },
+    putFile() {
+      let that = this;
+      media.pickFile({
+        success: function (data) {
+          console.log("handling success: " + data.uri);
+          let agconnect = that.$app.$def.agc;
+          let ref = agconnect.cloudStorage().storageReference();
+          let path = that.currentPath + that.getName(data.uri);
+          const child = ref.child(path);
+          child.put4QuickApp(data.uri, {
+            cacheControl: 'helloworld',
+            contentEncoding: 'helloworld',
+            contentLanguage: 'helloworld',
+            contentType: 'helloworld',
+            customMetadata: {
+              hello: 'kitty'
+            }
+          }).then((res) => {
+            that.result = JSON.stringify(res, null, "\t");
+            prompt.showToast({
+              message: `putFile success`,
+              duration: 3500,
+              gravity: 'center'
+            });
+          })
+        },
+        fail: function (data, code) {
+          console.log("handling fail, code=" + code);
+        }
+      })
+    },
+    printUploadPercent(uploadTask) {
+      let that = this;
+      uploadTask.on('state_changed', function (snapshot) {
+        if(snapshot.totalByteCount === 0){
+          return;
+        }
+        that.progress = (snapshot.bytesTransferred / snapshot.totalByteCount) * 100;
+        console.log('Upload is ' + that.progress.toFixed(1) + '% done')
+        switch (snapshot.state) {
+          case 'paused':
+            prompt.showToast({
+              message: `Upload is paused`,
+              duration: 3500,
+              gravity: 'center'
+            });
+            break
+          case 'running':
+            prompt.showToast({
+              message: `Upload is running`,
+              duration: 3500,
+              gravity: 'center'
+            });
+            break
+          case 'success':
+            prompt.showToast({
+              message: `Upload is success`,
+              duration: 3500,
+              gravity: 'center'
+            });
+            break
+          case 'canceled':
+            prompt.showToast({
+              message: `Upload is canceled`,
+              duration: 3500,
+              gravity: 'center'
+            });
+            break
+          case 'error':
+            prompt.showToast({
+              message: `Upload is error`,
+              duration: 3500,
+              gravity: 'center'
+            });
+            break
+        }
+      }, function (snapshot) {
+        switch (snapshot.state) {
+          case 'paused':
+            prompt.showToast({
+              message: `Upload is paused`,
+              duration: 3500,
+              gravity: 'center'
+            });
+            break
+          case 'running':
+            prompt.showToast({
+              message: `Upload is running`,
+              duration: 3500,
+              gravity: 'center'
+            });
+            break
+          case 'success':
+            prompt.showToast({
+              message: `Upload is success`,
+              duration: 3500,
+              gravity: 'center'
+            });
+            break
+          case 'canceled':
+            prompt.showToast({
+              message: `Upload is canceled`,
+              duration: 3500,
+              gravity: 'center'
+            });
+            break
+          case 'error':
+            prompt.showToast({
+              message: `Upload is error`,
+              duration: 3500,
+              gravity: 'center'
+            });
+            break
+        }
+      }, function () {
+        prompt.showToast({
+          message: `Upload is success`,
+          duration: 3500,
+          gravity: 'center'
+        });
+      })
+    }
+  }
+</script>

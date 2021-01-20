@@ -1,0 +1,58 @@
+<template>
+  <div class="container" >
+    <image src="/Common/cloudstorage.png" style="height:400px;object-fit: contain"></image>
+    <input style="width:300px;height:100px;" type="button" value="Login" @click="signInAnonymously" />
+  </div>
+</template>
+
+<style>
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+  input {
+    width: 500px;
+    height: 150px;
+    background-color: #fffafa;
+    border: 1px solid #aaaaaa;
+    margin-top: 80px;
+  }
+</style>
+
+<script>
+  import prompt from '@system.prompt';
+  module.exports = {
+    data: {
+      title: 'World'
+    },
+    signInAnonymously() {
+      let agconnect = this.$app.$def.agc;
+      agconnect
+        .auth()
+        .signInAnonymously()
+        .then((res) => {
+          console.log('loginA res', res)
+          prompt.showToast({
+            message: `login success`,
+            duration: 3500,
+            gravity: 'center'
+          });
+          var router = require("@system.router")
+          router.push({
+            uri: '/Main',
+            params: { body: " test send message" }
+          })
+        })
+        .catch((err) => {
+          console.log('loginA', err)
+          prompt.showToast({
+            message: `login failed`,
+            duration: 3500,
+            gravity: 'center'
+          });
+        })
+    }
+  }
+</script>

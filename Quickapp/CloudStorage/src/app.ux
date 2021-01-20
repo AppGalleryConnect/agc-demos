@@ -1,0 +1,19 @@
+<script>
+  import agconnect from "@agconnect/api";
+  import "@agconnect/cloudstorage";
+
+  module.exports = {
+    onCreate() {
+      console.info('Application onCreate');
+      let agConnectConfig = require('./agconnect-services.json');
+      agconnect.instance().configInstance(agConnectConfig);
+    },
+    onDestroy() {
+      console.info('Application onDestroy');
+    },
+    dataApp: {
+      localeData: {}
+    },
+    agc: agconnect
+  }
+</script>

@@ -1,0 +1,47 @@
+{
+  "package": "com.huawei.CloudStorage",
+  "name": "CloudStorage",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "icon": "/Common/logo.png",
+  "minPlatformVersion": 1060,
+  "features": [
+    {
+      "name": "system.router"
+    },
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.media"
+    },
+    {
+      "name": "system.clipboard"
+    }
+  ],
+  "permissions": [
+    {
+      "origin": "*"
+    }
+  ],
+  "config": {},
+  "router": {
+    "entry": "Hello",
+    "pages": {
+      "Hello": {
+        "component": "hello"
+      },
+      "Main": {
+        "component": "index",
+        "path": "/Main"
+      }
+    }
+  },
+  "display": {
+    "pages": {
+      "Hello": {
+        "titleBarText": "CloudStorage"
+      }
+    }
+  }
+}
