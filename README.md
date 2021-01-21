@@ -10,6 +10,7 @@ about demos, and how to use them, see
 
 ## Introduction
 These are the available demos in this repository.
+### Android
 | Demo | Version | Documentation |
 |--------|-----|-----|
 | [agc-clouddb-demo-java](./agc-clouddb-demo-java) | [![version](https://img.shields.io/badge/Release-1.2.1.301-yellow)](./agc-clouddb-demo-java) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-clouddb-get-started) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/clouddb) |
@@ -26,6 +27,7 @@ These are the available demos in this repository.
 | [agc-dynamicability-demo-java](./agc-dynamicability-demo-java) | [![version](https://img.shields.io/badge/Release-1.0.11.302-yellow)](./agc-dynamicability-demo-java) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-featuredelivery-getstarted) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/featuredelivery-overview) |
 | [agc-remoteconfig-demo-java](./agc-remoteconfig-demo-java) | [![version](https://img.shields.io/badge/Release-1.2.1.300-yellow)](./agc-remoteconfig-demo-java) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-remoteconfig-android-getstarted-0000001056347165) <br/> [API Reference](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-References/android-remoteconfig-overview-0000001055692839) |
 
+### iOS
 | Demo | Version | Documentation |
 |--------|-----|-----|
 | [agc-apms-demo-objectivec](./agc-apms-demo-objectivec) | [![version](https://img.shields.io/badge/Release-1.2.1.301-yellow)](./agc-apms-demo-objectivec) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-apms-agcsdk-ios) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/apms-overview-ios) |
@@ -36,6 +38,7 @@ These are the available demos in this repository.
 | [agc-cloudfunction-demo-objectivec](./agc-cloudfunction-demo-objectivec) | [![version](https://img.shields.io/badge/Release-1.3.1.300-yellow)](./agc-cloudfunction-demo-objectivec) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-cloudfunction-getstarted) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/agcfunction) |
 | [agc-remoteconfig-demo-objectivec](./agc-remoteconfig-demo-objectivec) | [![version](https://img.shields.io/badge/Release-1.3.1.300-yellow)](./agc-remoteconfig-demo-objectivec) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-remoteconfig-ios-getstarted-0000001055157432) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/ios-remoteconfig-agcconfigvalues-0000001056246303) |
 
+### Web
 | Demo | Version | Documentation |
 |--------|-----|-----|
 | [agc-apms-demo-javascript](./agc-apms-demo-javascript) | [![version](https://img.shields.io/badge/Release-1.2.1.301-yellow)](./agc-apms-demo-javascript) | [Getting Started](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-apm-getstarted-web) <br/> [API Reference](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-References/agc-apm-service-webapi-overview) |
@@ -44,22 +47,26 @@ These are the available demos in this repository.
 | [agc-cloudstorage-demo-javascript](./agc-cloudstorage-demo-javascript) | [![version](https://img.shields.io/badge/Release-1.4.1.300-yellow)](./agc-cloudstorage-demo-javascript) | [Getting Started](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-cloudstorage-getstarted-web) <br/> [API Reference](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-References/Overview-web) |
 | [agc-romoteconfig-demo-javascript](./agc-romoteconfig-demo-javascript) | [![version](https://img.shields.io/badge/Release-1.3.1.300-yellow)](./agc-romoteconfig-demo-javascript) | [Getting Started](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-remoteconfig-web-getstarted-0000001056501223) <br/> [API Reference](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-References/web-remoteconfig-overview-0000001057829368) |
 
+### Server
 | Demo | Version | Documentation |
 |--------|-----|-----|
 | [agc-authservice-demo-java](./agc-authservice-demo-java) | [![version](https://img.shields.io/badge/Release-1.1.0.300-yellow)](./agc-authservice-demo-java) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-auth-server-getstarted-0000001054287616) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/auth-serversdk-overview-0000001055363337) |
 | [agc-cloudstorage-demo-nodejs](./agc-cloudstorage-demo-nodejs) | [![version](https://img.shields.io/badge/Release-1.0.0.0-yellow)](./agc-cloudstorage-demo-nodejs) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-cloudstorage-getstarted-nodejs) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/Overview-nodejs) |
 
+### Flutter
 | Demo | Version | Documentation |
 |--------|-----|-----|
 | [agc-remoteconfig-flutter](./agc-remoteconfig-flutter) | [![version](https://img.shields.io/badge/Release-1.1.0-yellow)](./agc-remoteconfig-flutter) |[Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-remoteconfig-flutter-usage-0000001063287007) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/flutter-remoteconfig-overview-0000001064965376) |
 | [agc-crash-flutter](./agc-crash-flutter) | [![version](https://img.shields.io/badge/Release-1.1.0-yellow)](./agc-crash-flutter) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-crash-flutter-usage-0000001063046945) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/flutter-overview-0000001063050323) |
 | [agc-authservice-flutter](./agc-authservice-flutter) | [![version](https://img.shields.io/badge/Release-1.1.0-yellow)](./agc-authservice-flutter) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-auth-flutter-usage-0000001063724847) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/flutter-auth-overview-0000001072100218) |
 
+### Cordova
 | Demo | Version | Download | Documentation |
 |--------|-----|-----|-----|
 | [agc-remoteconfig-cordova](./agc-remoteconfig-cordova) | [![version](https://img.shields.io/badge/NPM-1.1.0-yellow)](./agc-remoteconfig-cordova) | [![Download](https://img.shields.io/badge/DOWNLOAD-5/WEEK-yellow)](https://www.npmjs.com/package/@cordova-plugin-agconnect/remoteconfig) |[Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-remoteconfig-cordova-usage-0000001063539743) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/cordova-remoteconfig-overview-0000001063967581) |
 | [agc-crash-cordova](./agc-crash-cordova) | [![version](https://img.shields.io/badge/NPM-1.1.0-yellow)](./agc-crash-cordova)| [![Download](https://img.shields.io/badge/DOWNLOAD-7/WEEK-yellow)](https://www.npmjs.com/package/@cordova-plugin-agconnect/crash)  | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-crash-reactnative-usage-0000001063808390) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/overview-cordova-0000001063808678) |
 
+### React Native
 | Demo | Version | Download | Documentation |
 |--------|-----|-----|-----|
 | [agc-remoteconfig-reactnative](./agc-remoteconfig-reactnative) | [![version](https://img.shields.io/badge/NPM-1.1.0-yellow)](./agc-remoteconfig-reactnative) | [![Download](https://img.shields.io/badge/DOWNLOAD-4/WEEK-yellow)](https://www.npmjs.com/package/@react-native-agconnect/remoteconfig) |[Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-remoteconfig-reactnative-usage-0000001064327774) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/cordova-remoteconfig-overview-0000001063967581) |
