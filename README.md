@@ -10,7 +10,6 @@ about demos, and how to use them, see
 
 ## Introduction
 These are the available demos in this repository.
-|            *Android*           |
 | Demo | Version | Documentation |
 |--------|-----|-----|
 | [agc-clouddb-demo-java](./agc-clouddb-demo-java) | [![version](https://img.shields.io/badge/Release-1.2.1.301-yellow)](./agc-clouddb-demo-java) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-clouddb-get-started) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/clouddb) |
