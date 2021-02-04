@@ -1,0 +1,11 @@
+Demo description
+1. The appId, client_id and other parameters used in the sample code need to be replaced with your actual parameters.
+2.Demo's interface code, only uses part of the interface's functions, for other scenarios, please refer to the service documentation.
+
+Introduction to PublishAPI function
+1. Create projects, applications, update the basic information of the application, complete the application on and off shelves, etc.
+2. Support to update the language-related information of the application, query the compilation status of the software package,
+   and query the application-related information, etc.
+3. Support for updating application pictures, videos, software packages and other information. When updating application software
+   packages, API can help you complete the upload of the software packages, or you can adjust the service interface to complete the
+   upload of the software packages yourself, etc.
