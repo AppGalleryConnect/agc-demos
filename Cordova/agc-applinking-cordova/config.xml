@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="<package_name>" version="1.2.0-beta.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>cordova-agc-applinking-demo</name>
+    <description>
+        A sample Apache Cordova application that demonstrates the usage of the cordova-plugin-agc-applinking plugin.
+    </description>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="AndroidLaunchMode" value="standard" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="whatsapp:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <preference name="deployment-target" value="11.0" />
+        <preference name="SwiftVersion" value="5" />
+        <config-file parent="UIUserInterfaceStyle" platform="ios" target="*-Info.plist">
+            <string>Light</string>
+        </config-file>
+    </platform>
+</widget>
