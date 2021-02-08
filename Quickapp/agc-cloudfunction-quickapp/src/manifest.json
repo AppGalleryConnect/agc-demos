@@ -1,0 +1,45 @@
+{
+    "package": "com.huawei.agconnect.demo",
+    "name": "AGCDemo",
+    "versionName": "1.0.0",
+    "versionCode": 1,
+    "icon": "/Common/logo.png",
+    "minPlatformVersion": 1060,
+    "features": [
+        {
+            "name": "system.router"
+        },
+        {
+            "name": "system.prompt"
+        },
+        {
+            "name": "system.shortcut"
+        },
+        {
+            "name": "system.fetch"
+        }
+    ],
+    "permissions": [
+        {
+            "origin": "*"
+        }
+    ],
+    "config": {},
+    "router": {
+        "entry": "Main",
+        "pages": {
+            "Function": {
+                "component": "function",
+                "path": "/Function"
+            },
+            "Main": {
+                "component": "index",
+                "path": "/Main"
+            }
+        }
+    },
+    "display": {
+        "pages": {
+        }
+    }
+}
