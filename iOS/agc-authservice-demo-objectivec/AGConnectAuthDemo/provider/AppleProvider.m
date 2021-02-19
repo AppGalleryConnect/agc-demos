@@ -1,6 +1,15 @@
-//
-//  Copyright (c) Huawei Technologies Co., Ltd. 2020. All rights reserved
-//
+/*
+    Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
 
 #import "AppleProvider.h"
 #import <AuthenticationServices/AuthenticationServices.h>
@@ -10,6 +19,7 @@
 @interface AppleProvider () <ASAuthorizationControllerDelegate,ASAuthorizationControllerPresentationContextProviding>
 
 @property(nonatomic,strong)NSString *currentRequestNonce;
+@property(nonatomic) UIViewController *signViewController;
 
 @end
 
@@ -24,8 +34,9 @@
     return sharedInstance;
 }
 
-- (void)loginWithViewController:(id<SignInDelegate>)delegate {
-    self.signInDelegate = delegate;
+- (void)fetchCredentialWithController:(UIViewController *)vc completion:(CredentialBlock)completion {
+    self.signViewController = vc;
+    self.credentialBlock = completion;
     if (@available(iOS 13.0, *)) {
         ASAuthorizationAppleIDProvider *provider  = [[ASAuthorizationAppleIDProvider alloc] init];
         ASAuthorizationAppleIDRequest *request = [provider createRequest];
@@ -37,31 +48,6 @@
         controller.presentationContextProvider = self;
         [controller performRequests];
     }
-}
-
-- (void)linkWithViewController:(UIViewController *)viewController {
-    self.signInDelegate = viewController;
-    
-    self.isLink = YES;
-    if (@available(iOS 13.0, *)) {
-        ASAuthorizationAppleIDProvider *provider  = [[ASAuthorizationAppleIDProvider alloc] init];
-        ASAuthorizationAppleIDRequest *request = [provider createRequest];
-        request.requestedScopes = @[ASAuthorizationScopeFullName,ASAuthorizationScopeEmail];
-        self.currentRequestNonce = [self randomString];
-        request.nonce = [self stringBySha256HashingString:self.currentRequestNonce];
-        ASAuthorizationController *controller = [[ASAuthorizationController alloc] initWithAuthorizationRequests:@[request]];
-        controller.delegate = self;
-        controller.presentationContextProvider = self;
-        [controller performRequests];
-    }
-}
-
-- (void)unlink {
-    [[[[[AGCAuth getInstance] currentUser] unlink:AGCAuthProviderTypeApple] addOnSuccessCallback:^(AGCSignInResult * _Nullable result) {
-                [ToastUtil showToast:@"unlink success"];
-            }] addOnFailureCallback:^(NSError * _Nonnull error) {
-                [ToastUtil showToast:@"unlink failed"];
-            }];
 }
 
 #pragma mark - ASAuthorizationControllerDelegate
@@ -72,25 +58,21 @@
         NSString *jwt = [[NSString alloc] initWithData:appleCredential.identityToken encoding:NSUTF8StringEncoding];
         NSLog(@"%@",jwt);
         AGCAuthCredential *credential = [AGCAppleIDAuthProvider credentialWithIdentityToken:appleCredential.identityToken nonce:self.currentRequestNonce];
-        if (self.isLink) {
-            [self linkWithCredential:credential];
-            self.isLink = NO;
-        }else {
-            [self signInWithCredential:credential];
+        if (self.credentialBlock) {
+            self.credentialBlock(credential);
         }
-        
-    } else if ([authorization.credential isKindOfClass:ASPasswordCredential.class]) {
-        
     }
 }
 
 - (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error  API_AVAILABLE(ios(13.0)){
-
+    if (self.credentialBlock) {
+        self.credentialBlock(nil);
+    }
 }
 
 #pragma mark - ASAuthorizationControllerPresentationContextProviding
 - (ASPresentationAnchor)presentationAnchorForAuthorizationController:(ASAuthorizationController *)controller  API_AVAILABLE(ios(13.0)){
-    return ((UIViewController *)self.signInDelegate).view.window;
+    return self.signViewController.view.window;
 }
 
 #pragma mark - private

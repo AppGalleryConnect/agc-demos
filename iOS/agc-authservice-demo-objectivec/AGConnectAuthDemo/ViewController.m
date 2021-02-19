@@ -1,150 +1,223 @@
-//
-//  Copyright (c) Huawei Technologies Co., Ltd. 2020. All rights reserved
-//
+/*
+    Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
 
 #import "ViewController.h"
-#import "ToastUtil.h"
-#import "RegisterViewController.h"
 #import "UserInfoViewController.h"
 
-#import "WeixinProvider.h"
+#import "WechatProvider.h"
 #import "QQProvider.h"
 #import "WeiboProvider.h"
 #import "FacebookProvider.h"
 #import "GoogleProvider.h"
 #import "TwitterProvider.h"
-#import "PhoneProvider.h"
-#import "EmailProvider.h"
-#import "SelfBuildProvider.h"
-#import "AnonymousProvider.h"
 #import "AppleProvider.h"
 
-typedef NS_ENUM(NSInteger, AccountType) {
-    AccountTypePhone,
-    AccountTypeEmail,
-    AccountTypeSelfBuild
-};
-
-@interface ViewController () <SignInDelegate>
-
-@property (nonatomic) AccountType accountType;
-@property (nonatomic) BOOL isVerifyCodeLogin;
+@interface ViewController ()
 
 @end
 
 @implementation ViewController
 
++ (instancetype)instantiate {
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    ViewController *vc = [story instantiateViewControllerWithIdentifier:@"LoginVC"];
+    return vc;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Sign In";
-    
+    [self.appleLoginButton addTarget:self action:@selector(appleLogin:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    // check if a user is logged in
     if ([[AGCAuth getInstance] currentUser]) {
-        [self.navigationController setViewControllers:@[[UserInfoViewController new]]];
+        [self.navigationController setViewControllers:@[[UserInfoViewController instantiate]]];
     }
 }
 
-- (IBAction)switchValueChanged:(UISegmentedControl *)sender {
-    _accountType = sender.selectedSegmentIndex;
-    _countryCodeLabel.hidden = _accountType;
-    _accountLeftConstraint.constant = _accountType == AccountTypePhone ? 40 : 0;
+- (IBAction)switchLoginType:(UISegmentedControl *)sender {
+    NSInteger index = sender.selectedSegmentIndex;
+    _countryCodeLabel.hidden = index;
+    _accountLeftConstraint.constant = index ? 0 : 40;
     _accountText.text = nil;
-    if (_accountType == AccountTypePhone) {
-        _accountText.placeholder = @"please enter phone number";
-    }else if (_accountType == AccountTypeEmail) {
-        _accountText.placeholder = @"please enter email";
-    }else {
-        _accountText.placeholder = @"please enter self build account";
-    }
-}
-
-- (IBAction)changeLoginType:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    
-    _isVerifyCodeLogin = sender.selected;
-    _codeText.hidden = !_isVerifyCodeLogin;
-    _verifyCodeButton.hidden = !_isVerifyCodeLogin;
+    _accountText.placeholder = index ? @"please enter email":@"please enter phone number";
 }
 
 - (IBAction)login:(id)sender {
-    if (_accountType == AccountTypePhone) {
-        [PhoneProvider sharedInstance].signInDelegate = self;
-        [[PhoneProvider sharedInstance] loginWithCountryCode:@"86" nationNumber:_accountText.text password:_passwordText.text verifyCode:_codeText.text];
-    }else if (_accountType == AccountTypeEmail){
-        [EmailProvider sharedInstance].signInDelegate = self;
-        [[EmailProvider sharedInstance] loginWithEmail:_accountText.text password:_passwordText.text verifyCode:_codeText.text];
-    }else if (_accountType == AccountTypeSelfBuild){
-        [SelfBuildProvider sharedInstance].signInDelegate = self;
-        [[SelfBuildProvider sharedInstance] loginWithAccount:_accountText.text password:_passwordText.text verifyCode:_codeText.text];
+    NSInteger index = _loginTypeSwitch.selectedSegmentIndex;
+    if (index == 0) {
+        [self phoneLogin];
+    }else{
+        [self emailLogin];
     }
 }
 
+- (void)phoneLogin {
+    AGCAuthCredential *credential;
+    NSString *countryCode = @"86";
+    NSString *phoneNumber = _accountText.text;
+    NSString *password = _passwordText.text;
+    NSString *verificationCode = _codeText.text;
+    if (_codeText.text.length == 0) {
+        // Generate a credential to sign in phone account with password
+        credential = [AGCPhoneAuthProvider credentialWithCountryCode:countryCode phoneNumber:phoneNumber password:password];
+    }else {
+        // Generate a credential to sign in phone account with verification code
+        credential = [AGCPhoneAuthProvider credentialWithCountryCode:countryCode phoneNumber:phoneNumber password:password verifyCode:verificationCode];
+    }
+    [self signInWithCredential:credential];
+}
+
+- (void)emailLogin {
+    AGCAuthCredential *credential;
+    NSString *email = _accountText.text;
+    NSString *password = _passwordText.text;
+    NSString *verificationCode = _codeText.text;
+    if (_codeText.text.length == 0) {
+        // Generate a credential to sign in to email account with password
+        credential = [AGCEmailAuthProvider credentialWithEmail:email password:password];
+    }else {
+        // Generate a credential to sign in to email account with verification code
+        credential = [AGCEmailAuthProvider credentialWithEmail:email password:password verifyCode:verificationCode];
+    }
+    [self signInWithCredential:credential];
+}
+
+- (void)signInWithCredential:(AGCAuthCredential *)credential {
+    if (!credential) {
+        NSLog(@"no credential");
+    }
+    // send sign in request with credential
+    [[[[AGCAuth getInstance] signIn:credential] addOnSuccessCallback:^(AGCSignInResult * _Nullable result) {
+        NSLog(@"sign in success");
+        [self.navigationController setViewControllers:@[[UserInfoViewController instantiate]]];
+    }] addOnFailureCallback:^(NSError * _Nonnull error) {
+        NSLog(@"sign in failed");
+    }];
+}
+
 - (IBAction)registerAccount:(id)sender {
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    RegisterViewController *vc = [story instantiateViewControllerWithIdentifier:@"RegisterVC"];
-    [self.navigationController pushViewController:vc animated:YES];
+    NSInteger index = _loginTypeSwitch.selectedSegmentIndex;
+    if (index == 0) {
+        [self registerPhoneAccount];
+    }else{
+        [self registerEmailAccount];
+    }
+}
+
+- (void)registerPhoneAccount {
+    NSString *countryCode = @"86";
+    NSString *phoneNumber = _accountText.text;
+    NSString *password = _passwordText.text;
+    NSString *verificationCode = _codeText.text;
+    // register phone account
+    [[[[AGCAuth getInstance] createUserWithCountryCode:countryCode phoneNumber:phoneNumber password:password verifyCode:verificationCode] addOnSuccessCallback:^(AGCSignInResult * _Nullable result) {
+        NSLog(@"account register success");
+    }] addOnFailureCallback:^(NSError * _Nonnull error) {
+        NSLog(@"account register failed : %@",error);
+    }];
+}
+
+- (void)registerEmailAccount {
+    NSString *email = _accountText.text;
+    NSString *password = _passwordText.text;
+    NSString *verificationCode = _codeText.text;
+    // register email account
+    [[[[AGCAuth getInstance] createUserWithEmail:email password:password verifyCode:verificationCode] addOnSuccessCallback:^(AGCSignInResult * _Nullable result) {
+        NSLog(@"account register success");
+    }] addOnFailureCallback:^(NSError * _Nonnull error) {
+        NSLog(@"Email create failed : %@",error);
+    }];
 }
 
 - (IBAction)requestVerifyCode:(UIButton *)sender {
-    if (_accountType == AccountTypePhone) {
+    NSInteger index = _loginTypeSwitch.selectedSegmentIndex;
+    if (index == 0) {
         if (_accountText.text.length == 0) {
-            [ToastUtil showToast:@"please enter phone number"];
+            NSLog(@"please enter phone number");
         }
-        [[PhoneProvider sharedInstance] sendVerifyCodeForRegisterLogin:@"86" nationNumber:_accountText.text];
-    }else if (_accountType == AccountTypeEmail){
+        // send verification code to phone
+        [BaseProvider sendVerifyCodeWithCountryCode:@"86" phoneNumber:_accountText.text action:AGCVerifyCodeActionRegisterLogin];
+    }else{
         if (_accountText.text.length == 0) {
-            [ToastUtil showToast:@"please enter email"];
+            NSLog(@"please enter email");
         }
-        [[EmailProvider sharedInstance] sendVerifyCodeForRegisterLogin:_accountText.text];
-    }else if (_accountType == AccountTypeSelfBuild){
-        
+        // send verification code to email
+        [BaseProvider sendVerifyCodeWithEmail:_accountText.text action:AGCVerifyCodeActionRegisterLogin];
     }
 }
 
 - (IBAction)anonymousLogin:(id)sender {
-    [[AnonymousProvider sharedInstance] loginWithViewController:self];
+    // sign in anonymously
+    [[[[AGCAuth getInstance] signInAnonymously] addOnSuccessCallback:^(AGCSignInResult * _Nullable result) {
+        NSLog(@"sign in success");
+        [self.navigationController setViewControllers:@[[UserInfoViewController instantiate]]];
+    }] addOnFailureCallback:^(NSError * _Nonnull error) {
+        NSLog(@"sign in failed");
+    }];
 }
 
-- (IBAction)appleLogin:(id)sender {
-    [[AppleProvider sharedInstance] loginWithViewController:self];
+- (void)appleLogin:(id)sender {
+    // Generate a credential to sign in to Apple account
+    [[AppleProvider sharedInstance] fetchCredentialWithController:self completion:^(AGCAuthCredential * _Nullable credential) {
+        [self signInWithCredential:credential];
+    }];
 }
 
 - (IBAction)wechatLogin:(id)sender {
-    [[WeixinProvider sharedInstance] loginWithViewController:self];
+    // Generate a credential to sign in to Wechat account
+    [[WechatProvider sharedInstance] fetchCredentialWithController:self completion:^(AGCAuthCredential * _Nullable credential) {
+        [self signInWithCredential:credential];
+    }];
 }
 
 - (IBAction)weiboLogin:(id)sender {
-    [[WeiboProvider sharedInstance] loginWithViewController:self];
+    // Generate a credential to sign in to Weibo account
+    [[WeiboProvider sharedInstance] fetchCredentialWithController:self completion:^(AGCAuthCredential * _Nullable credential) {
+        [self signInWithCredential:credential];
+    }];
 }
 
 - (IBAction)qqLogin:(id)sender {
-    [[QQProvider sharedInstance] loginWithViewController:self];
+    // Generate a credential to sign in to QQ account
+    [[QQProvider sharedInstance] fetchCredentialWithController:self completion:^(AGCAuthCredential * _Nullable credential) {
+        [self signInWithCredential:credential];
+    }];
 }
 
 - (IBAction)facebookLogin:(id)sender {
-    [[FacebookProvider sharedInstance] loginWithViewController:self];
+    // Generate a credential to sign in to Facebook account
+    [[FacebookProvider sharedInstance] fetchCredentialWithController:self completion:^(AGCAuthCredential * _Nullable credential) {
+        [self signInWithCredential:credential];
+    }];
 }
 
 - (IBAction)googleLogin:(id)sender {
-    [[GoogleProvider sharedInstance] loginWithViewController:self];
+    // Generate a credential to sign in to Google account
+    [[GoogleProvider sharedInstance] fetchCredentialWithController:self completion:^(AGCAuthCredential * _Nullable credential) {
+        [self signInWithCredential:credential];
+    }];
 }
 
 - (IBAction)twitterLogin:(id)sender {
-    [[TwitterProvider sharedInstance] loginWithViewController:self];
+    // Generate a credential to sign in to Twitter account
+    [[TwitterProvider sharedInstance] fetchCredentialWithController:self completion:^(AGCAuthCredential * _Nullable credential) {
+        [self signInWithCredential:credential];
+    }];
 }
-
-#pragma mark - SignInDelegate
-- (void)signInFailed {
-    [ToastUtil showToast:@"sign in failed"];
-}
-
-- (void)signInSucceed {
-    [self.navigationController setViewControllers:@[[UserInfoViewController new]]];
-}
-
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];

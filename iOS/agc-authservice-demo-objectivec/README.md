@@ -5,11 +5,8 @@ Auth Service provides cloud services and the SDK to help you quickly build a sec
 Auth Service supports multiple authentication modes and is closely integrated with other serverless services, effectively protecting user data by defining simple rules.
 
 ## Preparing the Environment
-Before using the quickstart app, prepare your iOS development environment.
-
-
-## Environment Requirements
-XCode 8.0 or later.
+XCode 11.0 or later.
+iOS 9 or later.
 	
 ## Configuration
 Before running the quickstart app, you need to:
@@ -23,5 +20,12 @@ Before running the quickstart app, you need to:
 4. Download the agconnect-services.plist file from AppGallery Connect, and add to your project。
 
 
+## Question or issues
+If you have questions about how to use AppGallery Connect Demos, try the following options:  
+* [Stack Overflow](https://stackoverflow.com/users/14194729/appgallery-connect) is the best place for any programming questions. Be sure to tag your question with huawei-mobile-services.  
+* [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101188387844930001) AppGallery Module is great for general questions, or seeking recommendations and opinions.
+
+If you run into a bug in our samples, please submit an [issue](https://github.com/AppGalleryConnect/agc-demos/issues) to the Repository. Even better you can submit a [Pull Request](https://github.com/AppGalleryConnect/agc-demos/pulls) with a fix.
+
 ## License
-Auth Service quickstart is licensed under the [Apache License, version 2.0] (http://www.apache.org/licenses/LICENSE-2.0).
+quickstart is licensed under the [Apache License, version 2.0] (http://www.apache.org/licenses/LICENSE-2.0).

@@ -1,72 +1,48 @@
-//
-//  Copyright (c) Huawei Technologies Co., Ltd. 2020. All rights reserved
-//
+/*
+    Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
 
 #import "BaseProvider.h"
 
 @implementation BaseProvider
 
-- (void)loginWithViewController:(id<SignInDelegate>)delegate {
-    @throw [NSException exceptionWithName:NSGenericException reason:@"This method should be overrided by subclass" userInfo:nil];
-}
-
-- (void)linkWithViewController:(UIViewController *)viewController {
-    @throw [NSException exceptionWithName:NSGenericException reason:@"This method should be overrided by subclass" userInfo:nil];
-}
-
-- (void)unlink {
-    @throw [NSException exceptionWithName:NSGenericException reason:@"This method should be overrided by subclass" userInfo:nil];
-}
-
-- (BOOL)handleOpenUniversalLink:(NSUserActivity *)userActivity {
-    @throw [NSException exceptionWithName:NSGenericException reason:@"This method should be overrided by subclass" userInfo:nil];
+- (void)startUp {
+    return;
 }
 
 - (BOOL)application:(id)app openURL:(id)url options:(id)options {
-    @throw [NSException exceptionWithName:NSGenericException reason:@"This method should be overrided by subclass" userInfo:nil];
+    return NO;
 }
 
-- (void)registerApp:(UIApplication *)application options:(NSDictionary *)launchOptions {
-    @throw [NSException exceptionWithName:NSGenericException reason:@"This method should be overrided by subclass" userInfo:nil];
+- (void)fetchCredentialWithController:(UIViewController *)vc completion:(CredentialBlock)completion {
+    return;
 }
 
-
-+ (void)logout {
-    [[AGCAuth getInstance] signOut];
-}
-
-- (void)linkWithCredential:(AGCAuthCredential *)credential {
-    [[[[[AGCAuth getInstance] currentUser] link:credential] addOnSuccessCallback:^(AGCSignInResult * _Nullable result) {
-        [ToastUtil showToast:@"link success"];
++ (void)sendVerifyCodeWithCountryCode:(NSString *)countryCode phoneNumber:(NSString *)phoneNumber action:(AGCVerifyCodeAction)action {
+    AGCVerifyCodeSettings *setting = [[AGCVerifyCodeSettings alloc] initWithAction:action locale:nil sendInterval:30];
+    [[[AGCPhoneAuthProvider requestVerifyCodeWithCountryCode:countryCode phoneNumber:phoneNumber settings:setting] addOnSuccessCallback:^(AGCVerifyCodeResult * _Nullable result) {
+        NSLog(@"send verification code success");
     }] addOnFailureCallback:^(NSError * _Nonnull error) {
-        NSLog(@" link failure : %@",error);
-        [ToastUtil showToast:@"link failure"];
+        NSLog(@"send verification code failed");
     }];
 }
 
-- (void)signInWithCredential:(AGCAuthCredential *)credential {
-    [[[[AGCAuth getInstance] signIn:credential] addOnSuccessCallback:^(AGCSignInResult * _Nullable result) {
-        [self.signInDelegate signInSucceed];
++ (void)sendVerifyCodeWithEmail:(NSString *)email action:(AGCVerifyCodeAction)action {
+    AGCVerifyCodeSettings *setting = [[AGCVerifyCodeSettings alloc] initWithAction:AGCVerifyCodeActionRegisterLogin locale:nil sendInterval:30];
+    [[[AGCEmailAuthProvider requestVerifyCodeWithEmail:email settings:setting] addOnSuccessCallback:^(AGCVerifyCodeResult * _Nullable result) {
+        NSLog(@"send verification code success");
     }] addOnFailureCallback:^(NSError * _Nonnull error) {
-        NSLog(@" login failed : %@",error);
-        [self.signInDelegate signInFailed];
+        NSLog(@"send verification code failed : %@",error);
     }];
 }
-
-+ (void)updateProfileWithDisplayName:(NSString *)name photoUrl:(NSString *)photo {
-    AGCProfileRequest *request = [AGCProfileRequest new];
-    request.displayName = name;
-    request.photoUrl = photo;
-    [[[[[AGCAuth getInstance] currentUser] updateProfile:request] addOnSuccessCallback:^(id  _Nullable result) {
-        [ToastUtil showToast:@"profile update success"];
-    }] addOnFailureCallback:^(NSError * _Nonnull error) {
-        NSLog(@"Profile update failed : %@",error);
-        [ToastUtil showToast:@"profile update failed"];
-    }];
-}
-
-
-
-
 
 @end

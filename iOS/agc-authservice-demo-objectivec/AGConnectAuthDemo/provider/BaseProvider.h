@@ -1,46 +1,41 @@
-//
-//  Copyright (c) Huawei Technologies Co., Ltd. 2020. All rights reserved
-//
+/*
+    Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
 
 #import <UIKit/UIKit.h>
-#import "ToastUtil.h"
 #import <AGConnectAuth/AGConnectAuth.h>
+
+typedef void (^CredentialBlock)(AGCAuthCredential * _Nullable credential);
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol SignInDelegate <NSObject>
-
-- (void)signInSucceed;
-
-- (void)signInFailed;
-
-@end
-
 @interface BaseProvider : NSObject
 
-@property (nonatomic, weak) id<SignInDelegate> signInDelegate;
+@property (nonatomic, copy) CredentialBlock credentialBlock;
 
-@property (nonatomic) BOOL isLink;
+// Startup the third party auth sdk
+- (void)startUp;
 
-- (void)registerApp:(UIApplication *)application options:(NSDictionary *)launchOptions;
-
-- (BOOL)handleOpenUniversalLink:(NSUserActivity *)userActivity;
-
+// Handle URL for the third party auth sdk
 - (BOOL)application:app openURL:url options:options;
 
-- (void)loginWithViewController:(id<SignInDelegate>)delegate;
+// Fetch credential of the third party auth sdk
+- (void)fetchCredentialWithController:(UIViewController *)vc completion:(CredentialBlock)completion;
 
-+ (void)logout;
+// Send phone verification code
++ (void)sendVerifyCodeWithCountryCode:(NSString *)countryCode phoneNumber:(NSString *)phoneNumber action:(AGCVerifyCodeAction)action;
 
-- (void)linkWithViewController:(UIViewController *)viewController;
-
-- (void)unlink;
-
-- (void)signInWithCredential:(AGCAuthCredential *)credential;
-
-- (void)linkWithCredential:(AGCAuthCredential *)credential;
-
-+ (void)updateProfileWithDisplayName:(NSString *)name photoUrl:(NSString *)photo;
+// Send email verification code
++ (void)sendVerifyCodeWithEmail:(NSString *)email action:(AGCVerifyCodeAction)action;
 
 @end
 

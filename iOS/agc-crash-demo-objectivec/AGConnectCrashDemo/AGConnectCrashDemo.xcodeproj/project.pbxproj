@@ -8,13 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		2F3EC32624AEBD3700077E63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EC32524AEBD3700077E63 /* AppDelegate.m */; };
-		2F3EC32924AEBD3700077E63 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EC32824AEBD3700077E63 /* SceneDelegate.m */; };
 		2F3EC32C24AEBD3700077E63 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EC32B24AEBD3700077E63 /* ViewController.m */; };
 		2F3EC32F24AEBD3700077E63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EC32D24AEBD3700077E63 /* Main.storyboard */; };
 		2F3EC33124AEBD3800077E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EC33024AEBD3800077E63 /* Assets.xcassets */; };
 		2F3EC33424AEBD3800077E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EC33224AEBD3800077E63 /* LaunchScreen.storyboard */; };
 		2F3EC33724AEBD3800077E63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EC33624AEBD3800077E63 /* main.m */; };
 		2F3EC35324B3535000077E63 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3EC35224B3535000077E63 /* libc++abi.tbd */; };
+		2FBD544125AD2F700008D127 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD544025AD2F700008D127 /* AppDelegate.swift */; };
+		2FBD544325AD2F700008D127 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD544225AD2F700008D127 /* SceneDelegate.swift */; };
+		2FBD544525AD2F700008D127 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBD544425AD2F700008D127 /* ViewController.swift */; };
+		2FBD544825AD2F700008D127 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FBD544625AD2F700008D127 /* Main.storyboard */; };
+		2FBD544A25AD2F710008D127 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FBD544925AD2F710008D127 /* Assets.xcassets */; };
+		2FBD544D25AD2F710008D127 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FBD544B25AD2F710008D127 /* LaunchScreen.storyboard */; };
+		2FBD545225AD959B0008D127 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3EC35224B3535000077E63 /* libc++abi.tbd */; };
+		7BFCDF35E5BFD9AD73D9683D /* Pods_AGConnectCrashDemo_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0BC6FD8B9A667155E456FB /* Pods_AGConnectCrashDemo_Swift.framework */; };
 		D1AFF0C5F6B623298B933639 /* Pods_AGConnectCrashDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEDC9C496534603155D832BD /* Pods_AGConnectCrashDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,8 +29,6 @@
 		2F3EC32124AEBD3700077E63 /* AGConnectCrashDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AGConnectCrashDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F3EC32424AEBD3700077E63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2F3EC32524AEBD3700077E63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2F3EC32724AEBD3700077E63 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		2F3EC32824AEBD3700077E63 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		2F3EC32A24AEBD3700077E63 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2F3EC32B24AEBD3700077E63 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2F3EC32E24AEBD3700077E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -32,8 +37,19 @@
 		2F3EC33524AEBD3800077E63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F3EC33624AEBD3800077E63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2F3EC35224B3535000077E63 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		2FBD543E25AD2F700008D127 /* AGConnectCrashDemo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AGConnectCrashDemo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FBD544025AD2F700008D127 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2FBD544225AD2F700008D127 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2FBD544425AD2F700008D127 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2FBD544725AD2F700008D127 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2FBD544925AD2F710008D127 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2FBD544C25AD2F710008D127 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2FBD544E25AD2F710008D127 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C8D553D2638FE01AC867B35 /* Pods-AGConnectCrashDemo-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGConnectCrashDemo-Swift.debug.xcconfig"; path = "Target Support Files/Pods-AGConnectCrashDemo-Swift/Pods-AGConnectCrashDemo-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		4370C0C5D9E121B976ABE072 /* Pods-AGConnectCrashDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGConnectCrashDemo.release.xcconfig"; path = "Target Support Files/Pods-AGConnectCrashDemo/Pods-AGConnectCrashDemo.release.xcconfig"; sourceTree = "<group>"; };
+		787C16248C1F7140044FC646 /* Pods-AGConnectCrashDemo-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGConnectCrashDemo-Swift.release.xcconfig"; path = "Target Support Files/Pods-AGConnectCrashDemo-Swift/Pods-AGConnectCrashDemo-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		79CD6331BCB50FE1B903F0DE /* Pods-AGConnectCrashDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGConnectCrashDemo.debug.xcconfig"; path = "Target Support Files/Pods-AGConnectCrashDemo/Pods-AGConnectCrashDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		BA0BC6FD8B9A667155E456FB /* Pods_AGConnectCrashDemo_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AGConnectCrashDemo_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEDC9C496534603155D832BD /* Pods_AGConnectCrashDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AGConnectCrashDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -47,6 +63,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2FBD543B25AD2F700008D127 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FBD545225AD959B0008D127 /* libc++abi.tbd in Frameworks */,
+				7BFCDF35E5BFD9AD73D9683D /* Pods_AGConnectCrashDemo_Swift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -54,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				2F3EC32324AEBD3700077E63 /* AGConnectCrashDemo */,
+				2FBD543F25AD2F700008D127 /* AGConnectCrashDemo-Swift */,
 				2F3EC32224AEBD3700077E63 /* Products */,
 				2F3EC35124B3535000077E63 /* Frameworks */,
 				E55158AE030F271A824FF369 /* Pods */,
@@ -64,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				2F3EC32124AEBD3700077E63 /* AGConnectCrashDemo.app */,
+				2FBD543E25AD2F700008D127 /* AGConnectCrashDemo-Swift.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,8 +100,6 @@
 			children = (
 				2F3EC32424AEBD3700077E63 /* AppDelegate.h */,
 				2F3EC32524AEBD3700077E63 /* AppDelegate.m */,
-				2F3EC32724AEBD3700077E63 /* SceneDelegate.h */,
-				2F3EC32824AEBD3700077E63 /* SceneDelegate.m */,
 				2F3EC32A24AEBD3700077E63 /* ViewController.h */,
 				2F3EC32B24AEBD3700077E63 /* ViewController.m */,
 				2F3EC32D24AEBD3700077E63 /* Main.storyboard */,
@@ -91,8 +116,23 @@
 			children = (
 				2F3EC35224B3535000077E63 /* libc++abi.tbd */,
 				FEDC9C496534603155D832BD /* Pods_AGConnectCrashDemo.framework */,
+				BA0BC6FD8B9A667155E456FB /* Pods_AGConnectCrashDemo_Swift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2FBD543F25AD2F700008D127 /* AGConnectCrashDemo-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				2FBD544025AD2F700008D127 /* AppDelegate.swift */,
+				2FBD544225AD2F700008D127 /* SceneDelegate.swift */,
+				2FBD544425AD2F700008D127 /* ViewController.swift */,
+				2FBD544625AD2F700008D127 /* Main.storyboard */,
+				2FBD544925AD2F710008D127 /* Assets.xcassets */,
+				2FBD544B25AD2F710008D127 /* LaunchScreen.storyboard */,
+				2FBD544E25AD2F710008D127 /* Info.plist */,
+			);
+			path = "AGConnectCrashDemo-Swift";
 			sourceTree = "<group>";
 		};
 		E55158AE030F271A824FF369 /* Pods */ = {
@@ -100,6 +140,8 @@
 			children = (
 				79CD6331BCB50FE1B903F0DE /* Pods-AGConnectCrashDemo.debug.xcconfig */,
 				4370C0C5D9E121B976ABE072 /* Pods-AGConnectCrashDemo.release.xcconfig */,
+				3C8D553D2638FE01AC867B35 /* Pods-AGConnectCrashDemo-Swift.debug.xcconfig */,
+				787C16248C1F7140044FC646 /* Pods-AGConnectCrashDemo-Swift.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -126,15 +168,38 @@
 			productReference = 2F3EC32124AEBD3700077E63 /* AGConnectCrashDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2FBD543D25AD2F700008D127 /* AGConnectCrashDemo-Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FBD544F25AD2F710008D127 /* Build configuration list for PBXNativeTarget "AGConnectCrashDemo-Swift" */;
+			buildPhases = (
+				1B888432BC992D1192D89DF1 /* [CP] Check Pods Manifest.lock */,
+				2FBD543A25AD2F700008D127 /* Sources */,
+				2FBD543B25AD2F700008D127 /* Frameworks */,
+				2FBD543C25AD2F700008D127 /* Resources */,
+				B215A2DD8EEDE7B708E6622D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AGConnectCrashDemo-Swift";
+			productName = "AGConnectCrashDemo-Swift";
+			productReference = 2FBD543E25AD2F700008D127 /* AGConnectCrashDemo-Swift.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		2F3EC31924AEBD3700077E63 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1150;
 				TargetAttributes = {
 					2F3EC32024AEBD3700077E63 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					2FBD543D25AD2F700008D127 = {
 						CreatedOnToolsVersion = 11.5;
 					};
 				};
@@ -153,6 +218,7 @@
 			projectRoot = "";
 			targets = (
 				2F3EC32024AEBD3700077E63 /* AGConnectCrashDemo */,
+				2FBD543D25AD2F700008D127 /* AGConnectCrashDemo-Swift */,
 			);
 		};
 /* End PBXProject section */
@@ -168,9 +234,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2FBD543C25AD2F700008D127 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FBD544D25AD2F710008D127 /* LaunchScreen.storyboard in Resources */,
+				2FBD544A25AD2F710008D127 /* Assets.xcassets in Resources */,
+				2FBD544825AD2F700008D127 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1B888432BC992D1192D89DF1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AGConnectCrashDemo-Swift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6F7137E7CC9ABB5229A37FEE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,6 +308,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B215A2DD8EEDE7B708E6622D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AGConnectCrashDemo-Swift/Pods-AGConnectCrashDemo-Swift-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AGConnectCrashDemo-Swift/Pods-AGConnectCrashDemo-Swift-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AGConnectCrashDemo-Swift/Pods-AGConnectCrashDemo-Swift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -220,7 +335,16 @@
 				2F3EC32C24AEBD3700077E63 /* ViewController.m in Sources */,
 				2F3EC32624AEBD3700077E63 /* AppDelegate.m in Sources */,
 				2F3EC33724AEBD3800077E63 /* main.m in Sources */,
-				2F3EC32924AEBD3700077E63 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FBD543A25AD2F700008D127 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FBD544525AD2F700008D127 /* ViewController.swift in Sources */,
+				2FBD544125AD2F700008D127 /* AppDelegate.swift in Sources */,
+				2FBD544325AD2F700008D127 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +363,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				2F3EC33324AEBD3800077E63 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2FBD544625AD2F700008D127 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FBD544725AD2F700008D127 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2FBD544B25AD2F710008D127 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FBD544C25AD2F710008D127 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -404,6 +544,46 @@
 			};
 			name = Release;
 		};
+		2FBD545025AD2F710008D127 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C8D553D2638FE01AC867B35 /* Pods-AGConnectCrashDemo-Swift.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "AGConnectCrashDemo-Swift/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.huawei.AGConnectCrashDemo-Swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2FBD545125AD2F710008D127 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 787C16248C1F7140044FC646 /* Pods-AGConnectCrashDemo-Swift.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "AGConnectCrashDemo-Swift/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.huawei.AGConnectCrashDemo-Swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -421,6 +601,15 @@
 			buildConfigurations = (
 				2F3EC33B24AEBD3800077E63 /* Debug */,
 				2F3EC33C24AEBD3800077E63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FBD544F25AD2F710008D127 /* Build configuration list for PBXNativeTarget "AGConnectCrashDemo-Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FBD545025AD2F710008D127 /* Debug */,
+				2FBD545125AD2F710008D127 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
