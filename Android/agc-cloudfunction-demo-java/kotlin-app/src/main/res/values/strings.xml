@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Function</string>
+    <string name="first_number">Please input 1st number :  </string>
+    <string name="second_number">Please input 2nd number :  </string>
+    <string name="sum">SUM :  </string>
+</resources>

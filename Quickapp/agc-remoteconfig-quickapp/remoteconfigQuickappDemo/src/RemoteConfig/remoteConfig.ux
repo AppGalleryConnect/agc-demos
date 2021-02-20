@@ -1,0 +1,237 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+<template>
+  <!-- Only one root node is allowed in template. -->
+  <div class="container">
+
+    <div class="label-item">
+      <label target="input1">minFetchIntervalMillis:</label>
+      <input class="flex" id="input1" placeholder={{minFetchIntervalMillis}} onchange="setMinFetchIntervalMillis" />
+    </div>
+    <div class="label-item">
+      <label target="input1">defaultConfig:</label>
+      <input class="flex" id="input2" placeholder={{defaultConfig}} onchange="setDefaultConfig" />
+    </div>
+
+    <div class="label-item">
+      <input type="button" value="setInterval" @click="setTime" />
+      <input type="button" value="applyDefault" style="margin-left: 100px" @click="applyDefault" />
+    </div>
+    <div class="label-item">
+      <input type="button" value="fetch" @click="fetch" />
+      <input type="button" value="apply" style="margin-left: 100px" @click="apply" />
+    </div>
+
+    <div class="label-item">
+      <input type="button" value="loadLastFetched" @click="loadLastFetched" />
+      <input type="button" value="clearAll" style="margin-left: 100px" @click="clearAll" />
+    </div>
+
+    <div class="label-item">
+      <input type="button" value="getAllConfig" @click="getAllConfig" />
+    </div>
+
+    <div class="label-item" style="margin-top:70px;">
+      <label target="input2">config:</label>
+    </div>
+    <div class="label-item" style="margin-top:70px;border: 1px solid #000000;">
+      <textarea placeholder={{result}}></textarea>
+    </div>
+
+
+  </div>
+</template>
+
+<style>
+  @import "../Common/CSS/common.css";
+
+  .container {
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    /* align-content: center; */
+    /* align-items: center; */
+  }
+  input {
+    width: 300px;
+    height: 70px;
+    background-color: #fffafa;
+    border: 1px solid;
+    margin-top: 40px;
+    align-content: center;
+    text-align: center;
+  }
+
+  .label-item {
+    align-items: center;
+    border-bottom-width: 1px;
+    border-color: #dddddd;
+  }
+
+  label {
+    font-size: 35px;
+    width: 500px;
+    height: 70px;
+  }
+  .title {
+    font-size: 100px;
+  }
+
+  .flex {
+    width: 500px;
+  }
+</style>
+
+<script>
+  import prompt from '@system.prompt';
+  module.exports = {
+    data: {
+      defaultConfig: '',
+      minFetchIntervalMillis: 0,
+      result: ''
+    },
+
+    onInit: function () {
+      let agconnect = this.$app.$def.agc;
+      agconnect.remoteConfig().initialized();
+    },
+
+    setMinFetchIntervalMillis(e) {
+      this.minFetchIntervalMillis = e.value;
+    },
+
+    setDefaultConfig(e) {
+      this.defaultConfig = e.value;
+    },
+
+    setTime() {
+      let agconnect = this.$app.$def.agc;
+      agconnect.remoteConfig().minFetchIntervalMillis = this.minFetchIntervalMillis;
+      prompt.showToast({
+        message: `set successfully`,
+        duration: 2000,
+        gravity: 'center'
+      })
+    },
+
+    applyDefault() {
+      let agconnect = this.$app.$def.agc;
+      let defaultConfig = this.defaultConfig;
+      try {
+        var defaultConfigJson = JSON.parse(defaultConfig);
+        if (typeof defaultConfigJson == 'object' && defaultConfigJson) {
+          let defaultConfigMap = new Map();
+          for (var k in defaultConfigJson) {
+            defaultConfigMap.set(k, JSON.stringify(defaultConfigJson[k]));
+          }
+          agconnect.remoteConfig().applyDefault(defaultConfigMap);
+          prompt.showToast({
+            message: `applyDefault successfully`,
+            duration: 2000,
+            gravity: 'center'
+          });
+        } else {
+          prompt.showToast({
+            message: `please input JSON string!`,
+            duration: 2000,
+            gravity: 'center'
+          });
+          this.defaultConfig = '';
+        }
+      } catch (error) {
+        prompt.showToast({
+          message: JSON.stringify(error),
+          duration: 2000,
+          gravity: 'center'
+        });
+      }
+    },
+
+    async fetch() {
+
+      let agconnect = this.$app.$def.agc;
+      console.log('fetch')
+      await agconnect.remoteConfig().fetch().then(() => {
+        console.log('fetch success');
+        prompt.showToast({
+          message: `fetch success`,
+          duration: 2000,
+          gravity: 'center'
+        });
+      }).catch(err => {
+        console.log(JSON.stringify(err));
+      })
+    },
+
+    loadLastFetched() {
+      let agconnect = this.$app.$def.agc;
+
+      agconnect.remoteConfig().loadLastFetched().then(async (res) => {
+        if (res) {
+          await agconnect.remoteConfig().apply(res);
+          prompt.showToast({
+            message: `get success`,
+            duration: 2000,
+            gravity: 'center'
+          });
+        }
+      }).catch(err => {
+        prompt.showToast({
+          message: JSON.stringify(error),
+          duration: 2000,
+          gravity: 'center'
+        });
+      })
+
+    },
+
+    apply() {
+      let agconnect = this.$app.$def.agc;
+      agconnect.remoteConfig().apply().then(res => {
+        prompt.showToast({
+          message: `apply success`,
+          duration: 2000,
+          gravity: 'center'
+        });
+      }).catch(err => {
+        console.log(JSON.stringify(err));
+      })
+    },
+
+    clearAll() {
+      let agconnect = this.$app.$def.agc;
+      agconnect.remoteConfig().clearAll().then(() => {
+        prompt.showToast({
+          message: `clear success`,
+          duration: 2000,
+          gravity: 'center'
+        });
+      })
+
+    },
+
+    getAllConfig() {
+      let agconnect = this.$app.$def.agc;
+      let obj = Object.create(null);
+      let resultMap = agconnect.remoteConfig().getMergedAll();
+      for (let [k, v] of resultMap) {
+        obj[k] = '( value:' + v.getValueAsString() + ', source:' + v.getSource() + ' )';
+      }
+      this.result = JSON.stringify(obj);
+    }
+
+  }
+</script>

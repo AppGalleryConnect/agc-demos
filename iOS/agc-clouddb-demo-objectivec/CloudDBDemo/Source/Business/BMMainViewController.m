@@ -62,7 +62,9 @@
         self.navigationItem.rightBarButtonItems = @[addItem, queryItem];
         
         // Add notification observer
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshBookList) name:@"KNotificationRefreshBookList" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(refreshBookList)
+                                                     name:@"KNotificationRefreshBookList" object:nil];
     }
     [self.view addSubview:self.bookTableView];
 }
@@ -77,12 +79,12 @@
 #pragma mark - refresh book list
 - (void)refreshBookList {
     
-    __weak typeof(self) wself = self;
+    __weak typeof(self) weakSelf = self;
     [[CloudDBManager shareInsatnce] queryAllBooksWithResults:^(NSArray *_Nonnull bookList, NSError *error) {
-        [wself.bookList removeAllObjects];
-        [wself.bookList addObjectsFromArray:bookList];
+        [weakSelf.bookList removeAllObjects];
+        [weakSelf.bookList addObjectsFromArray:bookList];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [wself.bookTableView reloadData];
+            [weakSelf.bookTableView reloadData];
         });
     }];
 }
@@ -137,18 +139,18 @@
     
     [self.bookList removeObjectAtIndex:indexPath.row];
     
-    __weak typeof(self) wself = self;
+    __weak typeof(self) weakSelf = self;
     [[CloudDBManager shareInsatnce] deleteAGCDataWithBookID:model.id.stringValue complete:^(BOOL success, NSError *error) {
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [wself.view makeToast:@"Dlete success"];
-                [wself.bookTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                [wself.bookTableView reloadData];
+                [weakSelf.view makeToast:@"Dlete success"];
+                [weakSelf.bookTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                [weakSelf.bookTableView reloadData];
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *errorStrong = [NSString stringWithFormat:@"Dlete falied with error: %@",error];
-                [wself.view makeToast:errorStrong];
+                [weakSelf.view makeToast:errorStrong];
             });
         }
     }];
@@ -213,18 +215,20 @@
     // Perform sorting
     CloudDBManagerSortType sortType = state ? CloudDBManagerSortTypeAsc : CloudDBManagerSortTypeDesc;
     
-    __weak typeof(self) wself = self;
-    [[CloudDBManager shareInsatnce] queryAGCDataWithFieldName:fieldName sortType:sortType results:^(NSArray *_Nonnull bookList, NSError *error) {
+    __weak typeof(self) weakSelf = self;
+    [[CloudDBManager shareInsatnce] queryAGCDataWithFieldName:fieldName
+                                                     sortType:sortType
+                                                      results:^(NSArray *_Nonnull bookList, NSError *error) {
         if (bookList.count) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [wself.bookList removeAllObjects];
-                [wself.bookList addObjectsFromArray:bookList];
-                [wself.bookTableView reloadData];
+                [weakSelf.bookList removeAllObjects];
+                [weakSelf.bookList addObjectsFromArray:bookList];
+                [weakSelf.bookTableView reloadData];
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *errorStrig = [NSString stringWithFormat:@"Query failed with error :%@", error];
-                [wself.view makeToast:errorStrig];
+                [weakSelf.view makeToast:errorStrig];
             });
         }
     }];
@@ -249,7 +253,8 @@
 
 - (UITableView *)bookTableView {
     if (!_bookTableView) {
-        CGRect frame = CGRectMake(0, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height - self.tabBarController.tabBar.bounds.size.height);
+        CGRect frame = CGRectMake(0, self.view.bounds.origin.y, self.view.bounds.size.width,
+                                  self.view.bounds.size.height - self.tabBarController.tabBar.bounds.size.height);
         _bookTableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
         _bookTableView.backgroundColor = [UIColor whiteColor];
         _bookTableView.delegate = self;

@@ -97,23 +97,23 @@
         return;
     }
     
-    __weak typeof(self) wself = self;
+    __weak typeof(self) weakSelf = self;
     [[CloudDBManager shareInsatnce] fuzzyQueryAGCDataWithBookInfo:self.dataModel results:^(NSArray *_Nonnull bookList, NSError *error) {
         if (error) {
             NSString *errorString = [NSString stringWithFormat:@"Query failed with error： %@", error];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [wself.view makeToast:errorString];
+                [weakSelf.view makeToast:errorString];
             });
         } else {
             if (bookList.count > 0 ) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     BMMainViewController *listCtr = [[BMMainViewController alloc] init];
                     listCtr.queryList = bookList;
-                    [wself.navigationController pushViewController:listCtr animated:YES];
+                    [weakSelf.navigationController pushViewController:listCtr animated:YES];
                 });
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [wself.view makeToast:@"No data was queried"];
+                    [weakSelf.view makeToast:@"No data was queried"];
                 });
             }
         }

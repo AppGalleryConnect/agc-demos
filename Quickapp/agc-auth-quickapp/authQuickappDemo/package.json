@@ -1,0 +1,16 @@
+{
+  "name": "com.huawei.agconnect.demo",
+  "version": "1.0.0",
+  "description": "",
+  "license": "Apache-2.0",
+  "scripts": {
+    "fa-build": "node node_modules/webpack/bin/webpack.js --progress --config ./node_modules/fa-toolkit/webpack.config.js",
+    "fa-watch": "node node_modules/webpack/bin/webpack.js --watch --progress --config ./node_modules/fa-toolkit/webpack.config.js",
+    "fa-release": "node ./node_modules/cross-env/src/bin/cross-env.js uglifyjs=true sign=release node_modules/webpack/bin/webpack.js --progress --config ./node_modules/fa-toolkit/webpack.config.js"
+  },
+  "devDependencies": {
+    "fa-toolkit": "fa-toolkit-3.1.1-Stable.300.tgz",
+    "cross-env": "^7.0.2"
+  },
+  "dependencies": {}
+}
