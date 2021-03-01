@@ -25,8 +25,13 @@ export function configInstance(){
   agconnect.instance().configInstance(agConnectConfig);
 }
 
+// paste your SDK Code Snippet here, SDK Code Snippet can be found on your project general information
 var agConnectConfig =
   {
-    // paste your SDK Code Snippet here, SDK Code Snippet can be found on your project general information
-  };
+    "agcgw": {},
+    "client": {},
+    "service": {},
+    "region": "CN",
+    "configuration_version": "1.0"
+  }
 
