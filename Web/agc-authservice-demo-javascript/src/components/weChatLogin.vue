@@ -1,3 +1,19 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
 <template>
   <div class="weChat_login-container">
     <el-form :model="dataForm_sdk_weChat" status-icon label-position="left" label-width="0px" class="demo-ruleForm login-page">
@@ -18,12 +34,14 @@
         <el-collapse accordion>
           <el-collapse-item>
             <template slot="title">login mode</template>
-            <el-radio-group v-model="provider" @change="providerChange">
-              <el-radio label="phone">phone</el-radio>
-              <el-radio label="email">email</el-radio>
-              <el-radio label="QQ">QQ</el-radio>
-              <el-radio label="weChat">weChat</el-radio>
-            </el-radio-group>
+            <el-select v-model="provider" placeholder="login mode select" @change="providerChange">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
             <br/>
           </el-collapse-item>
           <el-collapse-item>
@@ -84,6 +102,20 @@
           photoUrl: '',
           providerId: '',
         },
+        options: [{
+          value: 'phone',
+          label: 'phone'
+        }, {
+          value: 'email',
+          label: 'email'
+        }, {
+          value: 'QQ',
+          label: 'QQ'
+        }, {
+          value: 'weChat',
+          label: 'weChat'
+        }],
+        value: ''
       };
     },
     async created() {
@@ -114,7 +146,6 @@
         let accessToken = this.dataForm_sdk_weChat.accessToken;
 
         if (!openId || !accessToken) {
-          console.log("openId and accessToken must input.");
           alert("openId and accessToken must input.");
         }
 
@@ -147,7 +178,7 @@
             this.accountInfo.providerId = "";
           }
         }).catch((err) => {
-          console.error("----getuserinfo err:", err);
+          console.error("getuserinfo err:", err);
         });
       },
       doLink() {
@@ -180,7 +211,7 @@
             providerId: '',
           };
         }).catch((err) => {
-          alert(err);
+          alert(JSON.stringify(err));
         });
       },
       deleteUser() {
@@ -190,6 +221,7 @@
           type: 'warning',
         }).then(async () => {
           await agc.deleteUser().then(()=>{
+            alert('delete User OK')
             this.accountInfo = {
               uid: '',
               anonymous: '',
@@ -201,7 +233,7 @@
             };
           });
         }).catch((err) => {
-          alert(err);
+          alert(JSON.stringify(err));
         });
       },
     },

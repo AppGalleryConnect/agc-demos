@@ -1,3 +1,19 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
 <template>
   <div class="qq_login-container">
     <el-form status-icon label-position="left" label-width="0px" class="demo-ruleForm login-page">
@@ -13,12 +29,14 @@
         <el-collapse accordion>
           <el-collapse-item>
             <template slot="title">login mode</template>
-            <el-radio-group v-model="provider" @change="providerChange">
-              <el-radio label="phone">phone</el-radio>
-              <el-radio label="email">email</el-radio>
-              <el-radio label="QQ">QQ</el-radio>
-              <el-radio label="weChat">weChat</el-radio>
-            </el-radio-group>
+            <el-select v-model="provider" placeholder="login mode select" @change="providerChange">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
             <br/>
           </el-collapse-item>
           <el-collapse-item>
@@ -40,6 +58,8 @@
               <el-form-item label="phone:">{{ accountInfo.phone }}</el-form-item>
               <el-form-item label="photoUrl:">{{ accountInfo.photoUrl }}</el-form-item>
               <el-form-item label="providerId:">{{ accountInfo.providerId }}</el-form-item>
+              <el-form-item label="emailVerified:">{{ accountInfo.emailVerified }}</el-form-item>
+              <el-form-item label="passwordSetted:">{{ accountInfo.passwordSetted }}</el-form-item>
             </el-form>
             <br/><br/>
             <el-button type="primary" size="medium" style="width: 50%;" @click="logOut">log out</el-button>
@@ -55,7 +75,7 @@
 <script>
   import * as agc from './auth';
   import {getSaveMode, setSaveMode} from './storage';
-  import { providerChangeUtil} from "./utils";
+  import {providerChangeUtil} from "./utils";
   import {configInstance} from "./config";
   import {loginWithQQ} from "./auth";
 
@@ -74,7 +94,23 @@
           phone: '',
           photoUrl: '',
           providerId: '',
+          emailVerified: '',
+          passwordSetted: '',
         },
+        options: [{
+          value: 'phone',
+          label: 'phone'
+        }, {
+          value: 'email',
+          label: 'email'
+        }, {
+          value: 'QQ',
+          label: 'QQ'
+        }, {
+          value: 'weChat',
+          label: 'weChat'
+        }],
+        value: ''
       };
     },
     async created() {
@@ -87,7 +123,6 @@
       agc.setCryptImp(new agc.Crypt());
       agc.setAuthCryptImp(new agc.AuthCrypt());
       await this.callbackFunction();
-      //update userinfo after 3s
       setTimeout(async () => {
         this.getUserInfo();
       }, 3000);
@@ -108,6 +143,8 @@
             this.accountInfo.phone = user.getPhone();
             this.accountInfo.photoUrl = user.getPhotoUrl();
             this.accountInfo.providerId = user.getProviderId();
+            this.accountInfo.emailVerified = user.getEmailVerified();
+            this.accountInfo.passwordSetted = user.getPasswordSetted();
           } else {
             this.accountInfo.anonymous = "";
             this.accountInfo.uid = "";
@@ -116,6 +153,8 @@
             this.accountInfo.phone = "";
             this.accountInfo.photoUrl = "";
             this.accountInfo.providerId = "";
+            this.accountInfo.emailVerified = "";
+            this.accountInfo.passwordSetted = "";
           }
         }).catch((err) => {
           console.error("----getuserinfo err:", err);
@@ -123,10 +162,8 @@
       },
       QQLogin() {
         QC.Login.showPopup({
-          // Go to the app details page in connect.qq.com to find the AppId of your mobile app on the QQ platform
-          appId: "",
-          // You need to fill a redirection URI when setting your mobile app in connect.qq.com, set the same redirection URI here as well
-          redirectURI: "http://127.0.0.1:8080/#/QQLogin"
+          appId: "101890031",
+          redirectURI: "http://127.0.0.1:8080/#/QQLoginEmptyPage"
         });
       },
 
@@ -141,21 +178,19 @@
         }
 
         await QC.Login.getMe(async function (openID, accessToken) {
-          // if user has logined, do link , otherwise login in QQ
           await agc.getUserInfo().then(async (res) => {
             if (res) {
               await agc.link('QQ', accessToken, openID, '').then((ret) => {
-                console.log('link QQ OK..........')
+                alert('link QQ OK');
               }).catch((err) => {
-                console.error(err)
                 alert(JSON.stringify(err));
               });
             } else {
-              await loginWithQQ(accessToken, openID, true).then(result=>{
+              await loginWithQQ(accessToken, openID, true).then(result => {
+                alert('login With QQ OK');
               }).catch(error => {
-                  console.error("error", error);
-                  alert(JSON.stringify(err));
-                });
+                alert(JSON.stringify(err));
+              });
             }
           });
         });
@@ -176,9 +211,11 @@
             phone: '',
             photoUrl: '',
             providerId: '',
+            emailVerified: '',
+            passwordSetted: '',
           };
         }).catch((err) => {
-          alert(err);
+          alert(JSON.stringify(err));
         });
       },
       deleteUser() {
@@ -188,6 +225,7 @@
           type: 'warning',
         }).then(async () => {
           await agc.deleteUser().then(() => {
+            alert('delete User OK')
             this.accountInfo = {
               uid: '',
               anonymous: '',
@@ -196,10 +234,12 @@
               phone: '',
               photoUrl: '',
               providerId: '',
+              emailVerified: '',
+              passwordSetted: '',
             };
           });
         }).catch((err) => {
-          alert(err);
+          alert(JSON.stringify(err));
         });
       },
       doLink() {
