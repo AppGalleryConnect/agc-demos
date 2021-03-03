@@ -1,6 +1,15 @@
-//
-//  Copyright (c) Huawei Technologies Co., Ltd. 2020. All rights reserved
-//
+/*
+    Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
 
 #import "GoogleProvider.h"
 
@@ -15,14 +24,7 @@
     return sharedInstance;
 }
 
-- (instancetype)init {
-    if (self = [super init]) {
-        
-    }
-    return self;
-}
-
-- (void)registerApp:(UIApplication *)application options:(NSDictionary *)launchOptions {
+- (void)startUp {
     [GIDSignIn sharedInstance].clientID = @"GOOGLE_CLIENT_ID";
     [GIDSignIn sharedInstance].delegate = self;
 }
@@ -31,25 +33,10 @@
     return [[GIDSignIn sharedInstance] handleURL:url];
 }
 
-- (void)loginWithViewController:(id<SignInDelegate>)delegate {
-    self.signInDelegate = delegate;
-    [GIDSignIn sharedInstance].presentingViewController = (UIViewController *)delegate;
+- (void)fetchCredentialWithController:(UIViewController *)vc completion:(CredentialBlock)completion {
+    self.credentialBlock = completion;
+    [GIDSignIn sharedInstance].presentingViewController = vc;
     [[GIDSignIn sharedInstance] signIn];
-}
-
-- (void)linkWithViewController:(UIViewController *)viewController {
-    
-    self.isLink = YES;
-    [GIDSignIn sharedInstance].presentingViewController = viewController;
-    [[GIDSignIn sharedInstance] signIn];
-}
-
-- (void)unlink {
-    [[[[[AGCAuth getInstance] currentUser] unlink:AGCAuthProviderTypeGoogle] addOnSuccessCallback:^(AGCSignInResult * _Nullable result) {
-                [ToastUtil showToast:@"unlink success"];
-            }] addOnFailureCallback:^(NSError * _Nonnull error) {
-                [ToastUtil showToast:@"unlink failed"];
-            }];
 }
 
 #pragma mark - GIDSignInDelegate
@@ -64,11 +51,8 @@
     }
     
     AGCAuthCredential *credential = [AGCGoogleAuthProvider credentialWithToken:user.authentication.idToken];
-    if (self.isLink) {
-        [self linkWithCredential:credential];
-        self.isLink = NO;
-    }else {
-        [self signInWithCredential:credential];
+    if (self.credentialBlock) {
+        self.credentialBlock(credential);
     }
 }
 

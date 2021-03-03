@@ -1,10 +1,26 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
 <template>
   <div class="login-container">
     <el-form :model="dataForm_sdk" :rules="rules" status-icon label-position="left" label-width="0px"
              class="demo-ruleForm login-page">
       <h3 class="title">JS-SDK</h3>
       <el-form-item prop="account">
-        <el-input type="text" v-model="dataForm_sdk.account" auto-complete="off" placeholder="Phone/Email"></el-input>
+        <el-input type="text" v-model="dataForm_sdk.account" auto-complete="off" placeholder="Account"></el-input>
       </el-form-item>
       <el-form-item prop="password">
         <el-input type="password" v-model="dataForm_sdk.password" auto-complete="off" placeholder="Password"></el-input>
@@ -17,26 +33,30 @@
       <br/>
       <el-form-item style="width: 100%;">
         <el-row>
-          <el-button type="primary" size="medium" style="width: 28%;"@click="loginByPwd">login by PWD</el-button>
-          <el-button type="primary" size="medium" style="width: 28%;" @click="loginByVerifyCode">login by PIN</el-button>
-          <el-button type="primary" size="medium" style="width: 36%;"@click="loginAnonymously">login anonymously</el-button>
+          <el-button type="primary" size="medium" style="width: 28%;" @click="loginByPwd">login by PWD</el-button>
+          <el-button type="primary" size="medium" style="width: 28%;" @click="loginByVerifyCode">login by PIN
+          </el-button>
+          <el-button type="primary" size="medium" style="width: 36%;" @click="loginAnonymously">login anonymously
+          </el-button>
         </el-row>
         <br/>
         <el-row>
-        <el-button type="success" size="medium" style="width: 28%;" @click="createUser" round>create user</el-button>
-        <el-button type="success" size="medium" style="width: 28%;" @click="doLink" round>link</el-button>
-        <el-button type="success" size="medium" style="width: 28%;" @click="doUnLink" round>unlink</el-button>
+          <el-button type="success" size="medium" style="width: 28%;" @click="createUser" round>create user</el-button>
+          <el-button type="success" size="medium" style="width: 28%;" @click="doLink" round>link</el-button>
+          <el-button type="success" size="medium" style="width: 28%;" @click="doUnLink" round>unlink</el-button>
         </el-row>
         <br/>
         <el-collapse accordion>
           <el-collapse-item>
             <template slot="title">login mode</template>
-            <el-radio-group v-model="provider" @change="providerChange">
-              <el-radio label="phone">phone</el-radio>
-              <el-radio label="email">email</el-radio>
-              <el-radio label="QQ">QQ</el-radio>
-              <el-radio label="weChat">weChat</el-radio>
-            </el-radio-group>
+            <el-select v-model="provider" placeholder="login mode select" @change="providerChange">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
             <br/>
           </el-collapse-item>
           <el-collapse-item>
@@ -58,6 +78,8 @@
               <el-form-item label="phone:">{{ accountInfo.phone }}</el-form-item>
               <el-form-item label="photoUrl:">{{ accountInfo.photoUrl }}</el-form-item>
               <el-form-item label="providerId:">{{ accountInfo.providerId }}</el-form-item>
+              <el-form-item label="emailVerified:">{{ accountInfo.emailVerified }}</el-form-item>
+              <el-form-item label="passwordSetted:">{{ accountInfo.passwordSetted }}</el-form-item>
             </el-form>
             <br/><br/>
             <el-button type="primary" size="medium" style="width: 50%;" @click="logOut">log out</el-button>
@@ -80,9 +102,9 @@
   export default {
     data() {
       return {
-        saveMode: '2',
+        saveMode: '0',
         provider: 'phone',
-        customProvider:'0',
+        customProvider: '0',
         dataForm_sdk: {
           account: '',
           password: '',
@@ -96,6 +118,8 @@
           phone: '',
           photoUrl: '',
           providerId: '',
+          emailVerified:'',
+          passwordSetted:'',
         },
         rules: {
           email: [{required: true, message: 'input your account', trigger: 'blur'}],
@@ -103,17 +127,31 @@
         },
         dialogVisible: false,
         labelPosition: 'left',
+        options: [{
+          value: 'phone',
+          label: 'phone'
+        }, {
+          value: 'email',
+          label: 'email'
+        }, {
+          value: 'QQ',
+          label: 'QQ'
+        }, {
+          value: 'weChat',
+          label: 'weChat'
+        }],
+        value: ''
       };
     },
     // initialize demo
     async created() {
       configInstance();
+
       // Gets the storage location last set by the user in the demo and inherits it
       this.saveMode = await getSaveMode('saveMode');
-      if(!this.saveMode){
-        this.saveMode = '2';
+      if (!this.saveMode) {
+        this.saveMode = '0';
       }
-      // setUserInfoPersistence and setCryptImp must be executed when init
       agc.setUserInfoPersistence(parseInt(this.saveMode));
       agc.setCryptImp(new agc.Crypt());
       agc.setAuthCryptImp(new agc.AuthCrypt());
@@ -122,14 +160,13 @@
         this.provider = providerParam;
       }
 
-      //Check whether any user is logged in. If so, refresh user information page
+      //Check whether any user is logged in. If so, refresh the page to the user information page
       this.getUserInfo();
     },
     methods: {
       async setStorageMode() {
         // Save the storage location locally
         await setSaveMode('saveMode', this.saveMode);
-        // refresh the page to let new saveMode works
         this.$router.go(0);
       },
       // Change login mode
@@ -186,7 +223,7 @@
               alert('login successfully!');
               this.getUserInfo();
             }).catch((err) => {
-              alert(err);
+              alert(JSON.stringify(err));
             });
             break;
           case 'email':
@@ -198,7 +235,7 @@
               alert('login successfully!');
               this.getUserInfo();
             }).catch((err) => {
-              alert(err);
+              alert(JSON.stringify(err));
             });
             break;
           default:
@@ -210,7 +247,7 @@
           alert('login successfully!');
           this.getUserInfo();
         }).catch((err) => {
-          alert(err);
+          alert(JSON.stringify(err));
         });
       },
       createUser() {
@@ -225,7 +262,7 @@
               alert('create user successfully!');
               this.getUserInfo();
             }).catch((err) => {
-              alert(err);
+              alert(JSON.stringify(err));
             });
             break;
           case 'email':
@@ -237,7 +274,7 @@
               alert('create user successfully!');
               this.getUserInfo();
             }).catch((err) => {
-              alert(err);
+              alert(JSON.stringify(err));
             });
             break;
           default:
@@ -246,7 +283,7 @@
       },
       getUserInfo() {
         agc.getUserInfo().then((user) => {
-          if(user){
+          if (user) {
             this.accountInfo.anonymous = user.isAnonymous();
             this.accountInfo.uid = user.getUid();
             this.accountInfo.displayName = user.getDisplayName();
@@ -254,7 +291,8 @@
             this.accountInfo.phone = user.getPhone();
             this.accountInfo.photoUrl = user.getPhotoUrl();
             this.accountInfo.providerId = user.getProviderId();
-            console.log(user.getProviderInfo())
+            this.accountInfo.emailVerified = user.getEmailVerified();
+            this.accountInfo.passwordSetted = user.getPasswordSetted();
           } else {
             this.accountInfo.anonymous = "";
             this.accountInfo.uid = "";
@@ -263,20 +301,22 @@
             this.accountInfo.phone = "";
             this.accountInfo.photoUrl = "";
             this.accountInfo.providerId = "";
+            this.accountInfo.emailVerified = "";
+            this.accountInfo.passwordSetted = "";
           }
         }).catch((err) => {
-          console.error("----getuserinfo err:", err);
+          console.error("getuserinfo err:", err);
         });
       },
       getVerifyCode() {
         this.dataForm_sdk.verifyCode = '';
         switch (this.provider) {
           case 'phone':
-            agc.getVerifyCode('86', this.dataForm_sdk.account, 'zh_CN', 90, 90)
+            agc.getPhoneVerifyCode('86', this.dataForm_sdk.account, 'zh_CN', 90)
               .then((ret) => {
                 alert('verify code sent by AGC!');
               }).catch((err) => {
-              alert(err);
+              alert(JSON.stringify(err));
             });
             break;
           case 'email':
@@ -284,7 +324,7 @@
               .then((ret) => {
                 alert('verify code sent by AGC!');
               }).catch((err) => {
-              alert(err);
+              alert(JSON.stringify(err));
             });
             break;
           default:
@@ -302,9 +342,11 @@
             phone: '',
             photoUrl: '',
             providerId: '',
+            emailVerified:'',
+            passwordSetted:'',
           };
         }).catch((err) => {
-          alert(err);
+          alert(JSON.stringify(err));
         });
       },
       deleteUser() {
@@ -313,7 +355,8 @@
           cancelButtonText: 'NO',
           type: 'warning',
         }).then(async () => {
-          await agc.deleteUser().then(()=>{
+          await agc.deleteUser().then(() => {
+            alert('delete User OK')
             this.accountInfo = {
               uid: '',
               anonymous: '',
@@ -322,15 +365,16 @@
               phone: '',
               photoUrl: '',
               providerId: '',
+              emailVerified:'',
+              passwordSetted:'',
             };
           });
         }).catch((err) => {
-          alert(err);
+          alert(JSON.stringify(err));
         });
       },
 
       doLink() {
-        // Ensure that provider user has not been linked to any other account
         if (this.provider == 'phone') {
           agc.link('phone', this.dataForm_sdk.account, this.dataForm_sdk.password, this.dataForm_sdk.verifyCode).then((ret) => {
             alert('link phone OK');
@@ -347,7 +391,7 @@
           });
         }
       },
-      doUnLink(){
+      doUnLink() {
         if (this.provider == 'phone') {
           agc.unlink(11).then((ret) => {
             alert('UNlink phone OK');

@@ -10,13 +10,7 @@ target 'CloudDBDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   
-  pod 'OpenSSL-for-agc-clouddb', '~> 1.1.1g'
-  pod 'Protobuf-C++', '~> 3.11.3'
-  pod 'SQLCipher', '~> 4.2.0'
-  pod 'AGConnectDatabase'
-  
-  pod 'HMFoundation', AGCFrameworkVersion
-  pod 'AGConnectCore', AGCFrameworkVersion
-  pod 'AGConnectCredential', AGCFrameworkVersion
   pod 'AGConnectAuth', AGCFrameworkVersion
+  pod 'AGConnectDatabase', '~> 1.0.1.300'
+  
 end

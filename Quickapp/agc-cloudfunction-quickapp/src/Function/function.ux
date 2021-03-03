@@ -1,0 +1,123 @@
+/*
+ * Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+<template>
+  <!-- Only one root node is allowed in template. -->
+  <div class="container">
+    <div class="label-item">
+      <label target="input1">HttpTriggerURI:</label>
+      <input class="flex" id="input1" placeholder={{HttpTriggerURI}} onchange="setHttpTriggerURI" />
+    </div>
+    <div class="label-item">
+      <label target="input2">Function Body:</label>
+      <input class="flex" id="input2" placeholder={{reqbody}} onchange="setBody" />
+    </div>
+
+
+    <div class="label-item">
+      <input type="button" value="runFunction" @click="runFunction" />
+    </div>
+
+    <div class="label-item">
+      <label target="input2">result:</label>
+      <input class="flex" placeholder={{result}} />
+    </div>
+  </div>
+</template>
+
+<style>
+     @import '../Common/CSS/common.css';
+     const uploadtask = require("@system.uploadtask");
+    .container {
+        /* flex-direction: row; */
+        /* justify-content: center; */
+        /* align-content: center; */
+        /* align-items: center; */
+    }
+      input{
+      width: 250px;
+      height: 70px;
+      background-color: #fffafa;
+      border:1px solid;
+      margin-top: 40px;
+      align-content: center;
+      text-align: center;   
+    }
+
+     .label-item {
+    align-items: center;
+    border-bottom-width: 1px;
+    border-color: #dddddd;
+  }
+
+  label {
+    font-size: 37.5px;
+    width: 300px;
+    height: 70px
+  }
+    .title {
+        font-size: 100px;
+    }
+
+    .flex{
+      width: 500px;
+    }
+</style>
+
+<script>
+  //import prompt from '@system.prompt';
+  module.exports = {
+    data: {
+      HttpTriggerURI: '',
+      reqbody: '',
+      result: ''
+    },
+
+    setHttpTriggerURI(e) {
+      this.HttpTriggerURI = e.value;
+    },
+
+    setBody(e) {
+      this.reqbody = e.value;
+      var device = require("@system.device")
+      device.getInfo({
+    success: function (ret) {
+        console.log("handling success:",JSON.stringify(ret));
+    },
+    fail: function (erromsg, errocode) {
+        console.log("message:",erromsg,errocode);
+    }
+})
+    },
+
+    /**
+    * Sets the function to be called using the HTTP trigger identifier of the function and
+    * call the function
+    */
+    async runFunction() {
+      let httpTriggerURI = this.HttpTriggerURI;
+      let reqbody = this.reqbody;
+      let agconnect = this.$app.$def.agc;
+      let functionCallable = agconnect.function().wrap(httpTriggerURI);
+      await functionCallable.call(reqbody).then(res => {
+        this.result = res.getValue();
+      }).catch(err => {
+        console.log("err:" + err);
+      })
+    }
+
+  }
+</script>

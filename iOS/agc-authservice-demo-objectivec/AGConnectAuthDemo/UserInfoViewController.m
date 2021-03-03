@@ -1,81 +1,61 @@
-//
-//  Copyright (c) Huawei Technologies Co., Ltd. 2020. All rights reserved
-//
+/*
+    Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
 
 #import "UserInfoViewController.h"
-#import <SDWebImage/SDWebImage.h>
-#import "UserInfoTableViewCell.h"
-#import "UserLinkTableViewCell.h"
+#import "ViewController.h"
 #import "UserSettingsViewController.h"
+#import "UserLinkViewController.h"
 #import <AGConnectAuth/AGConnectAuth.h>
-#import "WeixinProvider.h"
-#import "QQProvider.h"
-#import "WeiboProvider.h"
-#import "FacebookProvider.h"
-#import "GoogleProvider.h"
-#import "TwitterProvider.h"
-#import "PhoneProvider.h"
-#import "EmailProvider.h"
-#import "SelfBuildProvider.h"
-#import "AnonymousProvider.h"
-#import "AppleProvider.h"
-
-@interface UserInfoViewController ()
-
-@property (nonatomic) NSArray *linkAccounts;
-
-@end
 
 @implementation UserInfoViewController
 
++ (instancetype)instantiate {
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UserInfoViewController *vc = [story instantiateViewControllerWithIdentifier:@"UserInfoVC"];
+    return vc;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     self.title = @"User Info";
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleDone target:self action:@selector(showSettingMenu)];
-    self.navigationItem.rightBarButtonItem = rightButton;
-
-    [self.tableView registerNib:[UINib nibWithNibName:@"UserInfoTableViewCell" bundle:nil] forCellReuseIdentifier:@"testid"];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self.tableView reloadData];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UserInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"testid"];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    AGCUser *user = [[AGCAuth getInstance] currentUser];
-    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:user.photoUrl] placeholderImage:[UIImage imageNamed:@"head_icon.png"]];
-    cell.nameLabel.text = user.displayName;
-    cell.idLabel.text = user.uid;
-    [cell.logoutButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
-    return cell;
+    [super viewDidAppear:animated];
     
+    // Get the currently logged-in user
+    AGCUser *user = [[AGCAuth getInstance] currentUser];
+    [self refreshViewWithUser:user];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 290;
+- (void)refreshViewWithUser:(AGCUser *)user {
+    _nameLabel.text = user.displayName;
+    _idLabel.text = user.uid;
 }
 
-- (void)showSettingMenu {
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    UserInfoViewController *vc = [story instantiateViewControllerWithIdentifier:@"settingVC"];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)logout {
+- (IBAction)signOut:(id)sender {
+    // sign out
     [[AGCAuth getInstance] signOut];
     
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    UserInfoViewController *vc = [story instantiateViewControllerWithIdentifier:@"LoginVC"];
-    [self.navigationController setViewControllers:@[vc]];
+    [self.navigationController setViewControllers:@[[ViewController instantiate]]];
 }
 
+- (IBAction)showSettings:(id)sender {
+    [self.navigationController pushViewController:[UserSettingsViewController new] animated:YES];
+}
+
+- (IBAction)linkAccounts:(id)sender {
+    [self.navigationController pushViewController:[UserLinkViewController new] animated:YES];
+}
 
 @end

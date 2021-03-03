@@ -27,7 +27,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="enableCrash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dph-rU-vAF"/>
+                                    <action selector="enableCrash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P8N-lP-Cml"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uk-BA-T0s">
@@ -42,7 +42,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="disableCrash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oEE-Wx-RxA"/>
+                                    <action selector="disableCrash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dYQ-Qc-9Rb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgQ-fu-UiZ">
@@ -53,37 +53,37 @@
                                     <constraint firstAttribute="height" constant="50" id="UKE-d6-3G3"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Test NSException">
+                                <state key="normal" title="Test Exception">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="testNSException:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PlM-9p-rTe"/>
+                                    <action selector="testException:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zFa-K1-8RS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ani-xW-uGX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdq-cO-KQv">
                                 <rect key="frame" x="107" y="354" width="200" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="nYa-U8-4vt"/>
-                                    <constraint firstAttribute="height" constant="50" id="poa-bW-cDx"/>
+                                    <constraint firstAttribute="width" constant="200" id="83C-K8-nQd"/>
+                                    <constraint firstAttribute="height" constant="50" id="llK-8O-LY5"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Test Signal Exception">
+                                <state key="normal" title="Record Non-fatal Exception">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="testSignal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3j9-5Y-KBA"/>
+                                    <action selector="recordNonfatalException:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4YW-05-YaZ"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Ani-xW-uGX" firstAttribute="top" secondItem="DgQ-fu-UiZ" secondAttribute="bottom" constant="20" id="1un-WL-BWA"/>
+                            <constraint firstItem="pdq-cO-KQv" firstAttribute="top" secondItem="DgQ-fu-UiZ" secondAttribute="bottom" constant="20" id="1Ok-ow-Emk"/>
                             <constraint firstItem="xku-Wf-8LM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="Ff5-8Z-eHr"/>
-                            <constraint firstItem="Ani-xW-uGX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RKi-v5-eHU"/>
                             <constraint firstItem="6uk-BA-T0s" firstAttribute="top" secondItem="xku-Wf-8LM" secondAttribute="bottom" constant="20" id="VVk-ts-D38"/>
                             <constraint firstItem="DgQ-fu-UiZ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XKO-Mt-KRI"/>
                             <constraint firstItem="DgQ-fu-UiZ" firstAttribute="top" secondItem="6uk-BA-T0s" secondAttribute="bottom" constant="20" id="YtW-7f-xtf"/>
+                            <constraint firstItem="pdq-cO-KQv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Z75-U9-HSn"/>
                             <constraint firstItem="6uk-BA-T0s" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="h0e-Lx-KFa"/>
                             <constraint firstItem="xku-Wf-8LM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pk9-32-7Ub"/>
                         </constraints>

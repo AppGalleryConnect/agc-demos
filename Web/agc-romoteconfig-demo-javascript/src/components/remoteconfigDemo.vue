@@ -1,3 +1,19 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
 <template>
   <div class="remoteconfigContainer">
     <el-form :model="dataForm_sdk" :rules="rules" status-icon label-position="left" label-width="80px"
@@ -71,7 +87,6 @@
   import * as agc from './remoteConfig';
   import {configInstance} from "./config";
   import {getSaveMode, setSaveMode} from './storage';
-  import {RCSCrypt} from "./remoteConfig";
 
   export default {
     name: 'remoteconfigDemo',
@@ -91,26 +106,38 @@
       };
     },
     async created() {
+      configInstance();
       // Gets the storage location last set by the user in the demo and inherits it
+      agc.setCryptImp(new agc.Crypt());
+
       let saveMode = await getSaveMode('saveMode');
       this.saveMode = saveMode ? saveMode : '0';
-      configInstance();
+
       // setUserInfoPersistence and setCryptImp must be executed when init
       agc.setUserInfoPersistence(parseInt(this.saveMode));
-      agc.setCryptImp(new agc.Crypt());
+
       agc.setRCSCryptImp(new agc.RCSCrypt());
+      await agc.initialized();
     },
     methods: {
       onSubmit() {
-        if (this.dataForm_sdk.fetchReqTimeoutMillis < 0 || this.dataForm_sdk.minFetchIntervalMillis < 0) {
+        if (isNaN(Number(this.dataForm_sdk.fetchReqTimeoutMillis)) || isNaN(Number(this.dataForm_sdk.minFetchIntervalMillis))) {
+          alert('Please input positive number !');
+          return;
+        }
+        if (Number(this.dataForm_sdk.fetchReqTimeoutMillis) < 0 || Number(this.dataForm_sdk.minFetchIntervalMillis) < 0) {
           alert('Please input positive number !');
           return;
         }
         if (this.dataForm_sdk.fetchReqTimeoutMillis != "") {
           agc.setFetchReqTimeoutMillis(this.dataForm_sdk.fetchReqTimeoutMillis);
+        } else {
+          agc.setFetchReqTimeoutMillis(60 * 1000);
         }
         if (this.dataForm_sdk.minFetchIntervalMillis != "") {
           agc.setMinFetchIntervalMillis(this.dataForm_sdk.minFetchIntervalMillis);
+        } else {
+          agc.setMinFetchIntervalMillis(12 * 60 * 60 * 1000);
         }
         alert('property set successfully!');
       },
@@ -177,7 +204,6 @@
         }
       },
       applyDefault() {
-        agc.applyDefault(defaultConfigMap);
         if (this.dataForm_sdk.defaultConfig != '') {
           if (typeof this.dataForm_sdk.defaultConfig == 'string') {
             try {
@@ -188,13 +214,13 @@
                   defaultConfigMap.set(k, JSON.stringify(defaultConfigJson[k]));
                 }
                 agc.applyDefault(defaultConfigMap);
-                alert('success');
+                alert('applyDefault success');
               } else {
                 alert('please input JSON string!');
                 this.dataForm_sdk.defaultConfig = '';
               }
             } catch (e) {
-              alert(JSON.stringify(e));
+              alert('please input JSON string!');
               this.dataForm_sdk.defaultConfig = '';
             }
           }
@@ -211,7 +237,9 @@
         this.$router.go(0);
       },
       clearAll() {
-        agc.clearAll();
+        agc.clearAll().then(()=>{
+          alert('clearAll OK');
+        });
       }
     },
   };

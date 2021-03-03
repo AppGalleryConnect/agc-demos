@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VKi-BW-MJZ">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Remote Config-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Remote Config" id="BYZ-38-t0r" customClass="ViewController" customModule="AGConnectRemoteConfigDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSu-mi-049">
+                                <rect key="frame" x="37.666666666666657" y="278" width="300" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Mode 2 : Fetch And Activate Next Time">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigateToMode2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sfp-Nh-SfZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWY-f8-crz">
+                                <rect key="frame" x="37.666666666666657" y="199" width="300" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="4MF-5m-O3j"/>
+                                    <constraint firstAttribute="height" constant="40" id="lY7-Yu-Yjd"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Mode 1 : Fetch And Activate Immediately">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigateToMode1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g8K-la-tOL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please clear data before switching modes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-Ia-tka">
+                                <rect key="frame" x="37.666666666666657" y="398" width="300" height="40.666666666666686"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fm-X6-WMY">
+                                <rect key="frame" x="97.666666666666686" y="458.66666666666669" width="180" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Clear Data">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sk0-bD-DmN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qWY-f8-crz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1XT-dV-OLL"/>
+                            <constraint firstItem="fSu-mi-049" firstAttribute="height" secondItem="qWY-f8-crz" secondAttribute="height" id="5Qx-zS-OVV"/>
+                            <constraint firstItem="9fm-X6-WMY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9Wf-bF-22g"/>
+                            <constraint firstItem="fSu-mi-049" firstAttribute="leading" secondItem="qWY-f8-crz" secondAttribute="leading" id="GRb-E7-Eb8"/>
+                            <constraint firstItem="9fm-X6-WMY" firstAttribute="height" secondItem="fSu-mi-049" secondAttribute="height" id="Ndk-gf-QjU"/>
+                            <constraint firstItem="fSu-mi-049" firstAttribute="trailing" secondItem="qWY-f8-crz" secondAttribute="trailing" id="XcP-v2-QXh"/>
+                            <constraint firstItem="9fm-X6-WMY" firstAttribute="width" secondItem="fSu-mi-049" secondAttribute="width" multiplier="0.6" id="egz-L6-dbP"/>
+                            <constraint firstItem="9fm-X6-WMY" firstAttribute="top" secondItem="bfM-Ia-tka" secondAttribute="bottom" constant="20" id="evK-aD-9PS"/>
+                            <constraint firstItem="qWY-f8-crz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="111" id="fQG-Az-g8A"/>
+                            <constraint firstItem="bfM-Ia-tka" firstAttribute="leading" secondItem="fSu-mi-049" secondAttribute="leading" id="fyt-LU-nn9"/>
+                            <constraint firstItem="fSu-mi-049" firstAttribute="top" secondItem="qWY-f8-crz" secondAttribute="bottom" constant="39" id="o2l-6s-0f5"/>
+                            <constraint firstItem="bfM-Ia-tka" firstAttribute="top" secondItem="fSu-mi-049" secondAttribute="bottom" constant="80" id="prj-CD-lHq"/>
+                            <constraint firstItem="bfM-Ia-tka" firstAttribute="trailing" secondItem="fSu-mi-049" secondAttribute="trailing" id="qnS-dI-MYX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Remote Config" id="RYe-BK-8hA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1064" y="82"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PYT-MQ-QSF">
+            <objects>
+                <navigationController id="VKi-BW-MJZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AzA-yR-AUd">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="TRx-bD-cdj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ITp-0j-oNo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="242" y="82"/>
+        </scene>
+    </scenes>
+</document>

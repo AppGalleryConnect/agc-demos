@@ -20,3 +20,4 @@ new Vue({
 let vConsole = new Vconsole();
 
 export default vConsole;
+

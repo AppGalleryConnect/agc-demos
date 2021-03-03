@@ -1,6 +1,21 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
 import agconnect from '@agconnect/api';
 import '@agconnect/auth';
-import '@agconnect/network';
 import '@agconnect/instance';
 
 export class AuthCrypt {
@@ -25,22 +40,34 @@ Crypt.prototype.decrypt = function (value) {
   return value.split('---')[0];
 };
 
-//set a cryptImpl only for auth, this cryptImpl can encrypt your auth info
-//when they are stored in browser indexDB and sessionStorage
+/**
+ * Set the object to encrypt/decrypt user Info,only for auth.
+ * @param cryptImpl object used to encrypt/decrypt
+ */
 export function setAuthCryptImp(cryptImpl) {
   agconnect.auth().setCryptImp(cryptImpl);
 }
 
-//set a default cryptImpl, this cryptImpl can encrypt your client token as well
+/**
+ * Set the object to encrypt/decrypt Info, sach as clinet token.
+ * @param cryptImpl object used to encrypt/decrypt
+ */
 export function setCryptImp(cryptImpl) {
   agconnect.instance().setCryptImp(cryptImpl);
 }
 
-// Set where auth-related data is stored locally。0：indexDB；1：sessionStorage；2：memory
+/**
+ * Set where auth-related data is stored locally。0：indexedDB；1：sessionStorage；2：memory
+ * @param saveMode storage mode
+ */
 function setUserInfoPersistence(saveMode) {
   agconnect.auth().setUserInfoPersistence(saveMode);
 }
 
+/**
+ * Signs in a user to AppGallery Connect through third-party authentication.
+ * @param credential AGConnectAuthCredential
+ */
 function login(credential) {
   return agconnect
     .auth()
@@ -53,6 +80,13 @@ function login(credential) {
     });
 }
 
+/**
+ * Obtains a credential using a mobile number and password or verification code.
+ * @param countryCode Country/Region code
+ * @param account phoneNumber
+ * @param password password
+ * @param verifyCode verification code
+ */
 function getPhoneCredential(countryCode, account, password, verifyCode) {
   if (verifyCode) {
     return agconnect.auth.PhoneAuthProvider.credentialWithVerifyCode(countryCode, account, password, verifyCode);
@@ -60,6 +94,12 @@ function getPhoneCredential(countryCode, account, password, verifyCode) {
   return agconnect.auth.PhoneAuthProvider.credentialWithPassword(countryCode, account, password);
 }
 
+/**
+ * Obtains a credential using an email address and a password or a verification code.
+ * @param account email address
+ * @param password password
+ * @param verifyCode verification code
+ */
 function getEmailCredential(account, password, verifyCode) {
   if (verifyCode) {
     return agconnect.auth.EmailAuthProvider.credentialWithVerifyCode(account, password, verifyCode);
@@ -67,7 +107,14 @@ function getEmailCredential(account, password, verifyCode) {
   return agconnect.auth.EmailAuthProvider.credentialWithPassword(account, password);
 }
 
-/* eslint-disable */
+/**
+ * Obtains a credential using a mobile number and password or verification code,
+ * then use the credential to login.
+ * @param countryCode Country/Region code
+ * @param account phoneNumber
+ * @param password password
+ * @param verifyCode verification code
+ */
 function loginWithPhone(countryCode, account, password, verifyCode) {
   let credential = getPhoneCredential(countryCode, account, password, verifyCode);
   if (!credential) {
@@ -76,7 +123,12 @@ function loginWithPhone(countryCode, account, password, verifyCode) {
   return login(credential);
 }
 
-/* eslint-disable */
+/**
+ * Obtains a credential of WeChat, then use the credential to login.
+ * @param token Access token obtained after WeChat SDK authorization.
+ * @param openId OpenID obtained after WeChat SDK authorization.
+ * @param autoCreateUser (Optional) Indicates whether to automatically create an account. The default value is true (yes)
+ */
 function loginWithWeChat(token, openId, autoCreateUser = true) {
   let credential = agconnect.auth.WeixinAuthProvider.credentialWithToken(token, openId, autoCreateUser);
   if (!credential) {
@@ -85,6 +137,12 @@ function loginWithWeChat(token, openId, autoCreateUser = true) {
   return login(credential);
 }
 
+/**
+ * Obtains a credential of QQ, then use the credential to login.
+ * @param token Token obtained after QQ SDK authorization.
+ * @param openId OpenID obtained after QQ SDK authorization.
+ * @param autoCreateUser (Optional) Indicates whether to automatically create an account. The default value is true (yes).
+ */
 function loginWithQQ(token, openId, autoCreateUser = true) {
   let credential = agconnect.auth.QQAuthProvider.credentialWithToken(token, openId, autoCreateUser);
   if (!credential) {
@@ -93,6 +151,13 @@ function loginWithQQ(token, openId, autoCreateUser = true) {
   return login(credential);
 }
 
+/**
+ * Obtains a credential using an email address and a password or a verification code，
+ * then use the credential to login.
+ * @param account email address
+ * @param password password
+ * @param verifyCode verification code
+ */
 function loginWithEmail(account, password, verifyCode) {
   let credential = getEmailCredential(account, password, verifyCode);
   if (!credential) {
@@ -101,6 +166,9 @@ function loginWithEmail(account, password, verifyCode) {
   return login(credential);
 }
 
+/**
+ * Signs in a user anonymously.
+ */
 function loginAnonymously() {
   return agconnect
     .auth()
@@ -113,7 +181,14 @@ function loginAnonymously() {
     });
 }
 
-async function createPhoneUser(countryCode, account, verifyCode, password) {
+/**
+ * Creates an account using a mobile number.
+ * @param countryCode Country/Region code
+ * @param account phoneNumber
+ * @param password password
+ * @param verifyCode verification code
+ */
+function createPhoneUser(countryCode, account, verifyCode, password) {
   return agconnect
     .auth()
     .createPhoneUser(new agconnect.auth.PhoneUser(countryCode, account, password, verifyCode))
@@ -125,6 +200,12 @@ async function createPhoneUser(countryCode, account, verifyCode, password) {
     });
 }
 
+/**
+ * Creates an account using a email address.
+ * @param account email address
+ * @param password password
+ * @param verifyCode verification code
+ */
 function createEmailUser(account, password, verifyCode) {
   return agconnect
     .auth()
@@ -133,10 +214,13 @@ function createEmailUser(account, password, verifyCode) {
       return Promise.resolve(res);
     })
     .catch((err) => {
-      return Promise.reject('create phone user failed');
+      return Promise.reject('create email user failed');
     });
 }
 
+/**
+ * Obtains information about the current signed-in user.
+ */
 function getUserInfo() {
   return agconnect
     .auth()
@@ -145,12 +229,19 @@ function getUserInfo() {
       return Promise.resolve(user);
     })
     .catch((err) => {
-      console.log("----getuserinfo err:", err)
+      console.error("get user info err:", err)
       return Promise.reject('get user error', err);
     });
 }
 
-function getVerifyCode(countryCode, account, lang, sendInterval) {
+/**
+ * Applies for a verification code using a mobile number.
+ * @param countryCode Country/Region code
+ * @param account phoneNumber
+ * @param lang Language for sending a verification code, for example, zh_CN.
+ * @param sendInterval Interval for sending verification codes, in seconds. The value ranges from 30 to 120.
+ */
+function getPhoneVerifyCode(countryCode, account, lang, sendInterval) {
   return agconnect.auth.PhoneAuthProvider.requestVerifyCode(
     countryCode,
     account,
@@ -166,6 +257,12 @@ function getVerifyCode(countryCode, account, lang, sendInterval) {
     });
 }
 
+/**
+ * Applies for a verification code using an email address.
+ * @param account email address
+ * @param lang Language for sending a verification code, for example, zh_CN.
+ * @param sendInterval Interval for sending verification codes, in seconds. The value ranges from 30 to 120.
+ */
 function getEmailVerifyCode(account, lang, sendInterval) {
   return agconnect.auth.EmailAuthProvider.requestVerifyCode(
     account,
@@ -181,6 +278,9 @@ function getEmailVerifyCode(account, lang, sendInterval) {
     });
 }
 
+/**
+ * Signs out a user and deletes the user's cached data.
+ */
 function logout() {
   return agconnect
     .auth()
@@ -193,6 +293,9 @@ function logout() {
     });
 }
 
+/**
+ * Links a new authentication mode for the current user.
+ */
 function link(linkObj, param1, param2, param3) {
   return agconnect.auth().getCurrentUser().then(async user => {
     let credential = undefined;
@@ -213,12 +316,19 @@ function link(linkObj, param1, param2, param3) {
   });
 }
 
+/**
+ * Unlinks the current user from the linked authentication mode.
+ * @param credentialProvider AGConnectAuthCredentialProvider
+ */
 function unlink(credentialProvider) {
   return agconnect.auth().getCurrentUser().then(async user => {
     await user.unlink(credentialProvider);
   });
 }
 
+/**
+ * Deletes the current user information and cache information from the AppGallery Connect server.
+ */
 function deleteUser() {
   return agconnect.auth().deleteUser();
 }
@@ -233,7 +343,7 @@ export {
   createPhoneUser,
   createEmailUser,
   getUserInfo,
-  getVerifyCode,
+  getPhoneVerifyCode,
   getEmailVerifyCode,
   logout,
   deleteUser,

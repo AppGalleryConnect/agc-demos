@@ -61,21 +61,21 @@
 #pragma mark - tapGestureEvent
 - (void)tapGestureEvent:(UITapGestureRecognizer *)gesture {
     // Anonymous logins
-    __weak typeof(self) wself = self;
+    __weak typeof(self) weakSelf = self;
     [[CloudDBManager shareInsatnce] loginAGCWithComplete:^(BOOL success, NSError *error) {
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [wself.view makeToast:@"Login Success"];
-                [wself.loginView loginSuccess];
+                [weakSelf.view makeToast:@"Login Success"];
+                [weakSelf.loginView loginSuccess];
             });
             // Login suceess post notification refresh mainpage
             [[NSNotificationCenter defaultCenter] postNotificationName:@"KNotificationRefreshBookList" object:nil];
             // Login suceess add AGC listener to listen for data changes
-            [wself addListener];
+            [weakSelf addListener];
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *errorString = [NSString stringWithFormat:@"AGC login failed with error: %@", error];
-                [wself.view makeToast:errorString];
+                [weakSelf.view makeToast:errorString];
             });
         }
     }];
@@ -87,12 +87,12 @@
  */
 - (void)addListener {
     sleep(2);
-    __weak typeof(self) wself = self;
+    __weak typeof(self) weakSelf = self;
     [[CloudDBManager shareInsatnce] subscribeSnapshotComplete:^(NSArray *_Nonnull bookList, NSError *error) {
         if (error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *errorString = [NSString stringWithFormat:@"add listener failed with error: %@", error];
-                [wself.view makeToast:errorString];
+                [weakSelf.view makeToast:errorString];
             });
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"KNotificationRefreshBookList" object:nil];

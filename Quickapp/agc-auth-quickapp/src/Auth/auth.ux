@@ -1,0 +1,662 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+<template>
+  <!-- Only one root node is allowed in template. -->
+  <div class="container">
+    <div class="label-item">
+      <label class='lable1' target="input1">account:</label>
+      <input class="flex" id="input1" placeholder={{acount}} onchange="setAcount" />
+    </div>
+    <div class="label-item">
+      <label class='lable1' target="input2">password:</label>
+      <input class="flex" id="input2" placeholder={{password}} onchange="setPassword" />
+    </div>
+    <div class="label-item">
+      <label class='lable1' target="input3">verifyCode:</label>
+      <input class="flex" id="input3" placeholder={{verifyCode}} onchange="setVerifyCode" />
+    </div>
+    <div class="item-container">
+      <text style="margin-bottom: 50px;font-size: 40px;">login mode:</text>
+      <select class="select" id="select1" onchange="changeValue">
+        <option class="option" value="phone">phone</option>
+        <option class="optionrgb" value="email" selected="true">email</option>
+        <option class="optionhw" value="HWId">HWId</option>
+      </select>
+    </div>
+    <div class="label-item">
+      <input type="button" value="get PIN" @click="getVerifyCode" />
+      <input type="button" value="user register" style="margin-left: 100px" @click="registerUser" />
+    </div>
+
+
+    <div class="label-item">
+      <input type="button" value="login by PWD" @click="signPassword" />
+      <input type="button" value="login by PIN" style="margin-left: 100px" @click="signVerifycode" />
+    </div>
+    <div class="label-item">
+      <input type="button" value="login anonymously" @click="signInAnonymously" />
+      <input type="button" value="log out" style="margin-left: 100px" @click="signout" />
+    </div>
+    <div class="label-item">
+      <input type="button" value="link" @click="link" />
+      <input type="button" value="unlink" style="margin-left: 100px" @click="unlink" />
+    </div>
+    <div class="label-item">
+      <input type="button" value="delete user" @click="deleteUser" />
+      <input type="button" value="refresh user info" style="margin-left: 100px" @click="getCurrentUser" />
+    </div>
+
+    <div class="label-item">
+      <input type="button" value="login by HwID" @click="HwIDLogin" />
+    </div>
+
+    <div class="label-item">
+      <label target="input1">isAnoymous:</label>
+      <input class="flex1" id="input4" placeholder={{isAnoymous}} />
+    </div>
+    <div class="label-item">
+      <label target="input1">uid:</label>
+      <input class="flex1" id="input5" placeholder={{uid}} />
+    </div>
+    <div class="label-item">
+      <label target="input1">Email:</label>
+      <input class="flex1" id="input6" placeholder={{email}} />
+    </div>
+    <div class="label-item">
+      <label target="input1">phone:</label>
+      <input class="flex1" id="input7" placeholder={{phone}} />
+    </div>
+    <div class="label-item">
+      <label target="input1">displayName:</label>
+      <input class="flex1" id="input8" placeholder={{displayName}} />
+    </div>
+    <div class="label-item">
+      <label target="input1">photoUrl:</label>
+      <input class="flex1" id="input9" placeholder={{photoUrl}} />
+    </div>
+    <div class="label-item">
+      <label target="input1">providerId:</label>
+      <input class="flex1" id="input10" placeholder={{providerId}} />
+    </div>
+    <div class="label-item">
+      <label target="input1">accessToken:</label>
+      <!-- <input class="flex1"  id="input11" placeholder={{accessToken}}  /> -->
+
+    </div>
+    <div class="label-item">
+      <textarea placeholder={{accessToken}}></textarea>
+    </div>
+  </div>
+</template>
+
+<style>
+  @import "../Common/CSS/common.css";
+
+  .container {
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    /* align-content: center; */
+    /* align-items: center; */
+  }
+  input {
+    width: 350px;
+    height: 70px;
+    background-color: #fffafa;
+    border: 1px solid;
+    margin-top: 40px;
+    align-content: center;
+    text-align: center;
+  }
+
+  .label-item {
+    align-items: center;
+    border-bottom-width: 1px;
+    border-color: #dddddd;
+  }
+
+  label {
+    font-size: 40px;
+    width: 250px;
+    height: 70px;
+  }
+  .title {
+    font-size: 100px;
+  }
+
+  .select {
+    margin-left: 40px;
+    margin-right: 30px;
+    align-items: flex-start;
+    border-color: #007DFF;
+    border-width: 1px;
+    width: 200px;
+    height: 70px;
+  }
+  .lable1 {
+    width: 250px;
+  }
+
+  .flex {
+    width: 500px;
+  }
+
+  .flex1 {
+    width: 400px;
+    margin-left: 20px;
+  }
+</style>
+
+<script>
+  import prompt from '@system.prompt';
+  import account from '@service.account';
+  const fetch = require("@system.fetch");
+  module.exports = {
+    data: {
+      acount: '',
+      password: '',
+      verifyCode: '',
+      loginmode: 'email',
+      isAnoymous: '',
+      uid: '',
+      email: '',
+      phone: '',
+      displayName: '',
+      phoneUrl: '',
+      providerId: '',
+      accessToken: ''
+    },
+
+    changeValue(e) {
+      this.loginmode = e.newValue;
+      prompt.showToast({
+        message: `[${e.newValue}] selected`,
+        duration: 3500,
+        gravity: 'center'
+      })
+    },
+
+    setAcount(e) {
+      this.acount = e.value;
+    },
+
+    setPassword(e) {
+      this.password = e.value;
+    },
+
+    setVerifyCode(e) {
+      this.verifyCode = e.value;
+    },
+
+    signInAnonymously() {
+      let agconnect = this.$app.$def.agc;
+      agconnect
+        .auth()
+        .signInAnonymously()
+        .then((res) => {
+          this.getCurrentUser();
+          prompt.showToast({
+            message: `login success`,
+            duration: 3500,
+            gravity: 'center'
+          });
+
+        })
+        .catch((err) => {
+          console.log(JSON.stringify(err));
+          prompt.showToast({
+            message: JSON.stringify(err),
+            duration: 3500,
+            gravity: 'center'
+          });
+        });
+    },
+
+    signout() {
+      let agconnect = this.$app.$def.agc;
+      agconnect.auth().signOut().then(res => {
+        this.getCurrentUser();
+        console.log("signOut success");
+        prompt.showToast({
+          message: "signOut success",
+          duration: 3500,
+          gravity: 'center'
+        });
+      }).catch(err => {
+        console.log(JSON.stringify(err));
+        prompt.showToast({
+          message: JSON.stringify(err),
+          duration: 3500,
+          gravity: 'center'
+        });
+      });
+    },
+
+    signPassword() {
+      let acount = this.acount;
+      let password = this.password;
+      let agconnect = this.$app.$def.agc;
+      let loginmode = this.loginmode;
+      if (loginmode == 'phone') {
+        let credential = agconnect.auth.PhoneAuthProvider.credentialWithPassword('86', acount, password);
+        agconnect.auth().signIn(credential).then(res => {
+          this.getCurrentUser();
+          prompt.showToast({
+            message: 'login phone success',
+            duration: 3500,
+            gravity: 'center'
+          });
+        }).catch(err => {
+          prompt.showToast({
+            message: JSON.stringify(err),
+            duration: 3500,
+            gravity: 'center'
+          });
+          console.log(JSON.stringify(err));
+        });
+      } else if (loginmode == 'email') {
+        let credential = agconnect.auth.EmailAuthProvider.credentialWithPassword(acount, password);
+        agconnect.auth().signIn(credential).then(res => {
+          this.getCurrentUser();
+          prompt.showToast({
+            message: 'login email success',
+            duration: 3500,
+            gravity: 'center'
+          });
+        }).catch(err => {
+          console.log(JSON.stringify(err));
+          prompt.showToast({
+            message: JSON.stringify(err),
+            duration: 3500,
+            gravity: 'center'
+          });
+        });
+      }
+    },
+
+    getVerifyCode() {
+      let loginmode = this.loginmode;
+      let acount = this.acount;
+      let agconnect = this.$app.$def.agc;
+      if (loginmode == 'phone') {
+        agconnect.auth.PhoneAuthProvider
+          .requestVerifyCode("86", acount, agconnect.auth.Action.ACTION_REGISTER_LOGIN, 'zh_cn')
+          .then(res => {
+            console.log(res.getValidityPeriod() + res.getShortestInterval());
+            prompt.showToast({
+              message: 'getVerifyCode success',
+              duration: 3500,
+              gravity: 'center'
+            });
+          }).catch(err => {
+            console.log(JSON.stringify(err));
+            prompt.showToast({
+              message: JSON.stringify(err),
+              duration: 3500,
+              gravity: 'center'
+            });
+          });
+      } else if (loginmode == 'email') {
+        agconnect.auth.EmailAuthProvider.requestVerifyCode(acount, agconnect.auth.Action.ACTION_REGISTER_LOGIN, 'zh_cn', 30)
+          .then(res => {
+            console.log(res.getValidityPeriod() + res.getShortestInterval());
+            prompt.showToast({
+              message: 'getVerifyCode success',
+              duration: 3500,
+              gravity: 'center'
+            });
+          }).catch(err => {
+            console.log(JSON.stringify(err));
+            prompt.showToast({
+              message: JSON.stringify(err),
+              duration: 3500,
+              gravity: 'center'
+            });
+          })
+      }
+
+    },
+
+    registerUser() {
+      let acount = this.acount;
+      let verifyCode = this.verifyCode;
+      let password = this.password;
+      let agconnect = this.$app.$def.agc;
+      let loginmode = this.loginmode;
+      if (loginmode == 'phone') {
+        let phone = new agconnect.auth.PhoneUser('86', acount, password, verifyCode);
+        agconnect.auth().createPhoneUser(phone).then(res => {
+          this.getCurrentUser();
+          prompt.showToast({
+            message: 'register phone success',
+            duration: 3500,
+            gravity: 'center'
+          });
+        }).catch(err => {
+          console.log(JSON.stringify(err));
+          prompt.showToast({
+            message: JSON.stringify(err),
+            duration: 3500,
+            gravity: 'center'
+          });
+        })
+      } else if (loginmode == 'email') {
+        let email = new agconnect.auth.EmailUser(acount, password, verifyCode);
+        agconnect.auth().createEmailUser(email).then(res => {
+          this.getCurrentUser();
+          prompt.showToast({
+            message: 'register email success',
+            duration: 3500,
+            gravity: 'center'
+          });
+        }).catch(err => {
+          prompt.showToast({
+            message: JSON.stringify(err),
+            duration: 3500,
+            gravity: 'center'
+          });
+        });
+      }
+    },
+
+    signVerifycode() {
+      let acount = this.acount;
+      let verifyCode = this.verifyCode;
+      let password = this.password;
+      let agconnect = this.$app.$def.agc;
+      let loginmode = this.loginmode;
+      if (loginmode == 'phone') {
+        let credential = agconnect.auth.PhoneAuthProvider.credentialWithVerifyCode('86', acount, password, verifyCode);
+        agconnect.auth().signIn(credential).then(res => {
+          this.getCurrentUser();
+          prompt.showToast({
+            message: 'phone login success',
+            duration: 3500,
+            gravity: 'center'
+          });
+        }).catch(err => {
+          console.log(JSON.stringify(err));
+          prompt.showToast({
+            message: JSON.stringify(err),
+            duration: 3500,
+            gravity: 'center'
+          });
+        });
+      } else if (loginmode == 'email') {
+        let credential = agconnect.auth.EmailAuthProvider.credentialWithVerifyCode(acount, password, verifyCode);
+        agconnect.auth().signIn(credential).then(res => {
+          this.getCurrentUser();
+          prompt.showToast({
+            message: 'email login success',
+            duration: 3500,
+            gravity: 'center'
+          });
+        }).catch(err => {
+          console.log(JSON.stringify(err));
+          prompt.showToast({
+            message: JSON.stringify(err),
+            duration: 3500,
+            gravity: 'center'
+          });
+        });
+      }
+
+    },
+
+    link() {
+      let acount = this.acount;
+      let verifyCode = this.verifyCode;
+      let password = this.password;
+      let agconnect = this.$app.$def.agc;
+      let loginmode = this.loginmode;
+      return agconnect.auth().getCurrentUser().then(async user => {
+        if (loginmode == 'phone') {
+          let credential = agconnect.auth.PhoneAuthProvider.credentialWithVerifyCode('86', acount, password, verifyCode);
+          if (credential) {
+            await user.link(credential).then(res => {
+              this.getCurrentUser();
+              prompt.showToast({
+                message: 'link phone success',
+                duration: 3500,
+                gravity: 'center'
+              });
+
+            }).catch(err => {
+              console.log("err:" + JSON.stringify(err));
+              prompt.showToast({
+                message: JSON.stringify(err),
+                duration: 3500,
+                gravity: 'center'
+              });
+            });
+          }
+        } else if (loginmode == 'email') {
+          let credential = agconnect.auth.EmailAuthProvider.credentialWithVerifyCode(acount, password, verifyCode);
+          if (credential) {
+            await user.link(credential).then(res => {
+              this.getCurrentUser();
+              prompt.showToast({
+                message: 'link email success',
+                duration: 3500,
+                gravity: 'center'
+              });
+            }).catch(err => {
+              console.log("err:" + JSON.stringify(err));
+              prompt.showToast({
+                message: JSON.stringify(err),
+                duration: 3500,
+                gravity: 'center'
+              });
+            })
+          }
+        } else if (loginmode == 'HWId') {
+          console.log("HWId link")
+          let that = this;
+          account.authorize({
+            appid: "103440689",
+            type: "token",
+            state: "feedbeef",
+            scope: "scope.baseProfile",
+            success: function (data) {
+              console.log("signInByBaseScope Authorize base profile success.");
+              var accessToken = data.accessToken;
+              console.log("signInByBaseScope Authorize base profile success data=" + JSON.stringify(data));
+              let credential = agconnect.auth.HwIdAuthProvider.credentialWithToken(accessToken);
+              if (credential) {
+                user.link(credential).then(res => {
+                  that.getCurrentUser();
+                  console.log(res)
+                  prompt.showToast({
+                    message: 'link HWId success',
+                    duration: 3500,
+                    gravity: 'center'
+                  });
+                }).catch(err => {
+                  console.log("err:" + JSON.stringify(err));
+                  prompt.showToast({
+                    message: JSON.stringify(err),
+                    duration: 3500,
+                    gravity: 'center'
+                  });
+                })
+              }
+            },
+            fail: function (data, code) {
+              console.log("signInByBaseScope Authorize base profile fail, code=" + code + data);
+              prompt.showToast({ message: data + "fail code: " + code })
+            }
+          });
+        }
+      }).catch(err => {
+        console.log("err:" + err);
+      });
+    },
+
+    unlink() {
+      let agconnect = this.$app.$def.agc;
+      let loginmode = this.loginmode;
+      agconnect.auth().getCurrentUser().then(async user => {
+        if (loginmode == 'phone') {
+          await user.unlink(11);
+          this.getCurrentUser();
+          prompt.showToast({
+            message: 'unlink phone success',
+            duration: 3500,
+            gravity: 'center'
+          });
+        } else if (loginmode == 'email') {
+          await user.unlink(12);
+          this.getCurrentUser();
+          prompt.showToast({
+            message: 'unlink email success',
+            duration: 3500,
+            gravity: 'center'
+          });
+        } else if (loginmode == 'HWId') {
+          await user.unlink(1);
+          this.getCurrentUser();
+          prompt.showToast({
+            message: 'unlink email success',
+            duration: 3500,
+            gravity: 'center'
+          });
+        }
+      }).catch(err => {
+        console.log("err:" + JSON.stringify(err));
+        prompt.showToast({
+          message: JSON.stringify(err),
+          duration: 3500,
+          gravity: 'center'
+        });
+      })
+    },
+
+    HwIDLogin() {
+      let agconnect = this.$app.$def.agc;
+      let that = this;
+      if (this.loginmode == 'HWId') {
+        account.authorize({
+          appid: "103440689",
+          type: "code",
+          state: 5,
+          scope: "scope.baseProfile",
+          redirectUri: "http://www.example.com/",
+          success: function (data) {
+            console.log("signInByBaseScope Authorize base profile success.");
+            var returnCode = data.code;
+            console.log("signInByBaseScope Authorize base profile success data=" + JSON.stringify(returnCode));
+
+            var body = {
+              grant_type: "authorization_code",
+              code: returnCode,
+              client_id: '103440689',
+              client_secret: "881d8417a8f7d85b57347d5da932f5764b4954b17a4371be000336c2878388e2",
+              redirect_uri: "hms://redirect_url"
+            };
+
+            fetch.fetch({
+              url: 'https://login.cloud.huawei.com/oauth2/v2/token',
+              data: body,
+              header: { 'User-Agent': 'Mozilla/5.0 (Linux; U; Android 7.0; zh-cn; STF-AL00 Build/HUAWEISTF-AL00) AppleWebKit/537.36 (KHTML, like Gecko)Version/4.0 Chrome/37.0.0.0 MQQBrowser/7.9 Mobile Safari/537.36', 'Accept-Encoding': 'gzip, deflate', 'Accept-Language': 'zh-CN,en-US;q=0.8,en;q=0.6', 'Content-Type': 'application/x-www-form-urlencoded' },
+              responseType: 'json',
+              method: 'POST',
+              success: function (ret) {
+                console.log(JSON.stringify(ret.data))
+                prompt.showToast({
+                  message: 'success'
+                })
+                if (ret.data.access_token) {
+                  var access_token = ret.data.access_token.split('\\').join("");
+                  let credential = agconnect.auth.HwIdAuthProvider.credentialWithToken(access_token);
+                  if (credential) {
+                    agconnect.auth().signIn(credential).then(res => {
+                      that.getCurrentUser();
+                      console.log(res);
+                      // 登陆成功
+                    })
+                  }
+                }
+              },
+              fail: function (msg, code) {
+                console.log(msg, code)
+              },
+              complete: function () {
+                console.log('complete')
+              }
+            })
+          },
+          fail: function (data, code) {
+            console.log("signInByBaseScope Authorize base profile fail, code=" + code + data);
+            prompt.showToast({ message: data + "fail code: " + code })
+          }
+        });
+      }
+    },
+
+    deleteUser() {
+      let agconnect = this.$app.$def.agc;
+      agconnect.auth().getCurrentUser().then(async user => {
+        if (user) {
+          agconnect.auth().deleteUser().then(() => {
+            this.getCurrentUser();
+            prompt.showToast({
+              message: 'deleteUser success',
+              duration: 3500,
+              gravity: 'center'
+            });
+          }).catch(err => {
+            prompt.showToast({
+              message: JSON.stringify(err),
+              duration: 3500,
+              gravity: 'center'
+            });
+          })
+        } else {
+          prompt.showToast({
+            message: 'please login before',
+            duration: 3500,
+            gravity: 'center'
+          });
+        }
+      });
+    },
+    getCurrentUser() {
+      let agconnect = this.$app.$def.agc;
+      agconnect.auth().getCurrentUser().then(res => {
+        if (res) {
+          this.isAnoymous = res.isAnonymous();
+          this.uid = res.getUid();
+          this.email = res.getEmail();
+          this.phone = res.getPhone();
+          this.displayName = res.getDisplayName();
+          this.photoUrl = res.getPhotoUrl();
+          this.providerId = res.getProviderId();
+          this.accessToken = res.getAccessToken();
+        }
+        else {
+          this.isAnoymous = '';
+          this.uid = '';
+          this.email = '';
+          this.phone = '';
+          this.displayName = '';
+          this.photoUrl = '';
+          this.providerId = '';
+          this.accessToken = '';
+        }
+      })
+    }
+  }
+</script>

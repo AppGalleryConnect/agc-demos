@@ -93,18 +93,18 @@
         [self.view makeToast:@"Please login first"];
         return;
     }
-    __weak typeof(self) wself = self;
+    __weak typeof(self) weakSelf = self;
     if (!self.bookModel) { // insert book
         [[CloudDBManager shareInsatnce] executeUpsertWithBook:self.dataModel complete:^(BOOL success, NSError *error) {
             if (success) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"KNotificationRefreshBookList" object:nil];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [wself.navigationController popViewControllerAnimated:YES];
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
                 });
             } else {
                 NSString *errorString = [NSString stringWithFormat:@"Add failed with error：%@", error];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [wself.view makeToast:errorString];
+                    [weakSelf.view makeToast:errorString];
                 });
             }
         }];
@@ -113,13 +113,13 @@
             if (success) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"KNotificationRefreshBookList" object:nil];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [wself.navigationController popViewControllerAnimated:YES];
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
                 });
             } else {
                 NSString *errorString = [NSString stringWithFormat:@"Add failure：%@", error];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [wself.view makeToast:errorString];
+                    [weakSelf.view makeToast:errorString];
                 });
             }
         }];
@@ -152,7 +152,8 @@
             bottomSafeMargin = 34;
         }
         
-        footerView.frame = CGRectMake(0,  [UIScreen mainScreen].bounds.size.height - 60 - navigationHeigth - bottomSafeMargin, [UIScreen mainScreen].bounds.size.width, 60);
+        footerView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 60 - navigationHeigth - bottomSafeMargin,
+                                      [UIScreen mainScreen].bounds.size.width, 60);
         _footerView = footerView;
         
         UIButton *addButton = [[UIButton alloc] init];

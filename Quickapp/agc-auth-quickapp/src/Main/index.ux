@@ -1,0 +1,57 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+<template>
+  <!-- Only one root node is allowed in template. -->
+  <div class="container">
+    <input type="button" value="auth" @click="toAuth" />
+  </div>
+</template>
+
+<style>
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+  input {
+    width: 500px;
+    height: 150px;
+    background-color: #fffafa;
+    border: 1px solid #aaaaaa;
+    margin-top: 80px;
+  }
+
+  .title {
+    font-size: 100px;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      title: 'Auth'
+    },
+    toAuth() {
+      var router = require("@system.router")
+      router.push({
+        uri: '/Auth',
+        params: { body: " test send message" }
+      })
+    }
+  }
+</script>

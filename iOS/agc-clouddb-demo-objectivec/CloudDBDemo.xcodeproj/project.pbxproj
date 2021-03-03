@@ -17,7 +17,6 @@
 		7E6586B624C18DC500D8A284 /* NatrualbassDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D5B0824B0323A0086F307 /* NatrualbassDemoTests.m */; };
 		7E6586B724C18DD100D8A284 /* CloudDBDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D5B1324B0323A0086F307 /* CloudDBDemoUITests.m */; };
 		7E76EF7624C5475B0026BEA9 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E76EF7524C5475B0026BEA9 /* libc++.tbd */; };
-		7EAD749824FE38E000FCB16F /* AGCCloudDBObjectTypeInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAD749724FE38E000FCB16F /* AGCCloudDBObjectTypeInfoHelper.m */; };
 		7EAE8EB324D9559D001011BB /* BMAddDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAE8EB224D9559D001011BB /* BMAddDataTableViewCell.m */; };
 		7ED6635624CE80D7002D34D8 /* README_zh.md in Resources */ = {isa = PBXBuildFile; fileRef = 7ED6635424CE80D7002D34D8 /* README_zh.md */; };
 		7ED6635724CE80D7002D34D8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7ED6635524CE80D7002D34D8 /* README.md */; };
@@ -33,7 +32,6 @@
 		7EE2E77E24D04DDA00D41001 /* BMMainHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE2E76E24D04DDA00D41001 /* BMMainHeaderView.m */; };
 		7EE2E77F24D04DDA00D41001 /* BMMainBookListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE2E76F24D04DDA00D41001 /* BMMainBookListTableViewCell.m */; };
 		7EE2E78124D04DDA00D41001 /* BMQueryBookDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE2E77624D04DDA00D41001 /* BMQueryBookDataModel.m */; };
-		7EE2E78424D04EF300D41001 /* BookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE2E78324D04EF300D41001 /* BookInfo.m */; };
 		7EEBC18924CC0BEE0093A43D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EEBC17F24CC0BEE0093A43D /* Assets.xcassets */; };
 		7EEBC18A24CC0BEE0093A43D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBC18024CC0BEE0093A43D /* SceneDelegate.m */; };
 		7EEBC18B24CC0BEE0093A43D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EEBC18124CC0BEE0093A43D /* LaunchScreen.storyboard */; };
@@ -41,6 +39,8 @@
 		7EEBC18D24CC0BEE0093A43D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBC18424CC0BEE0093A43D /* AppDelegate.m */; };
 		7EEBC18F24CC0BEE0093A43D /* BookManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBC18624CC0BEE0093A43D /* BookManager.xcdatamodeld */; };
 		F64885AB2535CA7E00C808CD /* agconnect-services.plist in Resources */ = {isa = PBXBuildFile; fileRef = F64885AA2535CA7E00C808CD /* agconnect-services.plist */; };
+		F68B1BA425A59DD30032F342 /* AGCCloudDBObjectTypeInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F68B1B9F25A59DD30032F342 /* AGCCloudDBObjectTypeInfoHelper.m */; };
+		F68B1BA525A59DD30032F342 /* BookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F68B1BA225A59DD30032F342 /* BookInfo.m */; };
 		F6CBF6052537E14500A0C335 /* BookInfo+DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CBF6042537E14500A0C335 /* BookInfo+DataManager.m */; };
 /* End PBXBuildFile section */
 
@@ -100,8 +100,6 @@
 		7E8D5B0F24B0323A0086F307 /* CloudDBDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudDBDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E8D5B1324B0323A0086F307 /* CloudDBDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudDBDemoUITests.m; sourceTree = "<group>"; };
 		7E8D5B1524B0323B0086F307 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EAD749624FE38E000FCB16F /* AGCCloudDBObjectTypeInfoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCCloudDBObjectTypeInfoHelper.h; sourceTree = "<group>"; };
-		7EAD749724FE38E000FCB16F /* AGCCloudDBObjectTypeInfoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCCloudDBObjectTypeInfoHelper.m; sourceTree = "<group>"; };
 		7EAE8EB124D9559D001011BB /* BMAddDataTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMAddDataTableViewCell.h; sourceTree = "<group>"; };
 		7EAE8EB224D9559D001011BB /* BMAddDataTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMAddDataTableViewCell.m; sourceTree = "<group>"; };
 		7ED6635424CE80D7002D34D8 /* README_zh.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README_zh.md; sourceTree = "<group>"; };
@@ -128,8 +126,6 @@
 		7EE2E76F24D04DDA00D41001 /* BMMainBookListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMMainBookListTableViewCell.m; sourceTree = "<group>"; };
 		7EE2E77524D04DDA00D41001 /* BMQueryBookDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMQueryBookDataModel.h; sourceTree = "<group>"; };
 		7EE2E77624D04DDA00D41001 /* BMQueryBookDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMQueryBookDataModel.m; sourceTree = "<group>"; };
-		7EE2E78224D04EF300D41001 /* BookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookInfo.h; sourceTree = "<group>"; };
-		7EE2E78324D04EF300D41001 /* BookInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookInfo.m; sourceTree = "<group>"; };
 		7EEBC17E24CC0BEE0093A43D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7EEBC17F24CC0BEE0093A43D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EEBC18024CC0BEE0093A43D /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
@@ -139,8 +135,12 @@
 		7EEBC18724CC0BEE0093A43D /* BookManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookManager.xcdatamodel; sourceTree = "<group>"; };
 		7EEBC18824CC0BEE0093A43D /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		88993F765A2CE0F9DE7F34C9 /* Pods-CloudDBDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudDBDemo.release.xcconfig"; path = "Target Support Files/Pods-CloudDBDemo/Pods-CloudDBDemo.release.xcconfig"; sourceTree = "<group>"; };
-		F61835AD2535C704001F187B /* AGCCloudDBObjectTypeHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCCloudDBObjectTypeHeaders.h; sourceTree = "<group>"; };
 		F64885AA2535CA7E00C808CD /* agconnect-services.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "agconnect-services.plist"; sourceTree = "<group>"; };
+		F68B1B9F25A59DD30032F342 /* AGCCloudDBObjectTypeInfoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGCCloudDBObjectTypeInfoHelper.m; sourceTree = "<group>"; };
+		F68B1BA025A59DD30032F342 /* BookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookInfo.h; sourceTree = "<group>"; };
+		F68B1BA125A59DD30032F342 /* AGCCloudDBObjectTypeHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCCloudDBObjectTypeHeaders.h; sourceTree = "<group>"; };
+		F68B1BA225A59DD30032F342 /* BookInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookInfo.m; sourceTree = "<group>"; };
+		F68B1BA325A59DD30032F342 /* AGCCloudDBObjectTypeInfoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGCCloudDBObjectTypeInfoHelper.h; sourceTree = "<group>"; };
 		F6CBF6032537E14500A0C335 /* BookInfo+DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BookInfo+DataManager.h"; sourceTree = "<group>"; };
 		F6CBF6042537E14500A0C335 /* BookInfo+DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BookInfo+DataManager.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -357,25 +357,25 @@
 		7EE2E77024D04DDA00D41001 /* CloudDBObject */ = {
 			isa = PBXGroup;
 			children = (
-				F61835AD2535C704001F187B /* AGCCloudDBObjectTypeHeaders.h */,
-				7EAD749624FE38E000FCB16F /* AGCCloudDBObjectTypeInfoHelper.h */,
-				7EAD749724FE38E000FCB16F /* AGCCloudDBObjectTypeInfoHelper.m */,
-				7EE2E78224D04EF300D41001 /* BookInfo.h */,
-				7EE2E78324D04EF300D41001 /* BookInfo.m */,
-				7EE2E77424D04DDA00D41001 /* Query */,
+				7EE2E77424D04DDA00D41001 /* Model */,
+				F68B1BA125A59DD30032F342 /* AGCCloudDBObjectTypeHeaders.h */,
+				F68B1BA325A59DD30032F342 /* AGCCloudDBObjectTypeInfoHelper.h */,
+				F68B1B9F25A59DD30032F342 /* AGCCloudDBObjectTypeInfoHelper.m */,
+				F68B1BA025A59DD30032F342 /* BookInfo.h */,
+				F68B1BA225A59DD30032F342 /* BookInfo.m */,
 				F6CBF6032537E14500A0C335 /* BookInfo+DataManager.h */,
 				F6CBF6042537E14500A0C335 /* BookInfo+DataManager.m */,
 			);
 			path = CloudDBObject;
 			sourceTree = "<group>";
 		};
-		7EE2E77424D04DDA00D41001 /* Query */ = {
+		7EE2E77424D04DDA00D41001 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				7EE2E77524D04DDA00D41001 /* BMQueryBookDataModel.h */,
 				7EE2E77624D04DDA00D41001 /* BMQueryBookDataModel.m */,
 			);
-			path = Query;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7EEBC17D24CC0BEE0093A43D /* Base */ = {
@@ -416,8 +416,8 @@
 				7E8D5AE324B032370086F307 /* Frameworks */,
 				7E8D5AE424B032370086F307 /* Resources */,
 				7E6586B124C184BD00D8A284 /* Embed Frameworks */,
-				B4B875A405EA1ACECCC11E75 /* [CP] Copy Pods Resources */,
-				00D1D9B815B7114B1E5F2FBD /* [CP] Embed Pods Frameworks */,
+				BC34BB52ADC36495B1A81156 /* [CP] Embed Pods Frameworks */,
+				AB180AE236A20D9AF8F688E5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -542,23 +542,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00D1D9B815B7114B1E5F2FBD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CloudDBDemo/Pods-CloudDBDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CloudDBDemo/Pods-CloudDBDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CloudDBDemo/Pods-CloudDBDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		AA2EEB0EF34A0A64B8235475 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -581,7 +564,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B4B875A405EA1ACECCC11E75 /* [CP] Copy Pods Resources */ = {
+		AB180AE236A20D9AF8F688E5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -596,6 +579,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CloudDBDemo/Pods-CloudDBDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC34BB52ADC36495B1A81156 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CloudDBDemo/Pods-CloudDBDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CloudDBDemo/Pods-CloudDBDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CloudDBDemo/Pods-CloudDBDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -617,15 +617,15 @@
 				7E17B54B24CC1C2A0014990D /* BMNavigationViewController.m in Sources */,
 				7EE2E77924D04DDA00D41001 /* BMLoginView.m in Sources */,
 				7EEBC18A24CC0BEE0093A43D /* SceneDelegate.m in Sources */,
+				F68B1BA525A59DD30032F342 /* BookInfo.m in Sources */,
 				7E17B54A24CC1C2A0014990D /* BMTabBarViewController.m in Sources */,
 				7EE2E75924D04AD900D41001 /* BMMainViewController.m in Sources */,
 				7EE2E77E24D04DDA00D41001 /* BMMainHeaderView.m in Sources */,
 				7EEBC18C24CC0BEE0093A43D /* main.m in Sources */,
 				7EE2E75824D04AD900D41001 /* BMMeViewController.m in Sources */,
 				7EE2E77F24D04DDA00D41001 /* BMMainBookListTableViewCell.m in Sources */,
+				F68B1BA425A59DD30032F342 /* AGCCloudDBObjectTypeInfoHelper.m in Sources */,
 				F6CBF6052537E14500A0C335 /* BookInfo+DataManager.m in Sources */,
-				7EAD749824FE38E000FCB16F /* AGCCloudDBObjectTypeInfoHelper.m in Sources */,
-				7EE2E78424D04EF300D41001 /* BookInfo.m in Sources */,
 				7EE2E78124D04DDA00D41001 /* BMQueryBookDataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -815,7 +815,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.bookinfo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naturalbase.bookInfoDemo;
 				PRODUCT_NAME = CloudDBDemo;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -841,7 +841,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.huawei.bookinfo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naturalbase.bookInfoDemo;
 				PRODUCT_NAME = CloudDBDemo;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

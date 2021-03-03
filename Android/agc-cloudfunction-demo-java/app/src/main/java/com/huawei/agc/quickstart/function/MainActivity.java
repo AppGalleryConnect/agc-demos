@@ -60,6 +60,7 @@ public class MainActivity extends Activity {
         number.number1 = number1Val;
         number.number2 = number2Val;
         Log.i(TAG,"number1:"+number1Val+",number2:"+number2Val);
+        //call cloud function
         Task<FunctionResult> task = function.wrap("add-$latest").call(number);
         task.addOnCompleteListener(new OnCompleteListener<FunctionResult>() {
             @Override

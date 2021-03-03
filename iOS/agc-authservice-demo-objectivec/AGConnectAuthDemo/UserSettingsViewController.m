@@ -1,55 +1,23 @@
-//
-//  Copyright (c) Huawei Technologies Co., Ltd. 2020. All rights reserved
-//
+/*
+    Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
 
 #import "UserSettingsViewController.h"
 #import "BaseProvider.h"
-#import "UserLinkTableViewCell.h"
-#import "RegisterViewController.h"
-#import "WeixinProvider.h"
-#import "QQProvider.h"
-#import "WeiboProvider.h"
-#import "FacebookProvider.h"
-#import "GoogleProvider.h"
-#import "TwitterProvider.h"
-#import "PhoneProvider.h"
-#import "EmailProvider.h"
-#import "SelfBuildProvider.h"
-#import "AnonymousProvider.h"
-#import "AppleProvider.h"
-
-
-@interface LinkItem : NSObject
-
-@property(nonatomic)NSString *name;
-
-@property(nonatomic)NSInteger providerType;
-
-@property(nonatomic)BOOL isLinked;
-
-@end
-
-@implementation LinkItem
-
-@end
-
-LinkItem *item(NSString *name, NSInteger providerType, BOOL isLinked) {
-    LinkItem *linkItem = [[LinkItem alloc] init];
-    linkItem.name = name;
-    linkItem.providerType = providerType;
-    linkItem.isLinked = isLinked;
-    return linkItem;
-}
-
 
 @interface UserSettingsViewController ()
 
 // account settings
 @property (nonatomic) NSArray *settingsArray;
-// link accounts
-@property (nonatomic) NSArray *linkAccounts;
-// current account type
-@property (nonatomic) NSInteger providerId;
 
 @end
 
@@ -58,77 +26,32 @@ LinkItem *item(NSString *name, NSInteger providerType, BOOL isLinked) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Settings";
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"settingcellid"];
-    _settingsArray = @[@"Update User Profile"];
-    _providerId = [[AGCAuth getInstance] currentUser].providerId;
-    if (_providerId == AGCAuthProviderTypeEmail) {
-        _settingsArray = @[@"Update User Profile", @"Update Email", @"Update Password"];
-    }else if (_providerId == AGCAuthProviderTypePhone) {
-        _settingsArray = @[@"Update User Profile", @"Update Phone", @"Update Password"];
-    }
-    
-    _linkAccounts = @[item(@"Wechat", AGCAuthProviderTypeWeiXin, NO), item(@"QQ", AGCAuthProviderTypeQQ, NO), item(@"Weibo", AGCAuthProviderTypeWeiBo, NO), item(@"Facebook", AGCAuthProviderTypeFacebook, NO), item(@"Google", AGCAuthProviderTypeGoogle, NO), item(@"Twitter", AGCAuthProviderTypeTwitter, NO), item(@"Phone", AGCAuthProviderTypePhone, NO), item(@"Email", AGCAuthProviderTypeEmail, NO), item(@"Apple", AGCAuthProviderTypeApple, NO)];
-    [self refreshLinkState];
-}
-
-- (void)refreshLinkState {
-    NSMutableArray *linkedAccounts = [NSMutableArray array];
-    NSArray *providers = [[[AGCAuth getInstance] currentUser] providerInfo];
-    for (NSDictionary *provider in providers) {
-        NSNumber *providerId = (NSNumber *)[provider objectForKey:@"provider"];
-        if (providerId) {
-            [linkedAccounts addObject:providerId.stringValue];
-        }
-    }
-    for (LinkItem *item in _linkAccounts) {
-        if ([linkedAccounts containsObject:[NSString stringWithFormat:@"%ld",item.providerType]]) {
-            item.isLinked = YES;
-        }
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"settingCellId"];
+    AGCAuthProviderType currentProvider = [[AGCAuth getInstance] currentUser].providerId;
+    if (currentProvider == AGCAuthProviderTypeEmail) {
+        _settingsArray = @[@"Update User Profile", @"Update Email", @"Update Email Password"];
+    }else if (currentProvider == AGCAuthProviderTypePhone) {
+        _settingsArray = @[@"Update User Profile", @"Update Phone", @"Update Phone Password"];
+    }else{
+        _settingsArray = @[@"Update User Profile"];
     }
 }
 
 #pragma mark - UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return _settingsArray.count;
-    }else {
-        return _linkAccounts.count;
-    }
+    return _settingsArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingcellid" forIndexPath:indexPath];
-        cell.textLabel.text = [_settingsArray objectAtIndex:indexPath.row];
-        return cell;
-    }else {
-        UserLinkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userlinkcellid"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        LinkItem *item = [_linkAccounts objectAtIndex:indexPath.row];
-        cell.descLabel.text = item.name;
-        [cell.linkButton addTarget:self action:@selector(linkAccount:) forControlEvents:UIControlEventTouchUpInside];
-        cell.linkButton.tag = indexPath.row;
-        if (item.isLinked) {
-            [cell.linkButton setTitle:@"Unlink" forState:UIControlStateNormal];
-        }else {
-            [cell.linkButton setTitle:@"Link" forState:UIControlStateNormal];
-        }
-        
-        return cell;
-    }
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingCellId" forIndexPath:indexPath];
+    cell.textLabel.text = [_settingsArray objectAtIndex:indexPath.row];
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
     NSString *title = (NSString *)[_settingsArray objectAtIndex:indexPath.row];
     if ([title isEqualToString:@"Update User Profile"]) {
         [self updateProfile];
@@ -136,171 +59,105 @@ LinkItem *item(NSString *name, NSInteger providerType, BOOL isLinked) {
         [self updateEmail];
     }else if ([title isEqualToString:@"Update Phone"]) {
         [self updatePhone];
-    }else if ([title isEqualToString:@"Update Password"] && _providerId == AGCAuthProviderTypeEmail) {
+    }else if ([title isEqualToString:@"Update Email Password"]) {
         [self updateEmailPassword];
-    }else if ([title isEqualToString:@"Update Password"] && _providerId == AGCAuthProviderTypePhone) {
+    }else if ([title isEqualToString:@"Update Phone Password"]) {
         [self updatePhonePassword];
     }
 }
 
-
-
 - (void)updateProfile {
-    [self showTextFieldAlert:@[@"new displayName", @"new photoUrl"] successHandler:^(NSArray<NSString *> * _Nonnull inputArray) {
+    [self showAlertWithTitle:@"Update Profile" input:@[@"new displayName", @"new photoUrl"] completion:^(NSArray<NSString *> * _Nonnull inputArray) {
         NSString *name = inputArray[0];
         NSString *photo = inputArray[1];
-        [BaseProvider updateProfileWithDisplayName:name photoUrl:photo];
-    } verifyCodeHandler:nil];
+        AGCProfileRequest *request = [AGCProfileRequest new];
+        request.displayName = name;
+        request.photoUrl = photo;
+        // update the profile of the current user
+        [[[[[AGCAuth getInstance] currentUser] updateProfile:request] addOnSuccessCallback:^(id  _Nullable result) {
+            NSLog(@"profile update success");
+        }] addOnFailureCallback:^(NSError * _Nonnull error) {
+            NSLog(@"profile update failed : %@",error);
+        }];
+    }];
 }
 
 - (void)updateEmail {
-    
-    [self showTextFieldAlert:@[@"new email", @"verification code"]
-              successHandler:^(NSArray<NSString *> * _Nonnull inputArray) {
+    [self showAlertWithTitle:@"Send Verification Code" input:@[@"new email"] completion:^(NSArray<NSString *> * _Nonnull inputArray) {
         NSString *email = inputArray[0];
-        NSString *code = inputArray[1];
-        [[EmailProvider sharedInstance] updateEmail:email verifyCode:code];
-    } verifyCodeHandler:^(NSArray<NSString *> * _Nonnull inputArray) {
-        NSString *email = inputArray[0];
-        [[EmailProvider sharedInstance] sendVerifyCodeForResetPassword:email];
+        [BaseProvider sendVerifyCodeWithEmail:email action:AGCVerifyCodeActionRegisterLogin];
+        [self showAlertWithTitle:@"Update Email" input:@[@"new email", @"verification code"] completion:^(NSArray<NSString *> * _Nonnull inputArray) {
+            NSString *email = inputArray[0];
+            NSString *code = inputArray[1];
+            // update the email of the current user
+            [[[[[AGCAuth getInstance] currentUser] updateEmail:email verifyCode:code] addOnSuccessCallback:^(id  _Nullable result) {
+                NSLog(@"email update success");
+            }] addOnFailureCallback:^(NSError * _Nonnull error) {
+                NSLog(@"email update failed : %@",error);
+            }];
+        }];
     }];
 }
 
 - (void)updatePhone {
-    [self showTextFieldAlert:@[@"new phone number", @"verification code"]
-              successHandler:^(NSArray<NSString *> * _Nonnull inputArray) {
-        NSString *countryCode = @"86";
-        NSString *nationNumber = inputArray[0];
-        NSString *code = inputArray[1];
-        [[PhoneProvider sharedInstance] updatePhoneWithCountryCode:countryCode nationNumber:nationNumber verifyCode:code];
-    } verifyCodeHandler:^(NSArray<NSString *> * _Nonnull inputArray) {
-        NSString *countryCode = @"86";
-        NSString *phoneNum = inputArray[0];
-        [[PhoneProvider sharedInstance] sendVerifyCodeForRegisterLogin:countryCode nationNumber:phoneNum];
+    [self showAlertWithTitle:@"Send Verification Code" input:@[@"country code", @"new phone number"] completion:^(NSArray<NSString *> * _Nonnull inputArray) {
+        NSString *countryCode = inputArray[0];
+        NSString *phoneNumber = inputArray[1];
+        [BaseProvider sendVerifyCodeWithCountryCode:countryCode phoneNumber:phoneNumber action:AGCVerifyCodeActionRegisterLogin];
+        [self showAlertWithTitle:@"Update Phone" input:@[@"country code", @"new phone number", @"verification code"] completion:^(NSArray<NSString *> * _Nonnull inputArray) {
+            NSString *countryCode = inputArray[0];
+            NSString *phoneNumber = inputArray[1];
+            NSString *code = inputArray[2];
+            // update the phone number of the current user
+            [[[[[AGCAuth getInstance] currentUser] updatePhoneWithCountryCode:countryCode phoneNumber:phoneNumber verifyCode:code] addOnSuccessCallback:^(id  _Nullable result) {
+                NSLog(@"phone update success");
+            }] addOnFailureCallback:^(NSError * _Nonnull error) {
+                NSLog(@"phone update failed : %@",error);
+            }];
+        }];
     }];
 }
 
 - (void)updatePhonePassword {
-    [self showTextFieldAlert:@[@"phone number", @"new password" , @"verification code"]
-              successHandler:^(NSArray<NSString *> * _Nonnull inputArray) {
-        NSString *password = inputArray[1];
-        NSString *code = inputArray[2];
-        [[PhoneProvider sharedInstance] updatePassword:password verifyCode:code];
-    } verifyCodeHandler:^(NSArray<NSString *> * _Nonnull inputArray) {
-        NSString *phone = inputArray[0];
-        [[PhoneProvider sharedInstance] sendVerifyCodeForRegisterLogin:@"86" nationNumber:phone];
+    [self showAlertWithTitle:@"Send Verification Code" input:@[@"country code", @"phone number"] completion:^(NSArray<NSString *> * _Nonnull inputArray) {
+        NSString *countryCode = inputArray[0];
+        NSString *phoneNumber = inputArray[1];
+        [BaseProvider sendVerifyCodeWithCountryCode:countryCode phoneNumber:phoneNumber action:AGCVerifyCodeActionResetPassword];
+        [self showAlertWithTitle:@"Update Phone Password" input:@[@"new password" , @"verification code"] completion:^(NSArray<NSString *> * _Nonnull inputArray) {
+            NSString *password = inputArray[0];
+            NSString *code = inputArray[1];
+            // update the password of the current user
+            [[[[[AGCAuth getInstance] currentUser] updatePassword:password verifyCode:code provider:AGCAuthProviderTypePhone] addOnSuccessCallback:^(id  _Nullable result) {
+                NSLog(@"password update success");
+            }] addOnFailureCallback:^(NSError * _Nonnull error) {
+                NSLog(@"password update failed : %@",error);
+            }];
+        }];
     }];
 }
 
 - (void)updateEmailPassword {
-    [self showTextFieldAlert:@[@"email", @"new password" , @"verification code"]
-              successHandler:^(NSArray<NSString *> * _Nonnull inputArray) {
-        NSString *password = inputArray[1];
-        NSString *code = inputArray[2];
-        [[EmailProvider sharedInstance] updatePassword:password verifyCode:code];
-    } verifyCodeHandler:^(NSArray<NSString *> * _Nonnull inputArray) {
+    [self showAlertWithTitle:@"Send Verification Code" input:@[@"email"] completion:^(NSArray<NSString *> * _Nonnull inputArray) {
         NSString *email = inputArray[0];
-        [[EmailProvider sharedInstance] sendVerifyCodeForResetPassword:email];
+        [BaseProvider sendVerifyCodeWithEmail:email action:AGCVerifyCodeActionResetPassword];
+        [self showAlertWithTitle:@"Update Email Password" input:@[@"new password" , @"verification code"] completion:^(NSArray<NSString *> * _Nonnull inputArray) {
+            NSString *password = inputArray[0];
+            NSString *code = inputArray[1];
+            // update the password of the current user
+            [[[[[AGCAuth getInstance] currentUser] updatePassword:password verifyCode:code provider:AGCAuthProviderTypeEmail] addOnSuccessCallback:^(id  _Nullable result) {
+                NSLog(@"password update success");
+            }] addOnFailureCallback:^(NSError * _Nonnull error) {
+                NSLog(@"password update failed : %@",error);
+            }];
+        }];
     }];
 }
 
-- (void)linkAccount:(UIButton *)btn {
-    if ([btn.titleLabel.text isEqualToString:@"Unlink"]) {
-        [self unlinkAccount:btn.tag];
-        return;
-    }
-    
-    switch (btn.tag) {
-        case 0:
-            [[WeixinProvider sharedInstance] linkWithViewController:self];
-            break;
-        case 1:
-            [[QQProvider sharedInstance] linkWithViewController:self];
-            break;
-        
-        case 2:
-            [[WeiboProvider sharedInstance] linkWithViewController:self];
-            break;
-        
-        case 3:
-            [[FacebookProvider sharedInstance] linkWithViewController:self];
-            break;
-        
-        case 4:
-            [[GoogleProvider sharedInstance] linkWithViewController:self];
-            break;
-            
-        case 5:
-            [[TwitterProvider sharedInstance] linkWithViewController:self];
-            break;
-            
-        case 6:
-        case 7:
-        {
-            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-            RegisterViewController *vc = [story instantiateViewControllerWithIdentifier:@"RegisterVC"];
-            vc.isLinkAccount = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-            
-            
-        case 8:
-            [[AppleProvider sharedInstance] linkWithViewController:self];
-            break;
-            
-        default:
-            
-            break;
-    }
-}
-
-- (void)unlinkAccount:(NSInteger)row {
-    switch (row) {
-        case 0:
-            [[WeixinProvider sharedInstance] unlink];
-            break;
-        case 1:
-            [[QQProvider sharedInstance] unlink];
-            break;
-        
-        case 2:
-            [[WeiboProvider sharedInstance] unlink];
-            break;
-        
-        case 3:
-            [[FacebookProvider sharedInstance] unlink];
-            break;
-        
-        case 4:
-            [[GoogleProvider sharedInstance] unlink];
-            break;
-            
-        case 5:
-            [[TwitterProvider sharedInstance] unlink];
-            break;
-            
-        case 6:
-            [[PhoneProvider sharedInstance] unlink];
-            break;
-        
-        case 7:
-            [[EmailProvider sharedInstance] unlink];
-            break;
-            
-        case 8:
-            [[AppleProvider sharedInstance] unlink];
-            break;
-            
-        default:
-            
-            break;
-    }
-}
-
-// show alert view with text fields
-- (void)showTextFieldAlert:(NSArray<NSString *> *)textPlaceholders successHandler:(void (^)(NSArray<NSString *> * _Nonnull))handler verifyCodeHandler:(void(^)(NSArray<NSString *> * _Nonnull))verifyHandler  {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Input" message:nil preferredStyle:UIAlertControllerStyleAlert];
+// show alert controller with text fields
+- (void)showAlertWithTitle:(NSString *)title input:(NSArray<NSString *> *)placeholders completion:(void (^)(NSArray<NSString *> * _Nonnull))completeBlock {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+    // add cancel button
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
     // add ok button
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSMutableArray *res = [NSMutableArray arrayWithCapacity:alertController.textFields.count];
@@ -308,31 +165,17 @@ LinkItem *item(NSString *name, NSInteger providerType, BOOL isLinked) {
             NSString *input = textField.text ?: @"";
             [res addObject:input];
         }
-        if (handler) {
-            handler(res);
+        if (completeBlock) {
+            completeBlock(res);
         }
     }]];
-    // add button
-    if (verifyHandler) {
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Send Verify Code" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSMutableArray *res = [NSMutableArray arrayWithCapacity:alertController.textFields.count];
-            for (UITextField *textField in alertController.textFields) {
-                NSString *input = textField.text ?: @"";
-                [res addObject:input];
-            }
-            if (verifyHandler) {
-                verifyHandler(res);
-            }
-        }]];
-    }
-    // add cancel button
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
-    // add textfield
-    for (NSString *text in textPlaceholders) {
+    // add text fields
+    for (NSString *text in placeholders) {
         [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
           textField.placeholder = text;
         }];
     }
+    // show alert controller
     [self presentViewController:alertController animated:true completion:nil];
 }
 

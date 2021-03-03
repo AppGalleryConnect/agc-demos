@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug QuickApp on Device",
+      "type": "quickapp",
+      "request": "launch",
+      "device": "${command:quickapp.choose-device}",
+      "cwd": "${workspaceRoot}",
+      "logLevel": "log",
+      "adbPort": 5037,
+      "debugServerPort": 8088,
+      "remoteDebug": true,
+      "elementMode": false
+    }
+  ],
+  "currentWidgetUri": "Main",
+  "lastWidgetUri": "null"
+}
