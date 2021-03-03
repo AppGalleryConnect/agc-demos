@@ -1,0 +1,14 @@
+.DS_Store
+.dart_tool/
+
+.packages
+.pub/
+
+build/
+
+.idea/
+.ios/
+*.iml
+
+local.properties
+pubspec.lock
