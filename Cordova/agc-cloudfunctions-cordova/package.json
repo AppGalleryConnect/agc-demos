@@ -1,7 +1,7 @@
 {
     "name": "cordova-agc-cloudfunctions-demo",
     "displayName": "AGCCloudFunctionsDemo",
-    "version": "1.2.0-sdv.101",
+    "version": "1.2.0-beta.1",
     "description": "A demo application which shows the usage of @cordova-plugin-agconnect/cloudfunctions",
     "homepage": "https://developer.huawei.com/consumer/en/agconnect/",
     "license": "Apache-2.0",
