@@ -1,0 +1,26 @@
+name: agconnect_appmessaging
+description: AGC App Messaging Kit plugin for Flutter. You can use App Messaging of AppGallery Connect
+  to send relevant messages to target users.
+version: 1.2.0+221
+homepage: https://developer.huawei.com/consumer/en/agconnect/
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+  flutter: ">=1.12.13+hotfix.6 <2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.huawei.agc.flutter.appmessaging
+        pluginClass: AgconnectAppmessagingPlugin
+      ios:
+        pluginClass: AgconnectAppmessagingPlugin
