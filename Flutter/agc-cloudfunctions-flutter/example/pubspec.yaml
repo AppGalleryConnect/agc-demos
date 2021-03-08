@@ -1,0 +1,22 @@
+name: agconnect_cloudfunctions_example
+description: Demonstrates how to use the AppGallery Connect Cloud Functions plugin.
+version: 1.2.0+221
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  agconnect_cloudfunctions:
+    path: ../
+
+  cupertino_icons: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

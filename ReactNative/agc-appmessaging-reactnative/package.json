@@ -1,0 +1,42 @@
+{
+  "name": "@react-native-agconnect/appmessaging",
+  "title": "React Native AGC AppMessaging",
+  "description": "React Native AGC AppMessaging",
+  "version": "1.2.0-beta.1",
+  "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "",
+    "directory": ""
+  },
+  "homepage": "https://developer.huawei.com/consumer/en/agconnect/",
+  "license": "Apache-2.0",
+  "licenseFilename": "LICENCE",
+  "readmeFilename": "README.md",
+  "keywords": [
+    "react-native",
+    "react-native-appmessaging",
+    "agc-appmessaging",
+    "huawei-appmessaging",
+    "agconnect-appmessaging",
+    "appmessaging-kit"
+  ],
+  "files": [
+    "android",
+    "ios",
+    "example",
+    "src",
+    "LICENCE",
+    "README.md",
+    "package.json",
+    "RNAGCAppmessaging.podspec"
+  ],
+  "peerDependencies": {
+    "react": "^16.6.0",
+    "react-native": ">=0.60.0 <1.0.x"
+  },
+  "devDependencies": {
+    "react": "^16.6.0",
+    "react-native": "^0.60.0"
+  }
+}
