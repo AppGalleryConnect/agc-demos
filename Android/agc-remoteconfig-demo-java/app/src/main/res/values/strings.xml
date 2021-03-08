@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">RemoteConfig</string>
-    <string name="fetch_apply">拉取数据后立刻生效</string>
-    <string name="fetch_save">拉取数据后下次启动生效</string>
-    <string name="clear">清除数据</string>
-    <string name="tip">切换演示模式时请先清除缓存数据</string>
-</resources>

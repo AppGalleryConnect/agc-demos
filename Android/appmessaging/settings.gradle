@@ -1,0 +1,3 @@
+include ':kotlin-app'
+include ':app'
+rootProject.name='appmessaging'

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">KotlinDemo</string>
+    <string name="fetch_apply">fetch data and apply</string>
+    <string name="fetch_save">fetch data and apply next startup</string>
+    <string name="clear">clear data</string>
+    <string name="tip">Clear the cache data before switching the presentation mode.</string>
+</resources>

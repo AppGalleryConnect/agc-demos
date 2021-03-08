@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">appmessaging</string>
+    <string name="add_listener">Add Listener</string>
+    <string name="debug_message">Debug Message</string>
+    <string name="add_custom_view">Add Custom View</string>
+</resources>
