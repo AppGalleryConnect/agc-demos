@@ -117,7 +117,7 @@
     <orderEntry type="library" name="Gradle: com.google.android.material:material:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.appcompat:appcompat:1.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout:1.1.3@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.huawei.agconnect:agconnect-apms:1.4.1.301@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.huawei.agconnect:agconnect-apms:1.3.1.300@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.huawei.agconnect:agconnect-remoteconfig:1.2.1.300@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.huawei.agconnect:agconnect-abtest:1.2.1.300@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.huawei.agconnect:agconnect-credential:1.2.1.300@aar" level="project" />

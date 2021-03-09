@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.huawei.agconnect'
 // 2.0 Add the APMS plugin
 apply plugin: 'com.huawei.agconnect.apms'
 
@@ -30,11 +29,11 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.12.2'
 
     // 1.0 Add APMS SDK library dependency
-    implementation 'com.huawei.agconnect:agconnect-apms:1.4.1.303'
+    implementation 'com.huawei.agconnect:agconnect-apms:1.4.1.306'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
-
+apply plugin: 'com.huawei.agconnect'
 

@@ -2,17 +2,17 @@
 buildscript {
     repositories {
         // 1. Add maven repository
-        maven { url 'https://developer.huawei.com/repo/' }
+        maven { url 'http://developer.huawei.com/repo/' }
         google()
         jcenter()
     }
     dependencies {
-        // To benefit from the latest APMS feaures, update your Android Gradle Plugin dependency to at least v3.2.0
-        classpath 'com.android.tools.build:gradle:3.2.0'
+        // To benefit from the latest APMS feaures, update your Android Gradle Plugin dependency to at least v3.5.3
+        classpath 'com.android.tools.build:gradle:3.5.3'
         // 2. Add agc plugin dependence
-        classpath 'com.huawei.agconnect:agcp:1.4.2.301'
+        classpath 'com.huawei.agconnect:agcp:1.5.0.300'
         // 3. Add APMS plugin dependence
-        classpath 'com.huawei.agconnect:agconnect-apms-plugin:1.4.1.303'
+        classpath 'com.huawei.agconnect:agconnect-apms-plugin:1.4.1.306'
         
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -22,7 +22,7 @@ buildscript {
 allprojects {
     repositories {
         // 4. Add maven repository for all projects
-        maven { url 'https://developer.huawei.com/repo/' }
+        maven { url 'http://developer.huawei.com/repo/' }
         google()
         jcenter()
     }
