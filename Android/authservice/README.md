@@ -1,6 +1,6 @@
 ## appmessaging quickstart
 
-English | [中文](https://github.com/AppGalleryConnect/agc-demos/blob/main/Android/App%20Messaging/README_ZH.md)
+English | [中文](https://github.com/AppGalleryConnect/agc-demos/blob/main/Android/authservice/README_ZH.md)
 
 ## Table of Contents
 
