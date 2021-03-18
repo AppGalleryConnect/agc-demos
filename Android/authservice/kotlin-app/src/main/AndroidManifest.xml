@@ -1,21 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.huawei.agc.quickstart.appmessaging">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.huawei.agc.quickstart.auth">
 
     <application
+        android:name=".AuthApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Appmessaging">
-        <activity android:name=".AppMessagingActivity">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name="com.huawei.agc.quickstart.auth.LoginActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.huawei.agc.quickstart.auth.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name="com.huawei.agc.quickstart.auth.AuthMainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.huawei.agc.quickstart.auth.RegisterActivity"
+            android:exported="false"
+            android:label="@string/register" />
+        <activity
+            android:name=".GoogleActivity"
+            android:exported="false"
+            android:label="@string/google" />
+        <activity
+            android:name=".FacebookActivity"
+            android:exported="false"
+            android:label="@string/facebook" />
+        <activity
+            android:name=".WeiXinActivity"
+            android:exported="false"
+            android:label="@string/weChat" />
+        <activity
+            android:name=".TwitterActivity"
+            android:exported="false"
+            android:label="@string/twitter" />
+        <activity
+            android:name=".HWGameActivity"
+            android:exported="false"
+            android:label="@string/hwgame" />
+        <activity
+            android:name=".HWIDActivity"
+            android:exported="false"
+            android:label="@string/hwid" />
+        <activity
+            android:name=".GooglePlayActivity"
+            android:exported="false"
+            android:label="@string/google_play" />
+        <activity
+            android:name=".QQActivity"
+            android:exported="false"
+            android:label="@string/qq" />
+        <activity
+            android:name=".SelfBuildActivity"
+            android:exported="false"
+            android:label="@string/self_build" />
+        <activity
+            android:name=".WeiboActivity"
+            android:exported="false"
+            android:label="@string/weibo" />
+
+        <!--WeChat START-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="WXEntryActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--WeChat END-->
+
+        <!--QQ START-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/qq_app_id" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--QQ END-->
+
+        <!--Facebook START-->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="agc-demo" />
+
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".EmailActivity" />
+        <activity android:name=".PhoneActivity" />
+        <!--Facebook END-->
+
+        <!--Google Game START-->
+        <meta-data
+            android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/google_app_id" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <!--Google Game END-->
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
     </application>
 
 </manifest>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="names">
+        <item>Huawei ID</item>
+        <item>Huawei Game</item>
+        <item>Facebook</item>
+        <item>Twitter</item>
+        <item>Google</item>
+        <item>Google Play</item>
+        <item>WeChat</item>
+        <item>Weibo</item>
+        <item>QQ</item>
+        <item>Self Build</item>
+    </string-array>
+
+    <integer-array name="ids">
+        <item>@mipmap/huawei</item>
+        <item>@mipmap/huawei</item>
+        <item>@mipmap/facebook</item>
+        <item>@mipmap/twitter</item>
+        <item>@mipmap/google_plus</item>
+        <item>@mipmap/google_plus</item>
+        <item>@mipmap/wechat</item>
+        <item>@mipmap/weibo</item>
+        <item>@mipmap/qq</item>
+        <item>@mipmap/huawei</item>
+    </integer-array>
+</resources>
