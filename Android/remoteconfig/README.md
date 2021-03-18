@@ -1,6 +1,6 @@
 # remoteconfig quickstart
 
-English | [中文](https://github.com/AppGalleryConnect/agc-demos/blob/main/Android/Remote%20Configuration/README_ZH.md)
+English | [中文](https://github.com/AppGalleryConnect/agc-demos/blob/main/Android/remoteconfig/README_ZH.md)
 
 ## Table of Contents
 
