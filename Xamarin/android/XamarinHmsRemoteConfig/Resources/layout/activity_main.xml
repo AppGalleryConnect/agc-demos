@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:id="@+id/LinearLayout1" >
+    <TextView
+        android:text="Please clear the cached data first when trying the two different Fetch modes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30sp"
+        android:id="@+id/HintText" />
+   <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/DeveloperMode" 
+        android:text="Set Developer Mode" />
+    <Button
+        android:text="@string/fetch_apply"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/FetchApply" 
+        android:background="#4870BF"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/upsdk_white"/>
+    <Button
+        android:text="@string/fetch_save"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/FetchSave"
+        android:background="#4870BF"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/upsdk_white"/>
+
+    <Button
+        android:text="@string/clear"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/Clear"
+        android:background="#851D1D"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/upsdk_white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Results:" />
+
+    <TextView
+        android:id="@+id/log_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/textviewborder"
+        android:padding="5dp"
+        android:textSize="14dp"
+        android:text="print：\n"
+        android:scrollbars="vertical"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</LinearLayout>

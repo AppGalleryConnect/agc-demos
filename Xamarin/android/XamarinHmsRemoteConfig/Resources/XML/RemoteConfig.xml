@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<remote-config>
+  <value key="Region">Default</value>
+  <value key="Food_Preference">Default</value>
+  <value key="Color_Preference">Default</value>
+  <value key="IsEnglish">Default</value>
+</remote-config>
