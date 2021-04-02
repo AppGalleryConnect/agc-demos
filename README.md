@@ -70,6 +70,12 @@ These are the available demos in this repository.
 | [agc-remoteconfig-reactnative](./ReactNative/agc-remoteconfig-reactnative) | [![version](https://img.shields.io/badge/NPM-1.1.0-yellow)](./ReactNative/agc-remoteconfig-reactnative) | [![Download](https://img.shields.io/badge/DOWNLOAD-4/WEEK-yellow)](https://www.npmjs.com/package/@react-native-agconnect/remoteconfig) |[Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-remoteconfig-reactnative-usage-0000001064327774) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/cordova-remoteconfig-overview-0000001063967581) |
 | [agc-crash-reactnative](./ReactNative/agc-crash-reactnative) | [![version](https://img.shields.io/badge/NPM-1.1.0-yellow)](./ReactNative/agc-crash-reactnative)| [![Download](https://img.shields.io/badge/DOWNLOAD-14/WEEK-yellow)](https://www.npmjs.com/package/@react-native-agconnect/crash)  | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-crash-reactnative-usage-0000001063728095) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/overview-cordova-0000001063808678) |
 
+### Xamarin
+| Demo | Version | Documentation |
+|--------|-----|-----|
+| [agc-remoteconfig-xamarin](./Xamarin/agc-remoteconfig-xamarin) | [![version](https://img.shields.io/nuget/vpre/Huawei.Agconnect.iOS.Remoteconfig.svg?label=NuGet)](./Xamarin/agc-remoteconfig-xamarin)  |[Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/remoteconfig-xamarin-releasenotes-0000001135676681) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/remoteconfig-overview-main-0000001088768192) |
+
+
 ## Precautions
 The agc-demos project contains 19 independent projects. After downloading the code, you can load different nested projects to the IDE as required. And you can run each project independently.
 
