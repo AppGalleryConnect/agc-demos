@@ -72,7 +72,7 @@ These are the available demos in this repository.
 
 ### Xamarin
 | Demo | Version | Documentation |
-|--------|-----|-----|-----|
+|--------|-----|-----|
 | [agc-remoteconfig-xamarin](./Xamarin/agc-remoteconfig-xamarin) | [![version](https://img.shields.io/nuget/vpre/Huawei.Agconnect.iOS.Remoteconfig.svg?label=NuGet)](./Xamarin/agc-remoteconfig-xamarin)  |[Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/remoteconfig-xamarin-releasenotes-0000001135676681) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/remoteconfig-overview-main-0000001088768192) |
 
 
