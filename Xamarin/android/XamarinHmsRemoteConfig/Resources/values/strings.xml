@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">XamarinHmsRemoteConfig</string>
+    <string name="action_settings">Settings</string>
+  <string name="fetch_apply">Fetch Apply</string>
+  <string name="fetch_save">Fetch Save</string>
+  <string name="clear">Clear</string>
+  <string name="HintTxt">The values below have been retrieved from the server. Some variables are detected automatically like region and Language, the other variables are retrieved based on the user attributes defined in Huawei Analytics </string>
+
+</resources>
