@@ -44,7 +44,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.2.1'
 
-    implementation 'com.huawei.agconnect:agconnect-cloud-database:1.4.6.300'
+    implementation 'com.huawei.agconnect:agconnect-cloud-database:1.4.7.300'
     implementation 'com.huawei.agconnect:agconnect-auth:1.5.0.300'
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
