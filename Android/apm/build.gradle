@@ -12,7 +12,7 @@ buildscript {
         // 2. Add agc plugin dependence
         classpath 'com.huawei.agconnect:agcp:1.5.0.300'
         // 3. Add APMS plugin dependence
-        classpath 'com.huawei.agconnect:agconnect-apms-plugin:1.4.1.306'
+        classpath 'com.huawei.agconnect:agconnect-apms-plugin:1.5.1.301'
         
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
