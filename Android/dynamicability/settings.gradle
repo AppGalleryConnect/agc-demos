@@ -1,0 +1,3 @@
+include ':app', ':SplitSampleFeature01'
+include ':app_kotlin', ':SplitSampleFeature01_kotlin'
+rootProject.name='AppBundleDemo'
