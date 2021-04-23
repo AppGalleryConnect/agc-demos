@@ -25,24 +25,26 @@ import com.huawei.agconnect.auth.SignInResult
 import com.huawei.hms.common.ApiException
 import com.huawei.hms.jos.JosApps
 import com.huawei.hms.jos.games.Games
-import com.huawei.hms.support.hwid.HuaweiIdAuthManager
-import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
-import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
-import com.huawei.hms.support.hwid.result.AuthHuaweiId
-import com.huawei.hms.support.hwid.service.HuaweiIdAuthService
+import com.huawei.hms.support.account.AccountAuthManager
+import com.huawei.hms.support.account.request.AccountAuthParams
+import com.huawei.hms.support.account.request.AccountAuthParamsHelper
+import com.huawei.hms.support.account.service.AccountAuthService
 
 class HWGameActivity : ThirdBaseActivity() {
-    private var service: HuaweiIdAuthService? = null
+    private var service: AccountAuthService? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
-        val authParams = HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM_GAME)
+        val authParams = AccountAuthParamsHelper(AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM_GAME)
                 .createParams()
-        service = HuaweiIdAuthManager.getService(this, authParams)
+        service = AccountAuthManager.getService(this, authParams)
     }
 
+    /**
+     * init JosAppsClient
+     */
     private fun init() {
-        val appsClient = JosApps.getJosAppsClient(this, null)
+        val appsClient = JosApps.getJosAppsClient(this)
         appsClient.init()
     }
 
@@ -63,25 +65,24 @@ class HWGameActivity : ThirdBaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (SIGN_CODE == requestCode) {
-            if (null == data) {
-                Log.i("TAG", "signIn intent is null")
-                return
-            }
-            val task = HuaweiIdAuthManager.parseAuthResultFromIntent(data)
-            task.addOnSuccessListener { authHuaWeiId -> currentPlayerInfo(requestCode, authHuaWeiId) }.addOnFailureListener { Log.e("TAG", "parseAuthResultFromIntent failed") }
+        if (null == data) {
+            Log.i("TAG", "signIn intent is null")
+            return
         }
+        AccountAuthManager.parseAuthResultFromIntent(data)
+                .addOnSuccessListener { currentPlayerInfo(requestCode) }
+                .addOnFailureListener { Log.e("TAG", "parseAuthResultFromIntent failed") }
     }
 
-    private fun currentPlayerInfo(requestCode: Int, authHuaweiId: AuthHuaweiId) {
-        val playersClient = Games.getPlayersClient(this, authHuaweiId)
+    private fun currentPlayerInfo(requestCode: Int) {
+        val playersClient = Games.getPlayersClient(this)
         playersClient.currentPlayer
                 .addOnSuccessListener { player ->
                     Log.i(TAG, "getPlayerInfo Success, player info: $player")
-                    var imageUrl : String? = null
+                    var imageUrl: String? = null
                     if (player.hasHiResImage()) {
                         imageUrl = player.hiResImageUri.toString()
-                    }else if (player.hasIconImage()) {
+                    } else if (player.hasIconImage()) {
                         imageUrl = player.iconImageUri.toString()
                     }
                     // create hw game credential
@@ -104,7 +105,8 @@ class HWGameActivity : ThirdBaseActivity() {
                             // link
                             auth!!.currentUser
                                     .link(credential)
-                                    .addOnSuccessListener { signInResult: SignInResult? -> showToast("link success") }.addOnFailureListener { e: Exception -> showToast(e.message) }
+                                    .addOnSuccessListener { signInResult: SignInResult? -> showToast("link success") }
+                                    .addOnFailureListener { e: Exception -> showToast(e.message) }
                         }
                     }
                 }.addOnFailureListener { e ->

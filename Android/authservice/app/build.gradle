@@ -39,10 +39,11 @@ dependencies {
     implementation "com.huawei.agconnect:agconnect-auth:$rootProject.ext.authVersion"
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    // HMS
-    implementation "com.huawei.hms:base:4.0.0.300"
-    implementation "com.huawei.hms:hwid:4.0.0.300"
-    implementation "com.huawei.hms:game:4.0.0.300"
+    // huawei id
+    implementation "com.huawei.hms:hwid:5.2.0.300"
+
+    //huawei game
+    implementation "com.huawei.hms:game:5.0.4.302"
 
     // Wechat
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.3.1'

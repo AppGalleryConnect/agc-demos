@@ -31,42 +31,35 @@ import com.huawei.hmf.tasks.OnSuccessListener;
 import com.huawei.hmf.tasks.Task;
 import com.huawei.hmf.tasks.TaskExecutors;
 import com.huawei.hms.common.ApiException;
-import com.huawei.hms.support.api.entity.auth.Scope;
-import com.huawei.hms.support.api.entity.hwid.HwIDConstant;
-import com.huawei.hms.support.hwid.HuaweiIdAuthManager;
-import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams;
-import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper;
-import com.huawei.hms.support.hwid.result.AuthHuaweiId;
-import com.huawei.hms.support.hwid.service.HuaweiIdAuthService;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.huawei.hms.support.account.AccountAuthManager;
+import com.huawei.hms.support.account.request.AccountAuthParams;
+import com.huawei.hms.support.account.request.AccountAuthParamsHelper;
+import com.huawei.hms.support.account.result.AuthAccount;
+import com.huawei.hms.support.account.service.AccountAuthService;
 
 public class HWIDActivity extends ThirdBaseActivity {
     private static final String TAG = HWIDActivity.class.getSimpleName();
     private static final int SIGN_CODE = 9901;
     private static final int LINK_CODE = 9902;
-    private HuaweiIdAuthService service;
+    private AccountAuthService accountAuthService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HuaweiIdAuthParamsHelper huaweiIdAuthParamsHelper = new HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM);
-        List<Scope> scopeList = new ArrayList<>();
-        scopeList.add(new Scope(HwIDConstant.SCOPE.ACCOUNT_BASEPROFILE));
-        huaweiIdAuthParamsHelper.setScopeList(scopeList);
-        HuaweiIdAuthParams authParams = huaweiIdAuthParamsHelper.setAccessToken().createParams();
-        service = HuaweiIdAuthManager.getService(HWIDActivity.this, authParams);
+        AccountAuthParams authParams = new AccountAuthParamsHelper(AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
+            .setAccessToken()
+            .createParams();
+        accountAuthService = AccountAuthManager.getService(HWIDActivity.this, authParams);
     }
 
     @Override
     public void login() {
-        startActivityForResult(service.getSignInIntent(), SIGN_CODE);
+        startActivityForResult(accountAuthService.getSignInIntent(), SIGN_CODE);
     }
 
     @Override
     public void link() {
-        startActivityForResult(service.getSignInIntent(), LINK_CODE);
+        startActivityForResult(accountAuthService.getSignInIntent(), LINK_CODE);
     }
 
     @Override
@@ -81,23 +74,23 @@ public class HWIDActivity extends ThirdBaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SIGN_CODE) {
-            Task<AuthHuaweiId> authHuaweiIdTask = HuaweiIdAuthManager.parseAuthResultFromIntent(data);
-            if (authHuaweiIdTask.isSuccessful()) {
-                AuthHuaweiId huaweiAccount = authHuaweiIdTask.getResult();
-                Log.i(TAG, "accessToken:" + huaweiAccount.getAccessToken());
+            Task<AuthAccount> authAccountTask  = AccountAuthManager.parseAuthResultFromIntent(data);
+            if (authAccountTask.isSuccessful()) {
+                AuthAccount authAccount = authAccountTask.getResult();
+                Log.i(TAG, "accessToken:" + authAccount.getAccessToken());
                 // create huawei id credential
-                AGConnectAuthCredential credential = HwIdAuthProvider.credentialWithToken(huaweiAccount.getAccessToken());
+                AGConnectAuthCredential credential = HwIdAuthProvider.credentialWithToken(authAccount.getAccessToken());
                 // sign in
                 auth.signIn(credential)
                     .addOnSuccessListener(signInResult -> loginSuccess())
                     .addOnFailureListener(e -> showToast(e.getMessage()));
             } else {
-                Log.e(TAG, "sign in failed : " + ((ApiException) authHuaweiIdTask.getException()).getStatusCode());
+                Log.e(TAG, "sign in failed : " + ((ApiException) authAccountTask.getException()).getStatusCode());
             }
         } else if (requestCode == LINK_CODE) {
-            Task<AuthHuaweiId> authHuaweiIdTask = HuaweiIdAuthManager.parseAuthResultFromIntent(data);
-            if (authHuaweiIdTask.isSuccessful()) {
-                AuthHuaweiId huaweiAccount = authHuaweiIdTask.getResult();
+            Task<AuthAccount> authAccountTask = AccountAuthManager.parseAuthResultFromIntent(data);
+            if (authAccountTask.isSuccessful()) {
+                AuthAccount huaweiAccount = authAccountTask.getResult();
                 // create huawei id credential
                 AGConnectAuthCredential credential = HwIdAuthProvider.credentialWithToken(huaweiAccount.getAccessToken());
                 if (auth.getCurrentUser() != null) {
@@ -116,7 +109,7 @@ public class HWIDActivity extends ThirdBaseActivity {
                     });
                 }
             } else {
-                Log.e(TAG, "sign in failed : " + ((ApiException) authHuaweiIdTask.getException()).getStatusCode());
+                Log.e(TAG, "sign in failed : " + ((ApiException) authAccountTask.getException()).getStatusCode());
             }
         }
     }

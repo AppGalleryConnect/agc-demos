@@ -1,6 +1,6 @@
 ## function quickstart
 
-English | [中文](https://github.com/AppGalleryConnect/agc-demos/blob/main/Android/cloudfunction/README_ZH.md)
+English | [中文](https://github.com/AppGalleryConnect/agc-demos/tree/main/Android/agc-function-demo-java/blob/master/README_ZH.md)
 
 ## Table of Contents
 

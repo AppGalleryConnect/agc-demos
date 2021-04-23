@@ -21,29 +21,23 @@ import android.util.Log
 import com.huawei.agconnect.auth.AGConnectAuth
 import com.huawei.agconnect.auth.AGConnectAuthCredential
 import com.huawei.agconnect.auth.HwIdAuthProvider
-import com.huawei.agconnect.auth.SignInResult
 import com.huawei.hmf.tasks.OnFailureListener
 import com.huawei.hmf.tasks.OnSuccessListener
 import com.huawei.hmf.tasks.TaskExecutors
 import com.huawei.hms.common.ApiException
-import com.huawei.hms.support.api.entity.auth.Scope
-import com.huawei.hms.support.api.entity.hwid.HwIDConstant
-import com.huawei.hms.support.hwid.HuaweiIdAuthManager
-import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
-import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
-import com.huawei.hms.support.hwid.service.HuaweiIdAuthService
-import java.util.*
+import com.huawei.hms.support.account.AccountAuthManager
+import com.huawei.hms.support.account.request.AccountAuthParams
+import com.huawei.hms.support.account.request.AccountAuthParamsHelper
+import com.huawei.hms.support.account.service.AccountAuthService
 
 class HWIDActivity : ThirdBaseActivity() {
-    private var service: HuaweiIdAuthService? = null
+    private var service: AccountAuthService? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val huaweiIdAuthParamsHelper = HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
-        val scopeList: MutableList<Scope> = ArrayList()
-        scopeList.add(Scope(HwIDConstant.SCOPE.ACCOUNT_BASEPROFILE))
-        huaweiIdAuthParamsHelper.setScopeList(scopeList)
-        val authParams = huaweiIdAuthParamsHelper.setAccessToken().createParams()
-        service = HuaweiIdAuthManager.getService(this@HWIDActivity, authParams)
+        val authParams: AccountAuthParams = AccountAuthParamsHelper(AccountAuthParams.DEFAULT_AUTH_REQUEST_PARAM)
+                .setAccessToken()
+                .createParams();
+        service = AccountAuthManager.getService(this@HWIDActivity, authParams)
     }
 
     override fun login() {
@@ -64,32 +58,34 @@ class HWIDActivity : ThirdBaseActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == SIGN_CODE) {
-            val authHuaweiIdTask = HuaweiIdAuthManager.parseAuthResultFromIntent(data)
-            if (authHuaweiIdTask.isSuccessful) {
-                val huaweiAccount = authHuaweiIdTask.result
-                Log.i(TAG, "accessToken:" + huaweiAccount.accessToken)
+            val authAccountTask = AccountAuthManager.parseAuthResultFromIntent(data)
+            if (authAccountTask.isSuccessful) {
+                val authAccount = authAccountTask.result
+                Log.i(TAG, "accessToken:" + authAccount.accessToken)
+
                 // create huawei id credential
-                val credential = HwIdAuthProvider.credentialWithToken(huaweiAccount.accessToken)
+                val credential = HwIdAuthProvider.credentialWithToken(authAccount.accessToken)
                 // sign in
                 auth!!.signIn(credential)
-                        .addOnSuccessListener { signInResult: SignInResult? -> loginSuccess() }
+                        .addOnSuccessListener { loginSuccess() }
                         .addOnFailureListener { e: Exception -> showToast(e.message) }
             } else {
-                Log.e(TAG, "sign in failed : " + (authHuaweiIdTask.exception as ApiException).statusCode)
+                Log.e(TAG, "sign in failed : " + (authAccountTask.exception as ApiException).statusCode)
             }
         } else if (requestCode == LINK_CODE) {
-            val authHuaweiIdTask = HuaweiIdAuthManager.parseAuthResultFromIntent(data)
-            if (authHuaweiIdTask.isSuccessful) {
-                val huaweiAccount = authHuaweiIdTask.result
+            val authAccountTask = AccountAuthManager.parseAuthResultFromIntent(data)
+            if (authAccountTask.isSuccessful) {
+                val authAccount = authAccountTask.result
                 // create huawei id credential
-                val credential = HwIdAuthProvider.credentialWithToken(huaweiAccount.accessToken)
+                val credential = HwIdAuthProvider.credentialWithToken(authAccount.accessToken)
                 if (auth!!.currentUser != null) {
                     // link huawei id
                     auth!!.currentUser.link(credential)
-                            .addOnSuccessListener(TaskExecutors.uiThread(), OnSuccessListener { showToast("link success") }).addOnFailureListener(TaskExecutors.uiThread(), OnFailureListener { e -> showToast(e.message) })
+                            .addOnSuccessListener(TaskExecutors.uiThread(), OnSuccessListener { showToast("link success") })
+                            .addOnFailureListener(TaskExecutors.uiThread(), OnFailureListener { e -> showToast(e.message) })
                 }
             } else {
-                Log.e(TAG, "sign in failed : " + (authHuaweiIdTask.exception as ApiException).statusCode)
+                Log.e(TAG, "sign in failed : " + (authAccountTask.exception as ApiException).statusCode)
             }
         }
     }
