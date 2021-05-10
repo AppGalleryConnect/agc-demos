@@ -65,13 +65,15 @@ public class CreateCourseWithLesson {
             return;
         }
 
-        /* 如果您不需要使用CompletableFuture，可以参考本注释块中的代码
-        CourseCreateResponse courseCreateResponse = createCourseWithLessonSync(clientName);
-        LOGGER.info("Create course response : {}", courseCreateResponse);
-        if (courseCreateResponse.getResult().getResultCode() == CommonErrorCode.SUCCESS) {
-            // 获取课程ID，请保存课程ID与您的课程的关联关系
-            // 保存课程版本ID，如果审核没有通过，可以使用该课程版本ID继续更新
-        }*/
+        /*
+         * 如果您不需要使用CompletableFuture，可以参考本注释块中的代码
+         * CourseCreateResponse courseCreateResponse = createCourseWithLessonSync(clientName);
+         * LOGGER.info("Create course response : {}", courseCreateResponse);
+         * if (courseCreateResponse.getResult().getResultCode() == CommonErrorCode.SUCCESS) {
+         * // 获取课程ID，请保存课程ID与您的课程的关联关系
+         * // 保存课程版本ID，如果审核没有通过，可以使用该课程版本ID继续更新
+         * }
+         */
 
         CompletableFuture<CourseCreateResponse> future = createCourseWithLessonAsync(clientName);
         // latch仅用于demo中防止main线程提前结束导致进程退出，在您的工程中不需要使用Latch进行同步操作
@@ -201,7 +203,7 @@ public class CreateCourseWithLesson {
             .freeFlagSet(true)
             .availableFromSet("2021-12-20T08:00:00Z")
             .availableBeforeSet("2022-01-01T10:00:00Z")
-            .displayOrderSet(count * 10)
+            .orderSet(count * 10)
             .build();
 
         // 构造本地化多语言数据
@@ -251,7 +253,7 @@ public class CreateCourseWithLesson {
             .freeFlagSet(true)
             .availableFromSet("2021-12-20T08:00:00Z")
             .availableBeforeSet("2022-01-01T10:00:00Z")
-            .displayOrderSet(count * 10)
+            .orderSet(count * 10)
             .build();
 
         // 构造本地化多语言数据
@@ -322,7 +324,7 @@ public class CreateCourseWithLesson {
         ImageFileInfo cover = ImageFileInfo.builder()
             // 课程封面 jpg、png格式，图片分辨率为1280*720像素(宽*高)，单张图片最大为2MB
             .pathSet(path + "cover.png")
-            .resourceTypeSet(CommonConstants.ResourceType.COURSE_PACKAGE_HORIZONTAL_COVER)
+            .resourceTypeSet(CommonConstants.ResourceType.COURSE_PACKAGE_ALBUM_HORIZONTAL_COVER)
             .build();
         ImageFileInfo introduce = ImageFileInfo.builder()
             // 课程介绍图片 jpg、png格式，图片分辨率为宽度1080像素，高度最大4096像素，单张图片最大为2MB

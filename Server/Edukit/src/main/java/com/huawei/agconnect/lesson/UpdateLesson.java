@@ -151,7 +151,7 @@ public class UpdateLesson {
     }
 
     private static LessonEdit buildLessonEdit(String courseId, String courseEditId, String lessonId) {
-        LessonMetaData metaData = LessonMetaData.builder().nameSet("单独更新已上架章节").displayOrderSet(2).build();
+        LessonMetaData metaData = LessonMetaData.builder().nameSet("单独更新已上架章节").orderSet(2).build();
         MediaFileInfo mediaFileInfo =
             MediaFileInfo.builder().fileTypeSet(CommonConstants.MediaFileType.MP4).pathSet(path + "1.mp4").build();
 

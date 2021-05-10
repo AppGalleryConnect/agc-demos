@@ -1,3 +1,6 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2021-2021. All rights reserved.
+ */
 
 package com.huawei.agconnect.pkg;
 
@@ -9,29 +12,26 @@ import com.huawei.agconnect.server.edukit.AGCEdukit;
 import com.huawei.agconnect.server.edukit.common.constant.CommonConstants;
 import com.huawei.agconnect.server.edukit.common.errorcode.CommonErrorCode;
 import com.huawei.agconnect.server.edukit.common.model.ImageFileInfo;
-import com.huawei.agconnect.server.edukit.common.model.ProductPrice;
 import com.huawei.agconnect.server.edukit.pkg.impl.PackageCreateRequest;
 import com.huawei.agconnect.server.edukit.pkg.model.PackageData;
-import com.huawei.agconnect.server.edukit.pkg.model.PkgEditData;
 import com.huawei.agconnect.server.edukit.pkg.model.PkgEditLocalizedData;
 import com.huawei.agconnect.server.edukit.pkg.model.PkgEditMetaData;
-import com.huawei.agconnect.server.edukit.pkg.model.PkgMetaData;
+import com.huawei.agconnect.server.edukit.pkg.model.PkgEditProductLocalizedData;
 import com.huawei.agconnect.server.edukit.pkg.model.PkgProduct;
-import com.huawei.agconnect.server.edukit.pkg.model.PkgProductMetaData;
-import com.huawei.agconnect.server.edukit.pkg.resp.PackageCreateResponse;
+import com.huawei.agconnect.server.edukit.pkg.model.ProductPrice;
+import com.huawei.agconnect.server.edukit.pkg.resp.PkgCommonResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * 创建会员包
  *
- * @since 2020-07-23
+ * @author lWX832783
+ * @since 2021-03-29
  */
 public class CreatePackage {
     private static final Logger LOGGER = LoggerFactory.getLogger(CreatePackage.class);
@@ -42,14 +42,13 @@ public class CreatePackage {
     private static String path = "D:\\education\\";
 
     public static void main(String[] args) {
-        // 请求客户端名称，自定义
+        /**
+         * 用户名，自定义
+         */
         String clientName = "edukit";
         /**
-         * 课程ID
-         * 可由CourseCreateRequest::saveDraft或CourseCreateRequest::commit返回。
+         * 初始化
          */
-        String courseId = "446167336685207552";
-        String appId = "101478527";
         try {
             AGCClient.initialize(clientName,
                 AGCParameter.builder()
@@ -61,98 +60,82 @@ public class CreatePackage {
             return;
         }
 
-        CompletableFuture<PackageCreateResponse> future = createPkg(clientName, courseId, appId);
-        // latch仅用于demo中防止main线程提前结束导致进程退出，在您的工程中不需要使用Latch进行同步操作
-        CountDownLatch waitTaskLatch = new CountDownLatch(1);
-        future.thenAccept(packageCreateResponse -> {
-            LOGGER.info("Create package response : {}", packageCreateResponse);
-            if (packageCreateResponse.getResult().getResultCode() == CommonErrorCode.SUCCESS) {
-                // 获取会员包ID，保存会员包Id与您的会员包的关联关系
-                // 保存会员包版本ID，如果审核没有通过，可以使用该会员包版本ID继续更新
-            } else {
-                // 根据错误码进行异常场景处理
-            }
-            waitTaskLatch.countDown();
-        });
-        // 以下操作非demo示例，仅为了保证在异步任务执行完成前main线程不会因为执行完成导致程序提前结束
-        try {
-            waitTaskLatch.await();
-            LOGGER.info("Create package finished.");
-        } catch (InterruptedException e) {
-            LOGGER.error("Create package failed.");
+        PackageCreateRequest packageCreateRequest =
+            AGCEdukit.getInstance(clientName).getPackageCreateRequest(buildPackageData());
+        PkgCommonResponse pkgCommonResponse = packageCreateRequest.createPkg().join();
+        LOGGER.info("create pkg response:{}", pkgCommonResponse);
+        if (CommonErrorCode.SUCCESS != pkgCommonResponse.getResult().getResultCode()) {
+            LOGGER.error("create pkg failed.");
+        } else {
+            LOGGER.info("create pkg success.");
         }
     }
 
-    private static CompletableFuture<PackageCreateResponse> createPkg(String clientName, String courseId,
-        String appId) {
-        List<ImageFileInfo> imageFileInfo = new ArrayList<>();
-        ImageFileInfo image = ImageFileInfo.builder().pathSet(path + "introduce.PNG").resourceTypeSet(3).build();
-        imageFileInfo.add(image);
-        PkgEditLocalizedData pkgEditLocalizedData = PkgEditLocalizedData.builder()
-            .languageSet(CommonConstants.DEFAULT_LANGUAGE)
-            .nameSet("大学语文会员收费")
-            .fullDescriptionSet("针对大学生的语文课程")
-            .introduceImageFileInfosSet(imageFileInfo)
+    private static PackageData buildPackageData() {
+        PkgEditMetaData editMetaData = PkgEditMetaData.builder()
+            .defaultLangSet("zh-CN")
+            .sourceNameSet("没了")
+            .nameSet("SDK会员包")
+            .distNotifyUrlSet("www.baidu.com")
+            // .residentLeagueAppSet("101478527")
+            .eduappPurchasedSet(true)
             .build();
-        List<PkgEditLocalizedData> list = new ArrayList<>();
-        list.add(pkgEditLocalizedData);
 
-        ProductPrice productPrice1 = ProductPrice.builder()
+        ImageFileInfo cover = ImageFileInfo.builder()
+            // 会员包封面 jpg、png格式，图片分辨率为1280*720像素(宽*高)，单张图片最大为2MB
+            .pathSet(path + "pkgcover.png")
+            .resourceTypeSet(CommonConstants.ResourceType.COURSE_PACKAGE_ALBUM_HORIZONTAL_COVER)
+            .build();
+        ImageFileInfo introduce = ImageFileInfo.builder()
+            // 会员包封面 jpg、png格式，图片分辨率为1280*720像素(宽*高)，单张图片最大为2MB
+            .pathSet(path + "pkgintroduce.jpg")
+            .resourceTypeSet(CommonConstants.ResourceType.COURSE_PACKAGE_INTRODUCTION)
+            .build();
+        List<ImageFileInfo> introduces = new ArrayList<>();
+        introduces.add(introduce);
+        PkgEditLocalizedData editLocalizedData = PkgEditLocalizedData.builder()
+            .coverImgFileInfoSet(cover)
+            .introduceImageFileInfosSet(introduces)
+            .nameSet("SDK会员包")
+            .languageSet("zh-CN")
+            .fullDescriptionSet("sdk描述")
+            .build();
+
+        List<PkgEditLocalizedData> pkgEditLocalizedDatas = new ArrayList<>();
+        pkgEditLocalizedDatas.add(editLocalizedData);
+
+        PkgEditProductLocalizedData productLocalizedData =
+            PkgEditProductLocalizedData.builder().languageSet("zh-CN").nameSet("sdk会员包版本多语言数据").build();
+        List<PkgEditProductLocalizedData> pkgEditProductLocalizedDataList = new ArrayList<>();
+        pkgEditProductLocalizedDataList.add(productLocalizedData);
+        ProductPrice productPrice = ProductPrice.builder()
             .countryCodeSet("CN")
-            .priceSet(20.0)
+            .priceSet(22d)
             .priceTypeSet(CommonConstants.PriceType.CURRENT)
             .build();
-        ProductPrice productPrice2 = ProductPrice.builder()
-            .countryCodeSet("CN")
-            .priceSet(30.0)
-            .priceTypeSet(CommonConstants.PriceType.ORIGINAL)
+        List<ProductPrice> productPrices = new ArrayList<>();
+        productPrices.add(productPrice);
+        PkgProduct pkgProduct = PkgProduct.builder()
+            .deeplinkUrlSet("wwwbaidu.com")
+            .defaultLangSet("zh-CN")
+            .nameSet("sdk会员包商品")
+            .statusSet(CommonConstants.ProductStatus.ON_SHELFING)
+            .localizedDataSet(pkgEditProductLocalizedDataList)
+            .validityUnitSet(CommonConstants.ValidityUnit.WEEK)
+            .validityNumSet(CommonConstants.ValidityUnit.DAY)
+            .priceListSet(productPrices)
+            .needDeliverySet(false)
+            .devProductIdSet("32573")
             .build();
-        List<ProductPrice> priceList = new ArrayList<>();
-        priceList.add(productPrice1);
-        priceList.add(productPrice2);
-
-        List<PkgProduct> pkgProductList = new ArrayList<>();
-        PkgProduct p1 = PkgProduct.builder()
-            .pkgProductMetaDataSet(PkgProductMetaData.builder()
-                .devProductIdSet("111")
-                .nameSet("大学语文课程一个月会员")
-                .deeplinkUrlSet("https://clouddragon.huawei.com")
-                .validityUnitSet(CommonConstants.ValidityUnit.MONTH)
-                .validityNumSet(1)
-                .build())
-            .priceListSet(priceList)
-            .build();
-        PkgProduct p2 = PkgProduct.builder()
-            .pkgProductMetaDataSet(PkgProductMetaData.builder()
-                .devProductIdSet("222")
-                .nameSet("大学语文课程一年会员")
-                .deeplinkUrlSet("https://clouddragon.huawei.com")
-                .validityUnitSet(CommonConstants.ValidityUnit.YEAR)
-                .validityNumSet(1)
-                .build())
-            .priceListSet(priceList)
-            .build();
-        pkgProductList.add(p1);
-        pkgProductList.add(p2);
-
-        List<String> courseList = new ArrayList<>();
-        courseList.add(courseId);
-
+        List<PkgProduct> productList = new ArrayList<>();
+        productList.add(pkgProduct);
         PackageData packageData = PackageData.builder()
-            .pkgMetaDataSet(PkgMetaData.builder().freeFlagSet(true).build())
-            .pkgEditDataSet(PkgEditData.builder()
-                .metaDataSet(PkgEditMetaData.builder()
-                    .nameSet("大学语文会员")
-                    .defaultLangSet(CommonConstants.DEFAULT_LANGUAGE)
-                    .remarksSet("大学语文会员")
-                    .build())
-                .localizedDataSet(list)
-                .build())
-            .productListSet(pkgProductList)
-            .addCourseIdsSet(courseList)
+            .actionSet(CommonConstants.PkgAction.SUBMIT_FOR_REVIEW)
+            .associateAlbumIdSet(599175165595016192L)
+            .metaDataSet(editMetaData)
+            .localizedDataSet(pkgEditLocalizedDatas)
+            .pkgProductsSet(productList)
             .build();
-
-        PackageCreateRequest request = AGCEdukit.getInstance(clientName).getPackageCreateRequest(packageData);
-        return request.saveDraft();
+        return packageData;
     }
 }

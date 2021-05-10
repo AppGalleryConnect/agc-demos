@@ -59,10 +59,12 @@ public class CreateCourseWithoutLesson {
         Course course = buildCourse();
         CourseCreateRequest courseCreateRequest = AGCEdukit.getInstance(clientName).getCourseCreateRequest(course);
 
-        /*如果您不需要使用CompletableFuture，可以参考本注释块中的代码
-        CourseCreateResponse courseCreateResponse =
-            courseCreateRequest.commit(CommonConstants.CourseCommitAction.COMMIT_REVIEW).join();
-        LOGGER.info("Create course response : {}", courseCreateResponse);*/
+        /*
+         * 如果您不需要使用CompletableFuture，可以参考本注释块中的代码
+         * CourseCreateResponse courseCreateResponse =
+         * courseCreateRequest.commit(CommonConstants.CourseCommitAction.COMMIT_REVIEW).join();
+         * LOGGER.info("Create course response : {}", courseCreateResponse);
+         */
 
         CompletableFuture<CourseCreateResponse> future =
             courseCreateRequest.commit(CommonConstants.CourseCommitAction.COMMIT_REVIEW);
@@ -122,7 +124,7 @@ public class CreateCourseWithoutLesson {
         ImageFileInfo cover = ImageFileInfo.builder()
             // 课程封面 jpg、png格式，图片分辨率为1280*720像素(宽*高)，单张图片最大为2MB
             .pathSet(path + "cover.png")
-            .resourceTypeSet(CommonConstants.ResourceType.COURSE_PACKAGE_HORIZONTAL_COVER)
+            .resourceTypeSet(CommonConstants.ResourceType.COURSE_PACKAGE_ALBUM_HORIZONTAL_COVER)
             .build();
 
         ImageFileInfo introduce = ImageFileInfo.builder()

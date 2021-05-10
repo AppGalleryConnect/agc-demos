@@ -6,7 +6,7 @@
 
   <groupId>com.huawei.agconnect</groupId>
   <artifactId>edukit_demo</artifactId>
-  <version>1.6.1.300</version>
+  <version>1.6.2.300</version>
   <packaging>jar</packaging>
 
   <name>edukit_demo</name>
@@ -28,7 +28,7 @@
     <dependency>
       <groupId>com.huawei.agconnect.server</groupId>
       <artifactId>agconnect-edukit</artifactId>
-      <version>1.6.1.300</version>
+      <version>1.6.2.300</version>
       <exclusions>
         <exclusion>
           <artifactId>logback-core</artifactId>
