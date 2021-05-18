@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">XamarinHmsCrashDemo</string>
+    <string name="action_settings">Settings</string>
+  <string name="make_crash">Create a Crash</string>
+  <string name="crash_collection_off">Crash Collection Off</string>
+  <string name="crash_collection_on">Crash Collection On</string>
+  <string name="native_library_error">Get Native Library Error</string>
+  <string name="set_user_id">Set User Id</string>
+  <string name="set_log">Add Log</string>
+  <string name="set_key_value">Set String Key Value</string>
+  <string name="clear_custom_events">Clear Custom Events</string>
+  <string name="record_exception">Record Exception</string>
+  <string name="crash_main_note">After a crash occurs, you need to launch the app again to report the crash information.</string>
+
+  
+  <string-array name="customkey_arrays">
+    <item>Choose a Custom Key</item>
+    <item>Int</item>
+    <item>String</item>
+    <item>Bool</item>
+    <item>Double</item>
+    <item>Long</item>
+  </string-array>
+</resources>

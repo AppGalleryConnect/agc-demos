@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/layoutAvatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:gravity="center|end"
+            android:textColor="@color/colorPrimaryText"
+            android:text="@string/title_avatar"
+            android:textSize="@dimen/titleSize" />
+
+        <ImageView
+            android:id="@+id/imgPhoto"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Show User Photo"
+            android:src="@drawable/user" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutUid"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/layoutAvatar"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:gravity="center|end"
+            android:textColor="@color/colorPrimaryText"
+            android:text="@string/title_uid"
+            android:textSize="@dimen/titleSize" />
+
+        <TextView
+            android:id="@+id/tvUid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/txtSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutUid"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="2dp"
+                android:gravity="center|end"
+                android:textColor="@color/colorPrimaryText"
+                android:text="@string/title_nickname"
+                android:textSize="@dimen/titleSize" />
+
+            <TextView
+                android:id="@+id/tvNickName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:minWidth="120dp"
+                android:text="@string/defNickName"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/txtSize" />
+
+            <Button
+                android:id="@+id/btnUpdateName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@color/colorAccent"
+                android:textColor="@color/colorTextIcons"
+                android:text="@string/update"
+                android:textSize="@dimen/txtSize" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="2dp"
+                android:gravity="center|end"
+                android:textColor="@color/colorPrimaryText"
+                android:text="@string/title_phone"
+                android:textSize="@dimen/titleSize" />
+
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/txtSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="2dp"
+                android:gravity="center|end"
+                android:text="@string/email"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/titleSize" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/txtSize" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutSignOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        
+        <Button
+            android:id="@+id/btnSignOut"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:background="@color/colorAccent"
+            android:textColor="@color/colorTextIcons"
+            android:text="@string/btnSingOutTxt" />
+    </LinearLayout>
+</RelativeLayout>

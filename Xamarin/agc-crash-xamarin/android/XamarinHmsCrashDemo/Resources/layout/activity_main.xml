@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:textSize="15sp"
+        android:text="@string/crash_main_note"
+        android:textColor="@color/colorPrimaryText" />
+
+    <Switch
+        android:id="@+id/swiEnableCollection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enable Crash Collection"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edt_SetUserId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edt_background"
+        android:hint="Enter User Id"
+        android:inputType="number"
+        android:padding="4dp"
+        android:textColor="@color/colorPrimaryText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Set Custom Key"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spnr_CustomKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/edt_CustomValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/edt_background"
+            android:hint="Enter Value"
+            android:padding="4dp"
+            android:textColor="@color/colorPrimaryText" />
+        <Switch
+        android:id="@+id/swiCustomBoolValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Bool Value"
+        android:layout_weight="1"
+        android:visibility="gone"    
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSetLog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorAccent"
+        android:text="@string/set_log"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorTextIcons" />
+
+    <Button
+        android:id="@+id/btnRecordException"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorAccent"
+        android:text="@string/record_exception"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorTextIcons" />
+
+    <Button
+        android:id="@+id/btn_crash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/make_crash"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorTextIcons" />
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.808.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppMessagingiOSDemo", "AppMessagingiOSDemo\AppMessagingiOSDemo.csproj", "{9F111147-8288-4326-8CFD-6AE947C6F653}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F111147-8288-4326-8CFD-6AE947C6F653}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{9F111147-8288-4326-8CFD-6AE947C6F653}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{9F111147-8288-4326-8CFD-6AE947C6F653}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{9F111147-8288-4326-8CFD-6AE947C6F653}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{9F111147-8288-4326-8CFD-6AE947C6F653}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{9F111147-8288-4326-8CFD-6AE947C6F653}.Debug|iPhone.Build.0 = Debug|iPhone
+		{9F111147-8288-4326-8CFD-6AE947C6F653}.Release|iPhone.ActiveCfg = Release|iPhone
+		{9F111147-8288-4326-8CFD-6AE947C6F653}.Release|iPhone.Build.0 = Release|iPhone
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD86A0D3-4EA1-43FD-B160-FD845D9A261F}
+	EndGlobalSection
+EndGlobal

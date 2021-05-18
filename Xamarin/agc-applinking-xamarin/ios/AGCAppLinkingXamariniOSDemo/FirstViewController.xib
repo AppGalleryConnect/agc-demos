@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirstViewController">
+            <connections>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+                <outlet property="switchSocial" destination="164" id="name-outlet-164"/>
+                <outlet property="switchCampaign" destination="166" id="name-outlet-166"/>
+                <outlet property="switchAndroidParams" destination="168" id="name-outlet-168"/>
+                <outlet property="switchiOSParams" destination="170" id="name-outlet-170"/>
+                <outlet property="switchITunesParams" destination="172" id="name-outlet-172"/>
+                <outlet property="btnCreateAppLink" destination="159" id="name-outlet-159"/>
+                <outlet property="btnConvert" destination="160" id="name-outlet-160"/>
+                <outlet property="btnClear" destination="163" id="name-outlet-163"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="App Link Properties" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="153">
+                    <rect key="frame" x="50" y="51" width="294" height="30"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                    <color key="textColor" systemColor="systemBlueColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Social Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="154" fixedFrame="YES">
+                    <rect key="frame" x="50" y="103" width="98" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="155" fixedFrame="YES">
+                    <rect key="frame" x="50" y="154" width="130" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Android Parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="156" fixedFrame="YES">
+                    <rect key="frame" x="50" y="205" width="226" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="157" fixedFrame="YES">
+                    <rect key="frame" x="50" y="256" width="226" height="19"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iTunes Connect Parameters" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="158" fixedFrame="YES">
+                    <rect key="frame" x="50" y="308" width="226" height="53"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="159">
+                    <rect key="frame" x="54" y="397" width="290" height="59"/>
+                    <color key="backgroundColor" red="0.98519414660000004" green="0.6711723208" blue="0.54247552160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Create App Link">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="CreateAppLink:" destination="-1" id="1186" eventType="touchUpInside"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="160">
+                    <rect key="frame" x="54" y="470" width="290" height="59"/>
+                    <color key="backgroundColor" red="0.74379277229999996" green="0.64777678250000004" blue="0.66537195439999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Convert Long to Short AppLink">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="BtnConvertShortToLongAppLink_TouchUpInside:" destination="162" eventType="touchUpInside" id="161"/>
+                        <action selector="BtnConvert_TouchUpInside:" destination="-1" id="1347" eventType="touchUpInside"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="163">
+                    <rect key="frame" x="54" y="537" width="290" height="59"/>
+                    <color key="backgroundColor" red="0.90336242411016421" green="0.27760437425877027" blue="0.28190339901667999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Clear All">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="ClearAll:" destination="-1" id="867" eventType="touchUpInside"/>
+                    </connections>
+                </button>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="164">
+                    <rect key="frame" x="297" y="98" width="51" height="31"/>
+                    <connections>
+                        <action selector="SocialChanged:" destination="162" eventType="valueChanged" id="165"/>
+                        <action selector="SocialChanged:" destination="-1" id="878" eventType="valueChanged"/>
+                    </connections>
+                </switch>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="166">
+                    <rect key="frame" x="297" y="149" width="51" height="31"/>
+                    <connections>
+                        <action selector="CampaignChanged:" destination="162" eventType="valueChanged" id="167"/>
+                        <action selector="CampaignChanged:" destination="-1" id="862" eventType="valueChanged"/>
+                    </connections>
+                </switch>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="168">
+                    <rect key="frame" x="297" y="200" width="51" height="31"/>
+                    <connections>
+                        <action selector="AndroidParamChanged:" destination="162" eventType="valueChanged" id="169"/>
+                        <action selector="AndroidParamsChanged:" destination="-1" id="863" eventType="valueChanged"/>
+                    </connections>
+                </switch>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="170">
+                    <rect key="frame" x="297" y="251" width="51" height="31"/>
+                    <connections>
+                        <action selector="iOSParamChanged:" destination="162" eventType="valueChanged" id="171"/>
+                        <action selector="iOSParamsChanged:" destination="-1" id="877" eventType="valueChanged"/>
+                    </connections>
+                </switch>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="172">
+                    <rect key="frame" x="297" y="319" width="51" height="31"/>
+                    <connections>
+                        <action selector="ITunesParamChanged:" destination="162" eventType="valueChanged" id="173"/>
+                        <action selector="iTunesParamsChanged:" destination="-1" id="865" eventType="valueChanged"/>
+                    </connections>
+                </switch>
+            </subviews>
+        </view>
+    </objects>
+</document>
