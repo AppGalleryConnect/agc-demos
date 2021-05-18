@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinHmsCrashDemo", "XamarinHmsCrashDemo\XamarinHmsCrashDemo.csproj", "{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|ARM.Build.0 = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|ARM.Deploy.0 = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|ARM64.Deploy.0 = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|x64.Build.0 = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|x86.Build.0 = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Debug|x86.Deploy.0 = Debug|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|ARM.ActiveCfg = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|ARM.Build.0 = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|ARM.Deploy.0 = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|ARM64.Build.0 = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|ARM64.Deploy.0 = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|x64.ActiveCfg = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|x64.Build.0 = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|x64.Deploy.0 = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|x86.ActiveCfg = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|x86.Build.0 = Release|Any CPU
+		{AC404CD6-4409-409D-9F4A-2C220CB4E8AF}.Release|x86.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E385505-3931-4D37-9585-F7D3E8499612}
+	EndGlobalSection
+EndGlobal

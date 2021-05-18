@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\Main.storyboardc\UIViewController-BYZ-38-t0r.nib">
+      <Optimize>false</Optimize>
+      <LogicalName>Main.storyboardc/UIViewController-BYZ-38-t0r.nib</LogicalName>
+      <OriginalItemSpec>obj/iPhone/Debug/ibtool-link/Main.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\Main.storyboardc\BYZ-38-t0r-view-8bC-Xf-vdC.nib">
+      <Optimize>false</Optimize>
+      <LogicalName>Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</LogicalName>
+      <OriginalItemSpec>obj/iPhone/Debug/ibtool-link/Main.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\Main.storyboardc\Info.plist">
+      <Optimize>false</Optimize>
+      <LogicalName>Main.storyboardc/Info.plist</LogicalName>
+      <OriginalItemSpec>obj/iPhone/Debug/ibtool-link/Main.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\LaunchScreen.storyboardc\01J-lp-oVM-view-Ze5-6b-2t3.nib">
+      <Optimize>false</Optimize>
+      <LogicalName>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</LogicalName>
+      <OriginalItemSpec>obj/iPhone/Debug/ibtool-link/LaunchScreen.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\LaunchScreen.storyboardc\UIViewController-01J-lp-oVM.nib">
+      <Optimize>false</Optimize>
+      <LogicalName>LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</LogicalName>
+      <OriginalItemSpec>obj/iPhone/Debug/ibtool-link/LaunchScreen.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\LaunchScreen.storyboardc\Info.plist">
+      <Optimize>false</Optimize>
+      <LogicalName>LaunchScreen.storyboardc/Info.plist</LogicalName>
+      <OriginalItemSpec>obj/iPhone/Debug/ibtool-link/LaunchScreen.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+  </ItemGroup>
+</Project>

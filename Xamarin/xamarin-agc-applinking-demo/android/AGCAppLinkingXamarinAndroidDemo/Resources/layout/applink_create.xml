@@ -1,0 +1,199 @@
+
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:fillViewport="true">
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical"
+		android:padding="50px"
+		android:scrollbars="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+    >
+
+        
+
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:padding="10dip"
+			android:layout_marginBottom="25px"
+			android:layout_marginTop="20px"
+			android:layout_height="wrap_content">
+		
+            <TextView
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textColor="#DB0000"
+			android:text="App Link:"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:minWidth="25px"
+			android:minHeight="25px"
+			android:id="@+id/textView1" />
+
+		<TextView
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:clickable="true"
+			android:textSize="40px"
+			android:textIsSelectable="true"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:minWidth="25px"
+			android:minHeight="25px"
+			android:id="@+id/txtLink" />
+
+		<Button
+			android:text="Add Social Info"
+			android:layout_marginBottom="20px"
+			android:layout_marginTop="10px"
+			android:background="#83A6E3"
+			android:textColor="@android:color/white"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/btnAddSocialInfo" />
+
+		<Button
+			android:text="Add Campaign Info"
+			android:layout_marginBottom="20px"
+			android:background="#A4ABBD"
+			android:textColor="@android:color/white"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/btnAddCampaignInfo" />
+
+		<Button
+			android:text="Add Android App Parameters"
+			android:layout_marginBottom="20px"
+			android:background="#FFAB8A"
+			android:textColor="@android:color/white"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/btnAddAndroidAppParameters" />
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+				android:layout_marginBottom="20px"
+			android:orientation="horizontal">
+			<Button
+				android:text="Add iOS App Parameters"
+				android:background="#BEA5AA"
+				android:padding="20px"
+				android:textColor="@android:color/white"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/btnAddiOSAppParameters" />
+			<CheckBox
+				android:text="Add Itunes Campaign Info"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:id="@+id/chkItunesCampaignInfo" />
+
+		</LinearLayout>
+
+			 <Button
+        android:text="Share App Link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnShareAppLink" />
+		
+		</LinearLayout>
+
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:padding="10dip"
+			android:layout_height="wrap_content">
+			   
+
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#DB0000"
+        android:text="Short Link:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/txtLinkTitle" />
+
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:clickable="true"
+        android:textIsSelectable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/txtShortLink" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#DB0000"
+        android:text="Test Link:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/textView3" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:clickable="true"
+        android:textIsSelectable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/txtTestLink" />
+
+
+    <Button
+        android:text="Create Short App Link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCreateShortAppLink" />
+
+    <Button
+        android:text="Create Long App Link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCreateLongAppLink" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/longLinkContainer">
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:clickable="true"
+            android:textIsSelectable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/txtConvertedLink" />
+
+        <Button
+            android:text="Convert Long to Short App Link"
+            android:layout_width="match_parent"
+            android:enabled="false"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnConvert" />
+    </LinearLayout>
+			<Button
+        android:text="Clear All"
+			android:layout_marginVertical="10px"
+			android:background="#E66868"
+			android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnClear" />
+		</LinearLayout>
+
+			
+	</LinearLayout>
+</ScrollView>

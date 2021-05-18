@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "dgSpecHash": "sE6/evZhGRNSWjaeu1plLR/50smBbO6UbKUS1FK5oiir0aqcjkLRGbiiTAQ734FXOy49PZsmE6ctlgtexy6Kig==",
+  "success": true,
+  "projectFilePath": "D:\\source\\GitLab\\AGC\\HP_HMSCore-AGC-Plugin-Xamarin_Crash-Demo\\ios\\AGCCrashXamarinDemo\\AGCCrashXamarinDemo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\t00596874\\.nuget\\packages\\huawei.agconnect.ios.agconnectcore\\1.2.0.300\\huawei.agconnect.ios.agconnectcore.1.2.0.300.nupkg.sha512",
+    "C:\\Users\\t00596874\\.nuget\\packages\\huawei.agconnect.ios.crash\\1.3.0.300\\huawei.agconnect.ios.crash.1.3.0.300.nupkg.sha512",
+    "C:\\Users\\t00596874\\.nuget\\packages\\huawei.hms.ios.hianalytics\\5.0.5.300\\huawei.hms.ios.hianalytics.5.0.5.300.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Huawei.Agconnect.iOS.AgconnectCore from 1.3.0.300 to 1.2.0.300. Reference the package directly from the project to select a different version. \r\n AGCCrashXamarinDemo -> Huawei.Agconnect.iOS.Crash 1.3.0.300 -> Huawei.Agconnect.iOS.AgconnectCore (>= 1.3.0.300) \r\n AGCCrashXamarinDemo -> Huawei.Agconnect.iOS.AgconnectCore (>= 1.2.0.300)",
+      "libraryId": "Huawei.Agconnect.iOS.AgconnectCore",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    }
+  ]
+}
