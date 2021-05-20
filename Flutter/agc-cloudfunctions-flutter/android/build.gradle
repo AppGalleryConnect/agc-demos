@@ -1,6 +1,3 @@
-group 'com.huawei.agc.flutter.cloudfunctions'
-version '1.0'
-
 buildscript {
     repositories {
         google()
@@ -10,10 +7,11 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.0'
+        classpath 'com.huawei.agconnect:agcp:1.4.2.301'
     }
 }
 
-rootProject.allprojects {
+allprojects {
     repositories {
         google()
         jcenter()
@@ -21,27 +19,14 @@ rootProject.allprojects {
     }
 }
 
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
-
-    defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 29
-    }
-
-    lintOptions {
-        disable 'InvalidPackage'
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
 }
 
-dependencies {
-    implementation 'com.huawei.agconnect:agconnect-function:1.4.2.301'
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
