@@ -1,5 +1,5 @@
 /*
-    Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2020-2021. Huawei Technologies Co., Ltd. All rights reserved.
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
@@ -11,17 +11,24 @@
     limitations under the License.
 */
 
+import 'dart:io';
+
+import 'package:agconnect_auth_example/custom_button.dart';
+import 'package:agconnect_auth_example/pages/page_huawei.dart';
+import 'package:agconnect_auth_example/pages/page_huawei_game.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:agconnect_auth/agconnect_auth.dart';
 
-import 'page_anonymous.dart';
-import 'page_email.dart';
-import 'page_phone.dart';
-import 'page_self_build.dart';
-import 'page_user.dart';
+import 'pages/page_anonymous.dart';
+import 'pages/page_email.dart';
+import 'pages/page_google.dart';
+import 'pages/page_google_game.dart';
+import 'pages/page_phone.dart';
+import 'pages/page_self_build.dart';
+import 'pages/page_user.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,6 +53,26 @@ class _HomePageState extends State<HomePage> {
     addTokenListener();
   }
 
+  void _showDialog(BuildContext context, String content) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            key: Key("dialog"),
+            title: Text("Result"),
+            content: Text(content),
+            actions: <Widget>[
+              FlatButton(
+                child: new Text("Close"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
+
   Future<void> addTokenListener() async {
     if (!mounted) return;
 
@@ -65,43 +92,105 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Center(
             child: ListView(
-              children: <Widget>[
-                CupertinoButton(
-                    child: Text('Anonymous'),
-                    onPressed: () async {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PageAnonymousAuth()));
-                    }),
-                CupertinoButton(
-                    child: Text('Phone'),
-                    onPressed: () async {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => PagePhoneAuth()));
-                    }),
-                CupertinoButton(
-                    child: Text('Email'),
-                    onPressed: () async {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => PageEmailAuth()));
-                    }),
-                CupertinoButton(
-                    child: Text('Self Build'),
-                    onPressed: () async {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PageSelfBuildAuth()));
-                    }),
-                CupertinoButton(
-                    child: Text('User Info'),
-                    onPressed: () async {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => PageUser()));
-                    }),
-              ],
-            )),
+          children: <Widget>[
+            CustomButton('Anonymous', () async {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PageAnonymousAuth()));
+            }),
+            CustomButton('Phone', () async {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PagePhoneAuth()));
+            }),
+            CustomButton('Email', () async {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PageEmailAuth()));
+            }),
+            CustomButton('Self Build', () async {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PageSelfBuildAuth()));
+            }),
+            CustomButton('User Info', () async {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => PageUser()));
+            }),
+            CustomButton('Huawei Login', () async {
+              if (Platform.isAndroid) {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PageHuaweiAuth()));
+              } else if (Platform.isIOS) {
+                _showDialog(context,
+                    "This authentication mode is available only for Android.");
+              }
+            }),
+            CustomButton('Huawei Game Login', () async {
+              if (Platform.isAndroid) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PageHuaweiGameAuth()));
+              } else if (Platform.isIOS) {
+                _showDialog(context,
+                    "This authentication mode is available only for Android.");
+              }
+            }),
+            CustomButton('Google Login', () async {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PageGoogleAuth()));
+            }),
+            CustomButton('GoogleGame Login', () async {
+              if (Platform.isAndroid) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PageGoogleGameAuth()));
+              } else if (Platform.isIOS) {
+                _showDialog(context,
+                    "This authentication mode is available only for Android.");
+              }
+            }),
+            CustomButton('Twitter Login', () async {
+              _showDialog(
+                  context,
+                  "Please integrate related third plugins and retrive "
+                  "the parameters to auth plugin to enable this function, you can read readme for detail.");
+            }),
+            CustomButton('Facebook Login', () async {
+              _showDialog(
+                  context,
+                  "Please integrate related third plugins and retrive "
+                  "the parameters to auth plugin to enable this function, you can read readme for detail.");
+            }),
+            CustomButton('Apple Login', () async {
+              if (Platform.isAndroid) {
+                _showDialog(context,
+                    "This authentication mode is available only for iOS.");
+              } else if (Platform.isIOS) {
+                _showDialog(
+                    context,
+                    "Please integrate related third plugins and retrive "
+                    "the parameters to auth plugin to enable this function, you can read readme for detail.");
+              }
+            }),
+            CustomButton('WeChat Login', () async {
+              _showDialog(
+                  context,
+                  "Please integrate related third plugins and retrive "
+                  "the parameters to auth plugin to enable this function, you can read readme for detail.");
+            }),
+            CustomButton('WeiBo Login', () async {
+              _showDialog(
+                  context,
+                  "Please integrate related third plugins and retrive "
+                  "the parameters to auth plugin to enable this function, you can read readme for detail.");
+            }),
+            CustomButton('QQ Login', () async {
+              _showDialog(
+                  context,
+                  "Please integrate related third plugins and retrive "
+                  "the parameters to auth plugin to enable this function, you can read readme for detail.");
+            }),
+          ],
+        )),
       ),
     );
   }

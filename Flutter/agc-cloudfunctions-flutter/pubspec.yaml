@@ -1,26 +1,21 @@
-name: agconnect_cloudfunctions
-description: AppGallery Connect Cloud Functions plugin for Flutter. Cloud Functions enables serverless computing.
-version: 1.2.0+221
-homepage: https://developer.huawei.com/consumer/en/agconnect/
-repository: https://github.com/AppGalleryConnect/agc-flutter-plugin
+name: agconnect_cloudfunctions_example
+description: Demonstrates how to use the AppGallery Connect Cloud Functions plugin.
+version: 1.2.0+300
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.6 <2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+
+  agconnect_cloudfunctions: 1.2.0+300
+
+  cupertino_icons: ^1.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 flutter:
-  plugin:
-    platforms:
-      android:
-        package: com.huawei.agc.flutter.cloudfunctions
-        pluginClass: AGCCloudFunctionsPlugin
-      ios:
-        pluginClass: AGCCloudFunctionsPlugin
+  uses-material-design: true
