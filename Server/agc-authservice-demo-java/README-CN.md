@@ -6,22 +6,23 @@
 ## 环境准备
 您的服务器需要支持Java8或者更高版本
 
-## 配置
+## 开始前准备
 运行认证服务Server SDK之前:
-1. 开通认证服务 https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-auth-service-getstarted
-2. 创建自己的项目 https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-auth-service-getstarted
-3. 下载认证凭据 https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-auth-service-getstarted
+1. 开通认证服务
+2. 创建自己的项目
+3. 下载认证凭据
 
+参考：https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-auth-android-getstarted-0000001053053922
 
 ## 代码样例
 1. 导入用户
-示例代码: src\main\java\com\huawei\agconnect\server\demo\auth\ImportDemo.java
+  示例代码: src\main\java\com\huawei\agconnect\server\demo\auth\ImportDemo.java
 
 2. 导出用户
-示例代码: src\main\java\com\huawei\agconnect\server\demo\auth\ExportDemo.java
+  示例代码: src\main\java\com\huawei\agconnect\server\demo\auth\ExportDemo.java
 
 3. JWT签名
-示例代码: src\main\java\com\huawei\agconnect\server\demo\auth\SignDemo.java
+  示例代码: src\main\java\com\huawei\agconnect\server\demo\auth\SignDemo.java
 
 
 ## 许可证
