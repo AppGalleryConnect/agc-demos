@@ -1,21 +1,489 @@
+<!DOCTYPE html>
+<!--
+    Copyright 2020-2021. Huawei Technologies Co., Ltd. All rights reserved.
+
+    Licensed under the Apache License, Version 2.0 (the "License")
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
 <html>
+
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
+    <meta charset="utf-8">
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, see:
+        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+    Some notes:
+        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <title>Hello World</title>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Cordova AGC Auth</title>
 </head>
+
 <body>
-<div class="app">
-    <button type='button' class='style1' id="Auth_Com">Common</button>
-    <button type='button' class='style2' id="Auth_Anonymously">Anonymously</button>
-    <button type='button' class='style3' id="Auth_Phone">Phone</button>
-    <button type='button' class='style4' id="Auth_Email">Email</button>
-    <button type='button' class='style5' id="Auth_SelfBuild">SelfBuild</button>
-</div>
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+    <div class="container">
+        <div id="main">
+            <h1>Cordova AGC Auth</h1>
+            <div>
+                <button id="logInWithEmailButton" type="button">Sign In with
+                    Email
+                </button>
+                <button id="logInWithPhoneButton" type="button">Sign In with
+                    Phone
+                </button>
+                <button id="logInAnonymous" type="button">Sign In Anonymous
+                </button>
+            </div>
+
+            <form>
+                <label>Create User</label>
+                <select id="createUserSelectElem">
+                    <option selected>Select Provider</option>
+                    <option value="11">Phone_Provider</option>
+                    <option value="12">Email_Provider</option>
+                </select>
+                <br>
+                <button id="createUserNextButton" type="button">Next
+                </button>
+            </form>
+
+            <form>
+                <label>Sign In With Third-Party Accounts</label>
+                <select id="providerType">
+                    <option selected>Select Provider</option>
+                    <option value="1">HMS_Provider</option>
+                    <option value="2">Facebook_Provider</option>
+                    <option value="3">Twitter_Provider</option>
+                    <option value="4">WeiXin_Provider</option>
+                    <option value="5">HWGame_Provider</option>
+                    <option value="6">QQ_Provider</option>
+                    <option value="7">WeiBo_Provider</option>
+                    <option value="8">Google_Provider</option>
+                    <option value="9">GoogleGame_Provider</option>
+                    <option value="10">SelfBuild_Provider</option>
+                    <option value="13">Apple_Provider</option>
+                </select>
+                <br>
+                <button id="logInThirdPartyNextButton" type="button">Sign In
+                </button>
+            </form>
+        </div>
+        <div id="loginWithEmail">
+            <form>
+                <h1>Sign In With Email</h1>
+                <div>
+                    <label for="emailLogInField">Email address</label>
+                    <input type="email" id="emailLogInField" placeholder="Enter email...">
+                </div>
+                <div>
+                    <label for="passwordFieldEmailLogIn">Password</label>
+                    <input type="password" id="passwordFieldEmailLogIn" placeholder="Enter password...">
+                </div>
+                <div>
+                    <input id="logInEmailVerifyCodeField" type="text" placeholder="Enter verify code...">
+                    <button id="requestEmailVerifyCodeButton" type="button">Request
+                        Verify
+                        Code
+                    </button>
+                </div>
+                <div>
+                    <button id="logInWithEmailLogIn" type="button">Sign In</button>
+                    <button id="logInWithEmailLogInResetPassword" type="button">Reset
+                        Password</button>
+                    <button id="logInWithEmailButtonBack" type="button">Back</button>
+                </div>
+            </form>
+        </div>
+        <div id="loginWithPhone">
+            <form>
+                <h1>Sign In With Phone</h1>
+                <div>
+                    <label for="logInCountryCodeField">Country Code</label>
+                    <input type="number" id="logInCountryCodeField" placeholder="Enter country code...">
+                </div>
+                <div>
+                    <label for="logInPhoneNumberField">Phone Number</label>
+                    <input type="number" id="logInPhoneNumberField" placeholder="Enter phone number...">
+                </div>
+                <div>
+                    <label for="passwordFieldPhoneLogIn">Password</label>
+                    <input type="password" id="passwordFieldPhoneLogIn" placeholder="Enter password...">
+                </div>
+                <div>
+                    <input id="logInPhoneVerifyCodeField" type="text" placeholder="Enter verify code...">
+                    <button id="requestPhoneVerifyCodeButton" type="button">Request
+                        Verify
+                        Code
+                    </button>
+                </div>
+                <div>
+                    <button id="logInWithPhoneLogIn" type="button">Sign In</button>
+                    <button id="logInWithPhoneLogInResetPassword" type="button">Reset
+                        Password</button>
+                    <button id="logInWithPhoneButtonBack" type="button">Back</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="createUserPhoneProvider">
+            <form>
+                <h1>Create User With Phone</h1>
+                <div>
+                    <label for="phoneCountryCodeField">Country Code</label>
+                    <input type="number" id="phoneCountryCodeField" placeholder="Enter country code...">
+                </div>
+                <div>
+                    <label for="createUserPhoneNumber">Phone Number</label>
+                    <input type="number" id="createUserPhoneNumber" placeholder="Enter phone number...">
+                </div>
+
+                <div>
+                    <label for="createUserPhoneNumber">Password</label>
+                    <input type="password" id="createUserPasswordP" placeholder="Enter password..." required>
+                </div>
+                <div>
+                    <input id="phoneVerifyCode" type="text" placeholder="Enter verify code...">
+                    <button id="requestPhoneVerifyCode" type="button">Request
+                        Verify
+                        Code
+                    </button>
+                </div>
+                <div>
+                    <button id="createUserPhoneProviderButtonBack" type="button">Back</button>
+                    <button id="createUserPhoneProviderButton" type="button">Create
+                        User</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="createUserEmailProvider">
+            <form>
+                <h1>Create User With Email</h1>
+                <input type="email" id="createUserEmail" placeholder="Enter email..." required>
+                <input type="password" id="createUserPasswordE" placeholder="Enter password..." required>
+                <div>
+                    <input id="emailVerifyCode" type="text" placeholder="Enter verify code...">
+                    <button type="button" id="requestEmailVerifyCode">Request
+                        Verify
+                        Code
+                    </button>
+                </div>
+                <div>
+                    <button id="createUserEmailProviderButtonBack" type="button">Back</button>
+                    <button id="createUserEmailProviderButton" type="button">Create
+                        User</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="userProfileScreen">
+            <form>
+                <h1>User Profile</h1>
+                <div>
+                    <p for="userProfileAvatar">Avatar</p>
+                    <img id="userProfileAvatar"
+                        src=""
+                        width="200" height="250">
+                </div>
+                <p for="userProfileDisplayName">DisplayName</p>
+                <p class="info" id="userProfileDisplayName">userProfileDisplayName</p>
+
+                <p for="userProfilePhoneNumberLabel">PhoneNumber</p>
+                <p class="info" id="userProfilePhoneNumber">userProfilePhoneNumber</p>
+
+                <p id="userProfileEmailLabel" for="userProfileEmail">Email</p>
+                <p class="info" id="userProfileEmail">userProfileEmail</p>
+
+                <p id="userProfileProviderIdLabel" for="userProfileProviderId">Provider
+                    ID</p>
+                <p class="info" id="userProfileProviderId">userProfileProviderId</p>
+
+                <p id="userProfileUidLabel" for="userProfileUid">Profile UID</p>
+                <p class="info" id="userProfileUid">userProfileUid</p>
+
+                <p id="userProfileTokenLabel" for="userProfileToken">Profile Token</p>
+                <p class="info" id="userProfileToken">userProfileToken</p>
+
+                <p id="userProfileIsAnonymousLabel" for="userProfileIsAnonymous">IsAnonymous</p>
+                <p class="info" id="userProfileIsAnonymous">userProfileIsAnonymous</p>
+
+                <p id="userProfilePasswordSettedLabel" for="userProfilePasswordSetted">Password
+                    Setted</p>
+                <p class="info" id="userProfilePasswordSetted">userProfilePasswordSetted</p>
+
+                <p id="userProfileUserCreateTimeLabel" for="userProfileUserCreateTime">Create
+                    Time</p>
+                <p class="info" id="userProfileUserCreateTime">userProfileUserCreateTime</p>
+
+                <p id="userProfileLastSignInTimeLabel" for="userProfileLastSignInTime">Last Sign
+                    In Time</p>
+                <p class="info" id="userProfileLastSignInTime">userProfileLastSignInTime</p>
+
+                <div>
+                    <button id="userProfileLink" type="button">Link</button>
+                    <button id="userProfileSettings" type="button">Settings</button>
+                    <button id="userProfileSignOutUser" type="button">Sign Out</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="userProfileSettingsScreen">
+            <h1>User Profile Settings</h1>
+            <div>
+                <button id="userProfileSettingsUpdateEmail" type="button">Update Email
+                </button>
+                <button id="userProfileSettingsUpdateDisplayName" type="button">Update
+                    Profile
+                </button>
+                <button id="userProfileSettingsUpdatePhone" type="button">Update Phone
+                </button>
+                <button id="userProfileSettingsUpdatePassword" type="button">Update Password
+                </button>
+            </div>
+            <form>
+                <div>
+                    <button id="userProfileSettingsDeleteUser" type="button">Delete User</button>
+                </div>
+            </form>
+            <br>
+            <div>
+                <button id="userProfileSettingsBack" type="button">Back</button>
+            </div>
+        </div>
+
+        <div id="userProfileSettingsScreenUpdateDisplayName">
+            <form>
+                <label>Update Profile Name</label>
+                <input type="text" id="displayNameField" placeholder="Enter display name..." required>
+                <label>Update Profile Photo</label>
+                <input type="text" id="profilePhotoField" placeholder="Enter profile photo URL..." required>
+                <button id="updateProfileButton" type="button">Update Profile
+                </button>
+                <div>
+                    <button id="userProfileSettingsScreenUpdateDisplayNameBack" type="button">Back</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="userProfileSettingsScreenUpdateEmail">
+            <form>
+                <label>Update E-mail</label>
+                <input type="text" id="newEmailField" placeholder="Enter e-mail..." required>
+                <div>
+                    <input id="updateEmailVCF" type="text" placeholder="Enter verify code..." required>
+                    <button type="button" id="updateEmailVCB">Request
+                        Verify
+                        Code
+                    </button>
+                </div>
+                <input type="text" id="updateEmailLangField" placeholder="Enter language (ex. format: en_US)...">
+                <button id="updateEmailButton" type="button">Update Email
+                </button>
+                <div>
+                    <button id="userProfileSettingsScreenUpdateEmailBack" type="button">Back</button>
+                </div>
+            </form>
+        </div>
+        <div id="userProfileSettingsScreenUpdatePhone">
+            <form>
+                <label>Update Phone</label>
+                <input type="text" id="countryCodeField" placeholder="Enter countryCode..." required>
+                <input type="text" id="phoneNumberField" placeholder="Enter phone number..." required>
+                <input type="text" id="updatePhoneLangField" placeholder="Enter language (ex. format: en_US)...">
+                <div>
+                    <input id="updatePhoneVCF" type="text" placeholder="Enter verify code...">
+                    <button type="button" id="updatePhoneVCB">Request
+                        Verify
+                        Code
+                    </button>
+                </div>
+                <button id="updatePhoneButton" type="button">Update Phone
+                </button>
+                <div>
+                    <button id="userProfileSettingsScreenUpdatePhoneBack" type="button">Back</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="userProfileSettingsScreenUpdatePassword">
+            <form>
+                <label>Update Password</label>
+                <select id="providersSelectElem">
+                    <option selected>Select Provider</option>
+                    <option value="11">Phone_Provider</option>
+                    <option value="12">Email_Provider</option>
+                </select>
+                <div>
+                    <p>If select Phone_Provider, enter country code and phone number.</p>
+                </div>
+                <div>
+                    <p>If select Email_Provider, enter Email address.</p>
+                </div>
+                <input type="text" id="updatePasswordEmailF" placeholder="Enter e-mail...">
+                <input type="text" id="updatePasswordCountryCodeF" placeholder="Enter country code...">
+                <input type="text" id="updatePasswordPhoneF" placeholder="Enter phone...">
+                <input type="password" id="newPasswordField" placeholder="Enter new password...">
+                <div>
+                    <input id="updatePasswordVCF" type="text" placeholder="Enter verify code..." required>
+                    <button type="button" id="updatePasswordVCB">Request
+                        Verify
+                        Code
+                    </button>
+                </div>
+                <button id="updatePasswordButton" type="button">Update Password
+                </button>
+                <div>
+                    <button id="userProfileSettingsScreenUpdatePasswordBack" type="button">Back</button>
+                </div>
+            </form>
+        </div>
+
+
+
+        <div id="loginWithPhoneResetPassword">
+            <form>
+                <label>Reset Password with Phone</label>
+                <input type="text" id="countryCodeFieldRP" placeholder="Enter countryCode..." required>
+                <input type="text" id="phoneNumberFieldRP" placeholder="Enter phone number..." required>
+                <input type="password" id="newPasswordFieldPRP" placeholder="Enter new password..." required>
+                <div>
+                    <input id="resetPasswordPhoneVCF" type="text" placeholder="Enter verify code...">
+                    <button type="button" id="resetPasswordPhoneVCB">Request
+                        Verify
+                        Code
+                    </button>
+                </div>
+                <button id="resetPasswordPhoneButton" type="button">Reset Password
+                </button>
+                <div>
+                    <button id="loginWithPhoneResetPasswordBack" type="button">Back</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="loginWithEmailResetPassword">
+            <form>
+                <label>Reset Password with E-mail</label>
+                <input type="text" id="emailFieldRP" placeholder="Enter e-mail..." required>
+                <input type="password" id="newPasswordFieldERP" placeholder="Enter new password..." required>
+                <div>
+                    <input id="resetPasswordEmailVCF" type="text" placeholder="Enter verify code..." required>
+                    <button type="button" id="resetPasswordEmailVCB">Request
+                        Verify
+                        Code
+                    </button>
+                </div>
+                <button id="resetPasswordEmailButton" type="button">Reset Password
+                </button>
+                <div>
+                    <button id="loginWithEmailResetPasswordBack" type="button">Back</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="userProfileScreenProfileLink">
+            <form>
+                <label><b>Link</b> or <b>Unlink</b> an authentication
+                    mode</label>
+                <select id="linkProviderType">
+                    <option selected>Select Provider</option>
+                    <option value="1">HMS_Provider</option>
+                    <option value="2">Facebook_Provider</option>
+                    <option value="3">Twitter_Provider</option>
+                    <option value="4">WeiXin_Provider</option>
+                    <option value="5">HWGame_Provider</option>
+                    <option value="6">QQ_Provider</option>
+                    <option value="7">WeiBo_Provider</option>
+                    <option value="8">Google_Provider</option>
+                    <option value="9">GoogleGame_Provider</option>
+                    <option value="10">SelfBuild_Provider</option>
+                    <option value="11">Phone_Provider</option>
+                    <option value="12">Email_Provider</option>
+                    <option value="13">Apple_Provider</option>
+                </select>
+                <br>
+                <button id="linkThirdPartyProviderButton" type="button">Link
+                </button>
+                <button id="unlinkThirdPartyProviderButton" type="button">Unlink
+                </button>
+            </form>
+
+            <div>
+                <button id="userProfileScreenProfileLinkBack" type="button">Back</button>
+            </div>
+        </div>
+
+
+        <div id="userProfileScreenProfileLinkEmailProvider">
+            <form>
+                <h1>Link With Email</h1>
+                <div>
+                    <label for="linkEmailField">Email address</label>
+                    <input type="email" id="linkEmailField" placeholder="Enter email...">
+                </div>
+                <div>
+                    <label for="linkEmailPasswordField">Password</label>
+                    <input type="password" id="linkEmailPasswordField" placeholder="Enter password...">
+                </div>
+                <div>
+                    <input id="linkEmailVerifyCodeField" type="text" placeholder="Enter verify code...">
+                    <button id="linkEmailRequestEmailVerifyCodeButton" type="button">Request
+                        Verify
+                        Code
+                    </button>
+                </div>
+                <div>
+                    <button id="linkEmailProvider" type="button">Link</button>
+
+                    <button id="userProfileScreenProfileLinkEmailProviderButtonBack" type="button">Back</button>
+                </div>
+            </form>
+        </div>
+        <div id="userProfileScreenProfileLinkPhoneProvider">
+            <form>
+                <h1>Link With Phone</h1>
+                <div>
+                    <label for="linkPhoneCountryCodeField">Country Code</label>
+                    <input type="number" id="linkPhoneCountryCodeField" placeholder="Enter country code...">
+                </div>
+                <div>
+                    <label for="linkPhonePhoneNumberField">Phone Number</label>
+                    <input type="number" id="linkPhonePhoneNumberField" placeholder="Enter phone number...">
+                </div>
+                <div>
+                    <label for="linkPhonePasswordField">Password</label>
+                    <input type="password" id="linkPhonePasswordField" placeholder="Enter password...">
+                </div>
+                <div>
+                    <input id="linkPhoneVerifyCodeField" type="text" placeholder="Enter verify code...">
+                    <button id="linkPhoneRequestPhoneVerifyCodeButton" type="button">Request
+                        Verify
+                        Code
+                    </button>
+                </div>
+                <div>
+                    <button id="linkPhoneProvider" type="button">Link</button>
+
+                    <button id="userProfileScreenProfileLinkPhoneProviderButtonBack" type="button">Back</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 </body>
+
 </html>
