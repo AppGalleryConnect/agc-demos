@@ -10,7 +10,7 @@
     - [2.3.1. iOS App Development](#231-ios-app-development)
     - [2.3.2. Android App Development](#232-android-app-development)
 - [3. Configuration and Description](#3-configuration-and-description)
-- [4. Licencing and Terms](#5-licencing-and-terms)
+- [4. Licencing and Terms](#4-licencing-and-terms)
 
 ---
 
