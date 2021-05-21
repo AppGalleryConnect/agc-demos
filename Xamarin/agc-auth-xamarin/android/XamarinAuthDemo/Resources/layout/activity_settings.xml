@@ -1,0 +1,103 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/layoutUpdateEmail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimaryText"
+            android:text="@string/update_email" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutUpdatePhone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/layoutUpdateEmail">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#333333" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_centerHorizontal="true"
+            android:text="@string/update_phone" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layoutUpdatePassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/layoutUpdatePhone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#333333" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimaryText"
+            android:gravity="center"
+            android:text="@string/update_password" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layoutResetPassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/layoutUpdatePassword">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#333333" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimaryText"
+            android:gravity="center"
+            android:text="@string/reset_password" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layoutDelete"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#333333" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimaryText"
+            android:gravity="center"
+            android:text="@string/delete_user" />
+    </RelativeLayout>
+
+</RelativeLayout>

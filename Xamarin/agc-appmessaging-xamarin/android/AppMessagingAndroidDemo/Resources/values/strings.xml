@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AppMessagingXamarinDemo</string>
+    <string name="action_settings">Settings</string>
+	<string name="animal_detail">The Jabiru standing five feet tall with wings spanning nine feet, is the largest bird in Belize. Although its range extends from southeastern Mexico to northern Argentina, this native stork is now considered an endangered species.</string>
+</resources>

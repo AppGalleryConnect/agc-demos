@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "t9m0qBYY9F5Z/7N8lahBkAQ+gGR5RaZsP0hTZpj0aPFRZ0ZpZxFqoSy4LXFhqHAqtGKnV23hrq9hzII2tIZH/Q==",
+  "success": true,
+  "projectFilePath": "D:\\source\\GitLab\\AGC\\HP_AGC-Plugin-Xamarin_CloudFunctions-Demo\\ios\\AGCCloudFunctionsiOSDemo\\AGCCloudFunctionsiOSDemo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\t00596874\\.nuget\\packages\\huawei.agconnect.ios.agconnectcore\\1.3.0.300\\huawei.agconnect.ios.agconnectcore.1.3.0.300.nupkg.sha512",
+    "C:\\Users\\t00596874\\.nuget\\packages\\huawei.agconnect.ios.function\\1.3.0.300\\huawei.agconnect.ios.function.1.3.0.300.nupkg.sha512",
+    "C:\\Users\\t00596874\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512"
+  ],
+  "logs": []
+}
