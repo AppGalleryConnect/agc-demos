@@ -1,42 +1,24 @@
 {
-  "name": "@react-native-agconnect/appmessaging",
-  "title": "React Native AGC AppMessaging",
-  "description": "React Native AGC AppMessaging",
-  "version": "1.2.0-beta.1",
-  "main": "./src/index.js",
-  "repository": {
-    "type": "git",
-    "url": "",
-    "directory": ""
+  "name": "@react-native-agconnect/appmessaging-demo",
+  "version": "1.2.0-sdv.101",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start"
   },
-  "homepage": "https://developer.huawei.com/consumer/en/agconnect/",
-  "license": "Apache-2.0",
-  "licenseFilename": "LICENCE",
-  "readmeFilename": "README.md",
-  "keywords": [
-    "react-native",
-    "react-native-appmessaging",
-    "agc-appmessaging",
-    "huawei-appmessaging",
-    "agconnect-appmessaging",
-    "appmessaging-kit"
-  ],
-  "files": [
-    "android",
-    "ios",
-    "example",
-    "src",
-    "LICENCE",
-    "README.md",
-    "package.json",
-    "RNAGCAppmessaging.podspec"
-  ],
-  "peerDependencies": {
+  "dependencies": {
     "react": "^16.6.0",
-    "react-native": ">=0.60.0 <1.0.x"
+    "react-native": "^0.60.0",
+    "@react-native-agconnect/appmessaging": "1.2.0-sdv.101"
   },
   "devDependencies": {
-    "react": "^16.6.0",
-    "react-native": "^0.60.0"
+    "@babel/core": "^7.9.0",
+    "@babel/runtime": "^7.9.0",
+    "metro-react-native-babel-preset": "^0.60.0",
+    "ncp": "^2.0.0"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }
