@@ -1,18 +1,18 @@
 /*
-* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*      http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 #import "CloudDBManager.h"
 
@@ -28,8 +28,6 @@
 @property (nonatomic, strong) AGCCloudDBZone *dbZone;
 
 @property (nonatomic, assign) BOOL loginState;
-
-@property (nonatomic, strong) dispatch_queue_t serverQueue;
 
 @end
 
@@ -50,16 +48,9 @@ static CloudDBManager *_shareInsatnce = nil;
     return self.loginState;
 }
 
-- (dispatch_queue_t)serverQueue {
-    if (!_serverQueue) {
-        _serverQueue = dispatch_queue_create("com.managerServer.queue", DISPATCH_QUEUE_CONCURRENT);
-    }
-    return _serverQueue;
-}
-
 #pragma mark - login serve
 - (void)loginAGCWithComplete:(void (^)(BOOL success, NSError *error))complete {
-    dispatch_async(self.serverQueue, ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         //Step 1: Initializes cloud db
         //This step simply initializes the local database
@@ -81,10 +72,10 @@ static CloudDBManager *_shareInsatnce = nil;
             
             // Step 3: Set the caching policy and Synchronization strategies.
             NSString *zoneName = @"QuickStartDemo";
-            AGCCloudDBZoneConfig *zoneConfig = [[AGCCloudDBZoneConfig alloc]
-                                                initWithZoneName:zoneName
-                                                        syncMode:AGCCloudDBZoneSyncModeCloudCache
-                                                      accessMode:AGCCloudDBZoneAccessModePublic];
+            AGCCloudDBZoneConfig *zoneConfig =
+            [[AGCCloudDBZoneConfig alloc] initWithZoneName:zoneName
+                                                  syncMode:AGCCloudDBZoneSyncModeCloudCache
+                                                accessMode:AGCCloudDBZoneAccessModePublic];
             zoneConfig.persistence = YES;
             
             // Step 4: Open cloud db zone.
@@ -110,7 +101,7 @@ static CloudDBManager *_shareInsatnce = nil;
             }
             return;
         }
-
+        
         // Step 6: inanonymously login
         // Login agc connect
         AGCAuth *agcAuth = [AGCAuth getInstance];
@@ -154,7 +145,7 @@ static CloudDBManager *_shareInsatnce = nil;
 - (void)subscribeSnapshotComplete:(void (^)(NSArray *bookList, NSError *error))complete {
     AGCCloudDBQuery *query = [AGCCloudDBQuery where:[BookInfo class]];
     [query equalTo:@YES forField:@"shadowFlag"];
-
+    
     [self.dbZone subscribeSnapshotWithQuery:query
                                      policy:AGCCloudDBQueryPolicyCloud
                                    listener:^(AGCCloudDBSnapshot *_Nullable snapshot, NSError *_Nullable error) {
@@ -176,13 +167,13 @@ static CloudDBManager *_shareInsatnce = nil;
     if (book == nil) {
         return;
     }
-
+    
     if (book.bookName.length == 0) {
         return;
     }
-
+    
     book.id = @([[self getCurrentTimestamp] integerValue]);
-
+    
     // insert data
     [self.dbZone executeUpsertOne:book
                       onCompleted:^(NSInteger count, NSError *_Nullable error) {
@@ -204,11 +195,11 @@ static CloudDBManager *_shareInsatnce = nil;
     if (book == nil) {
         return;
     }
-
+    
     if (book.bookName.length == 0) {
         return;
     }
-
+    
     // update data
     [self.dbZone executeUpsertOne:book
                       onCompleted:^(NSInteger count, NSError *_Nullable error) {
@@ -236,7 +227,7 @@ static CloudDBManager *_shareInsatnce = nil;
                   onCompleted:^(AGCCloudDBSnapshot *_Nullable snapshot, NSError *_Nullable error) {
         if (snapshot != nil) {
             [weakSelf.dbZone executeDelete:snapshot.snapshotObjects
-                            onCompleted:^(NSInteger count, NSError *_Nullable error) {
+                               onCompleted:^(NSInteger count, NSError *_Nullable error) {
                 if (error) {
                     if (complete) {
                         complete(NO, error);
@@ -254,7 +245,7 @@ static CloudDBManager *_shareInsatnce = nil;
 #pragma mark - query table all data
 - (void)queryAllBooksWithResults:(void (^)(NSArray *bookList, NSError *error))results {
     AGCCloudDBQuery *query = [AGCCloudDBQuery where:[BookInfo class]];
-
+    
     [self.dbZone executeQuery:query
                        policy:AGCCloudDBQueryPolicyCloud
                   onCompleted:^(AGCCloudDBSnapshot *_Nullable snapshot, NSError *_Nullable error) {
@@ -275,7 +266,7 @@ static CloudDBManager *_shareInsatnce = nil;
 #pragma mark - fuzzy query
 - (void)fuzzyQueryAGCDataWithBookInfo:(nonnull BMQueryBookDataModel *)bookInfo
                               results:(void (^)(NSArray *bookList, NSError *error))results {
-    dispatch_async(self.serverQueue, ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if (bookInfo == nil) {
             NSError *error = [NSError errorWithDomain:@"DataModel is nil" code:0 userInfo:nil];
             if (results) {
@@ -293,31 +284,31 @@ static CloudDBManager *_shareInsatnce = nil;
             }
             return;
         }
-
+        
         AGCCloudDBQuery *query = [AGCCloudDBQuery where:[BookInfo class]];
-
+        
         // You can also use. Syntax
         //  query.contains(bookModel.bookName,@"bookName").greaterThanOrEqualTo(bookModel.minBookPrice,@"price")
         //  .lessThanOrEqualTo(bookModel.maxBookPrice,@"price").limit((int)bookModel.count);
-
+        
         if (bookInfo.bookName.length > 0) {
             [query contains:bookInfo.bookName forField:@"bookName"];
         }
-
+        
         if (bookInfo.minBookPrice.doubleValue > 0) {
             [query greaterThanOrEqualTo:bookInfo.minBookPrice forField:@"price"];
         }
-
+        
         if (bookInfo.maxBookPrice.doubleValue > 0) {
             [query lessThanOrEqualTo:bookInfo.maxBookPrice forField:@"price"];
         }
-
+        
         if (bookInfo.count > 0) {
             [query limit:(int)bookInfo.count];
         }
-
+        
         [query orderByAsc:@"bookName"];
-
+        
         [self.dbZone executeQuery:query
                            policy:AGCCloudDBQueryPolicyCloud
                       onCompleted:^(AGCCloudDBSnapshot *_Nullable snapshot, NSError *_Nullable error) {
@@ -341,13 +332,13 @@ static CloudDBManager *_shareInsatnce = nil;
                          sortType:(CloudDBManagerSortType)sortType
                           results:(void (^)(NSArray *bookList, NSError *error))results {
     AGCCloudDBQuery *query = [AGCCloudDBQuery where:[BookInfo class]];
-
+    
     if (sortType == CloudDBManagerSortTypeAsc) {
         [query orderByAsc:fieldName];
     } else {
         [query orderByDesc:fieldName];
     }
-
+    
     [self.dbZone executeQuery:query
                        policy:AGCCloudDBQueryPolicyCloud
                   onCompleted:^(AGCCloudDBSnapshot *_Nullable snapshot, NSError *_Nullable error) {

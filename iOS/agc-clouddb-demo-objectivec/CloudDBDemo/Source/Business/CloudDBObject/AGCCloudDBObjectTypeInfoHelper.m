@@ -5,7 +5,7 @@
 
 #import "AGCCloudDBObjectTypeHeaders.h"
 
-static const long ObjectTypeVersion = 1;
+static const long ObjectTypeVersion = 3;
 
 static const int FormatVersion = 1;
 
