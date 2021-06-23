@@ -46,12 +46,12 @@ public class LoginHelper {
     public void login() {
         AGConnectAuth auth = AGConnectAuth.getInstance();
         auth.signInAnonymously().addOnSuccessListener(mActivity, signInResult -> {
-            Log.w(TAG, "addOnSuccessListener: " + signInResult.getUser().getDisplayName());
+            Log.i(TAG, "addOnSuccessListener: " + signInResult.getUser().getDisplayName());
             for (OnLoginEventCallBack loginEventCallBack : mLoginCallbacks) {
                 loginEventCallBack.onLogin(true, signInResult);
             }
         }).addOnFailureListener(mActivity, e -> {
-            Log.w(TAG, "sign in for agc failed: " + e.getMessage());
+            Log.w(TAG, "Sign in for agc failed: " + e.getMessage());
             for (OnLoginEventCallBack loginEventCallBack : mLoginCallbacks) {
                 loginEventCallBack.onLogOut(false);
             }

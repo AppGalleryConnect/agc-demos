@@ -29,12 +29,12 @@ class LoginHelper(private val mActivity: Activity) {
     fun login() {
         val auth = AGConnectAuth.getInstance()
         auth.signInAnonymously().addOnSuccessListener(mActivity) { signInResult: SignInResult ->
-            Log.w(TAG, "addOnSuccessListener: " + signInResult.user.displayName)
+            Log.i(TAG, "addOnSuccessListener: " + signInResult.user.displayName)
             for (loginEventCallBack in mLoginCallbacks) {
                 loginEventCallBack.onLogin(true, signInResult)
             }
         }.addOnFailureListener(mActivity) { e: Exception ->
-            Log.w(TAG, "sign in for agc failed: " + e.message)
+            Log.w(TAG, "Sign in for agc failed: " + e.message)
             for (loginEventCallBack in mLoginCallbacks) {
                 loginEventCallBack.onLogOut(false)
             }

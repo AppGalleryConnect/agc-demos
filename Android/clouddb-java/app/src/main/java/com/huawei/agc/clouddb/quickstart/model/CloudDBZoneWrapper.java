@@ -139,7 +139,7 @@ public class CloudDBZoneWrapper {
         openDBZoneTask.addOnSuccessListener(new OnSuccessListener<CloudDBZone>() {
             @Override
             public void onSuccess(CloudDBZone cloudDBZone) {
-                Log.w(TAG, "open clouddbzone success");
+                Log.i(TAG, "Open cloudDBZone success");
                 mCloudDBZone = cloudDBZone;
                 // Add subscription after opening cloudDBZone success
                 addSubscription();
@@ -147,7 +147,7 @@ public class CloudDBZoneWrapper {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(Exception e) {
-                Log.w(TAG, "open clouddbzone failed for " + e.getMessage());
+                Log.w(TAG, "Open cloudDBZone failed for " + e.getMessage());
             }
         });
     }
@@ -284,7 +284,7 @@ public class CloudDBZoneWrapper {
         upsertTask.addOnSuccessListener(new OnSuccessListener<Integer>() {
             @Override
             public void onSuccess(Integer cloudDBZoneResult) {
-                Log.w(TAG, "upsert " + cloudDBZoneResult + " records");
+                Log.i(TAG, "Upsert " + cloudDBZoneResult + " records");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -345,22 +345,22 @@ public class CloudDBZoneWrapper {
         UiCallBack DEFAULT = new UiCallBack() {
             @Override
             public void onAddOrQuery(List<BookInfo> bookInfoList) {
-                Log.w(TAG, "Using default onAddOrQuery");
+                Log.i(TAG, "Using default onAddOrQuery");
             }
 
             @Override
             public void onSubscribe(List<BookInfo> bookInfoList) {
-                Log.w(TAG, "Using default onSubscribe");
+                Log.i(TAG, "Using default onSubscribe");
             }
 
             @Override
             public void onDelete(List<BookInfo> bookInfoList) {
-                Log.w(TAG, "Using default onDelete");
+                Log.i(TAG, "Using default onDelete");
             }
 
             @Override
             public void updateUiOnError(String errorMessage) {
-                Log.w(TAG, "Using default updateUiOnError");
+                Log.i(TAG, "Using default updateUiOnError");
             }
         };
 

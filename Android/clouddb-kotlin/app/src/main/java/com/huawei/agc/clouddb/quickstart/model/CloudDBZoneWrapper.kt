@@ -106,11 +106,11 @@ class CloudDBZoneWrapper {
         mConfig!!.persistenceEnabled = true
         val task = mCloudDB.openCloudDBZone2(mConfig!!, true)
         task.addOnSuccessListener {
-            Log.w(TAG, "open clouddbzone success")
+            Log.i(TAG, "Open cloudDBZone success")
             mCloudDBZone = it
             addSubscription()
         }.addOnFailureListener {
-            Log.w(TAG, "open clouddbzone failed for " + it.message)
+            Log.w(TAG, "Open cloudDBZone failed for " + it.message)
         }
     }
 
@@ -194,7 +194,8 @@ class CloudDBZoneWrapper {
 
         val queryTask = mCloudDBZone!!.executeQuery(query,
                 CloudDBZoneQuery.CloudDBZoneQueryPolicy.POLICY_QUERY_FROM_CLOUD_ONLY)
-        queryTask.addOnSuccessListener { snapshot -> processQueryResult(snapshot) }.addOnFailureListener { mUiCallBack.updateUiOnError("Query failed") }
+        queryTask.addOnSuccessListener { snapshot -> processQueryResult(snapshot) }
+                .addOnFailureListener { mUiCallBack.updateUiOnError("Query failed") }
     }
 
     private fun processQueryResult(snapshot: CloudDBZoneSnapshot<BookInfo>) {
@@ -225,7 +226,7 @@ class CloudDBZoneWrapper {
         }
         val upsertTask = mCloudDBZone!!.executeUpsert(bookInfo!!)
         upsertTask.addOnSuccessListener { cloudDBZoneResult ->
-            Log.w(TAG, "upsert $cloudDBZoneResult records")
+            Log.i(TAG, "Upsert $cloudDBZoneResult records")
         }.addOnFailureListener {
             mUiCallBack.updateUiOnError("Insert book info failed")
         }
@@ -285,19 +286,19 @@ class CloudDBZoneWrapper {
         companion object {
             val DEFAULT: UiCallBack = object : UiCallBack {
                 override fun onAddOrQuery(bookInfoList: List<BookInfo>) {
-                    Log.w(TAG, "Using default onAddOrQuery")
+                    Log.i(TAG, "Using default onAddOrQuery")
                 }
 
                 override fun onSubscribe(bookInfoList: List<BookInfo>?) {
-                    Log.w(TAG, "Using default onSubscribe")
+                    Log.i(TAG, "Using default onSubscribe")
                 }
 
                 override fun onDelete(bookInfoList: List<BookInfo?>?) {
-                    Log.w(TAG, "Using default onDelete")
+                    Log.i(TAG, "Using default onDelete")
                 }
 
                 override fun updateUiOnError(errorMessage: String?) {
-                    Log.w(TAG, "Using default updateUiOnError")
+                    Log.i(TAG, "Using default updateUiOnError")
                 }
             }
         }
