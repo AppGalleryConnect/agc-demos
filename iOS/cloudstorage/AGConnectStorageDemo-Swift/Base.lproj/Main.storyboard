@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AGConnectStorageDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfR-Ll-bRY">
+                                <rect key="frame" x="97" y="84" width="220" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="IhT-PY-xpp"/>
+                                    <constraint firstAttribute="height" constant="40" id="iBX-Jb-Sgy"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jyj-Z8-Jct"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sf5-6U-RmZ">
+                                <rect key="frame" x="97" y="184" width="220" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Upload File"/>
+                                <connections>
+                                    <action selector="uploadFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oi3-rv-JKY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7MZ-i8-t4S">
+                                <rect key="frame" x="97" y="234" width="220" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Download File"/>
+                                <connections>
+                                    <action selector="downloadFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OsK-uW-hAk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fP-uA-ZJ6">
+                                <rect key="frame" x="97" y="284" width="220" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Get File Metadata"/>
+                                <connections>
+                                    <action selector="getFileMetadata:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mv7-b2-Awh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3h6-Xt-NSd">
+                                <rect key="frame" x="97" y="334" width="220" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Update File Metadata"/>
+                                <connections>
+                                    <action selector="updateFileMetadata:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HwM-sL-xqg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHa-at-bEi">
+                                <rect key="frame" x="97" y="384" width="220" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Get File List"/>
+                                <connections>
+                                    <action selector="getFileList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ssX-HH-Nc8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYa-TP-98K">
+                                <rect key="frame" x="97" y="434" width="220" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Delete File"/>
+                                <connections>
+                                    <action selector="deleteFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ND8-fb-AKe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4By-39-BGa">
+                                <rect key="frame" x="97" y="134" width="220" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LUa-9x-uhh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="4By-39-BGa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1QC-Zj-eqk"/>
+                            <constraint firstItem="sf5-6U-RmZ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1v1-Do-xqs"/>
+                            <constraint firstItem="dYa-TP-98K" firstAttribute="width" secondItem="dfR-Ll-bRY" secondAttribute="width" id="3lG-77-Dxa"/>
+                            <constraint firstItem="1fP-uA-ZJ6" firstAttribute="height" secondItem="dfR-Ll-bRY" secondAttribute="height" id="3o1-FQ-2PP"/>
+                            <constraint firstItem="7MZ-i8-t4S" firstAttribute="height" secondItem="dfR-Ll-bRY" secondAttribute="height" id="4cw-hu-e1G"/>
+                            <constraint firstItem="sf5-6U-RmZ" firstAttribute="height" secondItem="dfR-Ll-bRY" secondAttribute="height" id="5F9-Ia-hBW"/>
+                            <constraint firstItem="gHa-at-bEi" firstAttribute="width" secondItem="dfR-Ll-bRY" secondAttribute="width" id="6RA-py-x5m"/>
+                            <constraint firstItem="dYa-TP-98K" firstAttribute="height" secondItem="dfR-Ll-bRY" secondAttribute="height" id="EJA-b8-d1q"/>
+                            <constraint firstItem="1fP-uA-ZJ6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Fnr-Gi-apM"/>
+                            <constraint firstItem="dfR-Ll-bRY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Hoj-CP-poI"/>
+                            <constraint firstItem="3h6-Xt-NSd" firstAttribute="top" secondItem="1fP-uA-ZJ6" secondAttribute="bottom" constant="10" id="Hph-OL-p7j"/>
+                            <constraint firstItem="7MZ-i8-t4S" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="J7r-x7-GEg"/>
+                            <constraint firstItem="3h6-Xt-NSd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="K42-tk-K7v"/>
+                            <constraint firstItem="gHa-at-bEi" firstAttribute="top" secondItem="3h6-Xt-NSd" secondAttribute="bottom" constant="10" id="Kbj-Zo-2Yl"/>
+                            <constraint firstItem="sf5-6U-RmZ" firstAttribute="width" secondItem="dfR-Ll-bRY" secondAttribute="width" id="LPr-VB-Em7"/>
+                            <constraint firstItem="7MZ-i8-t4S" firstAttribute="width" secondItem="dfR-Ll-bRY" secondAttribute="width" id="OEl-m5-Vkp"/>
+                            <constraint firstItem="4By-39-BGa" firstAttribute="top" secondItem="dfR-Ll-bRY" secondAttribute="bottom" constant="10" id="QAN-0f-8Hn"/>
+                            <constraint firstItem="1fP-uA-ZJ6" firstAttribute="top" secondItem="7MZ-i8-t4S" secondAttribute="bottom" constant="10" id="QYT-0x-ubM"/>
+                            <constraint firstItem="dfR-Ll-bRY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="R27-Bk-bQr"/>
+                            <constraint firstItem="3h6-Xt-NSd" firstAttribute="height" secondItem="dfR-Ll-bRY" secondAttribute="height" id="RXU-au-fuu"/>
+                            <constraint firstItem="7MZ-i8-t4S" firstAttribute="top" secondItem="sf5-6U-RmZ" secondAttribute="bottom" constant="10" id="SIh-Yk-p20"/>
+                            <constraint firstItem="4By-39-BGa" firstAttribute="height" secondItem="dfR-Ll-bRY" secondAttribute="height" id="Tsy-Ob-Nwl"/>
+                            <constraint firstItem="gHa-at-bEi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Uvh-dA-doF"/>
+                            <constraint firstItem="4By-39-BGa" firstAttribute="width" secondItem="dfR-Ll-bRY" secondAttribute="width" id="VHY-UY-Lu1"/>
+                            <constraint firstItem="1fP-uA-ZJ6" firstAttribute="width" secondItem="dfR-Ll-bRY" secondAttribute="width" id="bqe-m9-tmK"/>
+                            <constraint firstItem="dYa-TP-98K" firstAttribute="top" secondItem="gHa-at-bEi" secondAttribute="bottom" constant="10" id="cnY-xb-5a8"/>
+                            <constraint firstItem="3h6-Xt-NSd" firstAttribute="width" secondItem="dfR-Ll-bRY" secondAttribute="width" id="gG9-th-isn"/>
+                            <constraint firstItem="dYa-TP-98K" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gVr-N9-I6B"/>
+                            <constraint firstItem="sf5-6U-RmZ" firstAttribute="top" secondItem="4By-39-BGa" secondAttribute="bottom" constant="10" id="seh-o4-mv1"/>
+                            <constraint firstItem="gHa-at-bEi" firstAttribute="height" secondItem="dfR-Ll-bRY" secondAttribute="height" id="xkW-8W-K6j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+</document>
