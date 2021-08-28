@@ -5,7 +5,7 @@ This repo contains the source code for AGC Demos, which are developed by the App
 
 These demos enable access to using specific APIs. For more information
 about demos, and how to use them, see
-[Official Documentations](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-get-started).
+[Official Documentations](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started).
 
 
 ## Introduction
