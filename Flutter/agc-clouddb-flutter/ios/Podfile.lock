@@ -1,0 +1,59 @@
+PODS:
+  - agconnect_clouddb (1.0.0):
+    - AGConnectDatabase (~> 1.0.1.300)
+    - Flutter
+  - AGConnectCore (1.1.0.300):
+    - HMFoundation (~> 1.1.0)
+  - AGConnectCredential (1.1.0.300):
+    - AGConnectCore (~> 1.1.0)
+  - AGConnectDatabase (1.0.1.300):
+    - AGConnectCore (~> 1.1.0)
+    - AGConnectCredential (~> 1.1.0)
+    - HMFoundation (~> 1.1.0)
+    - OpenSSL-for-agc-clouddb (= 1.1.1g)
+    - "Protobuf-C++ (= 3.11.3)"
+    - SQLCipher (= 4.2.0)
+  - Flutter (1.0.0)
+  - HMFoundation (1.1.0.300)
+  - OpenSSL-for-agc-clouddb (1.1.1g)
+  - "Protobuf-C++ (3.11.3)"
+  - SQLCipher (4.2.0):
+    - SQLCipher/standard (= 4.2.0)
+  - SQLCipher/common (4.2.0)
+  - SQLCipher/standard (4.2.0):
+    - SQLCipher/common
+
+DEPENDENCIES:
+  - agconnect_clouddb (from `.symlinks/plugins/agconnect_clouddb/ios`)
+  - Flutter (from `Flutter`)
+
+SPEC REPOS:
+  trunk:
+    - AGConnectCore
+    - AGConnectCredential
+    - AGConnectDatabase
+    - HMFoundation
+    - OpenSSL-for-agc-clouddb
+    - "Protobuf-C++"
+    - SQLCipher
+
+EXTERNAL SOURCES:
+  agconnect_clouddb:
+    :path: ".symlinks/plugins/agconnect_clouddb/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  agconnect_clouddb: ea978f421f0292ec03ca0d763078df5717211a12
+  AGConnectCore: 9884a3fddf1960747eaf0a115362a1484d7149b1
+  AGConnectCredential: ff21e5397e87ccbdec650b31ff93205325da9c91
+  AGConnectDatabase: 7998d4127daf941ed9c35c85659c5b201654754e
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  HMFoundation: 4795c37d29edbccb3e2d04afb08ce5587aae0685
+  OpenSSL-for-agc-clouddb: 0410e0d248c27be674ee29d190e495f61c5fe605
+  "Protobuf-C++": 05a21e29ece0502a4978e36de4aadcf56456333e
+  SQLCipher: 0187a2180ac288ea686b670b7141da62cd013b16
+
+PODFILE CHECKSUM: ffd7293eb7d5907b54a367fd400872baeef513a5
+
+COCOAPODS: 1.10.1
