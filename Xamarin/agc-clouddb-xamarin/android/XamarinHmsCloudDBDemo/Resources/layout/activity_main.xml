@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/CreateObjectTypeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="CreateObjectType"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/OpenCloudDBZone2Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="OpenCloudDBZone2"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/CloudDBZoneConfigsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="CloudDBZoneConfigs"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/CloudDBZoneConfigButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="CloudDBZoneConfig"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/CloseCloudDBButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="CloseCloudDB"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/DeleteCloudDBZoneButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="DeleteCloudDBZone"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/EnableNetworkButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="EnableNetwork"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/DisableNetworkButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="DisableNetwork"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/SetUserKeyButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="SetUserKey"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/UpdateDataEncryptionKeyButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="UpdateDataEncryptionKey"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/ExecuteUpsertButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ExecuteUpsert"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/ExecuteDeleteButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ExecuteDelete"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/ExecuteQueryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ExecuteQuery"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/ExecuteAverageQueryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ExecuteAverageQuery"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/ExecuteSumQueryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ExecuteSumQuery"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/ExecuteMaximumQueryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ExecuteMaximumQuery"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/ExecuteMinimalQueryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ExecuteMinimalQuery"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/ExecuteCountQueryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ExecuteCountQuery"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/ExecuteQueryUnsyncedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ExecuteQueryUnsynced"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/RunTransactionButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="RunTransaction"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/UnSubscribeSnapshotButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="UnSubscribeSnapshot"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/SubscribeSnapshotButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="SubscribeSnapshot"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

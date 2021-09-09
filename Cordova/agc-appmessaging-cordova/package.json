@@ -1,7 +1,7 @@
 {
   "name": "cordova-agc-appmessaging-demo",
   "displayName": "AGCAppMessaging",
-  "version": "1.2.0-beta.1",
+  "version": "1.2.0-300",
   "description": "A demo application which shows the usage of AGC App Messaging Plugin.",
   "license": "Apache-2.0",
   "licenseFilename": "LICENCE",

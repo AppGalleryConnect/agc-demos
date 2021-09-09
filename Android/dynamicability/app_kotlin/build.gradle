@@ -39,7 +39,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    api 'com.huawei.hms:dynamicability:1.0.15.300'
+    api 'com.huawei.hms:dynamicability:1.0.16.300'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

@@ -49,18 +49,18 @@ function onDeviceReady() {
 
 
 $("buildShortLink").onclick = () => {
-  const socialCardInfo1 = {
+  const shortLinkSocialCardInfo1 = {
     description: "description of short link",
     imageUrl:
       "https://developer.huawei.com/Enexport/system/modules/org.opencms.portal.template.core/resources/images/codelabs/ic_computergraphics.png",
-    title: "title of social card",
+    title: "shortLink: title of social card",
   };
-  const campaignInfo1 = {
+  const shortLinkCampaignInfo1 = {
     medium: "JULY",
     name: "summer campaign",
     source: "Huawei",
   };
-  const androidLinkInfo1 = {
+  const shortLinkAndroidLinkInfo1 = {
     androidDeepLink:
       "https://developer.huawei.com/consumer/en/develop/programs",
     //androidFallbackUrl: 'https://consumer.huawei.com/en/',
@@ -69,29 +69,29 @@ $("buildShortLink").onclick = () => {
       AGCAppLinking.AppLinkingAndroidLinkInfoAndroidOpenTypeConstants
         .LOCAL_MARKET,
   };
-  const iosLinkInfo1 = {
+  const shortLinkIOSLinkInfo1 = {
     iosDeepLink: "cdvhuaweicom://consumer/en/develop/iosdeeplink",
     iosFallbackUrl: "https://swift.org/",
     iosBundleId: "com.cdv.agc.applinking",
     //ipadFallbackUrl: '',
     //ipadBundleId: '',
   };
-  const iTunesConnectCampaingnInfo1 = {
-    iTunesConnectProviderToken: "iTunesConnectProviderToken1",
-    iTunesConnectCampaignToken: "iTunesConnectCampaignToken1",
-    iTunesConnectAffiliateToken: "iTunesConnectAffiliateToken1",
-    iTunesConnectMediaType: "iTunesConnectMediaType1",
+  const shortLinkITunesConnectCampaingnInfo1 = {
+    iTunesConnectProviderToken: "shortLink_iTunesConnectProviderToken1",
+    iTunesConnectCampaignToken: "shortLink_iTunesConnectCampaignToken1",
+    iTunesConnectAffiliateToken: "shortLink_iTunesConnectAffiliateToken1",
+    iTunesConnectMediaType: "shortLink_iTunesConnectMediaType1",
   };
   const appLinkingWithInfo = {
-    socialCardInfo: socialCardInfo1,
-    campaignInfo: campaignInfo1,
-    androidLinkInfo: androidLinkInfo1,
-    iosLinkInfo: iosLinkInfo1,
-    iTunesConnectCampaingnInfo: iTunesConnectCampaingnInfo1,
+    socialCardInfo: shortLinkSocialCardInfo1,
+    campaignInfo: shortLinkCampaignInfo1,
+    androidLinkInfo: shortLinkAndroidLinkInfo1,
+    iosLinkInfo: shortLinkIOSLinkInfo1,
+    iTunesConnectCampaingnInfo: shortLinkITunesConnectCampaingnInfo1,
     previewType:
       AGCAppLinking.AppLinkingLinkingPreviewTypeConstants.SOCIAL_INFO,
     uriPrefix: "https://myagcapplinking.dre.agconnect.link",
-    deepLink: "https://developer.huawei.com/consumer/en/develop/",
+    deepLink: "https://developer.huawei.com/consumer/en/",
     //longLink: "your long link of app linking",
     shortAppLinkingLength: AGCAppLinking.ShortAppLinkingLengthConstants.LONG,
     expireMinute: 1000,
@@ -107,43 +107,41 @@ $("buildShortLink").onclick = () => {
 };
 
 $("buildLongLink").onclick = () => {
-  const socialCardInfo1 = {
+  const longLinkSocialCardInfo1 = {
     description: "description of long link",
     imageUrl:
-      "https://developer.huawei.com/Enexport/system/modules/org.opencms.portal.template.core/resources/images/codelabs/ic_computergraphics.png",
-    title: "title of social card",
+      "https://developer.huawei.com/Enexport/sites/default/images/en/Home/icon_Promotion.png",
+    title: "long link: title of social card",
   };
-  const campaignInfo1 = {
-    medium: "JULY",
-    name: "summer campaign",
-    source: "Huawei",
+  const longLinkCampaignInfo1 = {
+    medium: "SEPTEMBER",
+    name: "example campaign info",
+    source: "Mobile Services",
   };
-  const androidLinkInfo1 = {
+  const longLinkAndroidLinkInfo1 = {
     androidDeepLink: "https://developer.huawei.com/consumer/en/develop/",
     androidPackageName: "com.cdv.agc.applinking",
     androidOpenType:
       AGCAppLinking.AppLinkingAndroidLinkInfoAndroidOpenTypeConstants
         .APP_GALLERY,
   };
-  const iosLinkInfo1 = {
+  const longLinkIOSLinkInfo1 = {
     iosDeepLink: "cdvhuaweicom://consumer/en/develop/iosdeeplink",
-    iosFallbackUrl: "https://swift.org/",
+    iosFallbackUrl: "https://swift.org/about",
     iosBundleId: "com.cdv.agc.applinking",
-    //ipadFallbackUrl: '',
-    //ipadBundleId: '',
   };
-  const iTunesConnectCampaingnInfo1 = {
-    iTunesConnectProviderToken: "iTunesConnectProviderToken1",
-    iTunesConnectCampaignToken: "iTunesConnectCampaignToken1",
-    iTunesConnectAffiliateToken: "iTunesConnectAffiliateToken1",
-    iTunesConnectMediaType: "iTunesConnectMediaType1",
+  const longLinkITunesConnectCampaingnInfo1 = {
+    iTunesConnectProviderToken: "longLink_iTunesConnectProviderToken1",
+    iTunesConnectCampaignToken: "longLink_iTunesConnectCampaignToken1",
+    iTunesConnectAffiliateToken: "longLink_iTunesConnectAffiliateToken1",
+    iTunesConnectMediaType: "longLink_iTunesConnectMediaType1",
   };
   const appLinkingWithInfo = {
-    socialCardInfo: socialCardInfo1,
-    campaignInfo: campaignInfo1,
-    androidLinkInfo: androidLinkInfo1,
-    iosLinkInfo: iosLinkInfo1,
-    iTunesConnectCampaingnInfo: iTunesConnectCampaingnInfo1,
+    socialCardInfo: longLinkSocialCardInfo1,
+    campaignInfo: longLinkCampaignInfo1,
+    androidLinkInfo: longLinkAndroidLinkInfo1,
+    iosLinkInfo: longLinkIOSLinkInfo1,
+    iTunesConnectCampaingnInfo: longLinkITunesConnectCampaingnInfo1,
     previewType:
       AGCAppLinking.AppLinkingLinkingPreviewTypeConstants.SOCIAL_INFO,
     uriPrefix: "https://myagcapplinking.dre.agconnect.link",

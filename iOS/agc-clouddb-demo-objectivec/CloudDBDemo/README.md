@@ -2,10 +2,10 @@
 
 
 ## Introduction
-It's a quickstart sample demonstrating the CloudDB APIs on Android. 
+It's a quickstart sample demonstrating the CloudDB APIs on iOS. 
 
 ## Getting Started
-- Open this project by Android Studio.
+- Open this project by Xcode.
 
 - Go to [AppGallery Connect page](https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/myApp) to create your new application. 
 
@@ -17,7 +17,7 @@ It's a quickstart sample demonstrating the CloudDB APIs on Android.
 
 - Before starting the operation, the pod install operation needs to be executed to associate the relevant libraries.
 
-- Run the sample on Android device. 
+- Run the sample on iOS device. 
 
 ## Result
 

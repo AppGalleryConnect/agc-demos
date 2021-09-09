@@ -2,15 +2,13 @@
 
 install! 'cocoapods', generate_multiple_pod_projects: true
 
-platform :ios, '8.0'
-
-AGCFrameworkVersion = '~> 1.1.0.300'
+platform :ios, '9.0'
 
 target 'CloudDBDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   
-  pod 'AGConnectAuth', AGCFrameworkVersion
-  pod 'AGConnectDatabase', '~> 1.0.1.300'
+  pod 'AGConnectAuth'
+  pod 'AGConnectDatabase'
   
 end

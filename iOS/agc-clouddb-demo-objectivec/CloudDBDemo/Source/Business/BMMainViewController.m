@@ -1,18 +1,18 @@
 /*
-* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*      http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 #import "BMMainViewController.h"
 
@@ -137,19 +137,18 @@
 - (void)deleteSelectIndexPath:(NSIndexPath *)indexPath {
     BookInfo *model = [self.bookList objectAtIndex:indexPath.row];
     
-    [self.bookList removeObjectAtIndex:indexPath.row];
-    
     __weak typeof(self) weakSelf = self;
     [[CloudDBManager shareInsatnce] deleteAGCDataWithBookID:model.id.stringValue complete:^(BOOL success, NSError *error) {
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf.view makeToast:@"Dlete success"];
+                [weakSelf.view makeToast:@"Delete success"];
+                [self.bookList removeObjectAtIndex:indexPath.row];
                 [weakSelf.bookTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 [weakSelf.bookTableView reloadData];
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSString *errorStrong = [NSString stringWithFormat:@"Dlete falied with error: %@",error];
+                NSString *errorStrong = [NSString stringWithFormat:@"Delete falied with error: %@",error];
                 [weakSelf.view makeToast:errorStrong];
             });
         }
@@ -271,15 +270,5 @@
     }
     return _bookList;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

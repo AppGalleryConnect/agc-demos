@@ -5,52 +5,89 @@
 	<key>code</key>
 	<dict>
 		<key>code1</key>
-		<string>57115789AFFF2BA5EEF1D45C4BCB5840</string>
+		<string>0690DEC421E5AB010F03DC5C6A23A6FB</string>
 		<key>code2</key>
-		<string>1A69D37B95120FEE4A6501DBF5BE63C7</string>
+		<string>A2A209E8B83599C06C44992DAB0479DF</string>
 		<key>code3</key>
-		<string>2FF6A494BCE25C36ED9207587B14C313</string>
+		<string>0D4130B7FA89785C16C11D4EB72121A1</string>
 		<key>code4</key>
-		<string>5FB877CD5143C7EF77BBAEF11914CE10</string>
+		<string>364EE200078FC16FC695DA6329B8F9B5</string>
 	</dict>
 	<key>agcgw</key>
 	<dict>
 		<key>backurl</key>
 		<string>connect-drcn.dbankcloud.cn</string>
 		<key>url</key>
-		<string>connect-drcn.hispace.hicloud.com</string>
+		<string>lfagcgwtest01cn.hwcloudtest.cn:18062</string>
+		<key>websocketbackurl</key>
+		<string>connect-ws-drcn.hispace.dbankcloud.cn</string>
+		<key>websocketurl</key>
+		<string>connect-ws-drcn.hispace.dbankcloud.com</string>
+	</dict>
+	<key>agcgw_all</key>
+	<dict>
+		<key>CN</key>
+		<string>lfagcgwtest01cn.hwcloudtest.cn:18062</string>
+		<key>CN_back</key>
+		<string>connect-drcn.dbankcloud.cn</string>
+		<key>DE</key>
+		<string>lfagcgwtest01cn.hwcloudtest.cn:18062</string>
+		<key>DE_back</key>
+		<string>connect-dre.dbankcloud.cn</string>
+		<key>RU</key>
+		<string>lfagcgwtest01cn.hwcloudtest.cn:18062</string>
+		<key>RU_back</key>
+		<string>connect-drru.dbankcloud.cn</string>
+		<key>SG</key>
+		<string>lfagcgwtest01cn.hwcloudtest.cn:18062</string>
+		<key>SG_back</key>
+		<string>connect-dra.dbankcloud.cn</string>
+	</dict>
+	<key>oauth_client</key>
+	<dict>
+		<key>client_id</key>
+		<string>101641217</string>
+		<key>client_type</key>
+		<string>22</string>
+	</dict>
+	<key>configuration_version</key>
+	<string>3.0</string>
+	<key>app_info</key>
+	<dict>
+		<key>app_id</key>
+		<string>99137083448236541</string>
+		<key>package_name</key>
+		<string>com.guass.test.smoke</string>
 	</dict>
 	<key>client</key>
 	<dict>
-		<key>appType</key>
-		<string>9998</string>
 		<key>cp_id</key>
-		<string>260086000103371926</string>
+		<string>890086000000007067</string>
 		<key>product_id</key>
-		<string>9105385871708334678</string>
+		<string>401697704418754985</string>
 		<key>client_id</key>
-		<string>256132538915881984</string>
+		<string>581000571733945600</string>
 		<key>client_secret</key>
-		<string>B1AE9B5FDB917EDF587FFB05146FB2E52F123D3E2A4A8DDEDADDB4BD7C4CBD1E</string>
+		<string>[!00EC74E0DD7C07431944DBF139C1AD53774D06FC36CFB4D9F62184D0AD0AD3A628E95580BFB501584A9FE92C23AB45E52E346E0FDBBC4304B086BFC300A7296EEBF5CA10807B928527A24D3F5B27F2EF3C4360E3DC49C871CE3E815EDC017DA9C5]</string>
 		<key>project_id</key>
-		<string>258913027873080783</string>
+		<string>401697704418754985</string>
 		<key>app_id</key>
-		<string>101516061</string>
+		<string>99137083448236541</string>
 		<key>api_key</key>
-		<string>CV5E56FEpoV8BGg2ja1GTIhwwbgpmILA2hV5JnM3M/4ZXfDy48nvAPbBRXwQE4u57yEaaMyXwyZTnPBmShfLLA6S6mg0</string>
+		<string>CgB6e3x9n2GgfdHWGcCdHPbT2FHPhXDz5CkyfRpP2gXcYL7n+7Ym2zyfwU82Ahy2epLG1ZSYAZXtcPVMTviaSHzZ</string>
 		<key>package_name</key>
-		<string>com.huawei.bookinfo</string>
+		<string>com.naturalbase.bookInfoDemo</string>
 	</dict>
 	<key>service</key>
 	<dict>
 		<key>analytics</key>
 		<dict>
+			<key>channel_id</key>
+			<string></string>
 			<key>collector_url</key>
 			<string>datacollector-drcn.dt.hicloud.com,datacollector-drcn.dt.dbankcloud.cn</string>
 			<key>resource_id</key>
 			<string>p1</string>
-			<key>channel_id</key>
-			<string></string>
 		</dict>
 		<key>search</key>
 		<dict>

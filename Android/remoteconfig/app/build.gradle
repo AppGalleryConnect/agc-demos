@@ -25,9 +25,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.huawei.agconnect:agconnect-remoteconfig:1.5.1.300"
-    implementation "com.huawei.hms:hianalytics:5.0.3.300"
-    implementation 'com.huawei.hms:push:4.0.1.300'
+    implementation "com.huawei.agconnect:agconnect-remoteconfig:1.5.2.300"
+    implementation "com.huawei.hms:hianalytics:6.1.0.300"
+    implementation 'com.huawei.hms:push:5.3.0.304'
 
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
