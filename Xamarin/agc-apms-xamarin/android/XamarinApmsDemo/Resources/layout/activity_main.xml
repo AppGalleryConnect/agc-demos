@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Switch
+            android:id="@+id/swiEnableCollection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enable APMS"
+            android:textSize="16sp"
+            android:layout_marginBottom="20dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnNetworkrequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Network Request"
+            android:background="@color/colorAccent"
+            android:textAllCaps="false"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/colorTextIcons"
+            />
+
+        <Button
+            android:id="@+id/btnCustomEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Custom Event"
+            android:background="@color/colorAccent"
+            android:textAllCaps="false"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/colorTextIcons"
+            />
+
+        <Button
+            android:id="@+id/btnCustomNetworkEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Custom Network Event"
+            android:background="@color/colorAccent"
+            android:textAllCaps="false"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/colorTextIcons"
+            />
+
+        <Button
+            android:id="@+id/btnOpenAnrActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open ANR Activity"
+            android:background="@color/colorAccent"
+            android:textAllCaps="false"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/colorTextIcons"
+            />
+
+        <Button
+            android:id="@+id/btnOpenSecondActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Second Activity"
+            android:background="@color/colorAccent"
+            android:textAllCaps="false"
+            android:padding="8dp"
+            android:textColor="@color/colorTextIcons"
+            />
+    </LinearLayout>
+</LinearLayout>
