@@ -1,0 +1,54 @@
+{
+  "app": {
+    "bundleName": "<your bundleName>",
+    "vendor": "huawei",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "com.huawei.crash",
+    "name": ".MyApplication",
+    "mainAbility": "com.huawei.crash.MainAbility",
+    "deviceType": [
+      "phone"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry",
+      "installationFree": false
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "orientation": "unspecified",
+        "name": "com.huawei.crash.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:entry_MainAbility",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "permissions": [
+          "com.huawei.crash.DataAbilityShellProvider.PROVIDER"
+        ],
+        "name": "<your bundleName>.provider.AGConnectInitializeAbility",
+        "type": "data",
+        "uri": "dataability://<your bundleName>.AGConnectInitializeAbility"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "app": {
+    "bundleName": "com.huawei.agconnect.harmony.agcdemo",
+    "vendor": "example",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "com.example.applinkingdemo",
+    "name": ".MyApplication",
+    "mainAbility": "com.example.applinkingdemo.MainAbility",
+    "deviceType": [
+      "phone"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry",
+      "installationFree": false
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          },
+          {
+            "actions": [
+              "android.intent.action.VIEW"
+            ],
+            "entities": [
+              "entity.system.default",
+              "entity.system.browsable"
+            ],
+            "uris": [
+              {
+                "scheme": "agckit",
+                "host": "example.com"
+              }
+            ]
+          }
+        ],
+        "orientation": "unspecified",
+        "name": "com.example.applinkingdemo.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:entry_MainAbility",
+        "type": "page",
+        "launchType": "standard"
+      }
+    ]
+  }
+}

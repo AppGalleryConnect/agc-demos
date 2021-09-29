@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "entry_MainAbility",
+      "value": "entry_MainAbility"
+    },
+    {
+      "name": "mainability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "mainability_HelloWorld",
+      "value": "Hello World"
+    },
+    {
+      "name": "mainability_linking",
+      "value": "AppLinking"
+    },
+    {
+      "name": "mainability_CreateShortLink",
+      "value": "Create Short Link"
+    },
+    {
+      "name": "mainability_CreateLongLink",
+      "value": "Create Long Link"
+    }
+  ]
+}

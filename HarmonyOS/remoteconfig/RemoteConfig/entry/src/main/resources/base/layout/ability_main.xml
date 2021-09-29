@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:alignment="center"
+    ohos:orientation="vertical">
+
+    <Button
+        ohos:id="$+id:fetch"
+        ohos:width="match_content"
+        ohos:height="match_content"
+        ohos:text="$string:fetch_apply"
+        ohos:text_size="20vp" />
+
+    <Button
+        ohos:id="$+id:save"
+        ohos:width="match_content"
+        ohos:height="match_content"
+        ohos:text="$string:fetch_save"
+        ohos:text_size="20vp" />
+
+    <Text
+        ohos:id="$+id:textView"
+        ohos:width="match_parent"
+        ohos:height="match_content"
+        ohos:margin="16vp"
+        ohos:text="$string:tip"
+        ohos:layout_alignment="horizontal_center"
+        ohos:text_size="12vp"
+        ohos:text_alignment="center"
+        ohos:multiple_lines="true"/>
+
+    <Button
+        ohos:id="$+id:clear"
+        ohos:width="match_content"
+        ohos:height="match_content"
+        ohos:text="$string:clear"
+        ohos:text_size="20vp" />
+
+</DirectionalLayout>

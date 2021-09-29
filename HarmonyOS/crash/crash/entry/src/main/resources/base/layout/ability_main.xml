@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:width="match_parent"
+    ohos:height="match_parent">
+
+    <Button
+        ohos:id="$+id:Make_Crash"
+        ohos:width="match_parent"
+        ohos:height="40vp"
+        ohos:top_margin="300vp"
+        ohos:background_element="$graphic:background_ability_main"
+        ohos:layout_alignment="horizontal_center"
+        ohos:text_size="30vp"
+        ohos:text="make crash"/>
+
+</DirectionalLayout>

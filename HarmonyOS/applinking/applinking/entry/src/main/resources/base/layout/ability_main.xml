@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:alignment="center"
+    ohos:orientation="vertical">
+
+    <Text
+        ohos:id="$+id:text_linking"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:background_element="$graphic:background_ability_main"
+        ohos:layout_alignment="horizontal_center"
+        ohos:text="$string:mainability_linking"
+        ohos:text_size="20vp"
+        ohos:multiple_lines="true"
+        />
+
+    <Button
+        ohos:id="$+id:button_createlong"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text="$string:mainability_CreateLongLink"
+        ohos:text_size="20vp"
+        ohos:top_margin="40px"
+        />
+
+    <Button
+        ohos:id="$+id:button_createshort"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text="$string:mainability_CreateShortLink"
+        ohos:text_size="20vp"
+        ohos:focus_border_enable="true"
+        />
+</DirectionalLayout>
