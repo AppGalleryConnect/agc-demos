@@ -1,6 +1,6 @@
 ## crash quickstart
 
-English | [中文](https://github.com/AppGalleryConnect/agc-demos/blob/main/Android/Crash/README_ZH.md)
+English | [中文](https://github.com/AppGalleryConnect/agc-demos/blob/main/Android/crash/README_ZH.md)
 
 ## Table of Contents
 
