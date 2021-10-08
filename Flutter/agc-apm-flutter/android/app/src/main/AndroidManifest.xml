@@ -1,0 +1,43 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huawei.agconnect_apm_example">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name="io.flutter.app.FlutterApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="agconnect_apm_example">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Set this flag to 'true', debug logs of APM will be printed in logcat. -->
+        <meta-data
+            android:name="apms_debug_log_enabled"
+            android:value="true" />
+        <meta-data
+            android:name="sessions_sampling_percentage"
+            android:value="100" />
+        <!-- Set this value to '100', means the cpu sampling frequency is 100 ms. -->
+        <meta-data
+            android:name="collect_cpu_frequency_fg_ms"
+            android:value="100" />
+        <!-- Set this value to '100', means the memory sampling frequency is 100 ms. -->
+        <meta-data
+            android:name="collect_memory_frequency_fg_ms"
+            android:value="100" />
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+</manifest>
