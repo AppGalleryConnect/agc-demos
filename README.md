@@ -47,6 +47,13 @@ These are the available demos in this repository.
 | [agc-cloudstorage-demo-javascript](./Web/agc-cloudstorage-demo-javascript) | [![version](https://img.shields.io/badge/Release-1.0.0.300-yellow)](./Web/agc-cloudstorage-demo-javascript) | [Getting Started](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-cloudstorage-getstarted-web) <br/> [API Reference](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-References/Overview-web) |
 | [agc-romoteconfig-demo-javascript](./Web/agc-romoteconfig-demo-javascript) | [![version](https://img.shields.io/badge/Release-1.2.1.300-yellow)](./Web/agc-romoteconfig-demo-javascript) | [Getting Started](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-remoteconfig-web-getstarted-0000001056501223) <br/> [API Reference](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-References/web-remoteconfig-overview-0000001057829368) |
 
+### HarmonyOS
+| Demo | Version | Documentation |
+|--------|-----|-----|
+| [crash](./HarmonyOS/crash) | [![version](https://img.shields.io/badge/Release-1.1.0.300-yellow)](./HarmonyOS/crash) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started-harmonyos-0000001184684961) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/overview-harmonyos-0000001185399149) |
+| [applinking](./HarmonyOS/applinking) | [![version](https://img.shields.io/badge/Release-1.1.0.300-yellow)](./HarmonyOS/applinking) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started-harmonyos-0000001184684961) <br/> [API Reference](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/overview-harmonyos-0000001189376141) |
+| [remoteconfig](./HarmonyOS/remoteconfig) | [![version](https://img.shields.io/badge/Release-1.1.0.300-yellow)](./HarmonyOS/remoteconfig) | [Getting Started](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started-harmonyos-0000001184684961) <br/> [API Reference](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-References/harmony-remoteconfig-overview-0000001188328547) |
+
 ### Server
 | Demo | Version | Documentation |
 |--------|-----|-----|
