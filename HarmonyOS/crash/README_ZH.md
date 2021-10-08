@@ -30,7 +30,7 @@
 在运行quickstart前，您需要
 1、如果没有华为开发者联盟帐号，需要先[注册账号](https://developer.huawei.com/consumer/en/doc/start/registration-and-verification-0000001053628148)并通过实名认证。
 2、使用申请的帐号登录[AppGallery Connect](https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/)网站创建应用，软件包类型选择“APP(HarmonyOS)”。
-3、在AppGallery Connect 网站上开通崩溃服务，开发 > 质量 > 崩溃服务（由于崩溃服务上报崩溃事件时集成了华为分析服务的能力，集成Crash SDK前必须开通华为分析服务）。
+3、在AppGallery Connect 网站上开通崩溃服务，选择您的项目和应用，选择质量 > 崩溃，开通崩溃服务（由于崩溃服务上报崩溃事件时集成了华为分析服务的能力，集成Crash SDK前必须开通华为分析服务）。
 4、在AppGallery Connect 网站上下载agconnect-services.json文件，并拷贝agconnect-services.json文件到entry根目录下。
 
 ## 示例代码

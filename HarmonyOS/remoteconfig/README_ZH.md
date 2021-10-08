@@ -25,7 +25,7 @@ AppGallery Connect远程配置服务提供了在线的配置参数管理能力�
 
 在运行quickstart前，您需要
 1、如果没有华为开发者联盟帐号，需要先[注册账号](https://developer.huawei.com/consumer/en/doc/start/registration-and-verification-0000001053628148)并通过实名认证。
-2、使用申请的帐号登录[AppGallery Connect](https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/)网站创建应用，软件包类型选择“APK(HarmonyOS应用)”。
+2、使用申请的帐号登录[AppGallery Connect](https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/)网站创建应用，软件包类型选择“APP(HarmonyOS应用)”。
 3、开通远程配置服务（详见开发指南）。
 4、在AppGallery Connect 网站上下载agconnect-services.json 文件，并拷贝agconnect-services.json文件到entry根目录下。
 
