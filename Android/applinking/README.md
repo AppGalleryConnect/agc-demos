@@ -1,6 +1,6 @@
 ## AppLinking quickstart
 
-English | [中文]()
+English | [中文](https://github.com/AppGalleryConnect/agc-demos/blob/main/Android/applinking/README_ZH.md)
 
 ## Table of Contents
 
