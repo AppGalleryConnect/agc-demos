@@ -1,5 +1,7 @@
 ## Auth quickstart
 
+English | [中文](./README_ZH.md)
+
 ## Table of Contents
 
  * [Introduction](#introduction)
@@ -21,18 +23,18 @@ Most apps need to identify and authenticate users to tailor the app experience f
 ## Getting Started
 Before running the auth quickstart, you need to:
 1. If you do not have a HUAWEI Developer account, you need to [register an account](https://developer.huawei.com/consumer/en/doc/start/registration-and-verification-0000001053628148) and pass identity verification.
-2. Use your account to sign in to [AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started), create a project and add an app, set app platform to Quick App.
+2. Use your account to sign in to [AppGallery Connect](https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/), create a project and add an app, set app platform to Quick App, set app category to App.
 3. Select your project and app in My projects, and go to Build > Auth Service to enable the Authentication service.
 4. Select Project Settings,and go to Manage APIs, enable the Auth Service.
 5. Go to General information, download the agconnect-services.json file from AppGallery Connect, replace [agconnect-services.json](./agconnect-services.json) in this demo with agconnect-services.json file.
-6. Select your project and app in My projects, and go to Build > Auth Service > Authentication mode, enable Mobile number, Email address, Huawei account, WeChat, QQ, Anonymous account.
+6. Select your project and app in My projects, and go to Build > Auth Service > Authentication mode, enable Mobile number, Email address, Huawei account, Anonymous account.
 7. Run the following code in terminal in the demo path, and demo will start.
     ``` 
     # install dependencies
     npm install
     
     # install AGC auth sdk
-    npm install @agconnect/auth
+    npm install @agconnect/auth@1.3.0 --save
     
     # run demo
     Ctrl+Shift+R

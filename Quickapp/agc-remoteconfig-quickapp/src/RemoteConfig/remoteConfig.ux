@@ -17,14 +17,13 @@
 <template>
   <!-- Only one root node is allowed in template. -->
   <div class="container">
-
     <div class="label-item">
       <label target="input1">minFetchIntervalMillis:</label>
-      <input class="flex" id="input1" placeholder={{minFetchIntervalMillis}} onchange="setMinFetchIntervalMillis" />
+      <input class="flex" id="input1" placeholder="{{minFetchIntervalMillis}}" onchange="setMinFetchIntervalMillis" />
     </div>
     <div class="label-item">
       <label target="input1">defaultConfig:</label>
-      <input class="flex" id="input2" placeholder={{defaultConfig}} onchange="setDefaultConfig" />
+      <input class="flex" id="input2" placeholder="{{defaultConfig}}" onchange="setDefaultConfig" />
     </div>
 
     <div class="label-item">
@@ -49,10 +48,8 @@
       <label target="input2">config:</label>
     </div>
     <div class="label-item" style="margin-top:70px;border: 1px solid #000000;">
-      <textarea placeholder={{result}}></textarea>
+      <textarea placeholder="{{result}}"></textarea>
     </div>
-
-
   </div>
 </template>
 
@@ -153,15 +150,15 @@
         }
       } catch (error) {
         prompt.showToast({
-          message: JSON.stringify(error),
+          message: `please input JSON string!`,
           duration: 2000,
           gravity: 'center'
         });
+        this.defaultConfig = '';
       }
     },
 
     async fetch() {
-
       let agconnect = this.$app.$def.agc;
       console.log('fetch')
       await agconnect.remoteConfig().fetch().then(() => {
@@ -172,7 +169,12 @@
           gravity: 'center'
         });
       }).catch(err => {
-        console.log(JSON.stringify(err));
+        console.error(JSON.stringify(err));
+        prompt.showToast({
+          message: JSON.stringify(err),
+          duration: 2000,
+          gravity: 'center'
+        });
       })
     },
 
@@ -208,6 +210,11 @@
         });
       }).catch(err => {
         console.log(JSON.stringify(err));
+        prompt.showToast({
+          message: JSON.stringify(error),
+          duration: 2000,
+          gravity: 'center'
+        });
       })
     },
 

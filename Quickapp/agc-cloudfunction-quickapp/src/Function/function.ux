@@ -19,13 +19,12 @@
   <div class="container">
     <div class="label-item">
       <label target="input1">HttpTriggerURI:</label>
-      <input class="flex" id="input1" placeholder={{HttpTriggerURI}} onchange="setHttpTriggerURI" />
+      <input class="flex" id="input1" placeholder="{{HttpTriggerURI}}" onchange="setHttpTriggerURI" />
     </div>
     <div class="label-item">
       <label target="input2">Function Body:</label>
-      <input class="flex" id="input2" placeholder={{reqbody}} onchange="setBody" />
+      <input class="flex" id="input2" placeholder="{{reqbody}}" onchange="setBody" />
     </div>
-
 
     <div class="label-item">
       <input type="button" value="runFunction" @click="runFunction" />
@@ -33,7 +32,7 @@
 
     <div class="label-item">
       <label target="input2">result:</label>
-      <input class="flex" placeholder={{result}} />
+      <input class="flex" placeholder="{{result}}" />
     </div>
   </div>
 </template>
@@ -78,7 +77,7 @@
 </style>
 
 <script>
-  //import prompt from '@system.prompt';
+  import prompt from '@system.prompt';
   module.exports = {
     data: {
       HttpTriggerURI: '',
@@ -92,15 +91,6 @@
 
     setBody(e) {
       this.reqbody = e.value;
-      var device = require("@system.device")
-      device.getInfo({
-    success: function (ret) {
-        console.log("handling success:",JSON.stringify(ret));
-    },
-    fail: function (erromsg, errocode) {
-        console.log("message:",erromsg,errocode);
-    }
-})
     },
 
     /**
@@ -115,7 +105,12 @@
       await functionCallable.call(reqbody).then(res => {
         this.result = res.getValue();
       }).catch(err => {
-        console.log("err:" + err);
+        console.error(JSON.stringify(err));
+        prompt.showToast({
+          message: JSON.stringify(err),
+          duration: 2000,
+          gravity: 'center'
+        });
       })
     }
 

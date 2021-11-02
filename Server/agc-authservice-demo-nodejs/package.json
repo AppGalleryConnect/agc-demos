@@ -1,0 +1,23 @@
+{
+  "name": "server-demo",
+  "version": "1.0.0",
+  "description": "AppGallery Connect Server-SDK demo for Node.js auth module",
+  "main": "index.js",
+  "scripts": {
+    "build": "node index.js"
+  },
+  "author": {
+    "name": "AppGallery Connect",
+    "url": "https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "agconnect",
+    "Node.js",
+    "server SDK",
+    "authentication",
+    "demo"
+  ],
+  "dependencies": {
+  }
+}

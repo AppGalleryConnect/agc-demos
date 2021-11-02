@@ -1,5 +1,7 @@
 ## Auth demo快速入门
 
+中文 | [English](./README.md)
+
 ## 目录
 
  * [简介](#简介)
@@ -21,7 +23,7 @@
 ## 快速入门
 在运行quickstart前，您需要
 1. 如果没有华为开发者联盟帐号，需要先[注册账号](https://developer.huawei.com/consumer/cn/doc/start/registration-and-verification-0000001053628148) 并通过实名认证。
-2. 使用申请的帐号登录[AppGallery Connect](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-get-started) 网站创建一个项目并添加应用，软件包类型选择“快应用”。
+2. 使用申请的帐号登录[AppGallery Connect](https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/) 网站创建一个项目并添加应用，平台选择“快应用”，应用分类为“应用”。
 3. 在我的项目中进入新建的项目，选择创建的快应用，进入“构建”>“认证服务”页面，点击“立即开通”，开启认证服务。
 4. 点击“项目设置”>“API管理”，开启auth Service。
 5. 点击“常规”，下载agconnect-services.json文件，用其替换[agconnect-services.json](./agconnect-services.json) 。
@@ -32,7 +34,7 @@
     npm install
     
     # 安装 AGC auth sdk
-    npm install @agconnect/auth
+    npm install @agconnect/auth@1.3.0 --save
     
     # 启动demo
     Ctrl+Shift+R

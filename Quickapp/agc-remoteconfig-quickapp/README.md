@@ -1,5 +1,7 @@
 ## Remote Config quickstart
 
+English | [中文](./README_ZH.md)
+
 ## Table of Contents
 
  * [Introduction](#introduction)
@@ -21,7 +23,7 @@ AppGallery Connect Remote Configuration allows you to change the behavior and ap
 ## Getting Started
 Before running the remote config quickstart, you need to:
 1. If you do not have a HUAWEI Developer account, you need to [register an account](https://developer.huawei.com/consumer/en/doc/start/registration-and-verification-0000001053628148) and pass identity verification.
-2. Use your account to sign in to [AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started), create a project and add an app, set app platform to Quick App.
+2. Use your account to sign in to [AppGallery Connect](https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/), create a project and add an app, set app platform to Quick App, set app category to App.
 3. Select your project and app in My projects, and go to Grow > Remote Configuration to enable the Remote Config.
 4. Select Project Settings, and go to Manage APIs, enable the Remote Configuration.
 5. Go to General information, download the agconnect-services.json file from AppGallery Connect, replace [agconnect-services.json](./agconnect-services.json) in this demo with agconnect-services.json file.
@@ -32,7 +34,7 @@ Before running the remote config quickstart, you need to:
     npm install
     
     # install AGC remote config sdk
-    npm install @agconnect/remoteconfig
+    npm install @agconnect/remoteconfig@1.3.0 --save
     
     # run demo
     Ctrl+Shift+R
