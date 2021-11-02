@@ -1,0 +1,54 @@
+{
+  "app": {
+    "bundleName": "com.huawei.agconnect.core",
+    "vendor": "huawei",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "com.huawei.auth",
+    "name": ".MyApplication",
+    "mainAbility": "com.huawei.auth.MainAbility",
+    "deviceType": [
+      "phone"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry",
+      "installationFree": false
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "orientation": "unspecified",
+        "name": "com.huawei.auth.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:entry_MainAbility",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "permissions": [
+          "com.huawei.auth.DataAbilityShellProvider.PROVIDER"
+        ],
+        "name": "com.huawei.agconnect.core.provider.AGConnectInitializeAbility",
+        "type": "data",
+        "uri": "dataability://com.huawei.agconnect.core.AGConnectInitializeAbility"
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:width="match_parent"
+    ohos:height="match_parent">
+
+    <TextField
+        ohos:id="$+id:countryCode"
+        ohos:height="match_content"
+        ohos:width="150vp"
+        ohos:hint="Your countryCode"
+        ohos:text_input_type="pattern_number"
+        ohos:text_size="50"
+        ohos:top_margin="10vp"
+        />
+
+    <TextField
+        ohos:id="$+id:phoneNumber"
+        ohos:height="match_content"
+        ohos:width="150vp"
+        ohos:hint="Your phone"
+        ohos:text_input_type="pattern_number"
+        ohos:text_size="50"
+        ohos:bottom_margin="10vp"
+        />
+
+    <TextField
+        ohos:id="$+id:password"
+        ohos:height="match_content"
+        ohos:width="150vp"
+        ohos:hint="Password"
+        ohos:text_input_type="pattern_password"
+        ohos:text_size="50"
+        ohos:bottom_margin="10vp"
+        />
+
+    <TextField
+        ohos:id="$+id:verifyCode"
+        ohos:height="match_content"
+        ohos:width="150vp"
+        ohos:hint="verifyCode"
+        ohos:text_input_type="pattern_number"
+        ohos:text_size="50"
+        ohos:bottom_margin="10vp"
+        />
+
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="horizontal">
+    <Button
+        ohos:id="$+id:Verify"
+        ohos:height="match_content"
+        ohos:width="100vp"
+        ohos:background_element="$graphic:background_ability_main"
+        ohos:left_margin="15vp"
+        ohos:text="Verify"
+        ohos:text_size="16fp"/>
+
+    <Button
+        ohos:id="$+id:Login"
+        ohos:height="match_content"
+        ohos:width="100vp"
+        ohos:background_element="$graphic:background_ability_main"
+        ohos:left_margin="15vp"
+        ohos:text="Login"
+        ohos:text_size="16fp"/>
+    </DirectionalLayout>
+
+</DirectionalLayout>
