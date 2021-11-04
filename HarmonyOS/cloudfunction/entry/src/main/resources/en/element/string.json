@@ -1,0 +1,24 @@
+{
+  "string": [
+    {
+      "name": "entry_MainAbility",
+      "value": "entry_MainAbility"
+    },
+    {
+      "name": "mainability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "mainability_input_number",
+      "value": "Please input number"
+    },
+    {
+      "name": "mainability_number_res",
+      "value": "SUM : "
+    },
+    {
+      "name": "mainability_add_number",
+      "value": "ADD"
+    }
+  ]
+}
