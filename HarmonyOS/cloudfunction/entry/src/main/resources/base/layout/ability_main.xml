@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:alignment="center"
+    ohos:orientation="vertical">
+
+    <DirectionalLayout
+        ohos:width="match_parent"
+        ohos:height="50vp"
+        ohos:alignment="center"
+        ohos:orientation="horizontal">
+
+        <TextField
+            ohos:id="$+id:editText_number1"
+            ohos:width="120vp"
+            ohos:height="match_content"
+            ohos:hint="$string:mainability_input_number"
+            ohos:max_text_lines="1"
+            ohos:text_size="20vp"/>
+    </DirectionalLayout>
+
+
+    <DirectionalLayout
+        ohos:width="match_parent"
+        ohos:height="50vp"
+        ohos:alignment="center"
+        ohos:orientation="horizontal">
+
+        <TextField
+            ohos:id="$+id:editText_number2"
+            ohos:width="120vp"
+            ohos:height="match_content"
+            ohos:hint="$string:mainability_input_number"
+            ohos:max_text_lines="1"
+            ohos:text_size="20vp" />
+    </DirectionalLayout>
+
+    <DirectionalLayout
+        ohos:width="match_parent"
+        ohos:height="50vp"
+        ohos:alignment="center"
+        ohos:orientation="horizontal">
+        <Button
+            ohos:id="$+id:btn_add"
+            ohos:width="match_content"
+            ohos:height="match_content"
+            ohos:text_size="20vp"
+            ohos:text="$string:mainability_add_number"/>
+    </DirectionalLayout>
+
+    <DirectionalLayout
+        ohos:width="match_parent"
+        ohos:height="50vp"
+        ohos:alignment="center"
+        ohos:orientation="horizontal">
+
+        <Text
+            ohos:width="match_content"
+            ohos:height="match_content"
+            ohos:text="$string:mainability_number_res"
+            ohos:text_size="20vp" />
+        <Text
+            ohos:id="$+id:textView_result"
+            ohos:width="match_content"
+            ohos:height="match_content"
+            ohos:text_size="20vp"/>
+    </DirectionalLayout>
+
+</DirectionalLayout>

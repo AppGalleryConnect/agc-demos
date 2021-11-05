@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:alignment="center"
+    ohos:orientation="vertical">
+
+    <Button
+        ohos:id="$+id:button_debug"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text="$string:btn_debug"
+        ohos:text_size="20vp"
+        ohos:top_margin="40px"
+        />
+
+</DirectionalLayout>

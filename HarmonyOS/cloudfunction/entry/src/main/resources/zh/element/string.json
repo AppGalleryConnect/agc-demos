@@ -1,0 +1,24 @@
+{
+  "string": [
+    {
+      "name": "entry_MainAbility",
+      "value": "entry_MainAbility"
+    },
+    {
+      "name": "mainability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "mainability_input_number",
+      "value": "请输入数字"
+    },
+    {
+      "name": "mainability_number_res",
+      "value": "计算结果 : "
+    },
+    {
+      "name": "mainability_add_number",
+      "value": "求和"
+    }
+  ]
+}
