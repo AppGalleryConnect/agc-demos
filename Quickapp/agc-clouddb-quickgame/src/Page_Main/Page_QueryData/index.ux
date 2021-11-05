@@ -1,0 +1,365 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+<template>
+  <!-- Only one root node is allowed in template. -->
+  <div class="page-summary-root">
+    <div class="page-title-wrap">
+      <text class="page-title">qeury condition</text>
+    </div>
+    <div class="item-container">
+      <text class="text-item">conditionType:</text>
+      <select class="select font-family2 option-item" onchange="setType">
+        <option value="EqualTo" selected="{{type == 'EqualTo'}}">EqualTo</option>
+        <option value="BeginWith" selected="{{type == 'BeginWith'}}">BeginWith</option>
+        <option value="EndWith" selected="{{type == 'EndWith'}}">EndWith</option>
+        <option value="Contain" selected="{{type == 'Contain'}}">Contain</option>
+        <option value="NotEqualTo" selected="{{type == 'NotEqualTo'}}">NotEqualTo</option>
+        <option value="GreaterThan" selected="{{type == 'GreaterThan'}}">GreaterThan</option>
+        <option value="GreaterThanOrEqualTo" selected="{{type == 'GreaterThanOrEqualTo'}}">GreaterThanOrEqualTo</option>
+        <option value="LessThan" selected="{{type == 'LessThan'}}">LessThan</option>
+        <option value="LessThanOrEqualTo" selected="{{type == 'LessThanOrEqualTo'}}">LessThanOrEqualTo</option>
+        <option value="In" selected="{{type == 'In'}}">In</option>
+        <option value="IsNull" selected="{{type == 'IsNull'}}">IsNull</option>
+        <option value="IsNotNull" selected="{{type == 'IsNotNull'}}">IsNotNull</option>
+        <option value="Limit" selected="{{type == 'Limit'}}">Limit</option>
+      </select>
+    </div>
+    <div class="item-container" if="{{type != 'Limit'}}">
+      <text class="text-item">Field Name:</text>
+      <select class="select font-family2 option-item" onchange="setFieldName">
+        <option value="id" selected="{{fieldName == 'id'}}">id</option>
+        <option value="bookName" selected="{{fieldName == 'bookName'}}">bookName</option>
+        <option value="author" selected="{{fieldName == 'author'}}">author</option>
+        <option value="price" selected="{{fieldName == 'price'}}">price</option>
+        <option value="publisher" selected="{{fieldName == 'publisher'}}">publisher</option>
+        <option value="publishTime" selected="{{fieldName == 'publishTime'}}">publishTime</option>
+        <option value="shadowFlag" selected="{{fieldName == 'shadowFlag'}}">shadowFlag</option>
+      </select>
+    </div>
+    <div class="input-item" if="{{type != 'Limit' && type != 'IsNotNull' && type != 'IsNull'}}">
+      <text>value:</text>
+      <div class="containDiv">
+        <input class="inputPlaceholder" id="value" @change="setValue" value="{{value}}"></input>
+        <div class="rightLine"></div>
+      </div>
+    </div>
+    <div class="input-item" if="{{type == 'Limit'}}">
+      <text>number:</text>
+      <div class="containDiv">
+        <input class="inputPlaceholder" id="number" @change="setNumber" value="{{number}}"></input>
+        <div class="rightLine"></div>
+      </div>
+    </div>
+    <div class="input-item" if="{{type == 'Limit'}}">
+      <text>offset:</text>
+      <div class="containDiv">
+        <input class="inputPlaceholder" id="offset" @change="setOffset" value="{{offset}}"></input>
+        <div class="rightLine"></div>
+      </div>
+    </div>
+    <div class="input-item1">
+      <input class="input-button color-3" type="button" style="margin-top: 50px;" value="submit" onclick="equalToQuery"></input>
+    </div>
+    <div class="input-item1">
+      <input class="input-button color-3" type="button" style="margin-top: 50px;" value="clearAllCondition" onclick="clearAllCondition"></input>
+    </div>
+  </div>
+</template>
+
+<script>
+    import router from '@system.router';
+    import prompt from '@system.prompt';
+    export default {
+        data: {
+            type: 'EqualTo',
+            fieldName: 'id',
+            value: '',
+            number: '',
+            offset: ''
+        },
+        onInit() {
+            this.$page.setTitleBar({
+                text: 'query',
+                textColor: '#1a1a1a',
+                backgroundColor: '#f2f2f2',
+                menu: false
+            })
+        },
+        async onShow(options) {
+            const condition = this.$app.$def.cloudDBOperate.getCondition();
+            this.type = condition[0].conditionType;
+            this.fieldName = condition[0].fieldName;
+            if (this.type === 'Limit') {
+                this.number = condition[0].value.number;
+                this.offset = condition[0].value.offset;
+            } else if (this.type === 'In') {
+                this.value = '';
+                  for (let i = 0; i < condition[0].value.length; i++) {
+                    if (this.fieldName === 'publishTime') {
+                      this.value += (this.$app.$def.cloudDBOperate.parseDate(new Date(condition[0].value[i])) + ',');
+                      continue;
+                    }
+                    this.value += (condition[0].value[i] + ',');
+                  }
+               this.value = this.value.substring(0, this.value.length - 1);
+            } else {
+              if (this.fieldName === 'publishTime') {
+                this.value = this.$app.$def.cloudDBOperate.parseDate(new Date(condition[0].value));
+              } else {
+                this.value = condition[0].value;
+              }
+            }
+        },
+        clearAllCondition() {
+          this.$app.$def.cloudDBOperate.clearAllCondition();
+          router.push({
+            uri: 'Page_Main/Page_MM'
+          })
+        },
+        setType(e) {
+            this.type = e.newValue;
+        },
+        setFieldName(e) {
+            this.fieldName = e.newValue;
+        },
+        setAvgFieldName(e) {
+            this.avgFieldName = e.newValue;
+        },
+        setValue(e) {
+            this.value = e.value;
+        },
+        setNumber(e) {
+            this.number = e.value;
+        },
+        setOffset(e) {
+            this.offset = e.value;
+        },
+        async equalToQuery() {
+            let queryCondition = this.$app.$def.cloudDBOperate.constructCondition();
+            let localValue = this.value;
+            if (this.type !== 'In' && this.type !== 'Limit') {
+              switch (this.fieldName) {
+                case 'price':
+                case 'id':
+                    localValue = Number.parseFloat(localValue);
+                    break;
+                case 'publishTime':
+                    if (!this.$app.$def.cloudDBOperate.isValidDate(localValue)) {
+                      prompt.showToast({
+                        message: 'publishTime is invalid'
+                      });
+                      return;
+                    }
+                    localValue = this.$app.$def.cloudDBOperate.handleTime(new Date(localValue));
+                    break;
+                default:
+                    break;
+              }
+            }
+            switch (this.type) {
+                case 'EqualTo':
+                    queryCondition = queryCondition.equalTo(this.fieldName, localValue);
+                    break;
+                case 'BeginWith':
+                    queryCondition = queryCondition.beginsWith(this.fieldName, localValue);
+                    break;
+                case 'EndWith':
+                    queryCondition = queryCondition.endsWith(this.fieldName, localValue);
+                    break;
+                case 'Contain':
+                    queryCondition = queryCondition.contains(this.fieldName, localValue);
+                    break;
+                case 'NotEqualTo':
+                    queryCondition = queryCondition.notEqualTo(this.fieldName, localValue);
+                    break;
+                case 'GreaterThan':
+                    queryCondition = queryCondition.greaterThan(this.fieldName, localValue);
+                    break;
+                case 'GreaterThanOrEqualTo':
+                    queryCondition = queryCondition.greaterThanOrEqualTo(this.fieldName, localValue);
+                    break;
+                case 'LessThan':
+                    queryCondition = queryCondition.lessThan(this.fieldName, localValue);
+                    break;
+                case 'LessThanOrEqualTo':
+                    queryCondition = queryCondition.lessThanOrEqualTo(this.fieldName, localValue);
+                    break;
+                case 'In':
+                    const arr = localValue.split(',');
+                    switch (this.fieldName) {
+                      case 'price':
+                      case 'id':
+                          for (let i = 0; i < arr.length; i++) {
+                            arr[i] = Number.parseFloat(arr[i]);
+                          }
+                          break;
+                      case 'publishTime':
+                          for (let i = 0; i < arr.length; i++) {
+                            if (!this.$app.$def.cloudDBOperate.isValidDate(arr[i])) {
+                              prompt.showToast({
+                                message: 'publishTime is invalid'
+                              })
+                              return;
+                            }
+                            arr[i] = this.$app.$def.cloudDBOperate.handleTime(new Date(arr[i]));
+                          }
+                          break;
+                      default:
+                          break;
+                    }
+                    queryCondition = queryCondition.in(this.fieldName, arr);
+                    break;
+                case 'IsNull':
+                    queryCondition = queryCondition.isNull(this.fieldName, localValue);
+                    break;
+                case 'IsNotNull':
+                    queryCondition = queryCondition.isNotNull(this.fieldName, localValue);
+                    break;
+                case 'Limit':
+                    queryCondition = queryCondition.limit(Number.parseFloat(this.number), Number.parseFloat(this.offset));
+                    break;
+                default:
+                    break;
+            }
+            this.$app.$def.cloudDBOperate.setCondition(queryCondition);
+            router.push({
+                uri: 'Page_Main/Page_MM'
+            })
+        },
+    }
+</script>
+
+<style>
+    @import "../../Common/css/common.css";
+
+    .avg_item {
+      padding-top: 50px;
+    }
+
+    .rightLine {
+      height: 0.5px;
+      padding-left: 30px;
+      background-color: #000000;
+      width: 582px;
+      opacity: 0.2;
+    }
+
+    .inputPlaceholder {
+      padding-left: 30px;
+      height: 50px;
+      font-size: 31.3px;
+      width: 582px;
+      color: #1a1a1a;
+      padding-bottom: 3px;
+    }
+
+    .containDiv {
+      flex-direction: column;
+    }
+
+    .leftLabel {
+      width: 300px;
+      color: #1a1a1a;
+      margin-right: 20px;
+      font-size: 30px;
+    }
+
+    .itemsCon {
+      height: 150px;
+    }
+
+    .leftLabel {
+      width: 300px;
+      color: #1a1a1a;
+      margin-right: 20px;
+      font-size: 30px;
+    }
+
+    .text-item {
+      width: 200px;
+    }
+
+    .avg-text-item {
+      width: 251px;
+    }
+
+    .option-item {
+      font-size: 25px;
+    }
+    .color-3 {
+      background-color: #0faeff;
+    }
+
+    .input-button {
+      flex: 1;
+      padding-top: 10px;
+      padding-right: 30px;
+      padding-bottom: 10px;
+      padding-left: 30px;
+      margin-left: 30px;
+      font-size: 30px;
+      color: #ffffff;
+    }
+
+    .input-item1 {
+      margin-bottom: 80px;
+      margin-right: 20px;
+    }
+
+    .item-container {
+      margin-bottom: 50px;
+      margin-right: 60px;
+      margin-left: 30px;
+      flex-direction: row;
+    }
+
+    .input-item {
+      margin-left: 30px;
+      margin-bottom: 80px;
+      flex-direction: row;
+    }
+
+    .select {
+      margin-left: 10px;
+      margin-right: 30px;
+      align-items: flex-start;
+      border-color: #007DFF;
+      border-width: 1px;
+      width: 350px;
+      height: 40px;
+    }
+
+    .container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .title {
+      font-size: 100px;
+    }
+
+    .font-family2 {
+      font-family: serif;
+    }
+
+    .page-summary-root {
+      background-color: #fbf9fe;
+      flex: 1;
+      flex-direction: column;
+    }
+</style>

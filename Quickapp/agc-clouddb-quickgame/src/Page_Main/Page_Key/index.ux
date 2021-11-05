@@ -1,0 +1,164 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+<template>
+  <div class="container">
+    <div class="page-title-wrap">
+      <text class="page-title">Set or Modify User Key</text>
+    </div>
+    <div class="newInfo">
+      <div class="itemsCon">
+        <text class="leftLabel">Key:</text>
+        <div class="containDiv">
+          <input class="inputPlaceholder" @change="setKey" value="{{Key}}"></input>
+          <div class="rightLine"></div>
+        </div>
+      </div>
+
+      <div class="itemsCon">
+        <text class="leftLabel">ReKey:</text>
+        <div class="containDiv">
+          <input class="inputPlaceholder" @change="setReKey" value="{{ReKey}}"></input>
+          <div class="rightLine"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container ">
+      <div class="centerConfirm">
+        <input type="button" class="confirmBtn" id="confirm" value="submit" onclick="confirmFunc"></input>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+  .page-title-wrap {
+    padding-top: 50px;
+    padding-bottom: 80px;
+    justify-content: center;
+  }
+
+  .page-title {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-color: #bbbbbb;
+    color: #bbbbbb;
+    border-bottom-width: 2px;
+  }
+
+  .containDiv {
+    flex-direction: column;
+  }
+
+  .rightLine {
+    height: 0.5px;
+    background-color: #000000;
+    width: 100%;
+    opacity: 0.2;
+  }
+
+  .centerConfirm {
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    align-self: center;
+    flex-direction: column;
+  }
+
+  .itemsCon {
+    height: 150px;
+  }
+
+  .inputPlaceholder {
+    height: 150px;
+    font-size: 31.3px;
+    width: 582px;
+    color: #1a1a1a;
+    padding-bottom: 3px;
+  }
+
+  .leftLabel {
+    width: 100px;
+    color: #1a1a1a;
+    margin-right: 30px;
+  }
+
+  .newInfo {
+    line-height: 40.6px;
+    flex-direction: column;
+    padding-top: 20px;
+    width: 100%;
+    height: 200px;
+    font-size: 31.3px;
+    color: #1a1a1a;
+  }
+
+  .confirmBtn {
+    font-size: 31.7px;
+    color: #ffffff;
+    line-height: 40.6px;
+    width: 375px;
+    border-radius: 8.3px;
+    height: 66.7px;
+    background-color: #ff7500;
+    position: fixed;
+    bottom: 33px;
+    left: 189px;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 0 33px;
+  }
+</style>
+
+<script>
+  import { BookInfo } from '../../../module/BookInfo';
+  import router from "@system.router";
+  module.exports = {
+    data: {
+      Key: "",
+      ReKey: ""
+    },
+
+    onInit() {
+      this.$page.setTitleBar({
+        text: 'UserKey',
+        textColor: '#1a1a1a',
+        backgroundColor: '#f2f2f2',
+        menu: false
+      })
+    },
+
+    setKey(e) {
+      this.Key = e.value;
+    },
+
+    setReKey(e) {
+      this.ReKey = e.value;
+    },
+
+    async confirmFunc() {
+      await this.$app.$def.cloudDBOperate.setUserKey(this.Key, this.ReKey);
+      router.push({
+        uri: 'Page_Main/Page_MM'
+      });
+    }
+  }
+</script>

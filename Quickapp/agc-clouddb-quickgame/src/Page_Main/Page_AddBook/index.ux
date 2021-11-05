@@ -1,0 +1,244 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+<template>
+  <div class="container">
+    <div class="page-title-wrap">
+      <text class="page-title">insert Book</text>
+    </div>
+    <div class="newInfo">
+      <div class="itemsCon">
+        <text class="leftLabel">id:</text>
+        <div class="containDiv">
+          <input class="inputPlaceholder" value="{{id}}" @change="setId" type="number"></input>
+          <div class="rightLine"></div>
+        </div>
+      </div>
+
+      <div class="itemsCon">
+        <text class="leftLabel">bookName:</text>
+        <div class="containDiv">
+          <input class="inputPlaceholder" value="{{bookName}}" @change="setBookName"></input>
+          <div class="rightLine"></div>
+        </div>
+      </div>
+
+      <div class="itemsCon">
+        <text class="leftLabel">author:</text>
+        <div class="containDiv">
+          <input class="inputPlaceholder" value="{{author}}" @change="setAuthor"></input>
+          <div class="rightLine"></div>
+        </div>
+      </div>
+
+      <div class="itemsCon">
+        <text class="leftLabel">price:</text>
+        <div class="containDiv">
+          <input class="inputPlaceholder" value="{{price}}" @change="setPrice" type="number"></input>
+          <div class="rightLine"></div>
+        </div>
+      </div>
+
+      <div class="itemsCon">
+        <text class="leftLabel">publisher:</text>
+        <div class="containDiv">
+          <input class="inputPlaceholder" value="{{publisher}}" @change="setPublisher"></input>
+          <div class="rightLine"></div>
+        </div>
+      </div>
+
+      <div class="itemsCon">
+        <text class="leftLabel">publishTime:</text>
+        <div class="containDiv">
+          <input class="inputPlaceholder" value="{{publishTime}}" @change="setPublishTime" type="date" placeholder="date format: xxxx-xx-xx"></input>
+          <div class="rightLine"></div>
+        </div>
+      </div>
+
+      <div class="itemsCon">
+        <text class="leftLabel">shadowFlag:</text>
+        <div class="containDiv">
+          <input class="inputPlaceholder" value="{{shadowFlag}}" @change="setShadowFlag" placeholder="please enter true or false"></input>
+          <div class="rightLine"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container ">
+      <div class="centerConfirm">
+        <input type="button" class="confirmBtn" id="confirm" value="submit" onclick="confirmFunc()"></input>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+  .page-title-wrap {
+    padding-top: 50px;
+    padding-bottom: 80px;
+    justify-content: center;
+  }
+
+  .page-title {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-color: #bbbbbb;
+    color: #bbbbbb;
+    border-bottom-width: 2px;
+  }
+
+  .containDiv {
+    flex-direction: column;
+  }
+
+  .rightLine {
+    height: 0.5px;
+    background-color: #000000;
+    width: 100%;
+    opacity: 0.2;
+  }
+
+  .centerConfirm {
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    align-self: center;
+    flex-direction: column;
+  }
+
+  .itemsCon {
+    height: 150px;
+  }
+
+  .inputPlaceholder {
+    height: 150px;
+    font-size: 31.3px;
+    width: 582px;
+    color: #1a1a1a;
+    padding-bottom: 3px;
+  }
+
+  .leftLabel {
+    width: 300px;
+    color: #1a1a1a;
+    margin-right: 20px;
+    font-size: 30px;
+  }
+
+  .newInfo {
+    line-height: 40.6px;
+    flex-direction: column;
+    padding-top: 45.3px;
+    width: 100%;
+    height: 600px;
+    font-size: 31.3px;
+    color: #1a1a1a;
+  }
+
+  .confirmBtn {
+    font-size: 31.7px;
+    color: #ffffff;
+    line-height: 40.6px;
+    width: 375px;
+    border-radius: 8.3px;
+    height: 66.7px;
+    background-color: #ff7500;
+    position: fixed;
+    bottom: 33px;
+    left: 189px;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 0 33px;
+  }
+</style>
+
+<script>
+  import { BookInfo } from '../../../module/BookInfo';
+  import router from "@system.router";
+  import prompt from '@system.prompt';
+  module.exports = {
+    data: {
+      id: "",
+      bookName: "",
+      author: "",
+      price: "",
+      publisher: "",
+      publishTime: "",
+      shadowFlag: ""
+    },
+
+    setId(e) { this.id = e.value; },
+    setBookName(e) { this.bookName = e.value; },
+    setAuthor(e) { this.author = e.value; },
+    setPrice(e) { this.price = e.value; },
+    setPublisher(e) { this.publisher = e.value; },
+    setPublishTime(e) { this.publishTime = e.value; },
+    setShadowFlag(e) { this.shadowFlag = e.value; },
+
+    onInit() {
+      this.$page.setTitleBar({
+        text: 'insert',
+        textColor: '#1a1a1a',
+        backgroundColor: '#f2f2f2',
+        menu: false
+      })
+    },
+    onShow(options) {
+    },
+
+    async confirmFunc() {
+      const b = new BookInfo();
+      if (this.id) {
+        b.setId(Number.parseFloat(this.id));
+      }
+      b.setBookName(this.bookName);
+      b.setAuthor(this.author);
+      if (this.price) {
+        b.setPrice(Number.parseFloat(this.price));
+      }
+      b.setPublisher(this.publisher);
+      if (this.publishTime) {
+        if (!this.$app.$def.cloudDBOperate.isValidDate(this.publishTime)) {
+          prompt.showToast({
+            message: 'publishTime is invalid'
+          });
+          return;
+        }
+        b.setPublishTime(this.$app.$def.cloudDBOperate.handleTime(new Date(this.publishTime)));
+      }
+      if (this.shadowFlag) {
+        if (this.shadowFlag === 'true') {
+          b.setShadowFlag(true);
+        } else if (this.shadowFlag === 'false') {
+          b.setShadowFlag(false);
+        } else {
+          prompt.showToast({
+            message: 'shadowFlag is invalid'
+          });
+          return;
+        }
+      }
+      await this.$app.$def.cloudDBOperate.upsertObject(b);
+      router.push({
+        uri: 'Page_Main/Page_MM'
+      });
+    }
+  }
+</script>

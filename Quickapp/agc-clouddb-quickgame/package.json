@@ -1,0 +1,16 @@
+{
+  "name": "quickapp-js-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@agconnect/database": "^1.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
+  }
+}

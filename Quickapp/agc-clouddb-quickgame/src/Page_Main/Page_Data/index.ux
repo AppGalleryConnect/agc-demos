@@ -1,0 +1,105 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+<template>
+  <div class="account-wrapper">
+    <div class="account-item">
+      <text class="account-name-left">id</text>
+      <text class="account-name-right">{{ publicData.id }}</text>
+    </div>
+    <div class="account-item">
+      <text class="account-name-left">bookName</text>
+      <text class="account-name-right">{{ publicData.bookName }}</text>
+    </div>
+
+    <div class="account-item">
+      <text class="account-name-left">author</text>
+      <text class="account-name-right">{{ publicData.author }}</text>
+    </div>
+
+    <div class="account-item">
+      <text class="account-name-left">price</text>
+      <text class="account-name-right">{{ publicData.price }}</text>
+    </div>
+
+    <div class="account-item">
+      <text class="account-name-left">publisher</text>
+      <text class="account-name-right">{{ publicData.publisher }}</text>
+    </div>
+
+    <div class="account-item">
+      <text class="account-name-left">publishTime</text>
+      <text class="account-name-right">{{ publicData.publishTime }}</text>
+    </div>
+
+    <div class="account-item">
+      <text class="account-name-left">shadowFlag</text>
+      <text class="account-name-right">{{ publicData.shadowFlag }}</text>
+    </div>
+  </div>
+</template>
+
+<style>
+  .account-wrapper {
+    width: 750px;
+    flex-direction: column;
+  }
+
+  .account-item {
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    margin: 0px 33px 0px 33px;
+    border-bottom-width: 2px;
+    border-color: #f2f2f2;
+  }
+
+  .account-name-left {
+    color: #1A1A1A;
+    font-size: 31.3px;
+  }
+
+  .account-name-right {
+    color: #1A1A1A;
+    opacity: 0.5;
+    font-size: 27.1px;
+  }
+</style>
+
+<script>
+  export default {
+    public: {
+      publicData: 'publicData'
+    },
+
+    onInit() {
+      this.$page.setTitleBar({
+        text: 'Data',
+        textColor: '#1a1a1a',
+        opacity: 1,
+        backgroundColor: '#f2f2f2',
+        menu: false
+      })
+    },
+
+    onShow(options) {
+      this.publicData = JSON.parse(this.publicData);
+      if (this.publicData.publishTime) {
+        this.publicData.publishTime = this.$app.$def.cloudDBOperate.parseDate(new Date(this.publicData.publishTime));
+      }
+    }
+  }
+</script>

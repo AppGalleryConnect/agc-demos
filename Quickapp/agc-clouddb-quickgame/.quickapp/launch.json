@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "pageConfigurations": [
+    {
+      "name": "Page_Main",
+      "id": "Page_Main",
+      "alias": "page",
+      "params": [],
+      "path": "/Page_Main"
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Debug QuickApp on Device",
+      "type": "quickapp",
+      "request": "launch",
+      "device": "${command:quickapp.choose-device}",
+      "cwd": "${workspaceRoot}",
+      "logLevel": "log",
+      "adbPort": 5037,
+      "debugServerPort": 8088,
+      "remoteDebug": true,
+      "elementMode": false,
+      "devicePlatform": "phone"
+    },
+    {
+      "name": "Debug Widget main on Device",
+      "type": "quickapp",
+      "request": "launch",
+      "device": "${command:quickapp.choose-device}",
+      "cwd": "${workspaceRoot}",
+      "logLevel": "log",
+      "adbPort": 5037,
+      "debugServerPort": 8088,
+      "remoteDebug": true,
+      "elementMode": false,
+      "widgetUri": "Page_Main",
+      "isRun": false,
+      "autoRun": false,
+      "alias": "page",
+      "devicePlatform": "phone",
+      "widgetParams": "{}"
+    }
+  ],
+  "currentWidgetUri": "Page_Main",
+  "currentAlias": "page",
+  "lastAlias": "page",
+  "lastWidgetUri": "Page_Main"
+}

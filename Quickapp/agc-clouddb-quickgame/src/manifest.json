@@ -1,0 +1,86 @@
+{
+  "package": "com.huawei.CloudDB",
+  "name": "CloudDB",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "icon": "/Common/logo.png",
+  "minPlatformVersion": 1078,
+  "features": [
+    {
+      "name": "system.fetch"
+    },
+    {
+      "name": "system.storage"
+    },
+    {
+      "name": "system.router"
+    },
+    {
+      "name": "system.websocketfactory"
+    },
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.configuration"
+    },
+    {
+      "name": "service.exchange"
+    }
+  ],
+  "permissions": [
+    {
+      "origin": "*"
+    }
+  ],
+  "config": {
+    "logLevel": "debug",
+    "data": {
+      "globalData": "GlobalData"
+    }
+  },
+  "router": {
+    "entry": "Page_Main",
+    "pages": {
+      "Page_Main": {
+        "component": "index"
+      },
+      "Page_Main/Page_Data": {
+        "component": "index"
+      },
+      "Page_Main/Page_AddBook": {
+        "component": "index"
+      },
+      "Page_Main/Page_UpdateBook": {
+        "component": "index"
+      },
+      "Page_Main/Page_Login": {
+        "component": "index"
+      },
+      "Page_Main/Page_Key": {
+        "component": "index"
+      },
+      "Page_Main/Page_Zone": {
+        "component": "index"
+      },
+      "Page_Main/Page_QueryData": {
+        "component": "index"
+      },
+      "Page_Main/Page_MM": {
+        "component": "index"
+      }
+    }
+  },
+  "display": {
+    "backgroundColor": "#FFFFFF",
+    "titleBarBackgroundColor": "#007DFF",
+    "titleBarTextColor": "#ffffff",
+    "menu": true,
+    "textSizeAdjust": "auto",
+    "pages": {
+      "Page_Main": {
+        "titleBarText": "CloudDB"
+      }
+    }
+  }
+}

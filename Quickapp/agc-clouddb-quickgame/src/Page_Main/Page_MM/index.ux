@@ -1,0 +1,205 @@
+/*
+* Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+<template>
+  <div class="container">
+    <div class="centerConfirm">
+      <image src="../../img/query.svg" class="img_base" onclick="queryData"></image>
+      <image src="../../img/addMore.svg" class="img_base" onclick="insertDate"></image>
+      <image src="../../img/DB.svg" class="img_base" onclick="openCloudDB"></image>
+      <image src="../../img/key.svg" class="img_base" onclick="setKey"></image>
+
+      <image src="../../img/mine.svg" class="img_base img_mine" onclick="login"></image>
+    </div>
+    <div class="header">
+      <div class="header-item header-id">
+        <text style="lines: 1">id</text>
+      </div>
+      <div class="fly-mid"></div>
+      <div class="header-item header-bookname">
+        <text class="text-indentation">bookName</text>
+      </div>
+      <div class="fly-mid"></div>
+      <div class="header-item header-op">
+        <text class="text-indentation">operate</text>
+      </div>
+    </div>
+    <div class="rightLine"></div>
+
+    <div for="{{array}}" class="td">
+      <div>
+        <div class="header-item header-id">
+          <text style="lines: 1">{{ $item.id }}</text>
+        </div>
+        <div class="fly-mid"></div>
+        <div class="header-item header-bookname">
+          <text class="text-indentation">{{ $item.bookName }}</text>
+        </div>
+        <div class="fly-mid"></div>
+        <div class="header-item header-op">
+          <input type="button" value="more" class="operate-button" onclick="OnQuery($item)" />
+          <input type="button" value="update" class="operate-button" onclick="OnUpdate($item)" />
+          <input type="button" value="delete" class="operate-button" onclick="OnDelete($item.id)" />
+        </div>
+      </div>
+    </div>
+    <div class="rightLine"></div>
+  </div>
+</template>
+<style>
+    .header {
+      margin-top: 20px;
+      flex-direction: row;
+    }
+
+    .img_base {
+      height: 65px;
+      margin-left: 20px;
+
+      margin-top: 70px;
+    }
+
+    .img_mine {
+      margin-left: 300px;
+    }
+
+    .header-id {
+      width: 20%;
+    }
+
+    .header-item {
+      margin-left: 10px;
+      margin-right: 10px;
+      align-items: center;
+    }
+
+    .header-bookname {
+      width: 40%;
+    }
+
+    .header-op {
+      width: 40%;
+    }
+
+    .centerConfirm {
+      height: 200px;
+      background-color: #8FBC8F;
+    }
+
+    .td {
+      margin-top: 20px;
+      padding-right: 1px;
+    }
+
+    .operate-button {
+      margin-left: 5px;
+      margin-right: 5px;
+      font-size: 25px;
+      flex: 1;
+      padding: 3px;
+      color: #ffffff;
+      background-color: #00bfff;
+    }
+
+    .rightLine {
+      height: 1px;
+      background-color: #000000;
+      width: 100%;
+      opacity: 0.2;
+      margin-top: 20px;
+    }
+
+    .text-indentation {
+      text-overflow: ellipsis;
+      lines: 1;
+    }
+
+    .fly-mid {
+      height: 50px;
+      width: 1px;
+      background-color: #000000;
+      opacity: 0.2;
+    }
+
+    .container {
+      flex: 1;
+      flex-direction: column;
+    }
+</style>
+<script>
+    import router from '@system.router'
+    import { BookInfo } from '../../../module/BookInfo';
+    export default {
+        data: {
+            array: [
+            ]
+        },
+        onInit: function () {
+            this.$page.setTitleBar({ text: 'CloudDB' })
+            // Initialize list data
+            this.listData = [].concat(this.listAdd)
+        },
+        async onShow(options) {
+            if (this.$app.$def.cloudDBOperate.getZoneStatus()) {
+                this.array = (await this.$app.$def.cloudDBOperate.query()).getSnapshotObjects();
+                return;
+            }
+        },
+        OnQuery(data) {
+            router.push({
+                uri: 'Page_Main/Page_Data',
+                params: { publicData: data }
+            })
+        },
+        OnUpdate(data) {
+            router.push({
+                uri: 'Page_Main/Page_UpdateBook',
+                params: { publicData: data }
+            })
+        },
+        async queryData() {
+            router.push({
+                uri: 'Page_Main/Page_QueryData'
+            })
+        },
+        async OnDelete(data) {
+            const bookInfo = new BookInfo();
+            bookInfo.setId(data);
+            await this.$app.$def.cloudDBOperate.deleteObject(bookInfo);
+            this.array = (await this.$app.$def.cloudDBOperate.query()).getSnapshotObjects();
+        },
+        login() {
+            router.push({
+                'uri': 'Page_Main/Page_Login'
+            });
+        },
+        insertDate() {
+            router.push({
+                'uri': 'Page_Main/Page_AddBook'
+            });
+        },
+        setKey() {
+            router.push({
+                'uri': 'Page_Main/Page_Key'
+            });
+        },
+        openCloudDB() {
+            router.push({
+                'uri': 'Page_Main/Page_Zone'
+            });
+        }
+    }
+</script>
