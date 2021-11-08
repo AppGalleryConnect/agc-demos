@@ -28,7 +28,7 @@ The Crash service is a lightweight crash analysis service which can be quickly i
 ## Getting Started
 
 Before running the Crash quickstart app you need to:
-1. If you do not have a HUAWEI Developer account, [register](https://developer.huawei.com/consumer/en/doc/start/registration-and-verification-0000001053628148) one and make it pass identity verification.
+1. If you do not have a Huawei developer account, [register](https://developer.huawei.com/consumer/en/doc/start/registration-and-verification-0000001053628148) one and make it pass identity verification.
 2. Use your account to sign in to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html#/), create an app, and set Package type to APP (HarmonyOS app).
 3. Select your project and app in My projects, and go to Quality > Crash to enable the Crash service. (The Crash service integrates Analytics Kit for crash event reporting. As a result, you need to enable HUAWEI Analysis Kit before integrating the Crash SDK.)
 4. Download the agconnect-services.json file from AppGallery Connect and copy it to the entry directory.
