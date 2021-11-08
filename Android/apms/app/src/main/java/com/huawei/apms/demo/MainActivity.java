@@ -20,7 +20,6 @@ import com.huawei.agconnect.apms.APMS;
 import com.huawei.agconnect.apms.androiddemo.R;
 import com.huawei.agconnect.apms.custom.CustomTrace;
 import com.huawei.agconnect.apms.instrument.AddCustomTrace;
-import com.huawei.util.HttpUtil;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
@@ -33,158 +32,70 @@ import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
-    private boolean anrTestEnable = false;
-    private static final String TAG = "apmsAndroidDemo";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize button event
-        initNetworkEventButton();
+        Button sendNetworkRequestBtn = findViewById(R.id.btn_network);
+        sendNetworkRequestBtn.setOnClickListener(view -> {
+            Log.d("apmsAndroidDemo", "send network request.");
+            HttpUtil.oneRequest();
+        });
+
+        this.findViewById(R.id.anr_test).setOnClickListener(v -> {
+            Log.d("apmsAndroidDemo", "trigger ANR");
+            anrTestEnable = true;
+        });
+
+        initCustomEventButton();
+
         initApmsSwitchButton();
         initApmsAnrSwitchButton();
-        initCustomEventButton();
-        initAnrTestButton();
+
     }
 
-    // define custom event by annotation
-    @AddCustomTrace(name = "CustomEvent2")
-    public void customEventHandle() {
-    }
-
-    // define custom event by code
-    public void sendCustomEvent() {
-        CustomTrace customTrace = APMS.getInstance().createCustomTrace("CustomEvent1");
-        customTrace.start();
-        // code you want trace
-        businessLogicStart(customTrace);
-        businessLogicEnd(customTrace);
-        customTrace.stop();
-    }
-
-    private void sendCustomEventByAnnotation() {
-        customEventHandle();
-    }
-
-    public void businessLogicStart(CustomTrace customTrace) {
-        customTrace.putMeasure("ProcessingTimes", 0);
-        for (int i = 0; i < 5; i++) {
-            customTrace.incrementMeasure("ProcessingTimes", 1);
-        }
-    }
-
-    public void businessLogicEnd(CustomTrace customTrace) {
-        customTrace.putProperty("ProcessingResult", "Success");
-        customTrace.putProperty("Status", "Normal");
-    }
-
-    public void initApmsAnrSwitchButton() {
-        findViewById(R.id.enable_apms_anr_off).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "disable apms.");
-                APMS.getInstance().enableAnrMonitor(false);
-            }
+    public void initCustomEventButton() {
+        findViewById(R.id.custom_normal_event).setOnClickListener(v -> {
+            Log.d("apmsAndroidDemo", "send a custom event");
+            sendCustomEvent();
         });
-        findViewById(R.id.enable_apms_anr_on).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "enable apms.");
-                APMS.getInstance().enableAnrMonitor(true);
-            }
+        findViewById(R.id.custom_normal_event_by_annotation).setOnClickListener(v -> {
+            Log.d("apmsAndroidDemo", "send a custom event by annotation");
+            sendCustomEventByAnnotation();
+        });
+        findViewById(R.id.custom_network_event).setOnClickListener(v -> {
+            Log.d("apmsAndroidDemo", "send a custom network event");
+            new Thread(HttpUtil::customNetworkEvent).start();
         });
     }
 
     public void initApmsSwitchButton() {
-        findViewById(R.id.enable_apms_off).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "disable apms.");
-                APMS.getInstance().enableCollection(false);
-            }
+        findViewById(R.id.enable_apms_on).setOnClickListener(v -> {
+            Log.d("apmsAndroidDemo", "enable Collection");
+            APMS.getInstance().enableCollection(true);
         });
-        findViewById(R.id.enable_apms_on).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "enable apms.");
-                APMS.getInstance().enableCollection(true);
-            }
+
+        findViewById(R.id.enable_apms_off).setOnClickListener(v -> {
+            Log.d("apmsAndroidDemo", "disable Collection");
+            APMS.getInstance().enableCollection(false);
         });
     }
 
-    public void initNetworkEventButton() {
-        Log.d(TAG, "apms demo start.");
-        Button sendNetworkRequestBtn = findViewById(R.id.btn_network);
-        sendNetworkRequestBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "send network request.");
-                HttpUtil.oneRequest();
-            }
+    public void initApmsAnrSwitchButton() {
+        findViewById(R.id.enable_apms_anr_on).setOnClickListener(v -> {
+            Log.d("apmsAndroidDemo", "enable ANR Collection");
+            APMS.getInstance().enableAnrMonitor(true);
+        });
+
+        findViewById(R.id.enable_apms_anr_off).setOnClickListener(v -> {
+            Log.d("apmsAndroidDemo", "disable ANR Collection");
+            APMS.getInstance().enableAnrMonitor(false);
         });
     }
 
-    public void initAnrTestButton() {
-        findViewById(R.id.anr_test).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "target anr");
-                anrTestEnable = true;
-            }
-        });
-    }
-
-    public void initCustomEventButton() {
-        findViewById(R.id.custom_normal_event).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "send a custom event");
-                sendCustomEvent();
-            }
-        });
-        findViewById(R.id.custom_normal_event_by_annotation).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "send a custom event by annotation");
-                sendCustomEventByAnnotation();
-            }
-        });
-        findViewById(R.id.custom_network_event).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "send a custom network event");
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        HttpUtil.customNetworkEvent();
-                    }
-                }).start();
-            }
-        });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+    private boolean anrTestEnable = false;
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (anrTestEnable) {
@@ -208,4 +119,35 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.dispatchTouchEvent(ev);
     }
+
+    private void sendCustomEventByAnnotation() {
+        customEventHandle();
+    }
+    // define custom event by annotation
+    @AddCustomTrace(name = "CustomEvent2")
+    public void customEventHandle() {
+    }
+
+    // define custom event by code
+    public void sendCustomEvent() {
+        CustomTrace customTrace = APMS.getInstance().createCustomTrace("CustomEvent1");
+        customTrace.start();
+        // code you want trace
+        businessLogicStart(customTrace);
+        businessLogicEnd(customTrace);
+        customTrace.stop();
+    }
+
+    public void businessLogicStart(CustomTrace customTrace) {
+        customTrace.putMeasure("ProcessingTimes", 0);
+        for (int i = 0; i < 5; i++) {
+            customTrace.incrementMeasure("ProcessingTimes", 1);
+        }
+    }
+
+    public void businessLogicEnd(CustomTrace customTrace) {
+        customTrace.putProperty("ProcessingResult", "Success");
+        customTrace.putProperty("Status", "Normal");
+    }
+
 }

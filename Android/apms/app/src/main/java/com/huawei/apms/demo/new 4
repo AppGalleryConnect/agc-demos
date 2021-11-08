@@ -1,0 +1,30 @@
+2020-04-09 18:13:27.701 14535-14720/com.aiops.hiperformance D/NBSAgent: set request tag
+2020-04-09 18:13:27.708 14535-14720/com.aiops.hiperformance D/NBSAgent: okhttp3 dns time:0, hostname:192.168.137.1, pre dns:-1
+2020-04-09 18:13:27.832 14535-14720/com.aiops.hiperformance D/NBSAgent: enter intercept
+2020-04-09 18:13:27.832 14535-14720/com.aiops.hiperformance D/NBSAgent: transactionState != null
+2020-04-09 18:13:27.832 14535-14720/com.aiops.hiperformance D/NBSAgent: java.net.SocksSocketImpl
+2020-04-09 18:13:27.859 14535-14720/com.aiops.hiperformance D/NBSAgent: okhttp3 dns time:0, hostname:192.168.137.1, pre dns:-1
+2020-04-09 18:13:28.076 14535-14720/com.aiops.hiperformance D/NBSAgent: enter intercept
+2020-04-09 18:13:28.076 14535-14720/com.aiops.hiperformance D/NBSAgent: transactionState != null
+2020-04-09 18:13:28.076 14535-14720/com.aiops.hiperformance D/NBSAgent: java.net.SocksSocketImpl
+2020-04-09 18:13:28.152 14535-14720/com.aiops.hiperformance V/NBSAgent: set status code:200
+2020-04-09 18:13:28.152 14535-14720/com.aiops.hiperformance V/NBSAgent: 26399123bytes received
+
+
+
+2020-04-09 18:13:41.256 14535-14720/com.aiops.hiperformance D/NBSAgent: complete totalBytesRead: 26399123, bytesRead:5254
+2020-04-09 18:13:41.257 14535-14720/com.aiops.hiperformance V/NBSAgent: 26399123bytes received
+2020-04-09 18:13:41.257 14535-14720/com.aiops.hiperformance D/NBSAgent: firstpktime:-1, remainPackage:0
+2020-04-09 18:13:41.261 14535-14720/com.aiops.hiperformance E/NBSAgent: addNetworkToSegment  : Thread-4 id : 22238
+2020-04-09 18:13:41.262 14535-14720/com.aiops.hiperformance E/NBSAgent: checkWaitTime()13611
+2020-04-09 18:13:41.262 14535-14720/com.aiops.hiperformance E/NBSAgent: addNetworkToSegment  : Thread-4 id : 22238
+2020-04-09 18:13:41.262 14535-14720/com.aiops.hiperformance E/NBSAgent: checkWaitTime()23373
+2020-04-09 18:13:41.262 14535-14720/com.aiops.hiperformance E/NBSAgent: addNetworkToSegment  : Thread-4 id : 22238
+2020-04-09 18:13:41.262 14535-14720/com.aiops.hiperformance E/NBSAgent: checkWaitTime  nbsSlowStartTrace getContentLoadEndTime : 1586427198063
+2020-04-09 18:13:41.263 14535-14720/com.aiops.hiperformance I/NBSAgent: download success
+2020-04-09 18:13:41.764 14535-14605/com.aiops.hiperformance V/NBSAgent: broadcast measurement
+2020-04-09 18:13:41.764 14535-14605/com.aiops.hiperformance D/NBSAgent: not NetworkErrorScene
+2020-04-09 18:13:41.778 14535-14605/com.aiops.hiperformance D/NBSAgent: before connecttime:-1, ssl:-1, remainpktime:-1, firstpk:-1, dns:-1, alltime:13557, queuetime:0
+2020-04-09 18:13:41.781 14535-14605/com.aiops.hiperformance D/NBSAgent: after connecttime:-1, ssl:-1, remainpktime:-1, firstpk:13557, dns:-1, alltime:13557, queuetime:0
+2020-04-09 18:13:41.781 14535-14605/com.aiops.hiperformance E/NBSAgent: extensionInfo->>>>>>:addHttpTransaction  SceneRegisterObserver.after_net : false
+2020-04-09 18:14:17.765 14535-14606/com.aiops.hiperformance D/NBSAgent: AppStart->>>>>:Completing slowStartTrace trace size of 0

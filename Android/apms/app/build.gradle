@@ -1,7 +1,11 @@
 apply plugin: 'com.android.application'
+// Apply the AGC plugin
 apply plugin: 'com.huawei.agconnect'
-// 2.0 Add the APMS plugin
-apply plugin: 'com.huawei.agconnect.apms'
+
+// Set the value of enableAPMS is true, means that the APMS plugin is working.
+agcp {
+    enableAPMS true
+}
 
 android {
     compileSdkVersion 28
@@ -20,6 +24,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -29,8 +37,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.squareup.okhttp3:okhttp:3.12.2'
 
-    // 1.0 Add APMS SDK library dependency
-    implementation 'com.huawei.agconnect:agconnect-apms:1.5.2.300'
+    // Add APMS SDK library dependency
+    implementation 'com.huawei.agconnect:agconnect-apms:1.5.2.307'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
