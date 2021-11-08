@@ -26,7 +26,7 @@ AppGallery Connect Remote Configuration allows you to manage parameters online. 
 ## Getting Started
 
 Before running the Remote Configuration quickstart app you need to:
-1. If you do not have a HUAWEI Developer account, [register](https://developer.huawei.com/consumer/en/doc/start/registration-and-verification-0000001053628148) one and make it pass identity verification.
+1. If you do not have a Huawei developer account, [register](https://developer.huawei.com/consumer/en/doc/start/registration-and-verification-0000001053628148) one and make it pass identity verification.
 2. Use your account to sign in to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html#/), create an app, and set Package type to APP (HarmonyOS app).
 3. Enable Remote Configuration. For details, please refer to the Remote Configuration development guide.
 4. Download the agconnect-services.json file from AppGallery Connect and copy it to the entry directory.
