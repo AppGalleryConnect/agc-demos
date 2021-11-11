@@ -1,33 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.huawei.apms.demo.MainActivity">
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <Button
+            android:id="@+id/btn_network"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:text="Send Network Request" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+        <Button
+            android:id="@+id/enable_apms_off"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="APMS Collection OFF" />
 
-    <include layout="@layout/content_main" />
+        <Button
+            android:id="@+id/enable_apms_on"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="APMS Collection ON" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <Button
+            android:id="@+id/enable_apms_anr_off"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="APMS Anr Monitor OFF" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <Button
+            android:id="@+id/enable_apms_anr_on"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="APMS Anr Monitor ON" />
+
+        <Button
+            android:id="@+id/custom_normal_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Custom Event" />
+
+        <Button
+            android:id="@+id/custom_normal_event_by_annotation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Custom Event By annotation" />
+
+        <Button
+            android:id="@+id/custom_network_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Custom Network Event" />
+        <Button
+            android:id="@+id/anr_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trigger Anr" />
+    </LinearLayout>
+</LinearLayout>
