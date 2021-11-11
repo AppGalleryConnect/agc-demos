@@ -19,6 +19,7 @@ import Router from 'vue-router';
 import login from '@/components/login';
 import QQLogin from '@/components/QQLogin';
 import weChatLogin from '@/components/weChatLogin';
+import SelfBuildLogin from '@/components/SelfBuildLogin';
 
 Vue.use(Router);
 
@@ -38,6 +39,16 @@ export default new Router({
       path: '/weChatLogin',
       name: 'weChatLogin',
       component: weChatLogin,
-    }
+    },
+    {
+      path: '/QQLoginEmptyPage',
+      name: 'QQLoginEmptyPage',
+      component: QQLogin,
+    },
+    {
+      path: '/selfBuildLogin',
+      name: 'SelfBuildLogin',
+      component: SelfBuildLogin,
+    },
   ],
 });

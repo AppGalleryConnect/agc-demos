@@ -41,7 +41,6 @@
 
 <script>
   import * as agcFunc from './functions';
-  import {configInstance} from "./config";
 
   export default {
     name: "cloudFunction",
@@ -58,7 +57,6 @@
     },
     // initialize demo
     async created() {
-      configInstance();
       agcFunc.setCryptImp(new agcFunc.Crypt());
     },
     methods: {
@@ -66,7 +64,7 @@
         await agcFunc.call(this.functionDate.HttpTrigger, this.functionDate.body, this.functionDate.timeout).then(res=>{
           this.functionDate.res = JSON.stringify(res.getValue());
         }).catch(err=>{
-          this.functionDate.res = JSON.stringify(err);
+          alert(err.message);
         });
       },
       clearInfo(){

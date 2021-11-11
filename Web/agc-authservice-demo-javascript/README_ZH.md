@@ -1,5 +1,7 @@
 ## Auth demo快速入门
 
+中文 | [English](./README.md)
+
 ## 目录
 
  * [简介](#简介)
@@ -19,7 +21,7 @@
 ## 快速入门
 在运行quickstart前，您需要
 1. 如果没有华为开发者联盟帐号，需要先[注册账号](https://developer.huawei.com/consumer/cn/doc/start/registration-and-verification-0000001053628148) 并通过实名认证。
-2. 使用申请的帐号登录[AppGallery Connect](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-get-started) 网站创建一个项目并添加应用，软件包类型选择“Web”。
+2. 使用申请的帐号登录[AppGallery Connect](https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/) 网站创建一个项目并添加应用，软件包类型选择“Web”。
 3. 在我的项目中进入新建的项目，选择创建的Web应用，进入“构建”>“认证服务”页面，点击“立即开通”，开启认证服务。
 4. 点击“项目设置”>“API管理”，开启auth Service。
 5. 点击“常规”，复制SDK代码片段并粘贴到[config.js](./src/components/config.js) 。
@@ -30,36 +32,36 @@
     npm install
 
     # 安装 AGC auth sdk
-    npm install --save @agconnect/auth
+    npm install @agconnect/auth@1.3.0 --save
 
     # 启动demo
     npm start
     ```
-8. 更多详情请点击[Auth](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-auth-quickapp-getstarted-0000001063528213) 。
+8. 更多详情请点击[Auth](https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-auth-web-getstarted-0000001053612703) 。
 
-## Sample Code
+## 示例代码
 
 Sample code: src\components\*
 
-## Result
+## 示例效果
 
 **loginAnonymous**</br>
-<img src="/images/anonymous.gif" alt="anonymous" height="946"/>
+<img src="images/anonymous.gif" alt="anonymous" height="946"/>
 
 **createUser**</br>
-<img src="/images/createUser.gif" alt="createUser" height="946"/>
+<img src="images/createUser.gif" alt="createUser" height="946"/>
 
 **deleteUser**</br>
-<img src="/images/deleteUser.gif" alt="deleteUser" height="946"/>
+<img src="images/deleteUser.gif" alt="deleteUser" height="946"/>
 
 **loginByPin**</br>
-<img src="/images/login_phone_pin.gif" alt="loginByPin" height="946"/>
+<img src="images/login_phone_pin.gif" alt="loginByPin" height="946"/>
 
 **loginbyPWD**</br>
-<img src="/images/loginbyPWD.gif" alt="loginbyPWD" height="946"/>
+<img src="images/loginbyPWD.gif" alt="loginbyPWD" height="946"/>
 
 **link**</br>
-<img src="/images/login_phone_link.gif" alt="link" height="946"/>
+<img src="images/login_phone_link.gif" alt="link" height="946"/>
 
 ## 技术支持
 

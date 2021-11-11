@@ -17,7 +17,7 @@
 import agconnect from '@agconnect/api';
 import '@agconnect/storage';
 
-let storage = agconnect.instance().getService('AGCStorageService').getStorageNewInstance(0);
+let storage = agconnect.instance().getService('AGCStorageService').getStorageInstance(0);
 
 function getSaveMode(key) {
   return storage.get(key);

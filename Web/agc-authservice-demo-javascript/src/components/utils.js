@@ -21,6 +21,8 @@ export function providerChangeUtil(self) {
     self.$router.push('/QQLogin')
   } else if (self.provider == 'weChat') {
     self.$router.push('/weChatLogin')
+  }else if(self.provider == 'selfBuild'){
+    self.$router.push('/selfBuildLogin')
   }
 }
 

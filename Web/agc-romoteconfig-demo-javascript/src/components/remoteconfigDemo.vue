@@ -85,7 +85,6 @@
 
 <script>
   import * as agc from './remoteConfig';
-  import {configInstance} from "./config";
   import {getSaveMode, setSaveMode} from './storage';
 
   export default {
@@ -106,7 +105,6 @@
       };
     },
     async created() {
-      configInstance();
       // Gets the storage location last set by the user in the demo and inherits it
       agc.setCryptImp(new agc.Crypt());
 
@@ -149,7 +147,7 @@
         await agc.fetch().then((res) => {
           alert('fetch successfully!');
         }).catch((err) => {
-          alert(JSON.stringify(err));
+          alert(err.message);
         });
       },
       getValue() {
@@ -178,7 +176,7 @@
               }
             }
           ).catch(error => {
-            alert(JSON.stringify(error));
+            alert(error.message);
           });
       },
       applyLastLoad() {
@@ -191,7 +189,7 @@
               }
             }
           ).catch(error => {
-            alert(JSON.stringify(error));
+            alert(error.message);
           });
       },
 

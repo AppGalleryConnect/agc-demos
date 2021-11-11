@@ -1,5 +1,7 @@
 ## Remote Config quickstart
 
+English | [中文](./README_ZH.md)
+
 ## Table of Contents
 
  * [Introduction](#introduction)
@@ -19,7 +21,7 @@ AppGallery Connect Remote Configuration allows you to change the behavior and ap
 ## Getting Started
 Before running the remote config quickstart, you need to:
 1. If you do not have a HUAWEI Developer account, you need to [register an account](https://developer.huawei.com/consumer/en/doc/start/registration-and-verification-0000001053628148) and pass identity verification.
-2. Use your account to sign in to [AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started), create a project and add an app, set app platform to Web.
+2. Use your account to sign in to [AppGallery Connect](https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/), create a project and add an app, set app platform to Web.
 3. Select your project and app in My projects, and go to Grow > Remote Configuration to enable the Remote Config.
 4. Select Project Settings, and go to Manage APIs, enable the Remote Configuration.
 5. Select Project Settings, copy the SDK Code Snippet json from AppGallery Connect and paste the json to [config.js](./src/components/config.js) in this demo.
@@ -30,7 +32,7 @@ Before running the remote config quickstart, you need to:
     npm install
 
     # install AGC remote config sdk
-    npm install --save @agconnect/remoteconfig
+    npm install @agconnect/remoteconfig@1.3.0 --save
 
     # run demo
     npm start
@@ -44,13 +46,13 @@ Sample code: src\components\*
 ## Result
 
 **fetchApply**</br>
-<img src="/images/fetchApply.gif" alt="fetchApply" height="957"/>
+<img src="images/fetchApply.gif" alt="fetchApply" height="957"/>
 
 **applyDefault**</br>
-<img src="/images/applyDefault.gif" alt="applyDefault" height="957"/>
+<img src="images/applyDefault.gif" alt="applyDefault" height="957"/>
 
 **getValue**</br>
-<img src="/images/getValue.gif" alt="getValue" height="957"/>
+<img src="images/getValue.gif" alt="getValue" height="957"/>
 
 ## Question or issues
 

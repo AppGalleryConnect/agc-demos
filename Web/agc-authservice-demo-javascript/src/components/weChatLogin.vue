@@ -18,6 +18,16 @@
   <div class="weChat_login-container">
     <el-form :model="dataForm_sdk_weChat" status-icon label-position="left" label-width="0px" class="demo-ruleForm login-page">
       <h3 class="title">JS-SDK-weChat</h3>
+      <el-select v-model="provider" placeholder="login mode select" @change="providerChange">
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
+      <br/>
+      <br/>
       <el-form-item prop="openId">
         <el-input type="text" v-model="dataForm_sdk_weChat.openId" auto-complete="off" placeholder="openId"></el-input>
       </el-form-item>
@@ -31,19 +41,12 @@
           <el-button type="success" size="medium" style="width: 28%;" @click="doUnLink" round>unlink</el-button>
         </el-row>
         <br/>
+        <el-button @click="getUserInfo();drawer = true" style="width: 80%;" type="primary">
+          Login User details
+        </el-button>
+        <br/>
+        <br/>
         <el-collapse accordion>
-          <el-collapse-item>
-            <template slot="title">login mode</template>
-            <el-select v-model="provider" placeholder="login mode select" @change="providerChange">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
-              </el-option>
-            </el-select>
-            <br/>
-          </el-collapse-item>
           <el-collapse-item>
             <template slot="title">storage mode</template>
             <el-radio-group v-model="saveMode" @change="setStorageMode">
@@ -53,24 +56,28 @@
             </el-radio-group>
             <br/>
           </el-collapse-item>
-          <el-collapse-item>
-            <template slot="title">User info</template>
-            <el-form :label-position="labelPosition" style="width: 20%;" label-width="120px" :model="accountInfo">
-              <el-form-item label="UID:">{{ accountInfo.uid }}</el-form-item>
-              <el-form-item label="Anonymous:">{{ accountInfo.anonymous }}</el-form-item>
-              <el-form-item label="displayName:">{{ accountInfo.displayName }}</el-form-item>
-              <el-form-item label="email:">{{ accountInfo.email }}</el-form-item>
-              <el-form-item label="phone:">{{ accountInfo.phone }}</el-form-item>
-              <el-form-item label="photoUrl:">{{ accountInfo.photoUrl }}</el-form-item>
-              <el-form-item label="providerId:">{{ accountInfo.providerId }}</el-form-item>
-            </el-form>
-            <br/><br/>
-            <el-button type="primary" size="medium" style="width: 50%;" @click="logOut">log out</el-button>
-            <br/><br/>
-            <el-button type="danger" size="medium" style="width: 50%;" @click="deleteUser">delete user</el-button>
-          </el-collapse-item>
           <div id="login_container_weixinlogin"></div>
         </el-collapse>
+        <el-drawer
+          title="User Info"
+          :visible.sync="drawer"
+          :direction="direction">
+          <el-form :label-position="labelPosition" style="width: 20%;" label-width="120px" :model="accountInfo"
+                   class="accountInfo">
+            <el-form-item label="UID:">{{ accountInfo.uid }}</el-form-item>
+            <el-form-item label="Anonymous:">{{ accountInfo.anonymous }}</el-form-item>
+            <el-form-item label="displayName:">{{ accountInfo.displayName }}</el-form-item>
+            <el-form-item label="email:">{{ accountInfo.email }}</el-form-item>
+            <el-form-item label="phone:">{{ accountInfo.phone }}</el-form-item>
+            <el-form-item label="photoUrl:">{{ accountInfo.photoUrl }}</el-form-item>
+            <el-form-item label="providerId:">{{ accountInfo.providerId }}</el-form-item>
+            <el-form-item label="emailVerified:">{{ accountInfo.emailVerified }}</el-form-item>
+            <el-form-item label="passwordSetted:">{{ accountInfo.passwordSetted }}</el-form-item>
+          </el-form>
+          <el-button type="primary" size="medium" style="width: 50%;" @click="logOut">log out</el-button>
+          <br/><br/>
+          <el-button type="danger" size="medium" style="width: 50%;" @click="deleteUser">delete user</el-button>
+        </el-drawer>
       </el-form-item>
     </el-form>
   </div>
@@ -85,13 +92,14 @@
   export default {
     data() {
       return {
-        saveMode: '4',
+        drawer: false,
+        direction: 'rtl',
+        saveMode: '0',
         provider: 'weChat',
         dataForm_sdk_weChat: {
           openId: '',
           accessToken: ''
         },
-        dialogVisible: false,
         labelPosition: 'left',
         accountInfo: {
           uid: '',
@@ -114,20 +122,23 @@
         }, {
           value: 'weChat',
           label: 'weChat'
-        }],
+        },
+          {
+            value: 'selfBuild',
+            label: 'selfBuild'
+          }],
         value: ''
       };
     },
     async created() {
       configInstance();
+      agc.setCryptImp(new agc.Crypt());
+      agc.setAuthCryptImp(new agc.AuthCrypt());
       this.saveMode = await getSaveMode('saveMode');
       if(!this.saveMode){
         this.saveMode = '2';
       }
       agc.setUserInfoPersistence(parseInt(this.saveMode));
-      agc.setCryptImp(new agc.Crypt());
-      agc.setAuthCryptImp(new agc.AuthCrypt());
-      this.getUserInfo();
     },
     methods: {
       async setStorageMode() {
@@ -150,9 +161,10 @@
         }
 
         loginWithWeChat(accessToken, openId, true).then(info => {
+          alert('login successfully!');
           this.getUserInfo();
         }).catch(error => {
-          console.error("error",error);
+          alert(err.message);
         });
       },
       providerChange() {
@@ -186,7 +198,7 @@
           alert('link weChat OK');
           this.getUserInfo();
         }).catch((err) => {
-          alert(JSON.stringify(err));
+          alert(err.message);
         });
       },
       doUnLink() {
@@ -194,7 +206,7 @@
           alert('UNlink weChat OK');
           this.getUserInfo();
         }).catch((err) => {
-          alert(JSON.stringify(err));
+          alert(err.message);
         });
       },
 
@@ -211,7 +223,7 @@
             providerId: '',
           };
         }).catch((err) => {
-          alert(JSON.stringify(err));
+          alert(err.message);
         });
       },
       deleteUser() {
@@ -233,7 +245,7 @@
             };
           });
         }).catch((err) => {
-          alert(JSON.stringify(err));
+          alert(err.message);
         });
       },
     },
@@ -255,7 +267,9 @@
     border: 1px solid #eaeaea;
     box-shadow: 0 0 25px #cac6c6;
   }
-
+  .accountInfo {
+    margin: 20px 60px auto;
+  }
   label.el-checkbox.remember {
     margin: 0px 0px 15px;
     text-align: left;

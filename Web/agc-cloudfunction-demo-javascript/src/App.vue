@@ -6,9 +6,13 @@
 </template>
 
 <script>
-export default {
+  import {configInstance} from "./components/config";
+  export default {
     name: 'App',
-};
+    created() {
+      configInstance();
+    }
+  };
 </script>
 
 <style>

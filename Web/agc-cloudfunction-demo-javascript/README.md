@@ -1,5 +1,7 @@
 ## Cloud functions quickstart
 
+English | [中文](./README_ZH.md)
+
 ## Table of Contents
 
  * [Introduction](#introduction)
@@ -19,7 +21,7 @@ Cloud Functions enables serverless computing. It provides the Function as a Serv
 ## Getting Started
 Before running the cloud functions quickstart, you need to:
 1. If you do not have a HUAWEI Developer account, you need to [register an account](https://developer.huawei.com/consumer/en/doc/start/registration-and-verification-0000001053628148) and pass identity verification.
-2. Use your account to sign in to [AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started), create a project and add an app, set app platform to Web.
+2. Use your account to sign in to [AppGallery Connect](https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/), create a project and add an app, set app platform to Web.
 3. Select your project and app in My projects, and go to Build > Cloud Functions to enable the Cloud Functions.
 4. Select Project Settings, copy the SDK Code Snippet json from AppGallery Connect and paste the json to [config.js](./src/components/config.js) in this demo.
 5. Select your project and app in My projects, and go to Build > Cloud Functions, [create a function and an HTTP trigger.](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-cloudfunction-appcall-web)
@@ -29,7 +31,7 @@ Before running the cloud functions quickstart, you need to:
     npm install
 
     # install AGC cloud functions sdk
-    npm install --save @agconnect/function
+    npm install @agconnect/function@1.3.0 --save
 
     # run demo
     npm start

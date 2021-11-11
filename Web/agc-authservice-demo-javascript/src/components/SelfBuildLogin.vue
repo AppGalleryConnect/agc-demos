@@ -15,9 +15,10 @@
 */
 
 <template>
-  <div class="qq_login-container">
-    <el-form status-icon label-position="left" label-width="0px" class="demo-ruleForm login-page">
-      <h3 class="title">JS-SDK-QQ</h3>
+  <div class="login-container">
+    <el-form status-icon label-position="left" label-width="0px"
+             class="demo-ruleForm login-page">
+      <h3 class="title">JS-SDK-SelfBuild</h3>
       <el-select v-model="provider" placeholder="login mode select" @change="providerChange">
         <el-option
           v-for="item in options"
@@ -30,27 +31,22 @@
       <br/>
       <el-form-item style="width: 100%;">
         <el-row>
-          <el-button type="success" size="medium" style="width: 28%;" @click="QQLogin" round>QQLogin</el-button>
-          <el-button type="success" size="medium" style="width: 28%;" @click="doLink" round>link</el-button>
-          <el-button type="success" size="medium" style="width: 28%;" @click="doUnLink" round>unlink</el-button>
+          <div class="row-flex flex-middle">
+            <el-input
+              type="textarea"
+              :autosize="{ minRows: 2, maxRows: 4}"
+              placeholder="please input token"
+              v-model="selfBuildToken"></el-input>
+              <br/>
+              <br/>
+            <el-button type="primary" size="medium" style="width: 40%;" @click="loginWithSelfBuild">loginWithSelfBuild</el-button>
+          </div>
         </el-row>
-        <br/>
         <el-button @click="getUserInfo();drawer = true" style="width: 80%;" type="primary">
           Login User details
         </el-button>
         <br/>
         <br/>
-        <el-collapse accordion>
-          <el-collapse-item>
-            <template slot="title">storage mode</template>
-            <el-radio-group v-model="saveMode" @change="setStorageMode">
-              <el-radio label="2">MEMORY</el-radio>
-              <el-radio label="1">SESSION</el-radio>
-              <el-radio label="0">INDEXDB</el-radio>
-            </el-radio-group>
-            <br/>
-          </el-collapse-item>
-        </el-collapse>
         <el-drawer
           title="User Info"
           :visible.sync="drawer"
@@ -67,10 +63,12 @@
             <el-form-item label="emailVerified:">{{ accountInfo.emailVerified }}</el-form-item>
             <el-form-item label="passwordSetted:">{{ accountInfo.passwordSetted }}</el-form-item>
           </el-form>
+          <br/>
           <el-button type="primary" size="medium" style="width: 50%;" @click="logOut">log out</el-button>
           <br/><br/>
           <el-button type="danger" size="medium" style="width: 50%;" @click="deleteUser">delete user</el-button>
         </el-drawer>
+
       </el-form-item>
     </el-form>
   </div>
@@ -79,20 +77,16 @@
 <script>
   import * as agc from './auth';
   import {getSaveMode, setSaveMode} from './storage';
-  import {providerChangeUtil} from "./utils";
   import {configInstance} from "./config";
-  import {loginWithQQ} from "./auth";
+  import "@agconnect/storage";
+  import {providerChangeUtil} from "./utils";
 
   export default {
     data() {
       return {
         drawer: false,
         direction: 'rtl',
-        token:'',
-        openId:'',
         saveMode: '0',
-        provider: 'QQ',
-        labelPosition: 'left',
         accountInfo: {
           uid: '',
           anonymous: '',
@@ -101,9 +95,12 @@
           phone: '',
           photoUrl: '',
           providerId: '',
-          emailVerified: '',
-          passwordSetted: '',
+          emailVerified:'',
+          passwordSetted:'',
         },
+        selfBuildToken:'',
+        labelPosition: 'left',
+        provider: 'selfBuild',
         options: [{
           value: 'phone',
           label: 'phone'
@@ -118,31 +115,43 @@
           label: 'weChat'
         },
           {
-          value: 'selfBuild',
-          label: 'selfBuild'
-        }],
+            value: 'selfBuild',
+            label: 'selfBuild'
+          }],
       };
     },
+    // initialize demo
     async created() {
       configInstance();
       agc.setCryptImp(new agc.Crypt());
       agc.setAuthCryptImp(new agc.AuthCrypt());
+      // Gets the storage location last set by the user in the demo and inherits it
       this.saveMode = await getSaveMode('saveMode');
       if (!this.saveMode) {
-        this.saveMode = '2';
+        this.saveMode = '0';
       }
       agc.setUserInfoPersistence(parseInt(this.saveMode));
-      await this.callbackFunction();
-      setTimeout(async () => {
-        this.getUserInfo();
-      }, 3000);
+
+      let providerParam = this.$router.history.current.query.provider;
+      if (providerParam) {
+        this.provider = providerParam;
+      }
     },
     methods: {
+      loginWithSelfBuild(){
+        let token = this.selfBuildToken;
+        agc.loginWithSelfBuild(token).then((ret) => {
+          alert('login successfully!');
+          this.getUserInfo();
+        }).catch((err) => {
+          alert(err.message);
+        });
+      },
       async setStorageMode() {
+        // Save the storage location locally
         await setSaveMode('saveMode', this.saveMode);
         this.$router.go(0);
       },
-
       getUserInfo() {
         agc.getUserInfo().then((user) => {
           if (user) {
@@ -170,46 +179,6 @@
           console.error("getuserinfo err:", err);
         });
       },
-      QQLogin() {
-        QC.Login.showPopup({
-          appId: "", // your appId in connect.qq.com,such as 101890031
-          redirectURI: "http://127.0.0.1:8080/#/QQLoginEmptyPage"
-        });
-      },
-
-      /**
-       * get the access_token taken after QQ authentication
-       * @param self
-       */
-      async callbackFunction() {
-        let hash = window.location.hash;
-        if (hash.indexOf("access_token") == -1) {
-          return;
-        }
-
-        await QC.Login.getMe(async function (openID, accessToken) {
-          await agc.getUserInfo().then(async (res) => {
-            if (res) {
-              await agc.link('QQ', accessToken, openID, '').then((ret) => {
-                alert('link QQ OK');
-              }).catch((err) => {
-                alert(err.message);
-              });
-            } else {
-              await loginWithQQ(accessToken, openID, true).then(result => {
-                alert('login With QQ OK');
-              }).catch(err => {
-                alert(err.message);
-              });
-            }
-          });
-        });
-        this.getUserInfo();
-      },
-
-      providerChange() {
-        providerChangeUtil(this)
-      },
       logOut() {
         agc.logout().then(() => {
           alert('log out!');
@@ -221,8 +190,8 @@
             phone: '',
             photoUrl: '',
             providerId: '',
-            emailVerified: '',
-            passwordSetted: '',
+            emailVerified:'',
+            passwordSetted:'',
           };
         }).catch((err) => {
           alert(err.message);
@@ -244,24 +213,16 @@
               phone: '',
               photoUrl: '',
               providerId: '',
-              emailVerified: '',
-              passwordSetted: '',
+              emailVerified:'',
+              passwordSetted:'',
             };
           });
         }).catch((err) => {
           alert(err.message);
         });
       },
-      doLink() {
-        this.QQLogin();
-      },
-      doUnLink() {
-        agc.unlink(6).then((ret) => {
-          alert('UNlink QQ OK');
-          this.getUserInfo();
-        }).catch((err) => {
-          alert(err.message);
-        });
+      providerChange() {
+        providerChangeUtil(this);
       },
     },
   };
@@ -272,21 +233,32 @@
     height: 100%;
   }
 
+  .row-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+
   .login-page {
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    margin: 180px auto;
-    width: 400px;
+    margin: 60px auto;
+    width: 420px;
     padding: 35px 35px 15px;
     background: #fff;
     border: 1px solid #eaeaea;
     box-shadow: 0 0 25px #cac6c6;
   }
-  .accountInfo {
-    margin: 20px 60px auto;
-  }
+
   label.el-checkbox.remember {
     margin: 0px 0px 15px;
     text-align: left;
+  }
+  .accountInfo {
+    margin: 20px 60px auto;
+  }
+  .flex-middle{
+    justify-content: center;
   }
 </style>
