@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    <form catchsubmit="formSubmit" catchreset="formReset">
+      <text>AGC-function-Demo</text>
+      <text>\n</text>
+      <text>\n</text>
+      <view class="weui-cell__bd" style="margin: 30rpx 0">
+        <input class="weui-input" name="httpTrigger" placeholder="input your HttpTrigger" />
+      </view>
+      <view class="weui-cell__bd" style="margin: 30rpx 0">
+        <input class="weui-input" name="body" placeholder="input your Body" />
+      </view>
+      <text>\n</text>
+      <view class="btn-area">
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="run">run</button>
+      </view>
+    </form>
+  </view>
+  <view class="text-box">
+    <text class="text-content">{{functionRes}}</text>
+  </view>
+
+</view>

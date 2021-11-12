@@ -1,0 +1,14 @@
+module.exports = (function() {
+var __MODS__ = {};
+var __DEFINE__ = function(modId, func, req) { var m = { exports: {}, _tempexports: {} }; __MODS__[modId] = { status: 0, func: func, req: req, m: m }; };
+var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = __MODS__[modId].m; m._exports = m._tempexports; var desp = Object.getOwnPropertyDescriptor(m, "exports"); if (desp && desp.configurable) Object.defineProperty(m, "exports", { set: function (val) { if(typeof val === "object" && val !== m._exports) { m._exports.__proto__ = val.__proto__; Object.keys(val).forEach(function (k) { m._exports[k] = val[k]; }); } m._tempexports = val }, get: function () { return m._tempexports; } }); __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); } return __MODS__[modId].m.exports; };
+var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
+var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
+__DEFINE__(1631754354873, function(require, module, exports) {
+var e=new(function(){function e(){this.servicesIdentifierMap=new Map,this.registeredService=new Map}return e.prototype.registryService=function(e){var r=e.name;this.registeredService.has(r)||this.registeredService.set(r,e)},e.prototype.unregistryService=function(e){},e.prototype.getService=function(e,r,t){void 0===t&&(t="[DEFAULT_CATEGORY]");var i=this.servicesIdentifierMap.get(t);if(null==i)i=new Map,this.servicesIdentifierMap.set(t,i);else if(null!=(s=i.get(e)))return s;var n=this.registeredService.get(e);if(null!=n){var s=n.serviceFactory(r);return i.set(e,s),s}return null},e}());var r=new(function(){function r(){}return r.prototype.registerApiProvider=function(e,r,t){(this[e]=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];return r(e)},null!=t)&&function e(r,t){if(!(t instanceof Object))return t;switch(t.constructor){case Array:r=[];break;case Object:void 0===r&&(r={});break;case Date:return new Date(t.getTime());default:return t}for(var i in t)t.hasOwnProperty(i)&&(r[i]=e(r[i],t[i]));return r}(this[e],t)},r.prototype.registerInternalService=function(r){e.registryService(r)},r.prototype.getService=function(r,t,i){return e.getService(r,t,i)},r}());module.exports=r;
+
+}, function(modId) {var map = {}; return __REQUIRE__(map[modId], modId); })
+return __REQUIRE__(1631754354873);
+})()
+//miniprogram-npm-outsideDeps=[]
+//# sourceMappingURL=index.js.map
