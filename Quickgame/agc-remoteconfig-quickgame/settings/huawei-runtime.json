@@ -1,0 +1,23 @@
+{
+  "appType": "fastgame",
+  "certificatePath": "C:\\Users\\x00450108\\AppData\\Roaming\\eSpace_Desktop\\UserData\\x00450108\\ReceiveFile\\certificate.pem",
+  "deviceOrientation": "portrait",
+  "disabledMode": "",
+  "fullScreen": true,
+  "icon": "D:\\pic.png",
+  "logLevel": "log",
+  "manifestPath": "",
+  "minPlatformVersion": "1078",
+  "name": "quickgame",
+  "npmPath": "",
+  "package": "com.huawei.demo",
+  "privatePath": "C:\\Users\\x00450108\\AppData\\Roaming\\eSpace_Desktop\\UserData\\x00450108\\ReceiveFile\\private.pem",
+  "runRelease": false,
+  "tinyPackageMode": false,
+  "tinyPackageServer": "",
+  "useDebugKey": false,
+  "versionCode": "1",
+  "versionName": "1.0.0",
+  "showNpmPath": false,
+  "packFirstScreenRes": false
+}

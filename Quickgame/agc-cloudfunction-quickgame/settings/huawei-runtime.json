@@ -1,0 +1,23 @@
+{
+  "appType": "fastgame",
+  "certificatePath": "",
+  "deviceOrientation": "portrait",
+  "disabledMode": "disabled is-disabled",
+  "fullScreen": true,
+  "icon": "D:\\pic.png",
+  "logLevel": "log",
+  "manifestPath": "",
+  "minPlatformVersion": "1078",
+  "name": "quickgame",
+  "npmPath": "",
+  "package": "com.huawei.test",
+  "privatePath": "",
+  "runRelease": false,
+  "tinyPackageMode": false,
+  "tinyPackageServer": "",
+  "useDebugKey": true,
+  "versionCode": "1",
+  "versionName": "1.0.0",
+  "showNpmPath": false,
+  "packFirstScreenRes": false
+}
