@@ -32,7 +32,7 @@ Before running the auth quickstart, you need to:
     npm install
 
     # install AGC auth sdk
-    npm install @agconnect/auth@1.3.0 --save
+    npm install @agconnect/auth@1.3.1 --save
 
     # run demo
     npm start

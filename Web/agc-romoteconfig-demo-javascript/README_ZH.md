@@ -32,7 +32,7 @@
     npm install
 
     # 安装 AGC remote config sdk
-    npm install @agconnect/remoteconfig@1.3.0 --save
+    npm install @agconnect/remoteconfig@1.3.1 --save
 
     # 启动demo
     npm start

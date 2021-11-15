@@ -31,7 +31,7 @@
     npm install
 
     # 安装 AGC cloud functions sdk
-    npm install @agconnect/function@1.3.0 --save
+    npm install @agconnect/function@1.3.1 --save
 
     # 启动demo
     npm start
