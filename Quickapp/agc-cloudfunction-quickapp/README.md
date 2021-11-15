@@ -33,7 +33,7 @@ Before running the cloud functions quickstart, you need to:
     npm install
     
     # install AGC cloud functions sdk
-    npm install @agconnect/function@1.3.0 --save
+    npm install @agconnect/function@1.3.1 --save
     
     # run demo
     Ctrl+Shift+R

@@ -34,7 +34,7 @@ Before running the remote config quickstart, you need to:
     npm install
     
     # install AGC remote config sdk
-    npm install @agconnect/remoteconfig@1.3.0 --save
+    npm install @agconnect/remoteconfig@1.3.1 --save
     
     # run demo
     Ctrl+Shift+R
