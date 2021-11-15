@@ -1,0 +1,13 @@
+<!--pages/userInfoDetail.wxml-->
+<view class="container">
+  <view class="text-box">
+    <text class="text-content">{{userInfo}}</text>
+  </view>
+  <form catchsubmit="formSubmit" catchreset="formReset">
+    <view class="btn-area">
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="updateProfile">updateProfile</button>
+        <button style="margin: 30rpx 0" formType="submit" data-type="logout">Logout</button>
+        <button style="margin: 30rpx 0" formType="submit" data-type="deleteUser">deleteUser</button>
+      </view>
+  </form> 
+</view>

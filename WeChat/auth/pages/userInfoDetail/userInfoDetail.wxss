@@ -1,0 +1,4 @@
+/* pages/userInfoDetail.wxss */
+.text-content {
+  word-break: break-all;
+}

@@ -6,10 +6,10 @@
       <text>\n</text>
       <text>\n</text>
       <view class="weui-cell__bd" style="margin: 30rpx 0">
-        <input class="weui-input" name="httpTrigger" placeholder="input your HttpTrigger" />
+        <input class="weui-input" name="httpTrigger" placeholder="input your httpTrigger" />
       </view>
       <view class="weui-cell__bd" style="margin: 30rpx 0">
-        <input class="weui-input" name="body" placeholder="input your Body" />
+        <input class="weui-input" name="body" placeholder="input your reqBody" />
       </view>
       <text>\n</text>
       <view class="btn-area">

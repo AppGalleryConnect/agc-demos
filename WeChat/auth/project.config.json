@@ -4,7 +4,7 @@
     "ignore": []
   },
   "compileType": "miniprogram",
-  "libVersion": "2.19.3",
+  "libVersion": "2.15.0",
   "projectname": "agc-demo",
   "scripts": {
     "beforeCompile": "npm run tsc",

@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    <form catchsubmit="formSubmit" catchreset="formReset">
+      <radio-group class="section_switch" name="authType">
+        <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="value">
+          <view class="weui-cell__hd">
+            <radio value="{{item.value}}" checked="{{item.checked}}" />
+          </view>
+          <view class="weui-cell__bd">{{item.name}}</view>
+        </label>
+      </radio-group>
+      <view class="weui-cell__bd" style="margin: 30rpx 0">
+        <input class="weui-input" name="account" placeholder="account" />
+      </view>
+
+      <view class="weui-cell__bd" style="margin: 30rpx 0">
+        <input class="weui-input" name="password" placeholder="password" />
+      </view>
+
+      <view class="weui-cell__bd" style="margin: 30rpx 0">
+        <input class="weui-input" name="verifyCode" placeholder="verifyCode" />
+      </view>
+
+      <view class="btn-area">
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="login">Login</button>
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="verifyCode">get verifyCode</button>
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="create">CreateUser</button>
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="anonymously">Anonymously</button>
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="reauthenticate">reauthenticate</button>
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="updateAccount">updateAccount</button>
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="verifyCodeForPWD">verifyCodeForPWD</button>
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="updatePwd">updatePwd</button>
+      </view>
+    </form>
+  </view>
+  <navigator url="/pages/userInfoDetail/userInfoDetail" class="navigator">go to userInfo detail page</navigator>
+</view>

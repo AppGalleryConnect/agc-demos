@@ -1,0 +1,30 @@
+/**index.wxss**/
+.container {
+  padding: 0 0;
+}
+.userinfo {
+  color: #aaa;
+}
+.navigator {
+  color:blue;
+}
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.section_switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.text-box {
+  margin: 20rpx;
+}
+.text-content {
+  word-break: break-all;
+}

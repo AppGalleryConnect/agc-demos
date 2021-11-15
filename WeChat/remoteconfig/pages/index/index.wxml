@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    <form catchsubmit="formSubmit" catchreset="formReset">
+      <text>AGC-remoteConfig-Demo</text>
+      <text>\n</text>
+      <text>\n</text>
+      <view class="weui-cell__bd" style="margin: 30rpx 0">
+        <input class="weui-input" name="fetchReqTimeoutMillis" placeholder="fetchReqTimeoutMillis" />
+      </view>
+
+      <view class="weui-cell__bd" style="margin: 30rpx 0">
+        <input class="weui-input" name="minFetchIntervalMillis" placeholder="minFetchIntervalMillis" />
+      </view>
+
+      <view class="weui-cell__bd" style="margin: 30rpx 0">
+        <input class="weui-input" name="defaultConfig" placeholder="defaultConfig" />
+      </view>
+
+      <view class="btn-area">
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="fetchandApply">fetchandApply</button>
+        <button style="margin: 30rpx 0" type="primary" formType="submit" data-type="showConfig">showConfig</button>
+      </view>
+    </form>
+  </view>
+  <view class="text-box">
+    <text class="text-content">{{configInfo}}</text>
+  </view>
+
+</view>
