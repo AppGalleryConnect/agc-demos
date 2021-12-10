@@ -9,7 +9,7 @@ about demos, and how to use them, see
 
 #### This repository will not update any more. Please visit the corresponding repository to view the newest sample code according to the following rules:
 | Folder | Repo Now |
-|--------|----------|
+|:--------:|:----------:|
 | Android | [agc-android-demos](https://github.com/AppGalleryConnect/agc-android-demos) |
 | iOS | [agc-ios-demos](https://github.com/AppGalleryConnect/agc-ios-demos) |
 | Web | [agc-web-demos](https://github.com/AppGalleryConnect/agc-web-demos) |
