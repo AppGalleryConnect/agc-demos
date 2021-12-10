@@ -1,6 +1,6 @@
 # agc-demos
 ***
-**This repository will not update any more. Please visit the corresponding repository to view the newest sample code according to the following rules:**
+**This repository will not update any more. Please visit the corresponding repository to view the newest sample code according to the following rules.Thank for your Fork,star or watch!**
 | **Folder** | **Repo Now** |
 |:--------:|:----------:|
 | Android | [agc-android-demos](https://github.com/AppGalleryConnect/agc-android-demos) |
@@ -19,7 +19,6 @@
 | Server(nodejs) | [agc-server-demos-nodejs](https://github.com/AppGalleryConnect/agc-server-demos-nodejs) |
 | Server(javascript) | [agc-server-demos-javascript](https://github.com/AppGalleryConnect/agc-server-demos-javascript) |
 | RestfulAPI | [agc-restfulapi-demos](https://github.com/AppGalleryConnect/agc-restfulapi-demos) |
-Thank for your **Fork,star or watch!**
 ***
 
 [![license](https://img.shields.io/badge/license-Apache--2.0-green)](./LICENCE)
