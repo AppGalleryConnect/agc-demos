@@ -11,8 +11,8 @@ about demos, and how to use them, see
 | Folder | Repo Now |
 |--------|----------|
 | Android | [agc-android-demos](https://github.com/AppGalleryConnect/agc-android-demos) |
-| iOS | iOS -> [agc-ios-demos](https://github.com/AppGalleryConnect/agc-ios-demos) |
-| Web | Web -> [agc-web-demos](https://github.com/AppGalleryConnect/agc-web-demos) |
+| iOS | [agc-ios-demos](https://github.com/AppGalleryConnect/agc-ios-demos) |
+| Web | [agc-web-demos](https://github.com/AppGalleryConnect/agc-web-demos) |
 | Flutter | [agc-flutter-demos](https://github.com/AppGalleryConnect/agc-flutter-plugin) |
 | Cordova | [agc-cordova-plugin](https://github.com/AppGalleryConnect/agc-cordova-plugin) |
 | React Native | [agc-reactnative-plugin](https://github.com/AppGalleryConnect/agc-reactnative-plugin) |
