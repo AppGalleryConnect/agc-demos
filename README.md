@@ -27,6 +27,8 @@ about demos, and how to use them, see
 | Server(nodejs) | [agc-server-demos-nodejs](https://github.com/AppGalleryConnect/agc-server-demos-nodejs) |
 | Server(javascript) | [agc-server-demos-javascript](https://github.com/AppGalleryConnect/agc-server-demos-javascript) |
 | RestfulAPI | [agc-restfulapi-demos](https://github.com/AppGalleryConnect/agc-restfulapi-demos) |
+Thank for your **Fork,star or watch!**
+***
 
 ## Introduction
 These are the available demos in this repository.
