@@ -7,7 +7,8 @@ These demos enable access to using specific APIs. For more information
 about demos, and how to use them, see
 [Official Documentations](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started).
 
-#### This repository will not update any more. Please visit the corresponding repository to view the newest sample code according to the following rules:
+***
+**This repository will not update any more. Please visit the corresponding repository to view the newest sample code according to the following rules:**
 | **Folder** | **Repo Now** |
 |:--------:|:----------:|
 | Android | [agc-android-demos](https://github.com/AppGalleryConnect/agc-android-demos) |
