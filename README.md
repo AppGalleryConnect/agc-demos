@@ -1,6 +1,6 @@
 # agc-demos
 ***
-**This repository will not update any more. Please visit the corresponding repository to view the newest sample code according to the following rules.Thank for your Fork,star or watch!**
+**This repository will not update any more. Please visit the corresponding repository to view the newest sample code according to the following rules.Thank for your Fork,Star or Watch!**
 | **Folder** | **Repo Now** |
 |:--------:|:----------:|
 | Android | [agc-android-demos](https://github.com/AppGalleryConnect/agc-android-demos) |
