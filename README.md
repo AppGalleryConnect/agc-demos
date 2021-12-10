@@ -1,12 +1,4 @@
 # agc-demos
-[![license](https://img.shields.io/badge/license-Apache--2.0-green)](./LICENCE)
-
-This repo contains the source code for AGC Demos, which are developed by the AppGallery Connect team.
-
-These demos enable access to using specific APIs. For more information
-about demos, and how to use them, see
-[Official Documentations](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started).
-
 ***
 **This repository will not update any more. Please visit the corresponding repository to view the newest sample code according to the following rules:**
 | **Folder** | **Repo Now** |
@@ -29,6 +21,14 @@ about demos, and how to use them, see
 | RestfulAPI | [agc-restfulapi-demos](https://github.com/AppGalleryConnect/agc-restfulapi-demos) |
 Thank for your **Fork,star or watch!**
 ***
+
+[![license](https://img.shields.io/badge/license-Apache--2.0-green)](./LICENCE)
+
+This repo contains the source code for AGC Demos, which are developed by the AppGallery Connect team.
+
+These demos enable access to using specific APIs. For more information
+about demos, and how to use them, see
+[Official Documentations](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started).
 
 ## Introduction
 These are the available demos in this repository.
