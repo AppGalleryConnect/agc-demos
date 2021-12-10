@@ -8,22 +8,23 @@ about demos, and how to use them, see
 [Official Documentations](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started).
 
 #### This repository will not update any more. Please visit the corresponding repository to view the newest sample code according to the following rules:
-Android -> [agc-android-demos](https://github.com/AppGalleryConnect/agc-android-demos)
-
-iOS -> [agc-ios-demos](https://github.com/AppGalleryConnect/agc-ios-demos)
-Web -> [agc-web-demos](https://github.com/AppGalleryConnect/agc-web-demos)
-Flutter -> [agc-flutter-demos](https://github.com/AppGalleryConnect/agc-flutter-plugin)
-Cordova -> [agc-cordova-plugin](https://github.com/AppGalleryConnect/agc-cordova-plugin)
-React Native -> [agc-reactnative-plugin](https://github.com/AppGalleryConnect/agc-reactnative-plugin)
-Xamarin -> [agc-xamarin-bindings](https://github.com/AppGalleryConnect/agc-xamarin-bindings)
-Quickapp -> [agc-quickapp-demos](https://github.com/AppGalleryConnect/agc-quickapp-demos)
-Quickgame -> [agc-quickgame-demos](https://github.com/AppGalleryConnect/agc-quickgame-demos)
-Wechat -> [agc-wechat-demos](https://github.com/AppGalleryConnect/agc-wechat-demos)
-HarmonyOS -> [agc-harmonyos-demos](https://github.com/AppGalleryConnect/agc-HarmonyOS-demos)
-Server(java) -> [agc-server-demos-java](https://github.com/AppGalleryConnect/agc-server-demos-java)
-Server(nodejs) -> [agc-server-demos-nodejs](https://github.com/AppGalleryConnect/agc-server-demos-nodejs)
-Server(javascript) -> [agc-server-demos-javascript](https://github.com/AppGalleryConnect/agc-server-demos-javascript)
-RestfulAPI -> [agc-restfulapi-demos](https://github.com/AppGalleryConnect/agc-restfulapi-demos)
+| Folder | Repo Now |
+| Android | [agc-android-demos](https://github.com/AppGalleryConnect/agc-android-demos) |
+| iOS | iOS -> [agc-ios-demos](https://github.com/AppGalleryConnect/agc-ios-demos) |
+| Web | Web -> [agc-web-demos](https://github.com/AppGalleryConnect/agc-web-demos) |
+| Flutter | [agc-flutter-demos](https://github.com/AppGalleryConnect/agc-flutter-plugin) |
+| Cordova | [agc-cordova-plugin](https://github.com/AppGalleryConnect/agc-cordova-plugin) |
+| React Native | [agc-reactnative-plugin](https://github.com/AppGalleryConnect/agc-reactnative-plugin) |
+| Xamarin | [agc-xamarin-bindings](https://github.com/AppGalleryConnect/agc-xamarin-bindings) |
+| Quickapp | [agc-quickapp-demos](https://github.com/AppGalleryConnect/agc-quickapp-demos) |
+| Quickgame | [agc-quickgame-demos](https://github.com/AppGalleryConnect/agc-quickgame-demos) |
+| Wechat | [agc-wechat-demos](https://github.com/AppGalleryConnect/agc-wechat-demos) |
+| Quickgame | [agc-quickgame-demos](https://github.com/AppGalleryConnect/agc-quickgame-demos) |
+| HarmonyOS | [agc-harmonyos-demos](https://github.com/AppGalleryConnect/agc-HarmonyOS-demos) |
+| Server(java) | [agc-server-demos-java](https://github.com/AppGalleryConnect/agc-server-demos-java) |
+| Server(nodejs) | [agc-server-demos-nodejs](https://github.com/AppGalleryConnect/agc-server-demos-nodejs) |
+| Server(javascript) | [agc-server-demos-javascript](https://github.com/AppGalleryConnect/agc-server-demos-javascript) |
+| RestfulAPI | [agc-restfulapi-demos](https://github.com/AppGalleryConnect/agc-restfulapi-demos) |
 
 ## Introduction
 These are the available demos in this repository.
