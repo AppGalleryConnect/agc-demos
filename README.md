@@ -3,7 +3,6 @@
 **This repository will not update any more. Please visit the corresponding repository to view the newest sample code according to the following rules.Thank for your Fork,Star or Watch!**
 | **Folder** | **Repo Now** |
 |:--------:|:----------:|
-| Android | [agc-android-demos](../agc-android-demos) |
 | Android | [agc-android-demos](https://github.com/AppGalleryConnect/agc-android-demos) |
 | iOS | [agc-ios-demos](https://github.com/AppGalleryConnect/agc-ios-demos) |
 | Web | [agc-web-demos](https://github.com/AppGalleryConnect/agc-web-demos) |
